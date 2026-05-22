@@ -1,0 +1,470 @@
+
+
+─────────────────────────────────────────────────────────────────
+  Sektion 1: Module und Pakete
+─────────────────────────────────────────────────────────────────
+
+Frage 1
+Was gibt dieser Code aus?
+  import math
+  print(math.floor(-1.1))
+ * A) -2
+   B) -1
+   C) 1
+   D) 1.1
+
+Frage 2
+Was gibt dieser Code aus?
+  import math
+  print(math.ceil(7.1))
+   A) 7
+ * B) 8
+   C) 7.1
+   D) 7.0
+
+Frage 3
+Was gibt dieser Code aus?
+  import random
+  random.seed(0)
+  print(type(random.random()).__name__)
+   A) int
+   B) str
+ * C) float
+   D) NoneType
+
+Frage 4
+Was gibt dieser Code aus?
+  import random
+  random.seed(0)
+  print(len(random.sample([1, 2, 3, 4, 5], 3)))
+   A) 5
+   B) 0
+ * C) 3
+   D) 2
+
+Frage 5
+Welche Funktion des platform-Moduls gibt ein Tupel mit den Bestandteilen der Python-Versionsnummer zurueck?
+ * A) python_version_tuple()
+   B) python_version()
+   C) version()
+   D) system()
+
+Frage 6
+Was gibt dieser Code aus?
+  import math
+  print('hypot' in dir(math))
+   A) False
+ * B) True
+   C) None
+   D) AttributeError
+
+
+─────────────────────────────────────────────────────────────────
+  Sektion 2: Exceptions
+─────────────────────────────────────────────────────────────────
+
+Frage 7
+Was gibt dieser Code aus?
+  try:
+      raise ValueError('oops')
+  except (TypeError, ValueError) as e:
+      print(str(e))
+   A) TypeError
+   B) Exception
+ * C) oops
+   D) ValueError
+
+Frage 8
+Was gibt dieser Code aus?
+  class AppError(Exception):
+      pass
+
+  try:
+      raise AppError('down')
+  except Exception as e:
+      print(type(e).__name__)
+   A) Exception
+   B) Error
+   C) BaseException
+ * D) AppError
+
+Frage 9
+Was gibt dieser Code aus?
+  x = 0
+  try:
+      x = 1
+      raise RuntimeError
+  except RuntimeError:
+      x = 2
+  finally:
+      x += 10
+  print(x)
+   A) 1
+   B) 11
+   C) 10
+ * D) 12
+
+Frage 10
+Was gibt dieser Code aus?
+  try:
+      assert 2 > 5, 'not greater'
+  except AssertionError as e:
+      print(e.args[0])
+   A) False
+ * B) not greater
+   C) AssertionError
+   D) 2 > 5
+
+Frage 11
+Welche der folgenden Klassen steht in der Exception-Hierarchie direkt ueber ValueError?
+   A) ArithmeticError
+   B) OSError
+ * C) Exception
+   D) BaseException
+
+
+─────────────────────────────────────────────────────────────────
+  Sektion 3: Strings
+─────────────────────────────────────────────────────────────────
+
+Frage 12
+Was gibt dieser Code aus?
+  print(ord('Z') - ord('A'))
+   A) 1
+   B) 90
+   C) 64
+ * D) 25
+
+Frage 13
+Was gibt dieser Code aus?
+  print(chr(ord('a') + 2))
+   A) a2
+   B) b
+   C) 97
+ * D) c
+
+Frage 14
+Was gibt dieser Code aus?
+  print('hello world'.index('world'))
+   A) 5
+ * B) 6
+   C) 4
+   D) 7
+
+Frage 15
+Was gibt dieser Code aus?
+  print('banana'.rfind('a'))
+   A) 1
+   B) 3
+ * C) 5
+   D) 6
+
+Frage 16
+Was gibt dieser Code aus?
+  print('abcdef'.replace('cd', 'XY'))
+ * A) abXYef
+   B) XYabef
+   C) abcdXY
+   D) abcdef
+
+Frage 17
+Was gibt dieser Code aus?
+  print('Python3'.isalpha())
+ * A) False
+   B) True
+   C) None
+   D) TypeError
+
+Frage 18
+Was gibt dieser Code aus?
+  print(sorted(['cherry', 'apple', 'banana'])[2])
+   A) apple
+ * B) cherry
+   C) banana
+   D) ['apple','banana','cherry']
+
+Frage 19
+Was gibt dieser Code aus?
+  print('hello world'.upper()[:5])
+ * A) HELLO
+   B) hello
+   C) HELLO 
+   D) WORLD
+
+
+─────────────────────────────────────────────────────────────────
+  Sektion 4: OOP
+─────────────────────────────────────────────────────────────────
+
+Frage 20
+Was gibt dieser Code aus?
+  class A:
+      def __init__(self, x, y):
+          self.x = x
+          self.y = y
+      def total(self):
+          return self.x + self.y
+
+  print(A(3, 7).total())
+   A) 3
+   B) 7
+   C) 37
+ * D) 10
+
+Frage 21
+Was gibt dieser Code aus?
+  class A:
+      tag = 'A'
+  class B(A):
+      tag = 'B'
+  class C(B):
+      pass
+
+  print(C.tag)
+ * A) B
+   B) A
+   C) C
+   D) AttributeError
+
+Frage 22
+Was gibt dieser Code aus?
+  class N:
+      def __init__(self, v):
+          self.__val = v
+
+  obj = N(7)
+  print(hasattr(obj, '_N__val'))
+   A) False
+ * B) True
+   C) AttributeError
+   D) None
+
+Frage 23
+Was gibt dieser Code aus?
+  class P:
+      def run(self): return 'P'
+  class C(P):
+      def run(self): return super().run() + '+C'
+
+  print(C().run())
+   A) C+P
+   B) P
+ * C) P+C
+   D) C
+
+Frage 24
+Was gibt dieser Code aus?
+  class A:
+      pass
+  class B(A):
+      pass
+
+  b = B()
+  print(isinstance(b, A), isinstance(b, B))
+   A) False False
+   B) True False
+   C) False True
+ * D) True True
+
+Frage 25
+Was gibt dieser Code aus?
+  class T:
+      items = []
+      def add(self, x):
+          T.items.append(x)
+
+  t1 = T()
+  t2 = T()
+  t1.add(1)
+  t2.add(2)
+  print(len(T.items))
+ * A) 2
+   B) 1
+   C) 0
+   D) 4
+
+Frage 26
+Was gibt dieser Code aus?
+  class X:
+      def __init__(self):
+          self.a = 1
+          self.b = 2
+          self.c = 3
+
+  print('a' in X().__dict__)
+   A) False
+ * B) True
+   C) AttributeError
+   D) None
+
+Frage 27
+Was gibt dieser Code aus?
+  class A:
+      def f(self): return 'A'
+  class B(A):
+      def f(self): return 'B'
+  class C(A):
+      def f(self): return 'C'
+  class D(B, C):
+      pass
+
+  print(D().f())
+   A) A
+ * B) B
+   C) C
+   D) D
+
+Frage 28
+Was gibt dieser Code aus?
+  class Animal:
+      def __init__(self, n):
+          self.name = n
+  class Dog(Animal):
+      def __init__(self, n, b):
+          super().__init__(n)
+          self.breed = b
+
+  d = Dog('Rex', 'Lab')
+  print(d.name, d.breed)
+   A) None Lab
+   B) Rex None
+   C) AttributeError
+ * D) Rex Lab
+
+Frage 29
+Was gibt dieser Code aus?
+  class A:
+      pass
+  class B(A):
+      pass
+
+  print(B.__bases__[0] is A)
+ * A) True
+   B) False
+   C) None
+   D) TypeError
+
+Frage 30
+Was gibt dieser Code aus?
+  class Counter:
+      _n = 0
+      def __init__(self):
+          Counter._n += 1
+      def __str__(self):
+          return str(Counter._n)
+
+  print(str(Counter()))
+   A) 0
+ * B) 1
+   C) None
+   D) Counter
+
+Frage 31
+Was gibt dieser Code aus?
+  class Vehicle:
+      def __init__(self, speed):
+          self.speed = speed
+      def __str__(self):
+          return f'speed:{self.speed}'
+
+  print(str(Vehicle(100)))
+   A) Vehicle
+   B) 100
+ * C) speed:100
+   D) speed: 100
+
+Frage 32
+Was gibt dieser Code aus?
+  class Foo:
+      x = 10
+
+  f = Foo()
+  f.x = 99
+  print(f.x, Foo.x)
+   A) 10 10
+   B) 99 99
+   C) 10 99
+ * D) 99 10
+
+Frage 33
+Was gibt dieser Code aus?
+  class A:
+      def info(self): return 'A'
+  class B(A):
+      pass
+  class C(B):
+      def info(self): return 'C'
+
+  print(B().info(), C().info())
+ * A) A C
+   B) C A
+   C) A A
+   D) C C
+
+
+─────────────────────────────────────────────────────────────────
+  Sektion 5: List Comprehensions / Lambda / Closures / I/O
+─────────────────────────────────────────────────────────────────
+
+Frage 34
+Was gibt dieser Code aus?
+  print([x**2 for x in range(1, 5) if x % 2 != 0])
+   A) [1, 4, 9, 16]
+ * B) [1, 9]
+   C) [4, 16]
+   D) [1, 3]
+
+Frage 35
+Was gibt dieser Code aus?
+  print([x for x in range(10) if x % 3 == 0 if x % 2 == 0])
+   A) [6]
+   B) [0, 3, 6, 9]
+   C) [2, 4, 6, 8]
+ * D) [0, 6]
+
+Frage 36
+Was gibt dieser Code aus?
+  print(list(map(lambda s: s.upper(),
+      filter(lambda s: len(s) > 3, ['hi', 'hello', 'hey', 'world']))))
+   A) ['HI', 'HELLO', 'HEY', 'WORLD']
+   B) ['hello', 'world']
+ * C) ['HELLO', 'WORLD']
+   D) ['HELLO']
+
+Frage 37
+Was gibt dieser Code aus?
+  f = lambda a, b, fn: fn(a, b)
+  print(f(10, 3, lambda x, y: x - y))
+ * A) 7
+   B) 30
+   C) 13
+   D) 3
+
+Frage 38
+Was gibt dieser Code aus?
+  def outer(x):
+      def inner():
+          return x * 2
+      return inner
+
+  f = outer(4)
+  print(f())
+   A) 4
+   B) 2
+   C) 16
+ * D) 8
+
+Frage 39
+Mit welchem Modus oeffnet open() eine Datei zum Schreiben und loescht dabei den bestehenden Inhalt?
+   A) 'r'
+   B) 'a'
+ * C) 'w'
+   D) 'rb'
+
+Frage 40
+Was gibt dieser Code aus?
+  print(list(map(lambda x: x.strip(), ['  a ', ' b', 'c  '])))
+   A) ['  a ', ' b', 'c  ']
+   B) ['a', 'b ', 'c']
+ * C) ['a', 'b', 'c']
+   D) ['a ', 'b', 'c ']

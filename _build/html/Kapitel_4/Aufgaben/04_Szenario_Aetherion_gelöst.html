@@ -1,0 +1,1503 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Szenario Aetherion gelöst &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_4/Aufgaben/04_Szenario_Aetherion_gelöst';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Kapitel_4/Aufgaben/04_Szenario_Aetherion_gelöst.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Szenario Aetherion gelöst</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="szenario-aetherion-gelost">
+<h1>Szenario Aetherion gelöst<a class="headerlink" href="#szenario-aetherion-gelost" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Szenario: Aetherion-Kampfsystem</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python &nbsp;|&nbsp; PCAP 4.1 – 4.5 &nbsp;|&nbsp; Kapitel 4: OOP</p>
+</div>
+</div><div style="background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:1.5rem;font-family:'Segoe UI',sans-serif;">
+<p style="font-size:1.05rem;font-weight:700;color:#4fc3f7;margin:0 0 0.8rem 0;letter-spacing:0.05em;text-transform:uppercase;">Briefing</p>
+<p style="color:#c5cae9;margin:0 0 0.7rem 0;line-height:1.7;font-size:0.95rem;">
+Du entwickelst das Backend des Rollenspiels <strong style="color:#f0f0f5;">Aetherion</strong>.
+Das Spiel laeuft bereits, aber der Kern fehlt noch: Klassen, Kampfsystem, Ausruestung, Gildenregister und die Spielwelt-Engine.
+</p>
+<p style="color:#c5cae9;margin:0 0 0.7rem 0;line-height:1.7;font-size:0.95rem;">
+Alle Abschnitte bauen aufeinander auf. Code aus frueheren Abschnitten wird in
+spaeteren weiterverwendet. Der Testblock am Ende jedes Abschnitts darf nicht
+veraendert werden.
+</p>
+<p style="color:#c5cae9;margin:0;line-height:1.7;font-size:0.95rem;">
+<strong style="color:#f0f0f5;">Abgedeckter Stoff:</strong>
+PCAP 4.1 Klassen &amp; Objekte &nbsp;|&nbsp;
+PCAP 4.2 Klassen- &amp; Instanzvariablen &nbsp;|&nbsp;
+PCAP 4.4 Introspection &nbsp;|&nbsp;
+PCAP 4.5 Vererbung &amp; Polymorphismus &nbsp;|&nbsp;
+Kursinhalt: Komposition, Dunders, Design Patterns
+</p>
+</div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 4.1 / 4.2 / 04a + 04b</span>
+Abschnitt 1: Die Held-Basisklasse
+</span>
+</div><p>Das Fundament des gesamten Systems. Alle weiteren Klassen bauen darauf auf.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 1.1</span>
+Basisklasse mit Klassenregister
+</span>
+</div><p>Schreibe eine Klasse <code class="docutils literal notranslate"><span class="pre">Held</span></code> mit:</p>
+<p><strong>Klassenvariablen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_registry</span> <span class="pre">=</span> <span class="pre">[]</span></code> – alle erstellten Helden</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">anzahl_helden</span> <span class="pre">=</span> <span class="pre">0</span></code> – Zaehler</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MAX_HP</span> <span class="pre">=</span> <span class="pre">500</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MIN_STAERKE</span> <span class="pre">=</span> <span class="pre">1</span></code></p></li>
+</ul>
+<p><strong>Konstruktor:</strong> <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">_hp</span></code> (max <code class="docutils literal notranslate"><span class="pre">MAX_HP</span></code>), <code class="docutils literal notranslate"><span class="pre">_staerke</span></code> (min <code class="docutils literal notranslate"><span class="pre">MIN_STAERKE</span></code>).
+Erhoehe <code class="docutils literal notranslate"><span class="pre">anzahl_helden</span></code> und haenge <code class="docutils literal notranslate"><span class="pre">self</span></code> an <code class="docutils literal notranslate"><span class="pre">_registry</span></code>.</p>
+<p><strong>Methoden:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hp()</span></code>, <code class="docutils literal notranslate"><span class="pre">staerke()</span></code>: Getter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ist_am_leben()</span></code>: <code class="docutils literal notranslate"><span class="pre">True</span></code> wenn <code class="docutils literal notranslate"><span class="pre">_hp</span> <span class="pre">&gt;</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">erleidet_schaden(schaden)</span></code>: zieht Schaden ab, HP nie unter 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">heilen(menge)</span></code>: heilt, max <code class="docutils literal notranslate"><span class="pre">MAX_HP</span></code>, nur wenn noch am Leben</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>: gibt <code class="docutils literal notranslate"><span class="pre">_staerke</span> <span class="pre">*</span> <span class="pre">2</span></code> zurueck</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: <code class="docutils literal notranslate"><span class="pre">'Aldric</span> <span class="pre">(HP:</span> <span class="pre">100/500,</span> <span class="pre">STR:</span> <span class="pre">15)'</span></code></p></li>
+</ul>
+<p><strong>Klassenmethoden (als normale Methoden):</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alle_helden()</span></code>: gibt <code class="docutils literal notranslate"><span class="pre">_registry</span></code> zurueck</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">suche(name)</span></code>: gibt Held mit diesem Namen zurueck oder <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Held</span><span class="p">:</span>
+    <span class="n">_registry</span> <span class="o">=</span>  <span class="p">[]</span>
+    <span class="n">anzahl_helden</span> <span class="o">=</span>  <span class="mi">0</span>
+    <span class="n">MAX_HP</span> <span class="o">=</span> <span class="mi">500</span>
+    <span class="n">MIN_STAERKE</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">hp</span><span class="p">,</span><span class="n">staerke</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hp</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">hp</span><span class="p">,</span> <span class="n">Held</span><span class="o">.</span><span class="n">MAX_HP</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">staerke</span><span class="p">,</span> <span class="n">Held</span><span class="o">.</span><span class="n">MIN_STAERKE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ausruestung</span> <span class="o">=</span> <span class="n">Ausruestung</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventar</span> <span class="o">=</span> <span class="n">Inventar</span><span class="p">()</span>
+        <span class="n">Held</span><span class="o">.</span><span class="n">anzahl_helden</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">Held</span><span class="o">.</span><span class="n">_registry</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">hp</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hp</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">staerke</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span>  <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_am_leben</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hp</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">erleidet_schaden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schaden</span><span class="p">):</span>
+        <span class="n">reduziert</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">schaden</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">gesamt_schutz</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_hp</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">_hp</span> <span class="o">-</span><span class="n">reduziert</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">heilen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">menge</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_am_leben</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_hp</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_hp</span> <span class="o">+</span> <span class="n">menge</span><span class="p">,</span> <span class="n">Held</span><span class="o">.</span><span class="n">MAX_HP</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">angreifen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">gesamt_schaden</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">alle_helden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Held</span><span class="o">.</span><span class="n">_registry</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">suche</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">held</span> <span class="ow">in</span> <span class="n">Held</span><span class="o">.</span><span class="n">_registry</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">held</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">held</span>
+        <span class="k">return</span>  <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (HP: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_hp</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">Held</span><span class="o">.</span><span class="n">MAX_HP</span><span class="si">}</span><span class="s1">, STR: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">aldric</span> <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">lyria</span>  <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">thorn</span>  <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s1">&#39;Thorn&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">Held</span><span class="o">.</span><span class="n">anzahl_helden</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">aldric</span><span class="o">.</span><span class="n">alle_helden</span><span class="p">())</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">suche</span><span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="n">lyria</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">suche</span><span class="p">(</span><span class="s1">&#39;Mira&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+
+<span class="n">aldric</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="mi">70</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">heilen</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="mi">90</span>
+
+<span class="n">ueberstark</span> <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s1">&#39;Riese&#39;</span><span class="p">,</span> <span class="mi">9999</span><span class="p">,</span> <span class="mi">9999</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ueberstark</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="n">Held</span><span class="o">.</span><span class="n">MAX_HP</span>
+
+<span class="n">schwach</span> <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s1">&#39;Wicht&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">schwach</span><span class="o">.</span><span class="n">staerke</span><span class="p">()</span> <span class="o">==</span> <span class="n">Held</span><span class="o">.</span><span class="n">MIN_STAERKE</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 1.1: bestanden&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aldric</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Abschnitt 1.1: bestanden
+Aldric (HP: 90/500, STR: 15
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 4.5 / 04d</span>
+Abschnitt 2: Heldenklassen
+</span>
+</div><p>Drei spezialisierte Klassen erben von <code class="docutils literal notranslate"><span class="pre">Held</span></code> und ueberschreiben <code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 2.1</span>
+Krieger, Magierin, Waldlaeufer
+</span>
+</div><p>Schreibe drei Klassen die von <code class="docutils literal notranslate"><span class="pre">Held</span></code> erben:</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Krieger(Held)</span></code>:</strong></p>
+<ul class="simple">
+<li><p>Zusatzattribut <code class="docutils literal notranslate"><span class="pre">ruestung</span></code> (Default <code class="docutils literal notranslate"><span class="pre">5</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">erleidet_schaden</span></code>: zieht zuerst <code class="docutils literal notranslate"><span class="pre">ruestung</span></code> vom Schaden ab, dann erst HP</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>: gibt <code class="docutils literal notranslate"><span class="pre">staerke</span> <span class="pre">*</span> <span class="pre">2</span></code> zurueck (unveraendert)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: erweitert Held-String um <code class="docutils literal notranslate"><span class="pre">',</span> <span class="pre">RUE:</span> <span class="pre">X'</span></code></p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Magierin(Held)</span></code>:</strong></p>
+<ul class="simple">
+<li><p>Zusatzattribut <code class="docutils literal notranslate"><span class="pre">_mana</span></code> (Default <code class="docutils literal notranslate"><span class="pre">80</span></code>, Min <code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>: kostet 10 Mana, gibt <code class="docutils literal notranslate"><span class="pre">staerke</span> <span class="pre">*</span> <span class="pre">3</span></code> zurueck.
+Ohne Mana: normaler Angriff <code class="docutils literal notranslate"><span class="pre">staerke</span> <span class="pre">*</span> <span class="pre">2</span></code>, kein Manaverbrauch</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mana()</span></code>: Getter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: erweitert um <code class="docutils literal notranslate"><span class="pre">',</span> <span class="pre">MANA:</span> <span class="pre">X'</span></code></p></li>
+</ul>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Waldlaeufer(Held)</span></code>:</strong></p>
+<ul class="simple">
+<li><p>Zaehlt Angriffe intern mit <code class="docutils literal notranslate"><span class="pre">_angriffe</span> <span class="pre">=</span> <span class="pre">0</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>: normaler Schaden, aber bei jedem zweiten Angriff Doppelschuss: <code class="docutils literal notranslate"><span class="pre">staerke</span> <span class="pre">*</span> <span class="pre">4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: unveraendert (erbt von <code class="docutils literal notranslate"><span class="pre">Held</span></code>)</p></li>
+</ul>
+<p>Alle <code class="docutils literal notranslate"><span class="pre">__init__</span></code> rufen <code class="docutils literal notranslate"><span class="pre">super().__init__()</span></code> auf.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Krieger</span><span class="p">(</span><span class="n">Held</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">,</span> <span class="n">ruestung</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ruestung</span> <span class="o">=</span> <span class="n">ruestung</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">erleidet_schaden</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schaden</span><span class="p">):</span>
+        <span class="n">reduziert</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">schaden</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">ruestung</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="n">reduziert</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;, RUE: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ruestung</span><span class="si">}</span><span class="s1">&#39;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Magierin</span><span class="p">(</span><span class="n">Held</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">,</span> <span class="n">mana</span><span class="o">=</span><span class="mi">80</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">mana</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">mana</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">angreifen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span> <span class="o">-=</span> <span class="mi">10</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span> <span class="o">*</span> <span class="mi">2</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;, MANA: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mana</span><span class="si">}</span><span class="s1">&#39;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Waldlaeufer</span><span class="p">(</span><span class="n">Held</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_angriffe</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">angreifen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_angriffe</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_angriffe</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span> <span class="o">*</span> <span class="mi">4</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_staerke</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">aldric</span> <span class="o">=</span> <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">lyria</span>  <span class="o">=</span> <span class="n">Magierin</span><span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">thorn</span>  <span class="o">=</span> <span class="n">Waldlaeufer</span><span class="p">(</span><span class="s1">&#39;Thorn&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="n">aldric</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="mi">85</span>   <span class="c1"># 20 - 5 Ruestung = 15 Schaden</span>
+
+<span class="k">assert</span> <span class="n">lyria</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">12</span> <span class="o">*</span> <span class="mi">3</span>   <span class="c1"># 36</span>
+<span class="k">assert</span> <span class="n">lyria</span><span class="o">.</span><span class="n">mana</span><span class="p">()</span> <span class="o">==</span> <span class="mi">70</span>
+<span class="n">lyria</span><span class="o">.</span><span class="n">_mana</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">lyria</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">12</span> <span class="o">*</span> <span class="mi">2</span>   <span class="c1"># kein Mana: normaler Angriff</span>
+<span class="k">assert</span> <span class="n">lyria</span><span class="o">.</span><span class="n">mana</span><span class="p">()</span> <span class="o">==</span> <span class="mi">5</span>             <span class="c1"># kein Verbrauch</span>
+
+<span class="c1"># Waldlaeufer: Doppelschuss bei jedem zweiten Angriff</span>
+<span class="k">assert</span> <span class="n">thorn</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">14</span> <span class="o">*</span> <span class="mi">2</span>   <span class="c1"># Angriff 1: normal</span>
+<span class="k">assert</span> <span class="n">thorn</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">14</span> <span class="o">*</span> <span class="mi">4</span>   <span class="c1"># Angriff 2: Doppelschuss</span>
+<span class="k">assert</span> <span class="n">thorn</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">14</span> <span class="o">*</span> <span class="mi">2</span>   <span class="c1"># Angriff 3: normal</span>
+
+<span class="c1"># isinstance-Pruefungen</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="n">Held</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="n">Krieger</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="n">Magierin</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 2.1: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Abschnitt 2.1: bestanden
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 2.2</span>
+Paladin: Mehrfachvererbung
+</span>
+</div><p>Schreibe eine Klasse <code class="docutils literal notranslate"><span class="pre">Paladin(Krieger)</span></code> die:</p>
+<ul class="simple">
+<li><p>von <code class="docutils literal notranslate"><span class="pre">Krieger</span></code> erbt (bekommt also auch Ruestung)</p></li>
+<li><p>zusaetzlich <code class="docutils literal notranslate"><span class="pre">_mana</span> <span class="pre">=</span> <span class="pre">40</span></code> hat</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">heilen_ziel(held,</span> <span class="pre">menge)</span></code>: heilt einen anderen Helden um <code class="docutils literal notranslate"><span class="pre">menge</span></code> HP,
+kostet 20 Mana. Gibt <code class="docutils literal notranslate"><span class="pre">False</span></code> zurueck wenn kein Mana reicht.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>: ruft <code class="docutils literal notranslate"><span class="pre">super().angreifen()</span></code> auf und addiert <code class="docutils literal notranslate"><span class="pre">10</span></code> Bonusschaden</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: erweitert Krieger-String um <code class="docutils literal notranslate"><span class="pre">',</span> <span class="pre">MANA:</span> <span class="pre">X'</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Paladin</span><span class="p">(</span><span class="n">Krieger</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">,</span> <span class="n">ruestung</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">staerke</span><span class="p">,</span> <span class="n">ruestung</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span> <span class="o">=</span> <span class="mi">40</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">heilen_ziel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">held</span><span class="p">,</span> <span class="n">menge</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mana</span> <span class="o">-=</span><span class="mi">20</span>
+        <span class="n">held</span><span class="o">.</span><span class="n">heilen</span><span class="p">(</span><span class="n">menge</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">angreifen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">+</span> <span class="mi">10</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;, MANA: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_mana</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">sera</span>   <span class="o">=</span> <span class="n">Paladin</span><span class="p">(</span><span class="s1">&#39;Sera&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">aldric</span> <span class="o">=</span> <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Paladin erbt Ruestung vom Krieger</span>
+<span class="n">sera</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">sera</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="mi">75</span>   <span class="c1"># 20 - 5 Ruestung = 15 Schaden</span>
+
+<span class="c1"># Angriff: Krieger-Basis + 10 Bonus</span>
+<span class="k">assert</span> <span class="n">sera</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">12</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span>   <span class="c1"># 34</span>
+
+<span class="c1"># Heilen</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">hp_vorher</span> <span class="o">=</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span>
+<span class="n">ergebnis</span>  <span class="o">=</span> <span class="n">sera</span><span class="o">.</span><span class="n">heilen_ziel</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="n">hp_vorher</span> <span class="o">+</span> <span class="mi">20</span>
+<span class="k">assert</span> <span class="n">sera</span><span class="o">.</span><span class="n">_mana</span> <span class="o">==</span> <span class="mi">20</span>
+
+<span class="c1"># Kein Mana mehr</span>
+<span class="k">assert</span> <span class="n">sera</span><span class="o">.</span><span class="n">heilen_ziel</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+
+<span class="c1"># Vererbungskette</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sera</span><span class="p">,</span> <span class="n">Paladin</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sera</span><span class="p">,</span> <span class="n">Krieger</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">sera</span><span class="p">,</span> <span class="n">Held</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 2.2: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Abschnitt 2.2: bestanden
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt / 04e</span>
+Abschnitt 3: Ausruestungssystem
+</span>
+</div><p>Ein Held hat Ausruestung – keine Vererbung, sondern Komposition.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 3.1</span>
+Gegenstand und Ausruestung
+</span>
+</div><ol class="arabic simple">
+<li><p>Schreibe eine Klasse <code class="docutils literal notranslate"><span class="pre">Gegenstand</span></code> mit <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">typ</span></code>, <code class="docutils literal notranslate"><span class="pre">schaden=0</span></code>, <code class="docutils literal notranslate"><span class="pre">schutz=0</span></code>, <code class="docutils literal notranslate"><span class="pre">wert=0</span></code>.
+<code class="docutils literal notranslate"><span class="pre">__str__</span></code>: <code class="docutils literal notranslate"><span class="pre">'Eisenschwert</span> <span class="pre">(Waffe,</span> <span class="pre">+25</span> <span class="pre">Schaden)'</span></code>
+<code class="docutils literal notranslate"><span class="pre">__repr__</span></code>: <code class="docutils literal notranslate"><span class="pre">&quot;Gegenstand('Eisenschwert',</span> <span class="pre">'Waffe',</span> <span class="pre">schaden=25)&quot;</span></code></p></li>
+<li><p>Schreibe eine Klasse <code class="docutils literal notranslate"><span class="pre">Ausruestung</span></code> mit vier Slots: <code class="docutils literal notranslate"><span class="pre">waffe</span></code>, <code class="docutils literal notranslate"><span class="pre">ruestung</span></code>, <code class="docutils literal notranslate"><span class="pre">helm</span></code>, <code class="docutils literal notranslate"><span class="pre">ring</span></code>
+(alle initial <code class="docutils literal notranslate"><span class="pre">None</span></code>).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">anlegen(gegenstand)</span></code>: weist anhand von <code class="docutils literal notranslate"><span class="pre">gegenstand.typ</span></code> den richtigen Slot zu</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ablegen(typ)</span></code>: leert den Slot, gibt den Gegenstand zurueck oder <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gesamt_schaden()</span></code>: Summe aller <code class="docutils literal notranslate"><span class="pre">schaden</span></code>-Werte belegter Slots</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gesamt_schutz()</span></code>: Summe aller <code class="docutils literal notranslate"><span class="pre">schutz</span></code>-Werte belegter Slots</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: listet alle belegten Slots</p></li>
+</ul>
+</li>
+<li><p>Erweitere <code class="docutils literal notranslate"><span class="pre">Held.__init__</span></code> um <code class="docutils literal notranslate"><span class="pre">self.ausruestung</span> <span class="pre">=</span> <span class="pre">Ausruestung()</span></code>.
+Aendere <code class="docutils literal notranslate"><span class="pre">angreifen()</span></code>: gibt <code class="docutils literal notranslate"><span class="pre">_staerke</span> <span class="pre">*</span> <span class="pre">2</span> <span class="pre">+</span> <span class="pre">self.ausruestung.gesamt_schaden()</span></code> zurueck.
+Aendere <code class="docutils literal notranslate"><span class="pre">erleidet_schaden()</span></code>: zieht <code class="docutils literal notranslate"><span class="pre">self.ausruestung.gesamt_schutz()</span></code> vom Schaden ab.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Gegenstand</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">typ</span><span class="p">,</span> <span class="n">schaden</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">schutz</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">typ</span> <span class="o">=</span> <span class="n">typ</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schaden</span> <span class="o">=</span> <span class="n">schaden</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schutz</span> <span class="o">=</span> <span class="n">schutz</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wert</span> <span class="o">=</span> <span class="n">wert</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">teile</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schaden</span><span class="p">:</span>
+            <span class="n">teile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;+</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">schaden</span><span class="si">}</span><span class="s1"> Schaden&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schutz</span><span class="p">:</span>
+            <span class="n">teile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;+</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">schutz</span><span class="si">}</span><span class="s1"> Schutz&#39;</span><span class="p">)</span>
+        <span class="n">details</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">teile</span><span class="p">)</span> <span class="k">if</span> <span class="n">teile</span> <span class="k">else</span> <span class="s1">&#39;kein Bonus&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">typ</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">details</span><span class="si">}</span><span class="s1">)&#39;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">teile</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">typ</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schaden</span><span class="p">:</span>
+            <span class="n">teile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;schaden=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">schaden</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schutz</span><span class="p">:</span>
+            <span class="n">teile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;schutz=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">schutz</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">wert</span><span class="p">:</span>
+            <span class="n">teile</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;wert=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">wert</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Gegenstand(</span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">teile</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Ausruestung</span><span class="p">:</span>
+    <span class="n">SLOT_TYPEN</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Waffe&#39;</span><span class="p">:</span> <span class="s1">&#39;waffe&#39;</span><span class="p">,</span> <span class="s1">&#39;Ruestung&#39;</span><span class="p">:</span> <span class="s1">&#39;ruestung&#39;</span><span class="p">,</span> <span class="s1">&#39;Helm&#39;</span><span class="p">:</span> <span class="s1">&#39;helm&#39;</span><span class="p">,</span> <span class="s1">&#39;Ring&#39;</span><span class="p">:</span> <span class="s1">&#39;ring&#39;</span><span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">waffe</span>    <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ruestung</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">helm</span>     <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ring</span>     <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">anlegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gegenstand</span><span class="p">):</span>
+        <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SLOT_TYPEN</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">gegenstand</span><span class="o">.</span><span class="n">typ</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">slot</span><span class="p">:</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="n">gegenstand</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ablegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">typ</span><span class="p">):</span>
+        <span class="n">slot</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">SLOT_TYPEN</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">typ</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">slot</span><span class="p">:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">)</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">g</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gesamt_schaden</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">schaden</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">waffe</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ruestung</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">helm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">gesamt_schutz</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">g</span><span class="o">.</span><span class="n">schutz</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">waffe</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ruestung</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">helm</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ring</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">g</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">belegte</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">slot_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;waffe&#39;</span><span class="p">,</span> <span class="s1">&#39;ruestung&#39;</span><span class="p">,</span> <span class="s1">&#39;helm&#39;</span><span class="p">,</span> <span class="s1">&#39;ring&#39;</span><span class="p">]:</span>
+            <span class="n">g</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">slot_name</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">g</span><span class="p">:</span>
+                <span class="n">belegte</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">slot_name</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">g</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">belegte</span><span class="p">)</span> <span class="k">if</span> <span class="n">belegte</span> <span class="k">else</span> <span class="s1">&#39;Keine Ausruestung&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">aldric</span>  <span class="o">=</span> <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">schwert</span> <span class="o">=</span> <span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Eisenschwert&#39;</span><span class="p">,</span> <span class="s1">&#39;Waffe&#39;</span><span class="p">,</span> <span class="n">schaden</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">helm</span>    <span class="o">=</span> <span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Eisenhelm&#39;</span><span class="p">,</span> <span class="s1">&#39;Helm&#39;</span><span class="p">,</span> <span class="n">schutz</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ring</span>    <span class="o">=</span> <span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Kraftring&#39;</span><span class="p">,</span> <span class="s1">&#39;Ring&#39;</span><span class="p">,</span> <span class="n">schaden</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">aldric</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">schwert</span><span class="p">)</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">helm</span><span class="p">)</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">ring</span><span class="p">)</span>
+
+<span class="c1"># Angriff: STR*2 + Ausruestungsschaden</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">25</span> <span class="o">+</span> <span class="mi">5</span>   <span class="c1"># 60</span>
+
+<span class="c1"># Schaden: Ruestung des Kriegers + Helm</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="c1"># Krieger-Ruestung 5 + Helm 5 = 10 Schutz -&gt; 10 Schaden</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="mi">90</span>
+
+<span class="n">abgelegt</span> <span class="o">=</span> <span class="n">aldric</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">ablegen</span><span class="p">(</span><span class="s1">&#39;Waffe&#39;</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">abgelegt</span> <span class="ow">is</span> <span class="n">schwert</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">angreifen</span><span class="p">()</span> <span class="o">==</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">5</span>   <span class="c1"># ohne Schwert</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 3.1: bestanden&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aldric</span><span class="o">.</span><span class="n">ausruestung</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Abschnitt 3.1: bestanden
+Helm: Eisenhelm, Ring: Kraftring
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 3.2</span>
+Dunder-Methoden: Inventar
+</span>
+</div><p>Schreibe eine Klasse <code class="docutils literal notranslate"><span class="pre">Inventar</span></code> mit <code class="docutils literal notranslate"><span class="pre">self._items</span> <span class="pre">=</span> <span class="pre">[]</span></code>.</p>
+<p>Implementiere:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">__len__</span></code>: Anzahl Gegenstaende</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__contains__</span></code>: <code class="docutils literal notranslate"><span class="pre">gegenstand</span> <span class="pre">in</span> <span class="pre">inventar</span></code> (prueft per <code class="docutils literal notranslate"><span class="pre">is</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__iter__</span></code>: Iteration ueber alle Gegenstaende</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__add__</span></code>: zwei Inventare zusammenfuehren</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__str__</span></code>: alle Gegenstaende zeilenweise</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aufnehmen(gegenstand)</span></code>: fuegt hinzu</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ablegen(name)</span></code>: entfernt nach Name, gibt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> zurueck</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wert_gesamt()</span></code>: Summe aller <code class="docutils literal notranslate"><span class="pre">wert</span></code>-Attribute</p></li>
+</ul>
+<p>Erweitere <code class="docutils literal notranslate"><span class="pre">Held.__init__</span></code> um <code class="docutils literal notranslate"><span class="pre">self.inventar</span> <span class="pre">=</span> <span class="pre">Inventar()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Inventar</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">aufnehmen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">ablegen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wert_gesamt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">wert</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span>   <span class="c1"># is / ==</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="n">neu</span> <span class="o">=</span> <span class="n">Inventar</span><span class="p">()</span>
+        <span class="n">neu</span><span class="o">.</span><span class="n">_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">_items</span>
+        <span class="k">return</span> <span class="n">neu</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;Inventar leer&#39;</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_items</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">aldric</span>    <span class="o">=</span> <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">heiltrank</span> <span class="o">=</span> <span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Heiltrank&#39;</span><span class="p">,</span> <span class="s1">&#39;Trank&#39;</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">schluessel</span> <span class="o">=</span> <span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Kelchschluessel&#39;</span><span class="p">,</span> <span class="s1">&#39;Schluessel&#39;</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">goldmuenze</span> <span class="o">=</span> <span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Goldmuenze&#39;</span><span class="p">,</span> <span class="s1">&#39;Muenze&#39;</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">aufnehmen</span><span class="p">(</span><span class="n">heiltrank</span><span class="p">)</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">aufnehmen</span><span class="p">(</span><span class="n">schluessel</span><span class="p">)</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">aufnehmen</span><span class="p">(</span><span class="n">goldmuenze</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="k">assert</span> <span class="n">heiltrank</span> <span class="ow">in</span> <span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">wert_gesamt</span><span class="p">()</span> <span class="o">==</span> <span class="mi">16</span>
+
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">ablegen</span><span class="p">(</span><span class="s1">&#39;Heiltrank&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">ablegen</span><span class="p">(</span><span class="s1">&#39;Zauberstab&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+
+<span class="c1"># Inventare kombinieren</span>
+<span class="n">lyria</span> <span class="o">=</span> <span class="n">Magierin</span><span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">lyria</span><span class="o">.</span><span class="n">inventar</span><span class="o">.</span><span class="n">aufnehmen</span><span class="p">(</span><span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Manastein&#39;</span><span class="p">,</span> <span class="s1">&#39;Stein&#39;</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
+
+<span class="n">gemeinsam</span> <span class="o">=</span> <span class="n">aldric</span><span class="o">.</span><span class="n">inventar</span> <span class="o">+</span> <span class="n">lyria</span><span class="o">.</span><span class="n">inventar</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">gemeinsam</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>   <span class="c1"># 2 von Aldric + 1 von Lyria</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 3.2: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Abschnitt 3.2: bestanden
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 4.4 / 04c</span>
+Abschnitt 4: Spielwelt-Introspection
+</span>
+</div><p>Das Kampfsystem muss Charaktere zur Laufzeit untersuchen koennen.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 4.1</span>
+Faehigkeiten-Scanner
+</span>
+</div><ol class="arabic simple">
+<li><p>Definiere eine Liste <code class="docutils literal notranslate"><span class="pre">BEKANNTE_FAEHIGKEITEN</span> <span class="pre">=</span> <span class="pre">['angreifen',</span> <span class="pre">'heilen_ziel',</span> <span class="pre">'zaubern',</span> <span class="pre">'schleichen',</span> <span class="pre">'tanzen']</span></code>.</p></li>
+<li><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">faehigkeiten_von(charakter)</span></code>,
+die alle Methoden aus <code class="docutils literal notranslate"><span class="pre">BEKANNTE_FAEHIGKEITEN</span></code> zurueckgibt, die der Charakter besitzt.
+Nutze <code class="docutils literal notranslate"><span class="pre">hasattr()</span></code>.</p></li>
+<li><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">kann(charakter,</span> <span class="pre">faehigkeit)</span></code>,
+die <code class="docutils literal notranslate"><span class="pre">True</span></code> zurueckgibt wenn der Charakter die Faehigkeit hat.</p></li>
+<li><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">ausfuehren(charakter,</span> <span class="pre">faehigkeit,</span> <span class="pre">*args)</span></code>,
+die die Faehigkeit aufruft wenn vorhanden, sonst eine Meldung ausgibt.
+Nutze <code class="docutils literal notranslate"><span class="pre">getattr()</span></code>.</p></li>
+<li><p>Testblock nicht veraendern:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BEKANNTE_FAEHIGKEITEN</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;angreifen&#39;</span><span class="p">,</span> <span class="s1">&#39;heilen_ziel&#39;</span><span class="p">,</span> <span class="s1">&#39;zaubern&#39;</span><span class="p">,</span> <span class="s1">&#39;schleichen&#39;</span><span class="p">,</span> <span class="s1">&#39;tanzen&#39;</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">faehigkeiten_von</span><span class="p">(</span><span class="n">charakter</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">BEKANNTE_FAEHIGKEITEN</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">charakter</span><span class="p">,</span> <span class="n">f</span><span class="p">)]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">kann</span><span class="p">(</span><span class="n">charakter</span><span class="p">,</span> <span class="n">faehigkeit</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">charakter</span><span class="p">,</span> <span class="n">faehigkeit</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ausfuehren</span><span class="p">(</span><span class="n">charakter</span><span class="p">,</span> <span class="n">faehigkeit</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">charakter</span><span class="p">,</span> <span class="n">faehigkeit</span><span class="p">):</span>
+        <span class="n">methode</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">charakter</span><span class="p">,</span> <span class="n">faehigkeit</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">methode</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">charakter</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> kann nicht </span><span class="si">{</span><span class="n">faehigkeit</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">None</span>
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">aldric</span> <span class="o">=</span> <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">sera</span>   <span class="o">=</span> <span class="n">Paladin</span><span class="p">(</span><span class="s1">&#39;Sera&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">lyria</span>  <span class="o">=</span> <span class="n">Magierin</span><span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Krieger hat nur angreifen</span>
+<span class="k">assert</span> <span class="s1">&#39;angreifen&#39;</span> <span class="ow">in</span> <span class="n">faehigkeiten_von</span><span class="p">(</span><span class="n">aldric</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s1">&#39;heilen_ziel&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">faehigkeiten_von</span><span class="p">(</span><span class="n">aldric</span><span class="p">)</span>
+
+<span class="c1"># Paladin hat angreifen und heilen_ziel</span>
+<span class="k">assert</span> <span class="s1">&#39;angreifen&#39;</span> <span class="ow">in</span> <span class="n">faehigkeiten_von</span><span class="p">(</span><span class="n">sera</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s1">&#39;heilen_ziel&#39;</span> <span class="ow">in</span> <span class="n">faehigkeiten_von</span><span class="p">(</span><span class="n">sera</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">kann</span><span class="p">(</span><span class="n">sera</span><span class="p">,</span> <span class="s1">&#39;heilen_ziel&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span>
+<span class="k">assert</span> <span class="n">kann</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="s1">&#39;zaubern&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span>
+
+<span class="c1"># ausfuehren: Paladin heilt Aldric</span>
+<span class="n">aldric</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">hp_vorher</span> <span class="o">=</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span>
+<span class="n">ausfuehren</span><span class="p">(</span><span class="n">sera</span><span class="p">,</span> <span class="s1">&#39;heilen_ziel&#39;</span><span class="p">,</span> <span class="n">aldric</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">aldric</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">==</span> <span class="n">hp_vorher</span> <span class="o">+</span> <span class="mi">20</span>
+
+<span class="c1"># ausfuehren: Aldric kann nicht zaubern</span>
+<span class="n">ausfuehren</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="s1">&#39;zaubern&#39;</span><span class="p">)</span>   <span class="c1"># gibt Meldung aus, kein Fehler</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 4.1: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Aldric kann nicht zaubern
+Abschnitt 4.1: bestanden
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 4.2</span>
+Charakter-Report
+</span>
+</div><ol class="arabic simple">
+<li><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">charakter_report(charakter)</span></code>,
+die einen formatierten Report-String zurueckgibt:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">===</span> <span class="n">Aldric</span> <span class="o">===</span>
+<span class="n">Klasse</span>    <span class="p">:</span> <span class="n">Krieger</span>
+<span class="n">Erbt</span> <span class="n">von</span>  <span class="p">:</span> <span class="n">Held</span>
+<span class="n">Lebt</span>      <span class="p">:</span> <span class="kc">True</span>
+<span class="n">Faehigkeiten</span><span class="p">:</span> <span class="n">angreifen</span>
+</pre></div>
+</div>
+<p>Nutze <code class="docutils literal notranslate"><span class="pre">type(charakter).__name__</span></code> und <code class="docutils literal notranslate"><span class="pre">type(charakter).__bases__</span></code>.
+2. Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">truppe_analysieren(charaktere)</span></code>,
+die ein Dictionary zurueckgibt mit:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'gesamt'</span></code>: Gesamtzahl</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'am_leben'</span></code>: Anzahl lebender Charaktere</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'typen'</span></code>: Dictionary <code class="docutils literal notranslate"><span class="pre">{Klassenname:</span> <span class="pre">Anzahl}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'kann_heilen'</span></code>: Liste der Charaktere mit <code class="docutils literal notranslate"><span class="pre">heilen_ziel</span></code></p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Testblock nicht veraendern:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">charakter_report</span><span class="p">(</span><span class="n">charakter</span><span class="p">):</span>
+
+    <span class="n">klasse</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">charakter</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>  <span class="c1"># Krieger</span>
+
+    <span class="n">basisklassen</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span><span class="o">.</span><span class="vm">__name__</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">type</span><span class="p">(</span><span class="n">charakter</span><span class="p">)</span><span class="o">.</span><span class="vm">__bases__</span><span class="p">]</span>
+
+    <span class="n">faehigkeiten</span> <span class="o">=</span> <span class="n">faehigkeiten_von</span><span class="p">(</span><span class="n">charakter</span><span class="p">)</span>
+
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    === Aldric ===</span>
+<span class="sd">    Klasse    : Krieger</span>
+<span class="sd">    Erbt von  : Held</span>
+<span class="sd">    Lebt      : True</span>
+<span class="sd">    Faehigkeiten: angreifen&quot;&quot;&quot;</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="sa">f</span><span class="s1">&#39;=== </span><span class="si">{</span><span class="n">charakter</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> ===&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Klasse        : </span><span class="si">{</span><span class="n">klasse</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Erbt von      : </span><span class="si">{</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">basisklassen</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Lebt          : </span><span class="si">{</span><span class="n">charakter</span><span class="o">.</span><span class="n">ist_am_leben</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="sa">f</span><span class="s1">&#39;Faehigkeiten  : </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">faehigkeiten</span><span class="p">)</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">faehigkeiten</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;keine&quot;</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="p">]</span>
+
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">truppe_analysieren</span><span class="p">(</span><span class="n">charaktere</span><span class="p">):</span>
+
+    <span class="n">typen</span>       <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">kann_heilen</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">am_leben</span>    <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">charaktere</span><span class="p">:</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">typen</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">typen</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">ist_am_leben</span><span class="p">():</span>
+            <span class="n">am_leben</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s2">&quot;heilen_ziel&quot;</span><span class="p">):</span>
+            <span class="n">kann_heilen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;gesamt&#39;</span><span class="p">:</span>       <span class="nb">len</span><span class="p">(</span><span class="n">charaktere</span><span class="p">),</span>
+        <span class="s1">&#39;am_leben&#39;</span><span class="p">:</span>     <span class="n">am_leben</span><span class="p">,</span>
+        <span class="s1">&#39;typen&#39;</span><span class="p">:</span>        <span class="n">typen</span><span class="p">,</span>
+        <span class="s1">&#39;kann_heilen&#39;</span><span class="p">:</span>  <span class="n">kann_heilen</span>
+    <span class="p">}</span>
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">truppe</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+    <span class="n">Magierin</span><span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">Waldlaeufer</span><span class="p">(</span><span class="s1">&#39;Thorn&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span>
+    <span class="n">Paladin</span><span class="p">(</span><span class="s1">&#39;Sera&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span>
+    <span class="n">Krieger</span><span class="p">(</span><span class="s1">&#39;Bjorn&#39;</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">truppe</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>   <span class="c1"># Thorn wird besiegt</span>
+
+<span class="n">analyse</span> <span class="o">=</span> <span class="n">truppe_analysieren</span><span class="p">(</span><span class="n">truppe</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;gesamt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;am_leben&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;typen&#39;</span><span class="p">][</span><span class="s1">&#39;Krieger&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="k">assert</span> <span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;typen&#39;</span><span class="p">][</span><span class="s1">&#39;Magierin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;typen&#39;</span><span class="p">][</span><span class="s1">&#39;Paladin&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;kann_heilen&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;kann_heilen&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">Paladin</span><span class="p">)</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">charakter_report</span><span class="p">(</span><span class="n">truppe</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">assert</span> <span class="s1">&#39;Aldric&#39;</span> <span class="ow">in</span> <span class="n">report</span>
+<span class="k">assert</span> <span class="s1">&#39;Krieger&#39;</span> <span class="ow">in</span> <span class="n">report</span>
+<span class="k">assert</span> <span class="s1">&#39;Held&#39;</span> <span class="ow">in</span> <span class="n">report</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 4.2: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Abschnitt 4.2: bestanden
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt / 04e</span>
+Abschnitt 5: Spielwelt-Engine
+</span>
+</div><p>Der Abschluss: eine vollstaendige Spielwelt-Engine die alle Konzepte zusammenfuehrt.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 5.1</span>
+Factory: Held erstellen
+</span>
+</div><ol class="arabic simple">
+<li><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">erstelle_held(klasse,</span> <span class="pre">name,</span> <span class="pre">hp,</span> <span class="pre">staerke)</span></code>,
+die anhand des Strings <code class="docutils literal notranslate"><span class="pre">klasse</span></code> die richtige Klasse instanziiert.
+Unbekannte Klasse: <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.
+Unterstuetzte Klassen: <code class="docutils literal notranslate"><span class="pre">'krieger'</span></code>, <code class="docutils literal notranslate"><span class="pre">'magierin'</span></code>, <code class="docutils literal notranslate"><span class="pre">'waldlaeufer'</span></code>, <code class="docutils literal notranslate"><span class="pre">'paladin'</span></code>.</p></li>
+<li><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">truppe_erstellen(konfigurationen)</span></code>,
+die eine Liste von Dictionaries entgegennimmt und eine Liste von Helden zurueckgibt.</p></li>
+<li><p>Testblock nicht veraendern:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="n">konfigurationen</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;krieger&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;magierin&#39;</span><span class="p">,</span>   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyria&#39;</span><span class="p">,</span>  <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;waldlaeufer&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Thorn&#39;</span><span class="p">,</span>  <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;paladin&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sera&#39;</span><span class="p">,</span>   <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">party</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">(</span><span class="n">konfigurationen</span><span class="p">)</span>
+
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">party</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">party</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Krieger</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">party</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">Magierin</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">party</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">Waldlaeufer</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">party</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">Paladin</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">Held</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">party</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">erstelle_held</span><span class="p">(</span><span class="s1">&#39;zauberer&#39;</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s1">&#39;ValueError erwartet&#39;</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 5.1: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Aufgabe 5.2</span>
+Kampfsimulator
+</span>
+</div><p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">kampfrunde(angreifer,</span> <span class="pre">verteidiger)</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">angreifer</span></code> greift an, <code class="docutils literal notranslate"><span class="pre">verteidiger</span></code> nimmt Schaden</p></li>
+<li><p>Gibt <code class="docutils literal notranslate"><span class="pre">True</span></code> zurueck wenn Verteidiger besiegt wurde</p></li>
+<li><p>Gibt eine Kampfmeldung aus</p></li>
+</ul>
+<p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">kampf(truppe_a,</span> <span class="pre">truppe_b,</span> <span class="pre">max_runden=20)</span></code>:</p>
+<ul class="simple">
+<li><p>Jede Runde: jeder lebende Held von Truppe A greift einen zufaelligen lebenden Held von Truppe B an, danach umgekehrt</p></li>
+<li><p>Paladine heilen vor ihrem Angriff den schwaechtesten lebenden Verbundeten</p></li>
+<li><p>Endet wenn eine Truppe vollstaendig besiegt ist oder <code class="docutils literal notranslate"><span class="pre">max_runden</span></code> erreicht sind</p></li>
+<li><p>Gibt am Ende aus welche Truppe gewonnen hat und wie viele Helden noch leben</p></li>
+</ul>
+<p>Testblock nicht veraendern:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Testblock</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">konfigurationen_a</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;krieger&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;paladin&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sera&#39;</span><span class="p">,</span>   <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span>
+<span class="p">]</span>
+<span class="n">konfigurationen_b</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;magierin&#39;</span><span class="p">,</span>   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyria&#39;</span><span class="p">,</span>  <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;waldlaeufer&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Thorn&#39;</span><span class="p">,</span>  <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span>
+<span class="p">]</span>
+
+<span class="n">truppe_a</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">(</span><span class="n">konfigurationen_a</span><span class="p">)</span>
+<span class="n">truppe_b</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">(</span><span class="n">konfigurationen_b</span><span class="p">)</span>
+
+<span class="c1"># Einzelne Kampfrunde</span>
+<span class="n">aldric</span> <span class="o">=</span> <span class="n">truppe_a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lyria</span>  <span class="o">=</span> <span class="n">truppe_b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">hp_vorher</span> <span class="o">=</span> <span class="n">lyria</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span>
+<span class="n">kampfrunde</span><span class="p">(</span><span class="n">aldric</span><span class="p">,</span> <span class="n">lyria</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">lyria</span><span class="o">.</span><span class="n">hp</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">hp_vorher</span>
+
+<span class="c1"># Vollstaendiger Kampf</span>
+<span class="n">truppe_a2</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">(</span><span class="n">konfigurationen_a</span><span class="p">)</span>
+<span class="n">truppe_b2</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">(</span><span class="n">konfigurationen_b</span><span class="p">)</span>
+<span class="n">kampf</span><span class="p">(</span><span class="n">truppe_a2</span><span class="p">,</span> <span class="n">truppe_b2</span><span class="p">)</span>
+
+<span class="n">lebende_a</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">truppe_a2</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">ist_am_leben</span><span class="p">()]</span>
+<span class="n">lebende_b</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span> <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">truppe_b2</span> <span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">ist_am_leben</span><span class="p">()]</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">lebende_a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">lebende_b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Abschnitt 5.2: bestanden&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Abschluss</span>
+Gesamttest
+</span>
+</div><p>Wenn alle Testbloecke bestanden sind, laeuft dieser Block fehlerfrei durch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Vollstaendiges Spiel: Party wird erstellt, ausgeruestet und kaempft</span>
+<span class="n">party</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;krieger&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;magierin&#39;</span><span class="p">,</span>   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyria&#39;</span><span class="p">,</span>  <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;paladin&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sera&#39;</span><span class="p">,</span>   <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">110</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span>
+<span class="p">])</span>
+
+<span class="c1"># Ausruestung anlegen</span>
+<span class="n">party</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Streitaxt&#39;</span><span class="p">,</span>   <span class="s1">&#39;Waffe&#39;</span><span class="p">,</span> <span class="n">schaden</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
+<span class="n">party</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Kettenhemd&#39;</span><span class="p">,</span>  <span class="s1">&#39;Ruestung&#39;</span><span class="p">,</span> <span class="n">schutz</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">40</span><span class="p">))</span>
+<span class="n">party</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Zauberstab&#39;</span><span class="p">,</span>  <span class="s1">&#39;Waffe&#39;</span><span class="p">,</span> <span class="n">schaden</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">60</span><span class="p">))</span>
+<span class="n">party</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">ausruestung</span><span class="o">.</span><span class="n">anlegen</span><span class="p">(</span><span class="n">Gegenstand</span><span class="p">(</span><span class="s1">&#39;Heiligenschild&#39;</span><span class="p">,</span> <span class="s1">&#39;Ruestung&#39;</span><span class="p">,</span> <span class="n">schutz</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">wert</span><span class="o">=</span><span class="mi">70</span><span class="p">))</span>
+
+<span class="c1"># Gegner</span>
+<span class="n">gegner</span> <span class="o">=</span> <span class="n">truppe_erstellen</span><span class="p">([</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;krieger&#39;</span><span class="p">,</span>    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Ork-Hauptmann&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;waldlaeufer&#39;</span><span class="p">,</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Goblin-Bogenschuetze&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;magierin&#39;</span><span class="p">,</span>   <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Dunkelmagierin&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">},</span>
+<span class="p">])</span>
+
+<span class="c1"># Truppen-Analyse</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== Party-Analyse ===&#39;</span><span class="p">)</span>
+<span class="n">analyse</span> <span class="o">=</span> <span class="n">truppe_analysieren</span><span class="p">(</span><span class="n">party</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Helden: </span><span class="si">{</span><span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;gesamt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> | Typen: </span><span class="si">{</span><span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;typen&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">heiler</span> <span class="o">=</span> <span class="n">analyse</span><span class="p">[</span><span class="s1">&#39;kann_heilen&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heiler: </span><span class="si">{</span><span class="p">[</span><span class="n">h</span><span class="o">.</span><span class="n">name</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">heiler</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Faehigkeiten ausgeben</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== Faehigkeiten ===&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">held</span> <span class="ow">in</span> <span class="n">party</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">held</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">faehigkeiten_von</span><span class="p">(</span><span class="n">held</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Kampf</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== Kampf beginnt ===&#39;</span><span class="p">)</span>
+<span class="n">kampf</span><span class="p">(</span><span class="n">party</span><span class="p">,</span> <span class="n">gegner</span><span class="p">,</span> <span class="n">max_runden</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aetherion-Kampfsystem: Gesamttest bestanden.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:1.5rem;font-family:'Segoe UI',sans-serif;">
+<p style="color:#4fc3f7;font-weight:700;margin:0 0 0.8rem 0;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;">PCAP-Pruefungshinweise: Kapitel 4</p>
+<ul style="color:#c5cae9;margin:0;padding-left:1.4rem;line-height:2;font-size:0.88rem;">
+<li><strong style="color:#f0f0f5;">isinstance() vs. type()</strong>: <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">isinstance(aldric, Held)</code> gibt <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">True</code>, <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">type(aldric) == Held</code> gibt <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">False</code></li>
+<li><strong style="color:#f0f0f5;">Klassenvariable per Instanz ueberschreiben</strong>: <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">self.x = y</code> erstellt eine neue Instanzvariable, aendert nicht die Klassenvariable</li>
+<li><strong style="color:#f0f0f5;">__name__ nur an der Klasse</strong>: <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">Held.__name__</code> funktioniert, <code style="background:#0b1929;color:#ef9a9a;padding:0.1em 0.35em;border-radius:3px;">aldric.__name__</code> wirft AttributeError</li>
+<li><strong style="color:#f0f0f5;">MRO bei Mehrfachvererbung</strong>: Python sucht von links nach rechts, Tiefe vor Breite</li>
+<li><strong style="color:#f0f0f5;">super().__init__()</strong>: beim Diamant-Problem wird <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">Wesen.__init__</code> trotzdem nur einmal aufgerufen</li>
+<li><strong style="color:#f0f0f5;">is vs. ==</strong>: <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">is</code> prueft Identitaet (selbes Objekt), <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">==</code> prueft Gleichheit (Wert)</li>
+</ul>
+</div></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_4\Aufgaben"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

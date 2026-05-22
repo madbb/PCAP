@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Import system &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_1/01c_import_system';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Versionsverwaltung git" href="01d_versionsverwaltung_git.html" />
+    <link rel="prev" title="Namespaces legb" href="01b_namespaces_legb.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_1/01c_import_system.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Import system</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="import-system">
+<h1>Import system<a class="headerlink" href="#import-system" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Das Import-System</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 1: Fundament &nbsp;|&nbsp; Notebook 01c</p>
+</div>
+</div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Lernziele</span></div>
+<p>Nach diesem Notebook kannst du:</p>
+<ul class="simple">
+<li><p>erklären, wie Python ein Modul findet und lädt</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sys.path</span></code> gezielt erweitern</p></li>
+<li><p>die verschiedenen Import-Formen korrekt einsetzen und ihre Unterschiede benennen</p></li>
+<li><p>zirkuläre Imports erkennen und vermeiden</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__name__</span></code> und den <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code>-Block verstehen und einsetzen</p></li>
+<li><p>erklären, warum ein Modul nur einmal geladen wird</p></li>
+</ul>
+<p><strong>Voraussetzungen:</strong> 01a – Laufzeitmodell, 01b – Namespaces und LEGB</p>
+<p><strong>Legende</strong></p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>Praxiswissen fuer den Kurs, nicht pruefungsrelevant</span></div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP</span>Inhalt wird in der Pruefung abgefragt</span></div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">PCAP 1.1 / 1.5</span>Was passiert bei import?</span></div>
+<p>Aus Notebook 01a wissen wir bereits grob, was beim Import passiert. Hier schauen wir uns den Ablauf genauer an.</p>
+<p>Wenn Python <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code> sieht, läuft folgendes ab:</p>
+<div style="display:inline-flex;flex-direction:column;align-items:center;background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.5rem 2.5rem;margin:1rem 0;font-family:'Segoe UI',sans-serif;gap:0;">
+  <div style="background:#0b1929;border:1px solid #4fc3f7;border-radius:5px;padding:0.45em 1.4em;color:#4fc3f7;font-size:0.9rem;font-weight:700;letter-spacing:0.01em;white-space:nowrap;">import math</div>
+  <div style="display:flex;flex-direction:column;align-items:center;color:#1e4d6b;line-height:1;margin:0;padding:0;"><span style="font-size:1.1rem;line-height:1.2;">│</span><span style="font-size:0.75rem;line-height:1;">▼</span></div>
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.45em 1.4em;color:#e8eaf6;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;white-space:nowrap;">1. Ist <span style="color:#4fc3f7;">'math'</span> in <span style="color:#4fc3f7;">sys.modules</span>? <span style="color:#81c784;font-weight:400;">→ ja: fertig, gecachte Version verwenden</span></div>
+  <div style="display:flex;flex-direction:column;align-items:center;color:#1e4d6b;line-height:1;margin:0;padding:0;"><span style="font-size:1.1rem;line-height:1.2;">│</span><span style="font-size:0.75rem;line-height:1;">▼</span></div>
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.45em 1.4em;color:#e8eaf6;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;white-space:nowrap;">2. Finde die Datei: <span style="color:#4fc3f7;">sys.path</span> durchsuchen</div>
+  <div style="display:flex;flex-direction:column;align-items:center;color:#1e4d6b;line-height:1;margin:0;padding:0;"><span style="font-size:1.1rem;line-height:1.2;">│</span><span style="font-size:0.75rem;line-height:1;">▼</span></div>
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.45em 1.4em;color:#e8eaf6;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;white-space:nowrap;">3. Lade und kompiliere Quellcode <span style="color:#4fc3f7;font-weight:400;">.pyc</span></div>
+  <div style="display:flex;flex-direction:column;align-items:center;color:#1e4d6b;line-height:1;margin:0;padding:0;"><span style="font-size:1.1rem;line-height:1.2;">│</span><span style="font-size:0.75rem;line-height:1;">▼</span></div>
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.45em 1.4em;color:#e8eaf6;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;white-space:nowrap;">4. Fuehre Modulcode <span style="color:#7a7a90;font-weight:400;">einmalig</span> aus</div>
+  <div style="display:flex;flex-direction:column;align-items:center;color:#1e4d6b;line-height:1;margin:0;padding:0;"><span style="font-size:1.1rem;line-height:1.2;">│</span><span style="font-size:0.75rem;line-height:1;">▼</span></div>
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.45em 1.4em;color:#e8eaf6;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;white-space:nowrap;">5. Trage Modul-Objekt in <span style="color:#4fc3f7;">sys.modules</span> ein</div>
+  <div style="display:flex;flex-direction:column;align-items:center;color:#1e4d6b;line-height:1;margin:0;padding:0;"><span style="font-size:1.1rem;line-height:1.2;">│</span><span style="font-size:0.75rem;line-height:1;">▼</span></div>
+  <div style="background:#0d2b1a;border:1px solid #2e7d52;border-radius:5px;padding:0.45em 1.4em;color:#81c784;font-size:0.9rem;font-weight:600;letter-spacing:0.01em;white-space:nowrap;">6. Binde Namen <span style="color:#4fc3f7;">'math'</span> im aktuellen Namespace</div>
+</div>
+<p>Schritt 1 ist entscheidend: <strong>ein Modul wird nur einmal geladen</strong>, egal wie oft du es importierst.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Erstes Importieren</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">id_erstes_mal</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;math&#39;</span><span class="p">])</span>
+
+<span class="c1"># Zweites Importieren -- kein erneutes Laden</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">id_zweites_mal</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;math&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Selbes Objekt?&#39;</span><span class="p">,</span> <span class="n">id_erstes_mal</span> <span class="o">==</span> <span class="n">id_zweites_mal</span><span class="p">)</span>  <span class="c1"># True</span>
+
+<span class="c1"># Das bedeutet auch: Code auf Modulebene laeuft nur einmal</span>
+<span class="c1"># (wichtig fuer Seiteneffekte beim Import)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">PCAP 1.1</span>Wo sucht Python? -- sys.path</span></div>
+<p><code class="docutils literal notranslate"><span class="pre">sys.path</span></code> ist eine Liste von Verzeichnissen, die Python der Reihe nach durchsucht. Das erste Verzeichnis mit einer passenden Datei gewinnt.</p>
+<p>Die Reihenfolge ist festgelegt:</p>
+<ol class="arabic simple">
+<li><p>Das Verzeichnis des ausgefuehrten Skripts (oder <code class="docutils literal notranslate"><span class="pre">''</span></code> fuer das aktuelle Verzeichnis im interaktiven Modus)</p></li>
+<li><p>Verzeichnisse aus der Umgebungsvariablen <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code></p></li>
+<li><p>Installationsabhaengige Standardverzeichnisse (stdlib, site-packages)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sys.path Eintraege:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pfad</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">pfad</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">pfad</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;(aktuelles Verzeichnis)&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># sys.path zur Laufzeit erweitern</span>
+<span class="c1"># Nuetzlich wenn eigene Module in einem anderen Verzeichnis liegen</span>
+<span class="n">eigenes_verzeichnis</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;./meine_module&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">eigenes_verzeichnis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">eigenes_verzeichnis</span><span class="p">)</span>  <span class="c1"># vorne einfuegen = hoechste Prioritaet</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erster Eintrag:&#39;</span><span class="p">,</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Hinweis: sys.path.append() fuegt hinten an -- niedrigere Prioritaet</span>
+<span class="c1"># sys.path.insert(0, ...) fuegt vorne an -- hoehere Prioritaet als stdlib</span>
+<span class="c1"># Das kann stdlib-Module verdecken -- mit Vorsicht einsetzen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">PCAP 1.1</span>Die verschiedenen Import-Formen</span></div>
+<p>Python bietet mehrere Wege, etwas zu importieren. Sie unterscheiden sich darin, was in den aktuellen Namespace eingetragen wird.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.1</span>Form 1: import modul</span></div>
+<p>Importiert das Modul und bindet seinen Namen im aktuellen Namespace. Zugriff auf Inhalte ueber den Modulnamen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>           <span class="c1"># 3.141592...</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>     <span class="c1"># 4.0</span>
+
+<span class="c1"># Im Namespace ist nur &#39;math&#39; eingetragen, nicht &#39;pi&#39; oder &#39;sqrt&#39;</span>
+<span class="c1"># Das ist die sicherste Form: klar, woher jede Funktion stammt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.1</span>Form 2: import modul as alias</span></div>
+<p>Wie Form 1, aber der Name im Namespace wird umbenannt. Nützlich bei langen Modulnamen oder Namenskonflikten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">dt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span>
+
+<span class="c1"># Konventionelle Aliases (de-facto Standard in der Python-Welt):</span>
+<span class="c1"># import numpy as np</span>
+<span class="c1"># import pandas as pd</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.1</span>Form 3: from modul import name</span></div>
+<p>Importiert einen bestimmten Namen direkt in den aktuellen Namespace. Der Modulname selbst wird nicht eingetragen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>   <span class="c1"># 5.0  -- kein &#39;math.&#39; noetig</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>         <span class="c1"># 3.141592...</span>
+
+<span class="c1"># &#39;math&#39; ist NICHT im Namespace</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fehler: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Vorteil: kuerzerer Code</span>
+<span class="c1"># Nachteil: nicht sofort erkennbar, woher sqrt kommt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.1</span>Form 4: from modul import name as alias</span></div>
+<p>Kombination: direkter Import mit Umbenennung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span> <span class="k">as</span> <span class="n">wurzel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span> <span class="k">as</span> <span class="n">Zeitpunkt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">wurzel</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>           <span class="c1"># 3.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Zeitpunkt</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>     <span class="c1"># aktueller Zeitstempel</span>
+
+<span class="c1"># Nuetzlich bei Namenskonflikten zwischen zwei Modulen</span>
+<span class="c1"># z.B. from modul_a import connect as connect_a</span>
+<span class="c1">#      from modul_b import connect as connect_b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.1</span>Form 5: from modul import *</span></div>
+<p>Importiert alle oeffentlichen Namen eines Moduls in den aktuellen Namespace.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># 1.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>        <span class="c1"># 1.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>             <span class="c1"># 2.718...</span>
+
+<span class="c1"># Was wurde alles importiert?</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Anzahl importierter Namen:&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<blockquote>
+<div><p><strong><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> – wann ja, wann nein?</strong></p>
+<p>In Produktionscode gilt <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> als schlechte Praxis: Es ist nicht nachvollziehbar, woher ein Name stammt, und es koennen unbemerkt Namen im aktuellen Namespace ueberschrieben werden.</p>
+<p>Einzige Ausnahme: interaktive Shell oder Jupyter-Notebooks fuer schnelle Erkundung.</p>
+<p>Ein Modul kann ueber <code class="docutils literal notranslate"><span class="pre">__all__</span></code> steuern, welche Namen bei <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">*</span></code> exportiert werden:</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Beispiel: Modul mit __all__</span>
+<span class="c1"># Angenommen, das waere der Inhalt von &#39;mein_modul.py&#39;:</span>
+
+<span class="c1"># __all__ = [&#39;oeffentlich&#39;]   # nur &#39;oeffentlich&#39; wird bei import * exportiert</span>
+<span class="c1">#</span>
+<span class="c1"># def oeffentlich():</span>
+<span class="c1">#     return &#39;ich bin oeffentlich&#39;</span>
+<span class="c1">#</span>
+<span class="c1"># def _intern():</span>
+<span class="c1">#     return &#39;ich bin intern (Konvention: Unterstrich)&#39;</span>
+<span class="c1">#</span>
+<span class="c1"># def auch_intern():</span>
+<span class="c1">#     return &#39;ich bin NICHT in __all__, also auch nicht bei import *&#39;</span>
+
+<span class="c1"># Schauen wir uns __all__ eines echten Moduls an:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;os.path.__all__:&#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">__all__</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;__all__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;nicht definiert&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;json.__all__:&#39;</span><span class="p">,</span> <span class="n">json</span><span class="o">.</span><span class="n">__all__</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">json</span><span class="p">,</span> <span class="s1">&#39;__all__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;nicht definiert&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.1</span>Uebersicht Import-Formen</span></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Form</p></th>
+<th class="head"><p>Was landet im Namespace</p></th>
+<th class="head"><p>Empfehlung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">math</span></code></p></td>
+<td><p>Standard – immer lesbar</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">m</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">m</span></code></p></td>
+<td><p>Bei langen Namen oder Konventionen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">sqrt</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sqrt</span></code></p></td>
+<td><p>Wenn wenige Namen oft benoetigt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">sqrt</span> <span class="pre">as</span> <span class="pre">w</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">w</span></code></p></td>
+<td><p>Bei Namenskonflikt</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">*</span></code></p></td>
+<td><p>alle oeffentlichen Namen</p></td>
+<td><p>Nur in der REPL / Notebooks zur Erkundung</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">PCAP 1.5</span>__name__ und if __name__ == '__main__'</span></div>
+<p>Jedes Python-Modul hat eine Variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code>. Ihr Wert haengt davon ab, wie das Modul verwendet wird:</p>
+<ul class="simple">
+<li><p>Wird die Datei <strong>direkt ausgefuehrt</strong> (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">datei.py</span></code>), ist <code class="docutils literal notranslate"><span class="pre">__name__</span></code> gleich <code class="docutils literal notranslate"><span class="pre">'__main__'</span></code></p></li>
+<li><p>Wird die Datei <strong>importiert</strong>, ist <code class="docutils literal notranslate"><span class="pre">__name__</span></code> gleich dem Modulnamen (z.B. <code class="docutils literal notranslate"><span class="pre">'datei'</span></code>)</p></li>
+</ul>
+<p>Das erlaubt es, Code zu schreiben, der nur beim direkten Ausfuehren laeuft – nicht beim Import.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In einem Notebook ist __name__ immer &#39;__main__&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;__name__ in diesem Notebook:&#39;</span><span class="p">,</span> <span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Simulieren wir, wie das in einer .py-Datei aussehen wuerde:</span>
+<span class="c1"># ------------------------------------------------------------------</span>
+<span class="c1"># # berechnung.py</span>
+<span class="c1">#</span>
+<span class="c1"># def quadrat(n):</span>
+<span class="c1">#     return n * n</span>
+<span class="c1">#</span>
+<span class="c1"># def wuerfel(n):</span>
+<span class="c1">#     return n * n * n</span>
+<span class="c1">#</span>
+<span class="c1"># if __name__ == &#39;__main__&#39;:</span>
+<span class="c1">#     # Dieser Block laeuft NUR wenn berechnung.py direkt gestartet wird</span>
+<span class="c1">#     # Beim Import durch ein anderes Modul wird er uebersprungen</span>
+<span class="c1">#     print(&#39;Teste quadrat:&#39;, quadrat(5))   # 25</span>
+<span class="c1">#     print(&#39;Teste wuerfel:&#39;, wuerfel(3))   # 27</span>
+<span class="c1"># ------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Warum ist das wichtig?</span>
+<span class="c1"># Ohne if __name__ == &#39;__main__&#39; wuerde dieser Code beim Import ausgefuehrt:</span>
+
+<span class="c1"># -- schlechtes Beispiel --</span>
+<span class="c1"># def berechne():</span>
+<span class="c1">#     return 42</span>
+<span class="c1">#</span>
+<span class="c1"># print(&#39;Ergebnis:&#39;, berechne())   # laeuft IMMER, auch beim Import</span>
+<span class="c1">#                                   # nervt jeden, der das Modul importiert</span>
+
+<span class="c1"># -- gutes Beispiel --</span>
+<span class="c1"># def berechne():</span>
+<span class="c1">#     return 42</span>
+<span class="c1">#</span>
+<span class="c1"># if __name__ == &#39;__main__&#39;:</span>
+<span class="c1">#     print(&#39;Ergebnis:&#39;, berechne())   # laeuft nur bei direktem Aufruf</span>
+
+<span class="c1"># Wir koennen __name__ verschiedener importierter Module pruefen:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;math.__name__:&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;os.__name__:  &#39;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">PCAP 1.5</span>Absolute und relative Imports</span></div>
+<p>Innerhalb eines Pakets (mehrere Module in einem Verzeichnis) kann man auf zwei Arten importieren.</p>
+<p><strong>Absoluter Import:</strong> Voller Pfad vom Paketstamm an – immer eindeutig, immer empfohlen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Absoluter Import -- immer eindeutig, immer empfohlen</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>                     <span class="c1"># Standardbibliothek</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">os.path</span><span class="w"> </span><span class="kn">import</span> <span class="n">join</span>        <span class="c1"># Submodul der Standardbibliothek</span>
+
+<span class="c1"># In einem Projekt &#39;mein_paket&#39; mit Untermodul &#39;utils&#39;:</span>
+<span class="c1"># from mein_paket.utils import hilfsfunktion   # absolut</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;/home&#39;</span><span class="p">,</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="s1">&#39;dokumente&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">PCAP 1.5</span>Relative Imports</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Innerhalb von mein_paket/modul_a.py:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">modul_b</span>           <span class="c1"># Geschwistermodul (selbes Paket)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.modul_b</span><span class="w"> </span><span class="kn">import</span> <span class="n">funktion</span>   <span class="c1"># Funktion aus Geschwistermodul</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..</span><span class="w"> </span><span class="kn">import</span> <span class="n">anderes_paket</span>    <span class="c1"># Elternpaket</span>
+</pre></div>
+</div>
+<p>Jeder Punkt steht fuer eine Ebene hoeher. Relative Imports funktionieren <strong>nicht</strong> in direkt ausgefuehrten Skripten (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">datei.py</span></code>) – nur beim Import.</p>
+<blockquote>
+<div><p><strong>Empfehlung:</strong> Absolute Imports sind klarer und werden in PEP 8 bevorzugt. Relative Imports sind nuetzlich bei grossen Paketen, die intern umstrukturiert werden, ohne alle Importpfade anpassen zu muessen.</p>
+</div></blockquote>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>Zirkulaere Imports</span></div>
+<p>Ein zirkulaerer Import entsteht, wenn Modul A Modul B importiert und Modul B gleichzeitig Modul A importiert.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modul_a</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="kn">import</span><span class="w"> </span><span class="nn">modul_b</span>
+<span class="n">modul_b</span><span class="o">.</span><span class="n">py</span><span class="p">:</span> <span class="kn">import</span><span class="w"> </span><span class="nn">modul_a</span>   <span class="c1"># Zirkel!</span>
+</pre></div>
+</div>
+<p>Python erkennt das und bricht nicht in eine Endlosschleife – aber das Modul ist moeglicherweise noch nicht vollstaendig geladen, wenn es das zweite Mal importiert wird. Das fuehrt zu schwer nachvollziehbaren <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> oder <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Wir simulieren zirkulaere Imports mit temporaeren Dateien</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;zirkel_demo&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;zirkel_demo/modul_a.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;from zirkel_demo import modul_b</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;def funktion_a():</span><span class="se">\n</span><span class="s1">    return &quot;A&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;zirkel_demo/modul_b.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;from zirkel_demo import modul_a</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;def funktion_b():</span><span class="se">\n</span><span class="s1">    return modul_a.funktion_a() + &quot;B&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;zirkel_demo/__init__.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">zirkel_demo</span><span class="w"> </span><span class="kn">import</span> <span class="n">modul_a</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">modul_a</span><span class="o">.</span><span class="n">funktion_a</span><span class="p">())</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># Aufraeumen</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="s1">&#39;zirkel_demo&#39;</span><span class="p">,</span> <span class="n">ignore_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="k">if</span> <span class="s1">&#39;zirkel_demo&#39;</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>Zirkulaere Imports vermeiden</span></div>
+<p>Es gibt drei gaengige Loesungen:</p>
+<p><strong>1. Struktur ueberdenken:</strong> Meistens ist ein zirkulaerer Import ein Zeichen, dass zwei Module zu eng gekoppelt sind. Die gemeinsam genutzten Teile in ein drittes Modul auslagern.</p>
+<p><strong>2. Import innerhalb der Funktion:</strong> Den Import erst dort ausfuehren, wo er benoetigt wird – dann ist das Modul bereits vollstaendig geladen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># modul_a.py</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">funktion_a</span><span class="p">():</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">modul_b</span><span class="w"> </span><span class="kn">import</span> <span class="n">funktion_b</span>   <span class="c1"># Import erst bei Aufruf</span>
+    <span class="k">return</span> <span class="n">funktion_b</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>3. Typannotationen mit <code class="docutils literal notranslate"><span class="pre">TYPE_CHECKING</span></code>:</strong> Wenn der Zirkel nur wegen Typhinweisen entsteht:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">modul_b</span><span class="w"> </span><span class="kn">import</span> <span class="n">KlasseB</span>   <span class="c1"># wird zur Laufzeit nicht ausgefuehrt</span>
+</pre></div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>Module neu laden</span></div>
+<p>Da Python ein Modul nur einmal laedt, siehst du Aenderungen an einer <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Datei nicht automatisch. In der Entwicklung und besonders in Jupyter-Notebooks kann das stören.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">importlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">reload</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># math neu laden (hier sinnlos, aber als Demo)</span>
+<span class="n">reload</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;math neu geladen:&#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># In Jupyter-Notebooks gibt es die Magic-Extension:</span>
+<span class="c1"># %load_ext autoreload</span>
+<span class="c1"># %autoreload 2</span>
+<span class="c1"># -- dann werden importierte Module automatisch neu geladen, wenn sie sich aendern</span>
+<span class="c1"># Sehr nuetzlich waehrend der Entwicklung eigener Module</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>Ein Modul inspizieren</span></div>
+<p>Python-Module sind Objekte – sie haben Attribute, die Informationen ueber das Modul liefern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name:       &#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Datei:      &#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="vm">__file__</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">math</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">)</span> <span class="k">else</span> <span class="s1">&#39;eingebaut (C-Extension)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Paket:      &#39;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">__package__</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dokumentation (Auszug):&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">[:</span><span class="mi">200</span><span class="p">]</span> <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="vm">__doc__</span> <span class="k">else</span> <span class="s1">&#39;keine&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Oeffentliche Namen:&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wo liegt ein Modul auf der Festplatte?</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+
+<span class="k">for</span> <span class="n">modul</span> <span class="ow">in</span> <span class="p">[</span><span class="n">json</span><span class="p">,</span> <span class="n">csv</span><span class="p">,</span> <span class="n">pathlib</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">modul</span><span class="p">,</span> <span class="s1">&#39;__file__&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">modul</span><span class="o">.</span><span class="vm">__name__</span><span class="si">:</span><span class="s1">12</span><span class="si">}</span><span class="s1"> --&gt; </span><span class="si">{</span><span class="n">modul</span><span class="o">.</span><span class="vm">__file__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Zusammenfassung</span></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thema</p></th>
+<th class="head"><p>Kernaussage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Import-Ablauf</p></td>
+<td><p>Suche in <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> –&gt; Laden –&gt; Ausfuehren –&gt; Cachen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Einmaliges Laden</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> verhindert mehrfaches Laden desselben Moduls</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sys.path</span></code></p></td>
+<td><p>Liste der Suchpfade; erweiterbar zur Laufzeit</p></td>
+</tr>
+<tr class="row-odd"><td><p>Import-Formen</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">m</span></code>, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">m</span> <span class="pre">as</span> <span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">m</span> <span class="pre">import</span> <span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">m</span> <span class="pre">import</span> <span class="pre">x</span> <span class="pre">as</span> <span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">m</span> <span class="pre">import</span> <span class="pre">*</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">__name__</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'__main__'</span></code> bei direktem Aufruf, Modulname bei Import</p></td>
+</tr>
+<tr class="row-odd"><td><p>Absolut vs. relativ</p></td>
+<td><p>Absolut bevorzugt; relativ nuetzlich in grossen Paketen</p></td>
+</tr>
+<tr class="row-even"><td><p>Zirkulaere Imports</p></td>
+<td><p>Strukturproblem – durch Auslagerung oder lokalen Import loesen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reload()</span></code></p></td>
+<td><p>Erzwingt erneutes Laden – noetig bei Aenderungen im laufenden Interpreter</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Merksatz:</strong> <code class="docutils literal notranslate"><span class="pre">import</span></code> ist keine passive Deklaration. Python fuehrt Modulcode aus, cacht das Ergebnis, und bindet Namen. Wer das versteht, versteht auch, warum Import-Reihenfolge und Seiteneffekte auf Modulebene wichtig sind.</p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Aufgaben</span></div><div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 1 (Grundlagen)</span></div>
+<p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">random</span></code> auf alle fuenf vorgestellten Arten. Verwende danach <code class="docutils literal notranslate"><span class="pre">random.randint(1,</span> <span class="pre">6)</span></code> (oder die entsprechende importierte Form), um einen Wuerfelwurf zu simulieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Form 1: import random</span>
+
+<span class="c1"># Form 2: import random as ...</span>
+
+<span class="c1"># Form 3: from random import ...</span>
+
+<span class="c1"># Form 4: from random import ... as ...</span>
+
+<span class="c1"># Form 5: from random import *</span>
+
+<span class="c1"># Wuerfelwurf:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 2 (Verstaendnis)</span></div>
+<p>Erklaere in eigenen Worten: Warum wird Modulcode nur einmal ausgefuehrt, auch wenn <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modul</span></code> an drei verschiedenen Stellen im Programm steht? Welche Datenstruktur ist dafuer verantwortlich?</p>
+<p><em>Deine Antwort hier…</em></p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 3 (Anwenden)</span></div>
+<p>Schreibe eine Datei <code class="docutils literal notranslate"><span class="pre">wuerfel.py</span></code> (erstelle sie mit der <code class="docutils literal notranslate"><span class="pre">%%writefile</span></code>-Magic), die:</p>
+<ul class="simple">
+<li><p>eine Funktion <code class="docutils literal notranslate"><span class="pre">wuerfeln(seiten=6)</span></code> enthaelt</p></li>
+<li><p>einen <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__'</span></code>-Block hat, der 5 Wuerfelwuerfe ausgbt</p></li>
+</ul>
+<p>Importiere danach <code class="docutils literal notranslate"><span class="pre">wuerfel</span></code> in diesem Notebook und weise nach, dass der <code class="docutils literal notranslate"><span class="pre">__main__</span></code>-Block beim Import nicht ausgefuehrt wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">writefile</span> <span class="n">wuerfel</span><span class="o">.</span><span class="n">py</span>
+<span class="c1"># Dein Code hier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import und Test hier</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">importlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># Falls wuerfel schon importiert wurde, zuruecksetzen:</span>
+<span class="k">if</span> <span class="s1">&#39;wuerfel&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+    <span class="k">del</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;wuerfel&#39;</span><span class="p">]</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">wuerfel</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ergebnis:&#39;</span><span class="p">,</span> <span class="n">wuerfel</span><span class="o">.</span><span class="n">wuerfeln</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ergebnis:&#39;</span><span class="p">,</span> <span class="n">wuerfel</span><span class="o">.</span><span class="n">wuerfeln</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 4 (Fehleranalyse)</span></div>
+<p>Der folgende Import schlaegt fehl. Erklaere warum und behebe den Fehler.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pi</span>  <span class="c1"># Fehler!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 5 (Vertiefung)</span></div>
+<p>Finde heraus, welche Module bei einem frischen Python-Start bereits in <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code> vorgeladen sind. Wie viele sind es? Welche erkennst du wieder?</p>
+<p>Hinweis: Am besten in einem frischen Python-Prozess testen – im Notebook sind bereits viele Module durch Jupyter geladen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="c1"># Frischer Python-Prozess: nur die vorgeladenen Module ausgeben</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;python3&#39;</span><span class="p">,</span> <span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;import sys; print(sorted(sys.modules.keys()))&#39;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vorgeladene Module in einem frischen Python-Prozess:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="nb">eval</span><span class="p">(</span><span class="n">ergebnis</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Weiter</span></div>
+<p>Damit ist Kapitel 1 – Fundament abgeschlossen. Im naechsten Notebook <strong>02 – Versionsverwaltung mit Git</strong> verlassen wir Python kurz und lernen das Werkzeug kennen, das ab jetzt den gesamten Kurs begleitet.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01b_namespaces_legb.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Namespaces legb</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01d_versionsverwaltung_git.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Versionsverwaltung git</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

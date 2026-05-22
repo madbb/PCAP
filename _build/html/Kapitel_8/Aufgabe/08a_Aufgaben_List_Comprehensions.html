@@ -1,0 +1,824 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aufgaben: List Comprehensions &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Aufgaben: Generators" href="08b_Aufgaben_Generators.html" />
+    <link rel="prev" title="Generators" href="../08b_generators.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08b_generators.html">Generators</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Aufgaben: List Comprehensions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="aufgaben-list-comprehensions">
+<h1>Aufgaben: List Comprehensions<a class="headerlink" href="#aufgaben-list-comprehensions" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Aufgaben: List Comprehensions</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python &nbsp;|&nbsp; PCAP 5.1 &nbsp;|&nbsp; Kapitel 8 &nbsp;|&nbsp; Notebook 08a</p>
+</div>
+</div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 1</span>
+Schleife zu Comprehension umschreiben
+</span>
+</div><p>Schreibe jede der folgenden Schleifen als List Comprehension um.
+Pruefe mit <code class="docutils literal notranslate"><span class="pre">==</span></code> dass beide Varianten dasselbe Ergebnis liefern.</p>
+<p><strong>1.1</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>1.2</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">woerter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hallo&#39;</span><span class="p">,</span> <span class="s1">&#39;welt&#39;</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;aetherion&#39;</span><span class="p">]</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">woerter</span><span class="p">:</span>
+    <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>1.3</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">:</span>
+    <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">z</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>1.4</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">helden</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">}]</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">helden</span><span class="p">:</span>
+    <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 2</span>
+if zum Filtern
+</span>
+</div><p>Gegeben:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">helden_hp</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">71</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Erstelle eine Liste aller HP-Werte unter 50 (verletzte Helden).</p></li>
+<li><p>Erstelle eine Liste aller HP-Werte die durch 5 teilbar sind.</p></li>
+<li><p>Erstelle eine Liste aller HP-Werte die sowohl ueber 40 als auch unter 90 liegen.</p></li>
+<li><p>Gegeben:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">woerter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Python&#39;</span><span class="p">,</span> <span class="s1">&#39;ist&#39;</span><span class="p">,</span> <span class="s1">&#39;eine&#39;</span><span class="p">,</span> <span class="s1">&#39;tolle&#39;</span><span class="p">,</span> <span class="s1">&#39;Sprache&#39;</span><span class="p">,</span> <span class="s1">&#39;fuer&#39;</span><span class="p">,</span> <span class="s1">&#39;alle&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Erstelle eine Liste aller Woerter die laenger als 4 Zeichen sind.
+5. Erstelle eine Liste aller Woerter die mit einem Grossbuchstaben beginnen.
+Nutze <code class="docutils literal notranslate"><span class="pre">w[0].isupper()</span></code>.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 3</span>
+if-else im Ausdruck: transformieren statt filtern
+</span>
+</div><p>Das <code class="docutils literal notranslate"><span class="pre">if</span></code> am Ende filtert. Das <code class="docutils literal notranslate"><span class="pre">if</span></code> im Ausdruck transformiert – alle Elemente bleiben.</p>
+<p>Gegeben: <code class="docutils literal notranslate"><span class="pre">helden_hp</span> <span class="pre">=</span> <span class="pre">[100,</span> <span class="pre">45,</span> <span class="pre">80,</span> <span class="pre">12,</span> <span class="pre">60,</span> <span class="pre">95,</span> <span class="pre">30,</span> <span class="pre">71]</span></code></p>
+<ol class="arabic simple">
+<li><p>Erstelle eine Liste die jeden Wert als <code class="docutils literal notranslate"><span class="pre">'verletzt'</span></code> oder <code class="docutils literal notranslate"><span class="pre">'gesund'</span></code> beschriftet
+(unter 50 = verletzt).</p></li>
+<li><p>Erstelle eine Liste die jeden Wert durch <code class="docutils literal notranslate"><span class="pre">0</span></code> ersetzt wenn er unter 30 liegt,
+sonst behaelt er seinen Wert (HP unter 30 gelten als besiegt).</p></li>
+<li><p>Erklaere als Kommentar den Unterschied zwischen:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">helden_hp</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">]</span>       <span class="c1"># Variante A</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">50</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">helden_hp</span><span class="p">]</span> <span class="c1"># Variante B</span>
+</pre></div>
+</div>
+<p>Wie viele Elemente hat jeweils das Ergebnis?</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 4</span>
+Vorhersage: List Comprehensions lesen
+</span>
+</div><p>Den Code nicht ausfuehren. Ergebnis als Kommentar schreiben, dann pruefen.</p>
+<p><strong>4.1</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p><strong>4.2</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>4.3</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">3</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)])</span>
+</pre></div>
+</div>
+<p><strong>4.4</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">woerter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;bb&#39;</span><span class="p">,</span> <span class="s1">&#39;ccc&#39;</span><span class="p">,</span> <span class="s1">&#39;dddd&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">w</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">woerter</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>4.5</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>4.6</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">daten</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Thorn&#39;</span><span class="p">,</span> <span class="mi">90</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">name</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">hp</span> <span class="ow">in</span> <span class="n">daten</span> <span class="k">if</span> <span class="n">hp</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">])</span>
+</pre></div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 5</span>
+Verschachtelte Comprehensions: zwei for-Klauseln
+</span>
+</div><ol class="arabic simple">
+<li><p>Erstelle alle moeglichen Paare aus zwei Listen:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">farben</span>  <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;blau&#39;</span><span class="p">,</span> <span class="s1">&#39;gruen&#39;</span><span class="p">]</span>
+<span class="n">groessen</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Ergebnis: <code class="docutils literal notranslate"><span class="pre">[('rot',</span> <span class="pre">'S'),</span> <span class="pre">('rot',</span> <span class="pre">'M'),</span> <span class="pre">...]</span></code> – 9 Paare insgesamt.
+2. Erstelle eine flache Liste aus einer verschachtelten:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Ergebnis: <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9]</span></code>
+3. Erstelle alle Paare aus einer Liste bei denen die Zahlen verschieden sind:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="c1"># [(1,2), (1,3), (1,4), (2,1), (2,3), ...]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>PCAP-Falle: Was ist der Unterschied zwischen diesen beiden?</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Gib beide aus und erklaere die Reihenfolge als Kommentar.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 6</span>
+Verschachtelte Comprehension mit if
+</span>
+</div><ol class="arabic simple">
+<li><p>Flache die Matrix aus Aufgabe 5.2 ab, aber behalte nur Werte groesser als 4.</p></li>
+<li><p>Erstelle alle Paare <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> aus <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> x <code class="docutils literal notranslate"><span class="pre">range(5)</span></code> bei denen <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">==</span> <span class="pre">4</span></code>.</p></li>
+<li><p>Gegeben:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">saetze</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Python ist toll&#39;</span><span class="p">,</span> <span class="s1">&#39;Hallo Welt&#39;</span><span class="p">,</span> <span class="s1">&#39;List Comprehensions sind praktisch&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Erstelle eine flache Liste aller Woerter aus allen Saetzen,
+die laenger als 3 Zeichen sind.
+4. Erklaere als Kommentar: Entspricht die Schachtelungstiefe der Comprehension
+der Schachtelungstiefe der aequivalenten Schleife?
+Zeige die Schleifenvariante zu Aufgabe 3.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 7</span>
+Dict- und Set-Comprehensions
+</span>
+</div><ol class="arabic simple">
+<li><p>Erstelle ein Dictionary das jeden Heldennamen auf seine Laenge abbildet:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">helden</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Aldric&#39;</span><span class="p">,</span> <span class="s1">&#39;Lyria&#39;</span><span class="p">,</span> <span class="s1">&#39;Thorn&#39;</span><span class="p">,</span> <span class="s1">&#39;Sera&#39;</span><span class="p">,</span> <span class="s1">&#39;Bjorn&#39;</span><span class="p">]</span>
+<span class="c1"># {&#39;Aldric&#39;: 6, &#39;Lyria&#39;: 5, ...}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Erstelle ein Dictionary das jeden Wert in <code class="docutils literal notranslate"><span class="pre">range(1,</span> <span class="pre">6)</span></code> auf sein Quadrat abbildet.</p></li>
+<li><p>Kehre ein Dictionary um (Schluessel werden Werte, Werte werden Schluessel):</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">original</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+<span class="c1"># {1: &#39;a&#39;, 2: &#39;b&#39;, 3: &#39;c&#39;}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Erstelle eine Menge (Set) aller eindeutigen Wortlaengen aus:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">saetze</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Python ist toll&#39;</span><span class="p">,</span> <span class="s1">&#39;Python macht Spass&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>Erklaere als Kommentar: Was ist der syntaktische Unterschied zwischen
+List-, Dict- und Set-Comprehension?</p></li>
+</ol>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 8</span>
+Fehler finden: Comprehension-Fallen
+</span>
+</div><p>Im folgenden Code stecken vier Fehler. Finde und korrigiere alle vier.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">zahlen</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+
+<span class="c1"># Fehler 1: if-else an falscher Stelle</span>
+<span class="n">gerade</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">zahlen</span> <span class="k">if</span> <span class="n">x</span> <span class="k">else</span> <span class="mi">0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Fehler 2: Reihenfolge der for-Klauseln</span>
+<span class="c1"># Soll [(1,4),(1,5),(2,4),(2,5),(3,4),(3,5)] ergeben</span>
+<span class="n">paare</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+
+<span class="c1"># Fehler 3: Dict-Comprehension Syntax</span>
+<span class="n">laengen</span> <span class="o">=</span> <span class="p">[</span><span class="n">w</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;hallo&#39;</span><span class="p">,</span> <span class="s1">&#39;welt&#39;</span><span class="p">]]</span>
+
+<span class="c1"># Fehler 4: set() statt Set-Comprehension</span>
+<span class="c1"># Soll {1, 4, 9, 16, 25} ergeben</span>
+<span class="n">quadrate</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># korrekt aber nicht Comprehension-Syntax</span>
+<span class="c1"># Schreibe als echte Set-Comprehension mit {}</span>
+</pre></div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 9</span>
+List Comprehension vs. map()/filter()
+</span>
+</div><p>Loesung jede Aufgabe auf zwei Wegen: als Comprehension und mit <code class="docutils literal notranslate"><span class="pre">map()</span></code>/<code class="docutils literal notranslate"><span class="pre">filter()</span></code>.
+Vergleiche die Ergebnisse mit <code class="docutils literal notranslate"><span class="pre">==</span></code>.</p>
+<p>Gegeben: <code class="docutils literal notranslate"><span class="pre">zahlen</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">4,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">8,</span> <span class="pre">9,</span> <span class="pre">10]</span></code></p>
+<ol class="arabic simple">
+<li><p>Alle geraden Zahlen quadrieren.</p></li>
+<li><p>Alle Zahlen groesser als 5 als String formatieren: <code class="docutils literal notranslate"><span class="pre">'Wert:</span> <span class="pre">6'</span></code>.</p></li>
+<li><p>Alle ungeraden Zahlen verdreifachen.</p></li>
+<li><p>Erklaere als Kommentar: Wann ist die Comprehension lesbarer,
+wann <code class="docutils literal notranslate"><span class="pre">map()</span></code>/<code class="docutils literal notranslate"><span class="pre">filter()</span></code>?</p></li>
+</ol>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Aufgabe 10</span>
+Kombination: Datentransformation
+</span>
+</div><p>Gegeben ist diese Datenbasis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">helden</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Aldric&#39;</span><span class="p">,</span>  <span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;Krieger&#39;</span><span class="p">,</span>    <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">18</span><span class="p">,</span> <span class="s1">&#39;punkte&#39;</span><span class="p">:</span> <span class="mi">1200</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyria&#39;</span><span class="p">,</span>   <span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;Magierin&#39;</span><span class="p">,</span>   <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;punkte&#39;</span><span class="p">:</span> <span class="mi">980</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Thorn&#39;</span><span class="p">,</span>   <span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;Waldlaeufer&#39;</span><span class="p">,</span><span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;punkte&#39;</span><span class="p">:</span> <span class="mi">1450</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sera&#39;</span><span class="p">,</span>    <span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;Paladin&#39;</span><span class="p">,</span>     <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">75</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;punkte&#39;</span><span class="p">:</span> <span class="mi">1100</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Bjorn&#39;</span><span class="p">,</span>   <span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;Krieger&#39;</span><span class="p">,</span>     <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;punkte&#39;</span><span class="p">:</span> <span class="mi">760</span><span class="p">},</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Mira&#39;</span><span class="p">,</span>    <span class="s1">&#39;klasse&#39;</span><span class="p">:</span> <span class="s1">&#39;Magierin&#39;</span><span class="p">,</span>    <span class="s1">&#39;hp&#39;</span><span class="p">:</span> <span class="mi">55</span><span class="p">,</span>  <span class="s1">&#39;staerke&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;punkte&#39;</span><span class="p">:</span> <span class="mi">830</span><span class="p">},</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Loesung jede Aufgabe als eine einzige List/Dict/Set-Comprehension:</p>
+<ol class="arabic simple">
+<li><p>Liste aller Heldennamen.</p></li>
+<li><p>Liste aller HP-Werte von Kriegern.</p></li>
+<li><p>Liste der Namen aller Helden mit HP unter 70 (verwundet).</p></li>
+<li><p>Dictionary <code class="docutils literal notranslate"><span class="pre">{name:</span> <span class="pre">punkte}</span></code> fuer alle Helden mit mehr als 1000 Punkten.</p></li>
+<li><p>Menge aller vorkommenden Klassen.</p></li>
+<li><p>Liste aller Helden als formatierten String: <code class="docutils literal notranslate"><span class="pre">'Aldric</span> <span class="pre">(Krieger):</span> <span class="pre">85</span> <span class="pre">HP'</span></code>.</p></li>
+<li><p>Dictionary <code class="docutils literal notranslate"><span class="pre">{klasse:</span> <span class="pre">[namen]}</span></code> – alle Namen pro Klasse.
+Tipp: Erst die Klassen ermitteln, dann pro Klasse filtern.</p></li>
+</ol>
+<p>Dokumentation: https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_8\Aufgabe"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../08b_generators.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Generators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="08b_Aufgaben_Generators.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aufgaben: Generators</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

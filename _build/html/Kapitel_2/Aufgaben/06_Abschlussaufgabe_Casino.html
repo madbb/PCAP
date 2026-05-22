@@ -1,0 +1,1110 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Abschlussaufgabe Casino &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Funktionen als daten" href="../../Kapitel_3/03a_funktionen_als_daten.html" />
+    <link rel="prev" title="Aufgaben: Genutzte Module" href="05_Aufgaben_genutzte_Module.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Abschlussaufgabe Casino</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="abschlussaufgabe-casino">
+<h1>Abschlussaufgabe Casino<a class="headerlink" href="#abschlussaufgabe-casino" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Practice Sheet: Casino-Bot</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python &nbsp;|&nbsp; PCAP Section 1: Module &amp; Packages &nbsp;|&nbsp; Practice 01</p>
+</div>
+</div><div style="background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.4rem 1.8rem;margin-bottom:1.5rem;font-family:'Segoe UI',sans-serif;">
+<p style="font-size:1.05rem;font-weight:700;color:#4fc3f7;margin:0 0 0.8rem 0;letter-spacing:0.05em;text-transform:uppercase;">Briefing</p>
+<p style="color:#c5cae9;margin:0 0 0.7rem 0;line-height:1.7;font-size:0.95rem;">Du bist Junior-Developer beim aufstrebenden Online-Casino <strong style="color:#f0f0f5;">"PyBet GmbH"</strong>. Dein Chef, der legendäre Willi Vollrisiko, hat gerade erfahren, dass euer Haupt-Bot abgestürzt ist, zehn Minuten vor dem großen Poker-Turnier.</p>
+<p style="color:#c5cae9;margin:0 0 0.7rem 0;line-height:1.7;font-size:0.95rem;">Willi ruft an: <em style="color:#4fc3f7;">"Ich brauch den Bot in einer Stunde. Ich weiß nicht was ein Import ist. Ich weiß nicht was ein Modul ist. Ich weiß nur: wenn das nicht läuft, machen wir beide heute Abend Überstunden."</em></p>
+<p style="color:#c5cae9;margin:0;line-height:1.7;font-size:0.95rem;">Deine Mission: Den Casino-Bot neu aufbauen mit <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.4em;border-radius:3px;">random</code>, <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.4em;border-radius:3px;">math</code> und <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.4em;border-radius:3px;">platform</code>. Willi schaut zu.</p>
+</div>
+<hr class="docutils" />
+<p><strong>Abgedeckter PCAP-Stoff:</strong> <code class="docutils literal notranslate"><span class="pre">1.1</span></code> Import-Varianten · <code class="docutils literal notranslate"><span class="pre">1.2</span></code> math-Modul · <code class="docutils literal notranslate"><span class="pre">1.3</span></code> random-Modul · <code class="docutils literal notranslate"><span class="pre">1.4</span></code> platform-Modul · <code class="docutils literal notranslate"><span class="pre">1.5</span></code> Eigene Module &amp; Packages</p>
+<p><strong>Aufgabentypen:</strong> Vorhersage, Fehler finden, Lückentext, Code-Snippets, Szenario-Mission</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 1.1 · 1.3</span>
+Checkpoint 1: Vorhersage-Aufgaben
+</span>
+</div>
+<p><strong>Regel:</strong> Den Code nicht ausführen. Ausgabe direkt als Kommentar in die Code-Zelle schreiben.</p>
+<p><strong>Aufgabe 1.1 - Was gibt das aus?</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">r</span>
+
+<span class="n">r</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Deine Antwort (als Kommentar im Code unten):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aufgabe 1.1</span>
+<span class="c1"># Ausgabe: ???</span>
+<span class="c1"># Begründung:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Aufgabe 1.2 - Was gibt das aus?</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">floor</span><span class="p">,</span> <span class="n">ceil</span>
+
+<span class="n">bet</span> <span class="o">=</span> <span class="mf">7.3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="n">bet</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">bet</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="o">-</span><span class="n">bet</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="o">-</span><span class="n">bet</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Deine Antwort:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aufgabe 1.2</span>
+<span class="c1"># floor(7.3)  → </span>
+<span class="c1"># ceil(7.3)   → </span>
+<span class="c1"># floor(-7.3) → </span>
+<span class="c1"># ceil(-7.3)  → </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 1.1 · 1.2 · 1.3</span>
+Checkpoint 2: Fehler finden
+</span>
+</div>
+<p><strong>Aufgabe:</strong> Im folgenden Code stecken 4 Fehler. Alle finden, korrigieren und die bereinigte Version in die Code-Zelle schreiben.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Willis erster Versuch</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">Random</span>                          <span class="c1"># Fehler ?</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span> <span class="n">imports</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">factorial</span>      <span class="c1"># Fehler ?</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">wuerfel</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>         <span class="c1"># Fehler ?</span>
+
+<span class="n">gewinn</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">wuerfel</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gewinn: </span><span class="si">{</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">gewinn</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Fehler ?</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deine korrigierte Version:</span>
+
+
+
+<span class="c1"># Fehler 1: </span>
+<span class="c1"># Fehler 2: </span>
+<span class="c1"># Fehler 3: </span>
+<span class="c1"># Fehler 4: </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 1.1 · 1.3 · 1.4</span>
+Checkpoint 3: Lückentext
+</span>
+</div>
+<p>Jede <code class="docutils literal notranslate"><span class="pre">______</span></code> steht für genau einen Bezeichner oder ein Schlüsselwort.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">______</span> <span class="n">random</span>                          <span class="c1"># (1) Ganzes Modul importieren</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span> <span class="n">______</span> <span class="n">ceil</span><span class="p">,</span> <span class="n">floor</span>           <span class="c1"># (2) Gezielter Import</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span> <span class="n">______</span> <span class="n">plt</span>             <span class="c1"># (3) Alias vergeben</span>
+
+<span class="c1"># Systeminfo ausgeben</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">______</span> <span class="p">())</span>                   <span class="c1"># (4) Betriebssystem-Name</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">python_______</span><span class="p">())</span>             <span class="c1"># (5) Python-Version als Tuple</span>
+
+<span class="c1"># Zufallswerte</span>
+<span class="n">karten</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;As&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;Bube&#39;</span><span class="p">,</span> <span class="s1">&#39;Dame&#39;</span><span class="p">,</span> <span class="s1">&#39;König&#39;</span><span class="p">]</span>
+<span class="n">hand</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">______</span><span class="p">(</span><span class="n">karten</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>        <span class="c1"># (6) 2 Karten ohne Zurücklegen ziehen</span>
+<span class="n">wert</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">______</span><span class="p">()</span>                 <span class="c1"># (7) Float zwischen 0.0 und 1.0</span>
+
+<span class="c1"># Mathematik</span>
+<span class="n">einsatz</span> <span class="o">=</span> <span class="mf">99.9</span>
+<span class="n">rounded</span> <span class="o">=</span> <span class="n">______</span><span class="p">(</span><span class="n">einsatz</span><span class="p">)</span>              <span class="c1"># (8) Aufrunden (ohne math.)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deine Antworten:</span>
+<span class="c1"># (1) ______</span>
+<span class="c1"># (2) ______</span>
+<span class="c1"># (3) ______</span>
+<span class="c1"># (4) ______</span>
+<span class="c1"># (5) _____________</span>
+<span class="c1"># (6) ______</span>
+<span class="c1"># (7) ______</span>
+<span class="c1"># (8) ______</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 1.1 · 1.2 · 1.3 · 1.4</span>
+Code-Snippets: Einzelfunktionen implementieren
+</span>
+</div>
+<p>Jede Funktion nach der Beschreibung implementieren. Die assert-Blöcke am Ende jeder Zelle zeigen, ob die Lösung korrekt ist.</p>
+<hr class="docutils" />
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Snippet 1</span>
+wuerfel_wurf(): Würfelwurf mit konfigurierbaren Seiten
+</span>
+</div>
+<p>Schreibe eine Funktion <code class="docutils literal notranslate"><span class="pre">wuerfel_wurf(seiten=6)</span></code> die:</p>
+<ul class="simple">
+<li><p>Eine zufällige Ganzzahl zwischen <code class="docutils literal notranslate"><span class="pre">1</span></code> und <code class="docutils literal notranslate"><span class="pre">seiten</span></code> (inklusiv) zurückgibt</p></li>
+<li><p>Das <code class="docutils literal notranslate"><span class="pre">random</span></code>-Modul verwendet</p></li>
+<li><p>Bei <code class="docutils literal notranslate"><span class="pre">seiten</span> <span class="pre">&lt;</span> <span class="pre">2</span></code> einen <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> mit der Nachricht <code class="docutils literal notranslate"><span class="pre">&quot;Würfel</span> <span class="pre">braucht</span> <span class="pre">mindestens</span> <span class="pre">2</span> <span class="pre">Seiten&quot;</span></code> wirft</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">wuerfel_wurf</span><span class="p">(</span><span class="n">seiten</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+    <span class="c1"># Deine Implementierung:</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># --- Testaufrufe (sollen ohne Fehler laufen) ---</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">wuerfel_wurf</span><span class="p">()</span>
+<span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">ergebnis</span> <span class="o">&lt;=</span> <span class="mi">6</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Erwartet: 1-6, erhalten: </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">ergebnis20</span> <span class="o">=</span> <span class="n">wuerfel_wurf</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="k">assert</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">ergebnis20</span> <span class="o">&lt;=</span> <span class="mi">20</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Erwartet: 1-20, erhalten: </span><span class="si">{</span><span class="n">ergebnis20</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">wuerfel_wurf</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;ValueError wurde nicht geworfen!&quot;</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="s2">&quot;mindestens 2&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Snippet 1: alle Tests bestanden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Snippet 2</span>
+berechne_gewinn(): Auszahlung mit mathematischer Rundung
+</span>
+</div>
+<p>Schreibe <code class="docutils literal notranslate"><span class="pre">berechne_gewinn(einsatz,</span> <span class="pre">multiplikator)</span></code> die:</p>
+<ul class="simple">
+<li><p>Den Brutto-Gewinn als <code class="docutils literal notranslate"><span class="pre">einsatz</span> <span class="pre">*</span> <span class="pre">multiplikator</span></code> berechnet</p></li>
+<li><p>Nur den ganzzahligen Teil (abrunden) als <code class="docutils literal notranslate"><span class="pre">int</span></code> zurückgibt</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">math.floor()</span></code> <strong>nicht</strong> <code class="docutils literal notranslate"><span class="pre">int()</span></code> oder <code class="docutils literal notranslate"><span class="pre">round()</span></code> verwenden</p></li>
+<li><p>Hinweis: Was ist der Unterschied zwischen <code class="docutils literal notranslate"><span class="pre">floor()</span></code> und <code class="docutils literal notranslate"><span class="pre">int()</span></code> bei negativen Zahlen?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">floor</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne_gewinn</span><span class="p">(</span><span class="n">einsatz</span><span class="p">,</span> <span class="n">multiplikator</span><span class="p">):</span>
+    <span class="c1"># Deine Implementierung:</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># --- Testaufrufe ---</span>
+<span class="k">assert</span> <span class="n">berechne_gewinn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span> <span class="o">==</span> <span class="mi">25</span>
+<span class="k">assert</span> <span class="n">berechne_gewinn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="k">assert</span> <span class="n">berechne_gewinn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mi">15</span>   <span class="c1"># Achtung: floor vs int!</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">berechne_gewinn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="nb">int</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Snippet 2: alle Tests bestanden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Snippet 3</span>
+karten_ziehen(): Hand aus einem Kartenspiel
+</span>
+</div>
+<p>Schreibe <code class="docutils literal notranslate"><span class="pre">karten_ziehen(deck,</span> <span class="pre">anzahl)</span></code> die:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">anzahl</span></code> Karten <strong>ohne Zurücklegen</strong> aus <code class="docutils literal notranslate"><span class="pre">deck</span></code> zieht und als Liste zurückgibt</p></li>
+<li><p>Die Originalreihenfolge in <code class="docutils literal notranslate"><span class="pre">deck</span></code> <strong>nicht</strong> verändert</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random.sample()</span></code> verwendet (nicht <code class="docutils literal notranslate"><span class="pre">random.choices()</span></code>!)</p></li>
+<li><p>Bei <code class="docutils literal notranslate"><span class="pre">anzahl</span> <span class="pre">&gt;</span> <span class="pre">len(deck)</span></code> einen <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> wirft</p></li>
+</ul>
+<blockquote>
+<div><p>PCAP-Falle: Was ist der Unterschied zwischen <code class="docutils literal notranslate"><span class="pre">sample()</span></code> und <code class="docutils literal notranslate"><span class="pre">choices()</span></code>?</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">KARTENSPIEL</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;Bube&#39;</span><span class="p">,</span> <span class="s1">&#39;Dame&#39;</span><span class="p">,</span> <span class="s1">&#39;König&#39;</span><span class="p">,</span> <span class="s1">&#39;As&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>  <span class="c1"># 52 Karten</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">karten_ziehen</span><span class="p">(</span><span class="n">deck</span><span class="p">,</span> <span class="n">anzahl</span><span class="p">):</span>
+    <span class="c1"># Deine Implementierung:</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># --- Testaufrufe ---</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">hand</span> <span class="o">=</span> <span class="n">karten_ziehen</span><span class="p">(</span><span class="n">KARTENSPIEL</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hand</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Erwartet 5 Karten, erhalten: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">hand</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">KARTENSPIEL</span><span class="p">)</span> <span class="o">==</span> <span class="mi">52</span><span class="p">,</span> <span class="s2">&quot;Das Originaldeck wurde verändert!&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">karten_ziehen</span><span class="p">([</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">],</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;ValueError wurde nicht geworfen!&quot;</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Snippet 3: alle Tests bestanden&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deine Hand: </span><span class="si">{</span><span class="n">hand</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+<span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Snippet 4</span>
+system_check(): Plattform-Report
+</span>
+</div>
+<p>Schreibe <code class="docutils literal notranslate"><span class="pre">system_check()</span></code> die einen Dictionary zurückgibt mit:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;os&quot;</span></code> → Betriebssystem-Name (z.B. <code class="docutils literal notranslate"><span class="pre">&quot;Windows&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;Linux&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;python&quot;</span></code> → Python-Version als String (z.B. <code class="docutils literal notranslate"><span class="pre">&quot;3.11.2&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;maschine&quot;</span></code> → Prozessorarchitektur (z.B. <code class="docutils literal notranslate"><span class="pre">&quot;AMD64&quot;</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;python_tuple&quot;</span></code> → Python-Version als Tuple von 3 Strings</p></li>
+</ul>
+<p>Verwende <strong>ausschließlich</strong> das <code class="docutils literal notranslate"><span class="pre">platform</span></code>-Modul (keine anderen Importe).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">system_check</span><span class="p">():</span>
+    <span class="c1"># Deine Implementierung:</span>
+    <span class="k">pass</span>
+
+
+<span class="c1"># --- Testaufrufe ---</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">system_check</span><span class="p">()</span>
+
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="s2">&quot;Rückgabe muss ein Dictionary sein&quot;</span>
+<span class="k">assert</span> <span class="s2">&quot;os&quot;</span> <span class="ow">in</span> <span class="n">info</span>
+<span class="k">assert</span> <span class="s2">&quot;python&quot;</span> <span class="ow">in</span> <span class="n">info</span>
+<span class="k">assert</span> <span class="s2">&quot;maschine&quot;</span> <span class="ow">in</span> <span class="n">info</span>
+<span class="k">assert</span> <span class="s2">&quot;python_tuple&quot;</span> <span class="ow">in</span> <span class="n">info</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;python_tuple&quot;</span><span class="p">],</span> <span class="nb">tuple</span><span class="p">),</span> <span class="s2">&quot;python_tuple muss ein Tuple sein&quot;</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;python_tuple&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Tuple muss 3 Einträge haben&quot;</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">info</span><span class="p">[</span><span class="s2">&quot;python_tuple&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Tuple-Einträge müssen Strings sein&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Snippet 4: alle Tests bestanden&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 1.1 · 1.2 · 1.3 · 1.4 · 1.5</span>
+Szenario-Mission: Der Casino-Bot
+</span>
+</div>
+<div style="background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.2rem 1.6rem;margin-bottom:1.5rem;font-family:'Segoe UI',sans-serif;">
+<p style="color:#4fc3f7;font-weight:700;margin:0 0 0.6rem 0;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.05em;">Aufgabenstellung</p>
+<p style="color:#c5cae9;margin:0 0 0.6rem 0;line-height:1.7;font-size:0.92rem;">Der Bot muss folgendes können:</p>
+<ul style="color:#c5cae9;margin:0;padding-left:1.4rem;line-height:2;font-size:0.92rem;">
+<li>Spielersitzungen mit Name und Startguthaben verwalten</li>
+<li>Würfelspiel: Spieler würfelt, bei 6 → Einsatz x 5, sonst verloren</li>
+<li>Kartenspiel: 5 Karten ziehen, Preis hängt von Anzahl Asse ab</li>
+<li>System-Report ausgeben (Plattform, Python-Version)</li>
+<li>Alle Gewinne mathematisch korrekt runden</li>
+</ul>
+</div>
+<p>Deine Aufgabe: Fülle alle <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TODO</span></code>-Stellen aus. Verändere nichts außerhalb der TODOs.</p>
+<p>Die <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">TESTBLOCK</span></code>-Zelle am Ende darf <strong>nicht</strong> verändert werden. Sie zeigt an, ob alles klappt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1">#  casino_bot.py  |  PyBet GmbH  |  Willi wartet</span>
+<span class="c1"># ============================================================</span>
+
+<span class="c1"># TODO 1: Importiere random (ganzes Modul)</span>
+<span class="c1"># TODO 2: Importiere floor und sqrt aus math</span>
+<span class="c1"># TODO 3: Importiere platform mit Alias &#39;plt&#39;</span>
+
+
+<span class="c1"># ── Konstanten ──────────────────────────────────────────────</span>
+<span class="n">DECK</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span> <span class="s1">&#39;10&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Bube&#39;</span><span class="p">,</span> <span class="s1">&#39;Dame&#39;</span><span class="p">,</span> <span class="s1">&#39;König&#39;</span><span class="p">,</span> <span class="s1">&#39;As&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span>
+
+<span class="n">AUSZAHLUNGSTABELLE</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>    <span class="c1"># kein As → kein Gewinn</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>    <span class="c1"># 1 As    → Einsatz x5</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>   <span class="c1"># 2 Asse  → Einsatz x15</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>   <span class="c1"># 3 Asse  → Einsatz x50</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>  <span class="c1"># 4 Asse  → Jackpot!</span>
+<span class="p">}</span>
+
+
+<span class="c1"># ── Spieler-Session ─────────────────────────────────────────</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CasinoSession</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Verwaltet eine Spielersitzung beim Casino-Bot.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spieler_name</span><span class="p">,</span> <span class="n">startguthaben</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">spieler_name</span>
+        <span class="c1"># TODO 4: Speichere startguthaben als self.guthaben</span>
+        <span class="c1"># TODO 5: Erstelle self.verlauf als leere Liste</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_buche</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">betrag</span><span class="p">,</span> <span class="n">beschreibung</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Intern: Buche einen Betrag (positiv = Gewinn, negativ = Verlust).&quot;&quot;&quot;</span>
+        <span class="c1"># TODO 6: Addiere betrag zu self.guthaben</span>
+        <span class="c1"># TODO 7: Hänge den String f&quot;{beschreibung}: {betrag:+}&quot; an self.verlauf an</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># ── Würfelspiel ─────────────────────────────────────────</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wuerfel_spiel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">einsatz</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Würfelt mit einem 6-seitigen Würfel.</span>
+<span class="sd">        Bei einer 6: Gewinn = floor(einsatz * 5)</span>
+<span class="sd">        Sonst: Verlust = einsatz</span>
+<span class="sd">        Gibt (wurf, gewinn_oder_verlust) zurück.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO 8: Würfle eine Zahl zwischen 1 und 6 mit random.randint</span>
+        <span class="n">wurf</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+        <span class="k">if</span> <span class="n">wurf</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="c1"># TODO 9: Berechne gewinn als floor(einsatz * 5), buche positiv</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO 10: Buche einsatz als negativen Verlust</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># TODO 11: Gib (wurf, gewinn_oder_verlust) zurück</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+    <span class="c1"># ── Kartenspiel ─────────────────────────────────────────</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">karten_spiel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">einsatz</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Zieht 5 Karten aus DECK.</span>
+<span class="sd">        Gewinn hängt von Anzahl Asse in der Hand ab (siehe AUSZAHLUNGSTABELLE).</span>
+<span class="sd">        Gibt (hand, anzahl_asse, gewinn_oder_verlust) zurück.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO 12: Ziehe 5 Karten mit random.sample aus DECK</span>
+        <span class="n">hand</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+        <span class="c1"># TODO 13: Zähle wie viele &#39;As&#39; in der hand sind</span>
+        <span class="n">anzahl_asse</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+        <span class="n">multiplikator</span> <span class="o">=</span> <span class="n">AUSZAHLUNGSTABELLE</span><span class="p">[</span><span class="n">anzahl_asse</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">multiplikator</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># TODO 14: Berechne gewinn als floor(einsatz * multiplikator), buche positiv</span>
+            <span class="k">pass</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># TODO 15: Buche einsatz als negativen Verlust</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># TODO 16: Gib (hand, anzahl_asse, gewinn_oder_verlust) zurück</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+    <span class="c1"># ── System-Report ────────────────────────────────────────</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">system_report</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gibt einen formatierten Report als String zurück.</span>
+<span class="sd">        Enthält: Spielername, aktuelles Guthaben, OS, Python-Version.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO 17: Hole Betriebssystem mit plt.system()</span>
+        <span class="n">os_name</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+        <span class="c1"># TODO 18: Hole Python-Version-Tuple mit plt.python_version_tuple()</span>
+        <span class="n">py_version</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+        <span class="c1"># TODO 19: Formatiere py_version als &quot;Major.Minor.Patch&quot; String</span>
+        <span class="n">py_str</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># ersetzen</span>
+
+        <span class="n">report</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;=== PyBet System Report ===</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Spieler  : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Guthaben : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">guthaben</span><span class="si">}</span><span class="s2"> €</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;System   : </span><span class="si">{</span><span class="n">os_name</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Python   : </span><span class="si">{</span><span class="n">py_str</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">report</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;CasinoSession(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, Guthaben=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">guthaben</span><span class="si">}</span><span class="s2">)&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ============================================================</span>
+<span class="c1">#  TESTBLOCK - nicht verändern!</span>
+<span class="c1"># ============================================================</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>  <span class="c1"># nur für den Test</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2024</span><span class="p">)</span>
+
+<span class="c1"># Test 1: Session erstellen</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">CasinoSession</span><span class="p">(</span><span class="s2">&quot;Willi&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">session</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;Willi&quot;</span>
+<span class="k">assert</span> <span class="n">session</span><span class="o">.</span><span class="n">guthaben</span> <span class="o">==</span> <span class="mi">500</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">verlauf</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 1: Session erstellt&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test 2: __str__</span>
+<span class="k">assert</span> <span class="s2">&quot;Willi&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s2">&quot;500&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">session</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 2: __str__ funktioniert&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test 3: Würfelspiel</span>
+<span class="n">guthaben_vorher</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">guthaben</span>
+<span class="n">wurf</span><span class="p">,</span> <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">wuerfel_spiel</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">wurf</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">wurf</span> <span class="o">&lt;=</span> <span class="mi">6</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">verlauf</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">wurf</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="mi">50</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">session</span><span class="o">.</span><span class="n">guthaben</span> <span class="o">==</span> <span class="n">guthaben_vorher</span> <span class="o">+</span> <span class="n">ergebnis</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="o">-</span><span class="mi">50</span>
+    <span class="k">assert</span> <span class="n">session</span><span class="o">.</span><span class="n">guthaben</span> <span class="o">==</span> <span class="n">guthaben_vorher</span> <span class="o">-</span> <span class="mi">50</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test 3: Würfelspiel (Wurf: </span><span class="si">{</span><span class="n">wurf</span><span class="si">}</span><span class="s2">, Ergebnis: </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">:</span><span class="s2">+</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test 4: Kartenspiel</span>
+<span class="n">hand</span><span class="p">,</span> <span class="n">asse</span><span class="p">,</span> <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">karten_spiel</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">hand</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">hand</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">asse</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">asse</span> <span class="o">&lt;=</span> <span class="mi">4</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">session</span><span class="o">.</span><span class="n">verlauf</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test 4: Kartenspiel (Hand: </span><span class="si">{</span><span class="n">hand</span><span class="si">}</span><span class="s2">, Asse: </span><span class="si">{</span><span class="n">asse</span><span class="si">}</span><span class="s2">, Ergebnis: </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">:</span><span class="s2">+</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test 5: System Report</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">system_report</span><span class="p">()</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">report</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span>
+<span class="k">assert</span> <span class="s2">&quot;Willi&quot;</span> <span class="ow">in</span> <span class="n">report</span>
+<span class="k">assert</span> <span class="s2">&quot;System&quot;</span> <span class="ow">in</span> <span class="n">report</span>
+<span class="k">assert</span> <span class="s2">&quot;Python&quot;</span> <span class="ow">in</span> <span class="n">report</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test 5: System Report&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Alle Tests bestanden.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 1.5</span>
+Bonus: Eigenes Package
+</span>
+</div>
+<p>Willi möchte den Casino-Bot als <strong>eigenständiges Package</strong> veröffentlichen. Erstelle folgende Dateistruktur (nur als Kommentar, kein echtes Filesystem):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>pybet/
+├── __init__.py
+├── session.py       ← CasinoSession-Klasse
+├── spiele.py        ← wuerfel_spiel, karten_spiel als freie Funktionen
+└── utils.py         ← system_check, berechne_gewinn
+</pre></div>
+</div>
+<p><strong>Aufgabe:</strong></p>
+<ol class="arabic simple">
+<li><p>Was muss in <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> stehen, damit <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">pybet</span> <span class="pre">import</span> <span class="pre">CasinoSession</span></code> funktioniert?</p></li>
+<li><p>Schreibe den Inhalt von <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in die Code-Zelle unten</p></li>
+<li><p>Wie würde ein anderes Skript <code class="docutils literal notranslate"><span class="pre">casino_main.py</span></code> das Package importieren? Schreibe 3 verschiedene gültige Import-Varianten (PCAP 1.1)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aufgabe 1 + 2: Inhalt von pybet/__init__.py</span>
+
+
+<span class="c1"># Aufgabe 3: 3 Import-Varianten in casino_main.py</span>
+<span class="c1"># Variante A:</span>
+
+<span class="c1"># Variante B:</span>
+
+<span class="c1"># Variante C:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.2rem 1.6rem;margin-top:2.5rem;font-family:'Segoe UI',sans-serif;">
+<p style="color:#4fc3f7;font-weight:700;margin:0 0 0.8rem 0;font-size:0.85rem;text-transform:uppercase;letter-spacing:0.06em;">PCAP-Prüfungshinweise: Section 1</p>
+<ul style="color:#c5cae9;margin:0;padding-left:1.4rem;line-height:2;font-size:0.88rem;">
+<li><strong style="color:#f0f0f5;">import as</strong> macht den Originalnamen ungültig. <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">import platform as plt</code> → <code style="background:#0b1929;color:#ef9a9a;padding:0.1em 0.35em;border-radius:3px;">platform.system()</code> ist dann ungültig.</li>
+<li><strong style="color:#f0f0f5;">floor() vs int()</strong> bei negativen Zahlen: <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">floor(-7.3) = -8</code>, aber <code style="background:#0b1929;color:#4fc3f7;padding:0.1em 0.35em;border-radius:3px;">int(-7.3) = -7</code></li>
+<li><strong style="color:#f0f0f5;">sample() vs choices()</strong>: sample = ohne Zurücklegen, choices = mit Zurücklegen</li>
+<li><strong style="color:#f0f0f5;">python_version_tuple()</strong> gibt immer Strings zurück, keine ints.</li>
+<li><strong style="color:#f0f0f5;">dir(modul)</strong> gibt eine Liste von Strings zurück, alphabetisch sortiert</li>
+<li><strong style="color:#f0f0f5;">seed()</strong> macht Zufallssequenzen reproduzierbar (wichtig für Tests)</li>
+</ul>
+</div></section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_2\Aufgaben"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="05_Aufgaben_genutzte_Module.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Aufgaben: Genutzte Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../Kapitel_3/03a_funktionen_als_daten.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Funktionen als daten</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

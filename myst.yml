@@ -1,0 +1,142 @@
+version: 1
+project:
+  title: PCAP Python Kurs
+  authors:
+    - name: Marcel
+  toc:
+    - file: Kapitel_0/00_linksammlung.ipynb
+    - title: Kapitel 1 – Laufzeitmodell & Werkzeuge
+      children:
+        - file: Kapitel_1/01a_laufzeitmodell_python.ipynb
+        - file: Kapitel_1/01b_namespaces_legb.ipynb
+        - file: Kapitel_1/01c_import_system.ipynb
+        - file: Kapitel_1/01d_versionsverwaltung_git.ipynb
+        - file: Kapitel_1/01e_pycharm_debugging.ipynb
+        - file: Kapitel_1/01f_debugging_step_by_step.ipynb
+    - title: Kapitel 2 – Module & Pakete
+      children:
+        - file: Kapitel_2/02a_Module.ipynb
+        - file: Kapitel_2/02b_Random_Modul.ipynb
+        - file: Kapitel_2/02c_Platform_Modul.ipynb
+        - file: Kapitel_2/02d_Math_Modul.ipynb
+        - file: Kapitel_2/02e_Pakete.ipynb
+        - file: Kapitel_2/Aufgaben/01_Aufgaben_Module.ipynb
+        - file: Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.ipynb
+        - file: Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.ipynb
+        - file: Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.ipynb
+        - file: Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.ipynb
+        - file: Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.ipynb
+    - title: Kapitel 3 – Funktionale Programmierung
+      children:
+        - file: Kapitel_3/03a_funktionen_als_daten.ipynb
+        - file: Kapitel_3/03b_funktionale_programmierung.ipynb
+        - file: Kapitel_3/03b2_flexible_parameter.ipynb
+        - file: Kapitel_3/03c_closures.ipynb
+        - file: Kapitel_3/03d_decorators.ipynb
+        - file: Kapitel_3/03e_lambda.ipynb
+        - file: Kapitel_3/03f_map_filter.ipynb
+        - file: Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.ipynb
+        - file: Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.ipynb
+        - file: Kapitel_3/Aufgaben/03c_Aufgaben_Closures.ipynb
+        - file: Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.ipynb
+        - file: Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.ipynb
+        - file: Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.ipynb
+        - file: Kapitel_3/Aufgaben/03g_Szenario_PyTunes.ipynb
+    - title: Kapitel 4 – Objektorientierung
+      children:
+        - file: Kapitel_4/04a_oop_grundlagen.ipynb
+        - file: Kapitel_4/04b_oop_variablen.ipynb
+        - file: Kapitel_4/04c_oop_introspection.ipynb
+        - file: Kapitel_4/04d_oop_vererbung.ipynb
+        - file: Kapitel_4/04e_oop_erweiterung.ipynb
+        - file: Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.ipynb
+        - file: Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.ipynb
+        - file: Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.ipynb
+        - file: Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.ipynb
+        - file: Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.ipynb
+    - title: Kapitel 5 – Exceptions & Testing
+      children:
+        - file: Kapitel_5/05a_exceptions_grundlagen.ipynb
+        - file: Kapitel_5/05b_exceptions_hierarchie.ipynb
+        - file: Kapitel_5/05c_eigene_exceptions.ipynb
+        - file: Kapitel_5/05d_unittests.ipynb
+        - file: Kapitel_5/05e_multithreading.ipynb
+        - file: Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.ipynb
+        - file: Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.ipynb
+        - file: Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.ipynb
+    - title: Kapitel 6 – Strings & Regex
+      children:
+        - file: Kapitel_6/06a_strings_encoding.ipynb
+        - file: Kapitel_6/06b_string_methoden.ipynb
+        - file: Kapitel_6/06c_regex.ipynb
+        - file: Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.ipynb
+        - file: Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.ipynb
+        - file: Kapitel_6/Aufgaben/06c_Aufgaben_Regex.ipynb
+    - title: Kapitel 7 – Dateien & I/O
+      children:
+        - file: Kapitel_7/07_io_dateien.ipynb
+        - file: Kapitel_7/07b_dateien_lesen_schreiben.ipynb
+        - file: Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.ipynb
+        - file: Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.ipynb
+        - file: Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.ipynb
+        - file: Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.ipynb
+    - title: Kapitel 8 – Comprehensions & Generatoren
+      children:
+        - file: Kapitel_8/08_list_comprehensions.ipynb
+        - file: Kapitel_8/08b_generators.ipynb
+        - file: Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.ipynb
+        - file: Kapitel_8/Aufgabe/08b_Aufgaben_Generators.ipynb
+        - file: Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.ipynb
+    - title: Kapitel 9 – Prüfungsvorbereitung
+      children:
+        - file: Kapitel_9/09a_prep_module_exceptions.ipynb
+        - file: Kapitel_9/09b_prep_strings.ipynb
+        - file: Kapitel_9/09c_prep_oop.ipynb
+        - file: Kapitel_9/09d_prep_misc.ipynb
+    - title: Kapitel 10 – Testing & CI/CD
+      children:
+        - file: Kapitel_10/10a_testing_einfuehrung.ipynb
+        - file: Kapitel_10/10b_pytest_grundlagen.ipynb
+        - file: Kapitel_10/10c_pytest_fixtures_coverage.ipynb
+        - file: Kapitel_10/10d_github_actions.ipynb
+    - title: Kapitel 11 – Tkinter GUI
+      children:
+        - file: Kapitel_11/11a_tkinter_grundlagen.ipynb
+        - file: Kapitel_11/11b_tkinter_events.ipynb
+        - file: Kapitel_11/11c_tkinter_listen_tabellen.ipynb
+        - file: Kapitel_11/11d_tkinter_layout_dialoge.ipynb
+        - file: Kapitel_11/11b_aufgabe_taschenrechner.ipynb
+    - title: Kapitel 12 – Web Services & Scraping
+      children:
+        - file: Kapitel_12/12a_web_services_rest.ipynb
+        - file: Kapitel_12/12b_web_scraping.ipynb
+        - file: Kapitel_12/Aufgaben/aufgaben_12a_web_services.ipynb
+        - file: Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.ipynb
+    - title: Kapitel 13 – Projekte
+      children:
+        - file: Kapitel_13/13_projekt_mastermind.ipynb
+        - file: Kapitel_13/13_projekt_mastermind_loesung.ipynb
+        - file: Kapitel_13/13_projekt_mp3.ipynb
+        - file: Kapitel_13/13_projekt_mp3_loesung.ipynb
+    - title: Kapitel 14 – PCAP Prüfungsvorbereitung
+      children:
+        - file: Kapitel_14/PCAP__100_Fragen.ipynb
+        - file: Kapitel_14/Uebungsklausur_40_Fragen.ipynb
+        - file: Kapitel_14/Uebungsklausur_Loesungen.ipynb
+        - file: Kapitel_14/Uebungsklausur2_40_Fragen.ipynb
+        - file: Kapitel_14/Uebungsklausur2_Loesungen.ipynb
+        - file: Kapitel_14/Uebungsklausur3_40_Fragen.ipynb
+        - file: Kapitel_14/Uebungsklausur3_Loesungen.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_exceptions.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_introspektion.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_io.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_list_comprehension.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_module_pakete.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_oop.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_strings.ipynb
+        - file: Kapitel_14/Aufgaben_pcap_vererbung.ipynb
+ 
+site:
+  template: book-theme
+  options:
+    folders: true

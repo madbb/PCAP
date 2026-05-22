@@ -1,0 +1,950 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Strings encoding &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_6/06a_strings_encoding';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="String methoden" href="06b_string_methoden.html" />
+    <link rel="prev" title="Aufgaben: Eigene Exceptions" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_6/06a_strings_encoding.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Strings encoding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="strings-encoding">
+<h1>Strings encoding<a class="headerlink" href="#strings-encoding" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Strings: Encoding und Grundoperationen</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 6: Strings &nbsp;|&nbsp; Notebook 06a</p>
+</div>
+</div><p><strong>Legende</strong></p>
+<blockquote>
+<div><p><strong>[PCAP 3.1 / 3.2]</strong> Inhalt wird in der Pruefung abgefragt<br />
+<strong>[Kursinhalt]</strong> Praxiswissen fuer den Kurs, nicht pruefungsrelevant</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.1</span>
+1. Das Grundproblem: Computer kennen keine Buchstaben
+</span>
+</div><p>Ein Computer speichert alles als Zahlen – genauer: als Folgen von Nullen und Einsen. Zahlen, Bilder, Musik – alles ist letztlich eine Zahl.</p>
+<p>Aber was ist mit Text? Das Zeichen <code class="docutils literal notranslate"><span class="pre">'A'</span></code> ist keine Zahl. Damit ein Computer Text speichern kann, braucht man eine <strong>Vereinbarung</strong>: Jedes Zeichen bekommt eine Nummer. Das nennt man <strong>Encoding</strong> oder <strong>Zeichenkodierung</strong>.</p>
+<p>Die erste weitverbreitete Vereinbarung hiess <strong>ASCII</strong> (American Standard Code for Information Interchange), entwickelt in den 1960ern. Sie legte fest: <code class="docutils literal notranslate"><span class="pre">'A'</span></code> hat die Nummer 65, <code class="docutils literal notranslate"><span class="pre">'B'</span></code> hat 66, <code class="docutils literal notranslate"><span class="pre">'a'</span></code> hat 97, und so weiter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Python zeigt uns die Zahlen hinter den Zeichen -- mit ord()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>   <span class="c1"># 65</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;B&#39;</span><span class="p">))</span>   <span class="c1"># 66</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>   <span class="c1"># 97  -- Kleinbuchstaben haben andere Nummern!</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">))</span>   <span class="c1"># 48  -- die Ziffer 0, nicht die Zahl null</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>   <span class="c1"># 32  -- sogar ein Leerzeichen hat eine Nummer</span>
+
+<span class="c1"># Und chr() macht das Umgekehrte: Nummer -&gt; Zeichen</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">65</span><span class="p">))</span>    <span class="c1"># A</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">66</span><span class="p">))</span>    <span class="c1"># B</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">97</span><span class="p">))</span>    <span class="c1"># a</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>ASCII definiert 128 Zeichen – die Nummern 0 bis 127. Das reicht fuer englische Buchstaben, Ziffern und Sonderzeichen. Aber fuer Umlaute wie <code class="docutils literal notranslate"><span class="pre">ä</span></code>, <code class="docutils literal notranslate"><span class="pre">ö</span></code>, <code class="docutils literal notranslate"><span class="pre">ü</span></code> oder gar chinesische Zeichen ist kein Platz. Das war fuer die ersten Computer ausreichend – aber nicht fuer eine globale Welt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die druckbaren ASCII-Zeichen (32-126)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Code | Zeichen&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">15</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">127</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">16</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="nb">chr</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="si">}</span><span class="s1">  &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.1</span>
+2. Unicode -- ein Standard fuer alle Sprachen der Welt
+</span>
+</div><p>In den 1980ern gab es ein Chaos: Jedes Land entwickelte eigene Erweiterungen von ASCII. Deutsche Texte nutzten einen anderen Code als japanische, franzoesische anders als arabische. Dateien die auf einem System korrekt aussahen, zeigten auf einem anderen nur Kauderwelsch.</p>
+<p>Die Loesung: <strong>Unicode</strong>. Ein einziges, universelles System das jedem Zeichen aller Sprachen der Welt eine eindeutige Nummer zuweist – den <strong>Codepoint</strong>. Heute hat Unicode ueber 140.000 Zeichen – von Lateinisch ueber Arabisch und Chinesisch bis zu Emojis.</p>
+<p>Die ersten 128 Unicode-Codepoints sind identisch mit ASCII – das war bewusst, um Kompatibilitaet zu gewaehrleisten.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unicode geht weit ueber ASCII hinaus</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;ä&#39;</span><span class="p">))</span>    <span class="c1"># 228  -- jenseits von ASCII (0-127)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;€&#39;</span><span class="p">))</span>    <span class="c1"># 8364</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;中&#39;</span><span class="p">))</span>   <span class="c1"># 20013 -- chinesisches Zeichen</span>
+
+<span class="c1"># Umgekehrt: aus Codepoint ein Zeichen</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">228</span><span class="p">))</span>    <span class="c1"># ä</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">8364</span><span class="p">))</span>   <span class="c1"># €</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="mi">20013</span><span class="p">))</span>  <span class="c1"># 中</span>
+
+<span class="c1"># Python 3 Strings sind intern immer Unicode</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Hallo Welt auf Chinesisch: 你好世界&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Laenge: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="si">}</span><span class="s1"> Zeichen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.1</span>
+3. UTF-8 -- wie Unicode gespeichert wird
+</span>
+</div><p>Unicode definiert die Nummern. Aber wie werden diese Nummern tatsaechlich als Bytes gespeichert? Dafuer gibt es verschiedene <strong>Encodings</strong>. Das verbreiteste ist <strong>UTF-8</strong>.</p>
+<p>UTF-8 ist clever: Haeufige Zeichen (ASCII, lateinische Buchstaben) brauchen nur 1 Byte. Seltenere Zeichen brauchen 2, 3 oder 4 Bytes. Das macht UTF-8 platzsparend und gleichzeitig kompatibel mit altem ASCII-Code.</p>
+<p>In Python ist der Unterschied zwischen <code class="docutils literal notranslate"><span class="pre">str</span></code> (Unicode-Text) und <code class="docutils literal notranslate"><span class="pre">bytes</span></code> (rohe Bytes) wichtig:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span>
+
+<span class="c1"># str -&gt; bytes: encode()</span>
+<span class="n">als_utf8</span>  <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">als_ascii</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">als_utf8</span><span class="p">)</span>    <span class="c1"># b&#39;Hallo&#39;  -- 5 Bytes, identisch mit ASCII</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">als_ascii</span><span class="p">)</span>   <span class="c1"># b&#39;Hallo&#39;</span>
+
+<span class="c1"># bytes -&gt; str: decode()</span>
+<span class="n">zurueck</span> <span class="o">=</span> <span class="n">als_utf8</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zurueck</span><span class="p">)</span>     <span class="c1"># Hallo</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>      <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">als_utf8</span><span class="p">))</span>  <span class="c1"># &lt;class &#39;bytes&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zeichen ausserhalb von ASCII brauchen mehr Bytes in UTF-8</span>
+<span class="n">umlaut</span> <span class="o">=</span> <span class="s1">&#39;ä&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unicode-Codepoint: </span><span class="si">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">umlaut</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;UTF-8 Bytes:       </span><span class="si">{</span><span class="n">umlaut</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>   <span class="c1"># 2 Bytes</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl Bytes:      </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">umlaut</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">chinesisch</span> <span class="o">=</span> <span class="s1">&#39;中&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unicode-Codepoint: </span><span class="si">{</span><span class="nb">ord</span><span class="p">(</span><span class="n">chinesisch</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;UTF-8 Bytes:       </span><span class="si">{</span><span class="n">chinesisch</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># 3 Bytes</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Anzahl Bytes:      </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">chinesisch</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">
+Was passiert wenn das Encoding nicht passt?
+</span>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ASCII kann keine Umlaute -- UnicodeEncodeError</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="s1">&#39;Straße&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">UnicodeEncodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fehler: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mit UTF-8 kein Problem</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Straße&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>   <span class="c1"># b&#39;Stra\xc3\x9fe&#39;</span>
+
+<span class="c1"># Falsche Decodierung ergibt Kauderwelsch</span>
+<span class="n">bytes_daten</span> <span class="o">=</span> <span class="s1">&#39;Straße&#39;</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">falsch</span> <span class="o">=</span> <span class="n">bytes_daten</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">UnicodeDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Falsche Decodierung: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.2</span>
+4. ord() und chr() -- zwischen Zeichen und Zahlen wechseln
+</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">ord()</span></code> und <code class="docutils literal notranslate"><span class="pre">chr()</span></code> sind die direkten Werkzeuge um zwischen Zeichen und Unicode-Codepoints zu wechseln. Sie werden in der PCAP-Pruefung haeufig eingesetzt – oft in Kombination mit String-Operationen oder Vergleichen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ord() und chr() sind Umkehrfunktionen</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>         <span class="c1"># 65</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)))</span>    <span class="c1"># &#39;A&#39;  -- hin und zurueck</span>
+
+<span class="c1"># Warum ist das nuetzlich? Weil Zeichenmanipulation oft ueber Zahlen geht</span>
+
+<span class="c1"># Beispiel: Naechsten Buchstaben im Alphabet</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">naechster_buchstabe</span><span class="p">(</span><span class="n">zeichen</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">zeichen</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">naechster_buchstabe</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">))</span>   <span class="c1"># B</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">naechster_buchstabe</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">))</span>   <span class="c1"># [  -- Vorsicht: nach Z kommt kein A mehr!</span>
+
+<span class="c1"># Beispiel: Gross- in Kleinbuchstaben umwandeln (manuell)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zu_kleinbuchstabe</span><span class="p">(</span><span class="n">zeichen</span><span class="p">):</span>
+    <span class="k">if</span> <span class="s1">&#39;A&#39;</span> <span class="o">&lt;=</span> <span class="n">zeichen</span> <span class="o">&lt;=</span> <span class="s1">&#39;Z&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">zeichen</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span><span class="p">)</span>   <span class="c1"># Abstand zwischen A(65) und a(97) ist 32</span>
+    <span class="k">return</span> <span class="n">zeichen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">zu_kleinbuchstabe</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">))</span>   <span class="c1"># h</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">zu_kleinbuchstabe</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>   <span class="c1"># a  -- unveraendert</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCAP-relevantes Wissen: Codepoint-Reihenfolge bestimmt String-Vergleiche</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;B&#39;</span><span class="p">)</span>    <span class="c1"># True  -- 65 &lt; 66</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>    <span class="c1"># True  -- 90 &lt; 97 -- Grossbuchstaben kommen vor Kleinbuchstaben!</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;z&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;A&#39;</span><span class="p">)</span>    <span class="c1"># False</span>
+
+<span class="c1"># Das erklaert warum sorted() ohne key Grossbuchstaben zuerst sortiert</span>
+<span class="n">woerter</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;kirsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Dattel&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">woerter</span><span class="p">))</span>            <span class="c1"># [&#39;Apfel&#39;, &#39;Dattel&#39;, &#39;banane&#39;, &#39;kirsche&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">woerter</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">))</span>  <span class="c1"># [&#39;Apfel&#39;, &#39;banane&#39;, &#39;Dattel&#39;, &#39;kirsche&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.2</span>
+5. Indexing, Slicing und Iteration
+</span>
+</div><p>Ein String ist in Python eine <strong>geordnete, unveraenderliche Folge von Zeichen</strong>. Geordnet bedeutet: Jedes Zeichen hat eine Position – den Index. Unveraenderlich (immutable) bedeutet: Man kann einen String nicht an Ort und Stelle veraendern – jede Manipulation erzeugt einen neuen String.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span>
+<span class="c1">#       0 1 2 3 4 5   positiver Index</span>
+<span class="c1">#      -6-5-4-3-2-1   negativer Index</span>
+
+<span class="c1"># Einzelne Zeichen -- Indexzugriff</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>    <span class="c1"># P  -- erstes Zeichen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>    <span class="c1"># n  -- letztes Zeichen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>   <span class="c1"># n  -- letztes Zeichen (von hinten)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># o  -- vorletztes Zeichen</span>
+
+<span class="c1"># Slicing: text[start:stop:schritt]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>   <span class="c1"># Pyt  -- Index 0, 1, 2 (stop ist exklusiv!)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>    <span class="c1"># thon -- von Index 2 bis Ende</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>    <span class="c1"># Pyth -- von Anfang bis Index 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[::</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># Pto  -- jedes zweite Zeichen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># nohtyP -- rueckwaerts</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Strings sind immutable -- direktes Aendern ist nicht moeglich</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">text</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span>   <span class="c1"># TypeError!</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;TypeError: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Stattdessen: neuen String erzeugen</span>
+<span class="n">neuer_text</span> <span class="o">=</span> <span class="s1">&#39;J&#39;</span> <span class="o">+</span> <span class="n">text</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">neuer_text</span><span class="p">)</span>   <span class="c1"># Jython</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>         <span class="c1"># Python -- Original unveraendert</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.2</span>
+6. Operatoren: in, not in, +, *, Vergleiche
+</span>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Python ist toll&#39;</span>
+
+<span class="c1"># in / not in -- Teilstring pruefen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Python&#39;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>       <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Java&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>     <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;python&#39;</span> <span class="ow">in</span> <span class="n">text</span><span class="p">)</span>       <span class="c1"># False -- Gross-/Kleinschreibung beachtet</span>
+
+<span class="c1"># + -- Verkettung (Konkatenation)</span>
+<span class="n">gruss</span>  <span class="o">=</span> <span class="s1">&#39;Hallo&#39;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span> <span class="o">+</span> <span class="s1">&#39;Welt&#39;</span> <span class="o">+</span> <span class="s1">&#39;!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gruss</span><span class="p">)</span>
+
+<span class="c1"># * -- Wiederholung</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ha&#39;</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>    <span class="c1"># HaHaHa</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>    <span class="c1"># 30 Bindestriche</span>
+
+<span class="c1"># Vergleiche -- basieren auf Codepoints</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span> <span class="o">==</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>   <span class="c1"># True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;abd&#39;</span><span class="p">)</span>    <span class="c1"># True -- &#39;c&#39; (99) &lt; &#39;d&#39; (100)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;abcd&#39;</span><span class="p">)</span>   <span class="c1"># True -- kuerzer kommt zuerst bei gleichem Anfang</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;B&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>        <span class="c1"># True -- Grossbuchstaben (66) &lt; Kleinbuchstaben (97)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iteration -- Zeichen fuer Zeichen durchlaufen</span>
+<span class="k">for</span> <span class="n">zeichen</span> <span class="ow">in</span> <span class="s1">&#39;Python&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">zeichen</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>   <span class="c1"># P y t h o n</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Haeufigkeiten zaehlen</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Mississippi&#39;</span>
+<span class="n">haeufigkeit</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">zeichen</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+    <span class="n">haeufigkeit</span><span class="p">[</span><span class="n">zeichen</span><span class="p">]</span> <span class="o">=</span> <span class="n">haeufigkeit</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">zeichen</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">haeufigkeit</span><span class="p">)</span>   <span class="c1"># {&#39;M&#39;: 1, &#39;i&#39;: 4, &#39;s&#39;: 4, &#39;p&#39;: 2}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">PCAP 3.1</span>
+7. Escape-Sequenzen
+</span>
+</div><p>Manche Zeichen koennen nicht direkt in einen String geschrieben werden – zum Beispiel ein Zeilenumbruch. Dafuer gibt es <strong>Escape-Sequenzen</strong>: Ein Backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> gefolgt von einem Zeichen bekommt eine besondere Bedeutung.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Haeufige Escape-Sequenzen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zeile 1</span><span class="se">\n</span><span class="s1">Zeile 2&#39;</span><span class="p">)</span>       <span class="c1"># \n = Zeilenumbruch</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Spalte1</span><span class="se">\t</span><span class="s1">Spalte2&#39;</span><span class="p">)</span>        <span class="c1"># \t = Tab</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Er sagte: </span><span class="se">\&#39;</span><span class="s1">Hallo</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>    <span class="c1"># \&#39; = einfaches Anfuehrungszeichen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pfad: C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">Aldric&#39;</span><span class="p">)</span> <span class="c1"># \\ = einfacher Backslash</span>
+
+<span class="c1"># Unicode-Zeichen per Codepoint einbetten</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u00e4</span><span class="s1">&#39;</span><span class="p">)</span>   <span class="c1"># ä  -- Unicode-Escape mit 4 Hex-Ziffern</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\u20ac</span><span class="s1">&#39;</span><span class="p">)</span>   <span class="c1"># €</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\U0001F600</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># 😀 -- 8 Hex-Ziffern fuer Zeichen ausserhalb der Basic Multilingual Plane</span>
+
+<span class="c1"># Raw-Strings: Backslash wird nicht als Escape interpretiert</span>
+<span class="n">normal</span> <span class="o">=</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">Users</span><span class="se">\\</span><span class="s1">neu&#39;</span>
+<span class="n">raw</span>    <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\neu&#39;</span>    <span class="c1"># r vor dem String</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normal</span> <span class="o">==</span> <span class="n">raw</span><span class="p">)</span>        <span class="c1"># True -- identisch</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Zusammenfassung</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Konzept</p></th>
+<th class="head"><p>PCAP</p></th>
+<th class="head"><p>Kernaussage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ASCII</p></td>
+<td><p>3.1</p></td>
+<td><p>128 Zeichen, Nummern 0-127 – die Grundlage</p></td>
+</tr>
+<tr class="row-odd"><td><p>Unicode</p></td>
+<td><p>3.1</p></td>
+<td><p>Ein System fuer alle Sprachen – ueber 140.000 Zeichen</p></td>
+</tr>
+<tr class="row-even"><td><p>Codepoint</p></td>
+<td><p>3.1</p></td>
+<td><p>Die Nummer eines Zeichens in Unicode</p></td>
+</tr>
+<tr class="row-odd"><td><p>UTF-8</p></td>
+<td><p>3.1</p></td>
+<td><p>Wie Unicode als Bytes gespeichert wird – 1-4 Bytes pro Zeichen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ord(zeichen)</span></code></p></td>
+<td><p>3.2</p></td>
+<td><p>Zeichen -&gt; Codepoint</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">chr(zahl)</span></code></p></td>
+<td><p>3.2</p></td>
+<td><p>Codepoint -&gt; Zeichen</p></td>
+</tr>
+<tr class="row-even"><td><p>Indexing</p></td>
+<td><p>3.2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">text[0]</span></code>, <code class="docutils literal notranslate"><span class="pre">text[-1]</span></code> – positiv und negativ</p></td>
+</tr>
+<tr class="row-odd"><td><p>Slicing</p></td>
+<td><p>3.2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">text[start:stop:schritt]</span></code> – stop ist exklusiv</p></td>
+</tr>
+<tr class="row-even"><td><p>Immutabilitaet</p></td>
+<td><p>3.2</p></td>
+<td><p>Strings koennen nicht veraendert werden – neue Strings entstehen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></p></td>
+<td><p>3.2</p></td>
+<td><p>Teilstring-Pruefung</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>3.2</p></td>
+<td><p>Verkettung und Wiederholung</p></td>
+</tr>
+<tr class="row-odd"><td><p>Vergleiche</p></td>
+<td><p>3.2</p></td>
+<td><p>Basieren auf Codepoints – Grossbuchstaben &lt; Kleinbuchstaben</p></td>
+</tr>
+<tr class="row-even"><td><p>Escape-Sequenzen</p></td>
+<td><p>3.1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\n</span></code>, <code class="docutils literal notranslate"><span class="pre">\t</span></code>, <code class="docutils literal notranslate"><span class="pre">\\</span></code>, <code class="docutils literal notranslate"><span class="pre">\uXXXX</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Weiter:</strong> In Notebook <strong>06b – String-Methoden</strong> lernen wir die eingebauten Methoden fuer Suchen, Teilen, Verbinden und Pruefen.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_6"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Aufgaben: Eigene Exceptions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06b_string_methoden.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">String methoden</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

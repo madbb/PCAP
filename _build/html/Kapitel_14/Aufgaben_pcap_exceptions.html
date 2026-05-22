@@ -1,0 +1,1516 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aufgaben: Pcap exceptions &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_14/Aufgaben_pcap_exceptions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Aufgaben: Pcap introspektion" href="Aufgaben_pcap_introspektion.html" />
+    <link rel="prev" title="PCAP Übungsklausur 3 – Lösungsschlüssel" href="Uebungsklausur3_Loesungen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_14/Aufgaben_pcap_exceptions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Aufgaben: Pcap exceptions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Aufgaben: Pcap exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-1-von-25"><strong>Frage 1 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-2-von-25"><strong>Frage 2 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-3-von-25"><strong>Frage 3 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-4-von-25"><strong>Frage 4 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-5-von-25"><strong>Frage 5 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-6-von-25"><strong>Frage 6 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-7-von-25"><strong>Frage 7 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-8-von-25"><strong>Frage 8 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-9-von-25"><strong>Frage 9 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-10-von-25"><strong>Frage 10 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-11-von-25"><strong>Frage 11 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-12-von-25"><strong>Frage 12 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-13-von-25"><strong>Frage 13 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-14-von-25"><strong>Frage 14 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-15-von-25"><strong>Frage 15 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-16-von-25"><strong>Frage 16 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-17-von-25"><strong>Frage 17 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-18-von-25"><strong>Frage 18 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-19-von-25"><strong>Frage 19 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-20-von-25"><strong>Frage 20 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-21-von-25"><strong>Frage 21 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-22-von-25"><strong>Frage 22 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-23-von-25"><strong>Frage 23 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-24-von-25"><strong>Frage 24 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-25-von-25"><strong>Frage 25 von 25</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losungen">Lösungen</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="aufgaben-pcap-exceptions">
+<h1>Aufgaben: Pcap exceptions<a class="headerlink" href="#aufgaben-pcap-exceptions" title="Link to this heading">#</a></h1>
+<section id="frage-1-von-25">
+<h2><strong>Frage 1 von 25</strong><a class="headerlink" href="#frage-1-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ein Fehler ist aufgetreten&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Ein</span> <span class="pre">Fehler</span> <span class="pre">ist</span> <span class="pre">aufgetreten</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code><br />
+C) Nichts wird ausgegeben<br />
+D) <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ein Fehler ist aufgetreten&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ein Fehler ist aufgetreten
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-2-von-25">
+<h2><strong>Frage 2 von 25</strong><a class="headerlink" href="#frage-2-von-25" title="Link to this heading">#</a></h2>
+<p>Welche Ausgabe erzeugt dieser Code?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'Exception'&gt;</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'str'&gt;</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'ValueError'&gt;</span></code><br />
+D) Der Code erzeugt einen unaufgefangenen Fehler.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;ValueError&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-3-von-25">
+<h2><strong>Frage 3 von 25</strong><a class="headerlink" href="#frage-3-von-25" title="Link to this heading">#</a></h2>
+<p>Was wird ausgegeben, wenn der folgende Code ausgeführt wird?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fehler gefangen&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falscher Wert&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Falscher</span> <span class="pre">Wert</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">Fehler</span> <span class="pre">gefangen</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">IndexError</span></code><br />
+D) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> ab.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">my_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fehler gefangen&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falscher Wert&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fehler gefangen
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-4-von-25">
+<h2><strong>Frage 4 von 25</strong><a class="headerlink" href="#frage-4-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist das Ergebnis der Ausführung des folgenden Codes?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Schritt 1&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Schritt 2&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fehler&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kein Fehler&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre>
+A) Schritt 1  
+B) Schritt 1
+   Schritt 2  
+C) Schritt 1
+   Fehler
+   Kein Fehler
+D) Schritt 1
+   Schritt 2
+   Kein Fehler
+</pre>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Schritt 1&quot;</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Schritt 2&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fehler&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kein Fehler&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Schritt 1
+Schritt 2
+Kein Fehler
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-5-von-25">
+<h2><strong>Frage 5 von 25</strong><a class="headerlink" href="#frage-5-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes aufgrund der Exception-Hierarchie?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Exception gefangen&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ZeroDivisionError gefangen&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span> <span class="pre">gefangen</span></code>
+<br>B) <code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">gefangen</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">gefangen\nZeroDivisionError</span> <span class="pre">gefangen</span></code><br />
+D) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> ab.</p>
+<hr class="docutils" />
+</section>
+<section id="frage-6-von-25">
+<h2><strong>Frage 6 von 25</strong><a class="headerlink" href="#frage-6-von-25" title="Link to this heading">#</a></h2>
+<p>Welche Ausgabe erzeugt dieser Code?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">check_age</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">18</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Zu jung!&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Willkommen&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">check_age</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Willkommen</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">ValueError</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Zu</span> <span class="pre">jung!</span></code><br />
+D) Es wird nichts ausgegeben.</p>
+<hr class="docutils" />
+</section>
+<section id="frage-7-von-25">
+<h2><strong>Frage 7 von 25</strong><a class="headerlink" href="#frage-7-von-25" title="Link to this heading">#</a></h2>
+<p>Was passiert, wenn dieser Code ausgeführt wird (angenommen, Assertions sind aktiviert)?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;x muss positiv sein&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fertig&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) Der Code gibt <code class="docutils literal notranslate"><span class="pre">Fertig</span></code> aus.<br />
+B) Der Code gibt <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">muss</span> <span class="pre">positiv</span> <span class="pre">sein</span></code> aus.<br />
+C) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> ab.<br />
+D) Der Code erzeugt einen <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;x muss positiv sein&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fertig&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">assert</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;x muss positiv sein&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fertig&quot;</span><span class="p">)</span>
+
+<span class="ne">AssertionError</span>: x muss positiv sein
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-8-von-25">
+<h2><strong>Frage 8 von 25</strong><a class="headerlink" href="#frage-8-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes, der eine benutzerdefinierte Exception-Klasse verwendet?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MyCustomError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">MyCustomError</span><span class="p">(</span><span class="s2">&quot;Ein spezieller Fehler&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">MyCustomError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">MyCustomError</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">Ein</span> <span class="pre">spezieller</span> <span class="pre">Fehler</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Exception</span></code><br />
+D) Der Code bricht mit <code class="docutils literal notranslate"><span class="pre">MyCustomError</span></code> ab.</p>
+<hr class="docutils" />
+</section>
+<section id="frage-9-von-25">
+<h2><strong>Frage 9 von 25</strong><a class="headerlink" href="#frage-9-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes, der die <code class="docutils literal notranslate"><span class="pre">.args</span></code>-Eigenschaft einer Exception verwendet?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Fehler&quot;</span><span class="p">,</span> <span class="mi">404</span><span class="p">,</span> <span class="s2">&quot;Nicht gefunden&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">('Fehler',</span> <span class="pre">404,</span> <span class="pre">'Nicht</span> <span class="pre">gefunden')</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">Fehler</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">404</span></code><br />
+D) <code class="docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<hr class="docutils" />
+</section>
+<section id="frage-10-von-25">
+<h2><strong>Frage 10 von 25</strong><a class="headerlink" href="#frage-10-von-25" title="Link to this heading">#</a></h2>
+<p>Was passiert, wenn der folgende Code ausgeführt wird, der <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">ex</span></code> verwendet?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gefangen&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">e</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wird nie erreicht&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) Nur <code class="docutils literal notranslate"><span class="pre">Gefangen</span></code> wird ausgegeben.<br />
+B) <code class="docutils literal notranslate"><span class="pre">Gefangen</span></code> wird ausgegeben, gefolgt von einem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> Traceback.<br />
+C) Nur ein <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> Traceback wird angezeigt.<br />
+D) <code class="docutils literal notranslate"><span class="pre">GefangenWird</span> <span class="pre">nie</span> <span class="pre">erreicht</span></code> wird ausgegeben.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gefangen&quot;</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="n">e</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wird nie erreicht&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gefangen
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ZeroDivisionError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gefangen&quot;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wird nie erreicht&quot;</span><span class="p">)</span>
+
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gefangen&quot;</span><span class="p">)</span>
+
+<span class="ne">ZeroDivisionError</span>: division by zero
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-11-von-25">
+<h2><strong>Frage 11 von 25</strong><a class="headerlink" href="#frage-11-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes unter Berücksichtigung der Hierarchie?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SubError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span> <span class="k">pass</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">SubError</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">Error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">SubError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SubError&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Error</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">SubError</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Error</span> <span class="pre">SubError</span></code><br />
+D) Der Code bricht mit <code class="docutils literal notranslate"><span class="pre">SubError</span></code> ab.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Error</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span> <span class="k">pass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">SubError</span><span class="p">(</span><span class="n">Error</span><span class="p">):</span> <span class="k">pass</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">SubError</span><span class="p">()</span>
+<span class="k">except</span> <span class="n">Error</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">SubError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SubError&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-12-von-25">
+<h2><strong>Frage 12 von 25</strong><a class="headerlink" href="#frage-12-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe dieses Codes mit einem <code class="docutils literal notranslate"><span class="pre">else</span></code>-Block?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Start&quot;</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ende&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Division durch Null&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erfolgreich&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre>
+A) Start
+    Ende
+    Erfolgreich 
+
+B) Start
+    Division durch Null  
+
+C) Start
+    Division durch Null
+    Erfolgreich 
+    
+D) Nur Start
+</pre>
+<hr class="docutils" />
+</section>
+<section id="frage-13-von-25">
+<h2><strong>Frage 13 von 25</strong><a class="headerlink" href="#frage-13-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe, wenn <code class="docutils literal notranslate"><span class="pre">assert</span></code> aktiv ist?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wert</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">wert</span><span class="p">,</span> <span class="s2">&quot;Wert ist Null&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OK&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">OK</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Wert</span> <span class="pre">ist</span> <span class="pre">Null</span></code><br />
+D) Es wird nichts ausgegeben.</p>
+<hr class="docutils" />
+</section>
+<section id="frage-14-von-25">
+<h2><strong>Frage 14 von 25</strong><a class="headerlink" href="#frage-14-von-25" title="Link to this heading">#</a></h2>
+<p>Was wird durch den folgenden Code ausgegeben?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="s2">&quot;2&quot;</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">0</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">1</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">2</span></code><br />
+D) <code class="docutils literal notranslate"><span class="pre">TypeError</span></code></p>
+<hr class="docutils" />
+</section>
+<section id="frage-15-von-25">
+<h2><strong>Frage 15 von 25</strong><a class="headerlink" href="#frage-15-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes mit einer benutzerdefinierten Exception-Klasse?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">MeinFehler</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Fehlercode: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="n">MeinFehler</span><span class="p">(</span><span class="mi">404</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">MeinFehler</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">404</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">MeinFehler</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Fehlercode:</span> <span class="pre">404</span></code><br />
+D) Eine <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code> wegen <code class="docutils literal notranslate"><span class="pre">self.code</span></code>.</p>
+<hr class="docutils" />
+</section>
+<section id="frage-16-von-25">
+<h2><strong>Frage 16 von 25</strong><a class="headerlink" href="#frage-16-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe dieses Codes, der <code class="docutils literal notranslate"><span class="pre">raise</span></code> und <code class="docutils literal notranslate"><span class="pre">finally</span></code> kombiniert?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">funktion</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wird immer ausgeführt&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">funktion</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gefangen&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre>
+A)  Wird immer ausgeführt
+    Gefangen
+
+B)  Gefangen
+    Wird immer ausgeführt  
+
+C) Nur Wird immer ausgeführt  
+
+D) Nur Gefangen
+</pre>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">funktion</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wird immer ausgeführt&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">funktion</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gefangen&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wird immer ausgeführt
+Gefangen
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-17-von-25">
+<h2><strong>Frage 17 von 25</strong><a class="headerlink" href="#frage-17-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe dieses Codes?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">divide</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">y</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Division durch Null!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ergebnis:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fertig.&quot;</span><span class="p">)</span>
+
+<span class="n">divide</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">divide</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre>
+A)  Division durch Null!  
+    Fertig.  
+    Ergebnis: 5.0  
+    Fertig.
+
+B)  Ergebnis: 5.0  
+    Fertig.  
+    Division durch Null!
+
+C)  Ergebnis: 5.0  
+    Division durch Null!  
+    Fertig.  
+    Fertig.
+
+D)  Ergebnis: 5.0  
+    Fertig.  
+    Division durch Null!  
+    Fertig.</section>
+<section id="frage-18-von-25">
+<h2><strong>Frage 18 von 25</strong><a class="headerlink" href="#frage-18-von-25" title="Link to this heading">#</a></h2>
+<p>Was gibt dieser Code mit allen vier Klauseln aus?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<pre>
+A)  1
+    4  
+
+B)  2  
+    4
+
+C)  1
+    3
+    4
+      
+D)  2
+    3   
+    4
+</pre>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="nb">int</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-19-von-25">
+<h2><strong>Frage 19 von 25</strong><a class="headerlink" href="#frage-19-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">raise</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erwischt!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Erwischt!</span></code><br />
+B) Der Code bricht ab, ohne <code class="docutils literal notranslate"><span class="pre">Erwischt!</span></code> auszugeben.<br />
+C) <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code><br />
+D) Nichts wird ausgegeben.</p>
+<hr class="docutils" />
+</section>
+<section id="frage-20-von-25">
+<h2><strong>Frage 20 von 25</strong><a class="headerlink" href="#frage-20-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe, wenn das Skript mit dem Optimierungsflag <code class="docutils literal notranslate"><span class="pre">-O</span></code> ausgeführt wird (z.B. <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-O</span> <span class="pre">skript.py</span></code>)?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Diese Nachricht wird nie gesehen&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hallo Welt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> ab.<br />
+B) <code class="docutils literal notranslate"><span class="pre">Hallo</span> <span class="pre">Welt</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Diese</span> <span class="pre">Nachricht</span> <span class="pre">wird</span> <span class="pre">nie</span> <span class="pre">gesehen</span></code><br />
+D) <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code></p>
+<hr class="docutils" />
+</section>
+<section id="frage-21-von-25">
+<h2><strong>Frage 21 von 25</strong><a class="headerlink" href="#frage-21-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;invalid_key&quot;</span><span class="p">]</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falscher Typ oder Wert&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falscher Schlüssel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Falscher</span> <span class="pre">Typ</span> <span class="pre">oder</span> <span class="pre">Wert</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">Falscher</span> <span class="pre">Schlüssel</span></code><br />
+C) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> ab.<br />
+D) Nichts wird ausgegeben.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;value&quot;</span><span class="p">}</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;invalid_key&quot;</span><span class="p">]</span>
+<span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falscher Typ oder Wert&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Falscher Schlüssel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Falscher Schlüssel
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-22-von-25">
+<h2><strong>Frage 22 von 25</strong><a class="headerlink" href="#frage-22-von-25" title="Link to this heading">#</a></h2>
+<p>Was passiert, wenn der folgende Code ausgeführt wird?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">raise</span> <span class="ne">IndexError</span>
+</pre></div>
+</div>
+<p>A) Der Code gibt <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> aus.<br />
+B) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> ab, aber ohne Fehlermeldung.<br />
+C) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> ab, der besagt, dass eine Exception-Instanz erwartet wurde.<br />
+D) <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code></p>
+<hr class="docutils" />
+</section>
+<section id="frage-23-von-25">
+<h2><strong>Frage 23 von 25</strong><a class="headerlink" href="#frage-23-von-25" title="Link to this heading">#</a></h2>
+<p>Was gibt dieser Code aus?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">()</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">None</span></code><br />
+C) Ein <code class="docutils literal notranslate"><span class="pre">AttributeError</span></code><br />
+D) <code class="docutils literal notranslate"><span class="pre">[]</span></code></p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">Exception</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>()
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-24-von-25">
+<h2><strong>Frage 24 von 25</strong><a class="headerlink" href="#frage-24-von-25" title="Link to this heading">#</a></h2>
+<p>Was ist die Ausgabe des folgenden Codes?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">10.0</span> <span class="pre">5.0</span> <span class="pre">3.33...</span> <span class="pre">2.5</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">10.0</span> <span class="pre">T</span> <span class="pre">3.33...</span> <span class="pre">2.5</span> </code><br />
+C) <code class="docutils literal notranslate"><span class="pre">10.0</span> <span class="pre">Z</span> <span class="pre">3.33...</span> <span class="pre">2.5</span> </code><br />
+D) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> ab.</p>
+<hr class="docutils" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="n">n</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.0 T 3.3333333333333335 2.5 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="frage-25-von-25">
+<h2><strong>Frage 25 von 25</strong><a class="headerlink" href="#frage-25-von-25" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">LookupError</span></code> ist die Basisklasse für <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> und <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>. Was gibt der Code aus?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">my_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Lookup Fehler&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Key Fehler&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">Lookup</span> <span class="pre">Fehler</span></code><br />
+B) <code class="docutils literal notranslate"><span class="pre">Key</span> <span class="pre">Fehler</span></code><br />
+C) <code class="docutils literal notranslate"><span class="pre">Lookup</span> <span class="pre">Fehler\nKey</span> <span class="pre">Fehler</span></code><br />
+D) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> ab.</p>
+<hr class="docutils" />
+</section>
+</section>
+<hr class="docutils" />
+<section id="losungen">
+<h1>Lösungen<a class="headerlink" href="#losungen" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p><strong>A) <code class="docutils literal notranslate"><span class="pre">Ein</span> <span class="pre">Fehler</span> <span class="pre">ist</span> <span class="pre">aufgetreten</span></code></strong><br />
+Ein <code class="docutils literal notranslate"><span class="pre">except:</span></code> ohne Angabe einer Exception (ein “nacktes” except) fängt alle Exceptions ab, die von <code class="docutils literal notranslate"><span class="pre">BaseException</span></code> erben.</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p><strong>C) <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'ValueError'&gt;</span></code></strong><br />
+<code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">ValueError</span> <span class="pre">as</span> <span class="pre">e:</span></code> fängt die <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>-Exception und weist die Exception-Instanz der Variablen <code class="docutils literal notranslate"><span class="pre">e</span></code> zu. <code class="docutils literal notranslate"><span class="pre">type(e)</span></code> gibt daher die Klasse der Exception zurück.</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">Fehler</span> <span class="pre">gefangen</span></code></strong><br />
+Der Zugriff <code class="docutils literal notranslate"><span class="pre">my_list[0]</span></code> auf eine leere Liste löst einen <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> aus. Da <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> im Tupel <code class="docutils literal notranslate"><span class="pre">(IndexError,</span> <span class="pre">KeyError)</span></code> enthalten ist, wird dieser <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block ausgeführt.</p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p><strong>D)</strong></p></li>
+</ol>
+<pre>
+    Schritt 1
+    Schritt 2
+    Kein Fehler
+</pre> 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Im `try`-Block tritt keine Exception auf. Daher wird der `except`-Block übersprungen und der `else`-Block am Ende ausgeführt.
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">Exception</span> <span class="pre">gefangen</span></code></strong><br />
+Python prüft die <code class="docutils literal notranslate"><span class="pre">except</span></code>-Blöcke von oben nach unten. Da <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> eine Unterklasse von <code class="docutils literal notranslate"><span class="pre">Exception</span></code> ist, fängt der erste allgemeinere Block (<code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">Exception:</span></code>) den Fehler bereits ab.</p></li>
+</ol>
+<ol class="arabic simple" start="6">
+<li><p><strong>C) <code class="docutils literal notranslate"><span class="pre">Zu</span> <span class="pre">jung!</span></code></strong><br />
+Die Funktion löst eine <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>-Exception mit der Nachricht ‘Zu jung!’ aus. Diese wird gefangen, und <code class="docutils literal notranslate"><span class="pre">print(e)</span></code> gibt die String-Repräsentation der Exception aus, was in diesem Fall die Nachricht ist.</p></li>
+</ol>
+<ol class="arabic simple" start="7">
+<li><p><strong>C) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> ab.</strong><br />
+Die <code class="docutils literal notranslate"><span class="pre">assert</span></code>-Bedingung <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> ist <code class="docutils literal notranslate"><span class="pre">False</span></code>. Daher wird ein <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> mit der optionalen Nachricht ‘x muss positiv sein’ ausgelöst und das Programm beendet (da die Exception nicht gefangen wird).</p></li>
+</ol>
+<ol class="arabic simple" start="8">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">Ein</span> <span class="pre">spezieller</span> <span class="pre">Fehler</span></code></strong><br />
+Eine eigene Exception-Klasse wird definiert, mit einer Nachricht ausgelöst und wieder gefangen. <code class="docutils literal notranslate"><span class="pre">print(e)</span></code> gibt die Nachricht aus, mit der die Exception instanziiert wurde.</p></li>
+</ol>
+<ol class="arabic simple" start="9">
+<li><p><strong>A) <code class="docutils literal notranslate"><span class="pre">('Fehler',</span> <span class="pre">404,</span> <span class="pre">'Nicht</span> <span class="pre">gefunden')</span></code></strong><br />
+Die Eigenschaft <code class="docutils literal notranslate"><span class="pre">.args</span></code> einer Exception ist ein Tupel, das alle Argumente enthält, die bei der Erstellung der Exception übergeben wurden.</p></li>
+</ol>
+<ol class="arabic simple" start="10">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">Gefangen</span></code> wird ausgegeben, gefolgt von einem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> Traceback.</strong><br />
+Der <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> wird gefangen und <code class="docutils literal notranslate"><span class="pre">Gefangen</span></code> wird gedruckt. <code class="docutils literal notranslate"><span class="pre">raise</span> <span class="pre">e</span></code> löst dieselbe Exception erneut aus (re-raising), was dazu führt, dass das Programm mit einem <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> abbricht.</p></li>
+</ol>
+<ol class="arabic simple" start="11">
+<li><p><strong>A) <code class="docutils literal notranslate"><span class="pre">Error</span></code></strong><br />
+<code class="docutils literal notranslate"><span class="pre">SubError</span></code> ist eine Unterklasse von <code class="docutils literal notranslate"><span class="pre">Error</span></code>. Da der <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block für die Basisklasse <code class="docutils literal notranslate"><span class="pre">Error</span></code> zuerst kommt, fängt er die <code class="docutils literal notranslate"><span class="pre">SubError</span></code>-Instanz ab.</p></li>
+</ol>
+<ol class="arabic" start="12">
+<li><p><strong>B)</strong></p>
+<pre>Start
+Division durch Null
+</li>
+</ol>
+</pre>
+    Im `try`-Block tritt ein `ZeroDivisionError` auf. Die Ausführung des Blocks wird sofort abgebrochen (`Ende` wird nicht gedruckt). Der passende `except`-Block wird ausgeführt. Der `else`-Block wird übersprungen.
+<ol class="arabic simple" start="13">
+<li><p><strong>C) <code class="docutils literal notranslate"><span class="pre">Wert</span> <span class="pre">ist</span> <span class="pre">Null</span></code></strong><br />
+<code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">wert</span></code> ist <code class="docutils literal notranslate"><span class="pre">False</span></code>, da <code class="docutils literal notranslate"><span class="pre">wert</span></code> 0 ist. Ein <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> wird mit der angegebenen Nachricht ausgelöst. Der <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block fängt diesen Fehler und <code class="docutils literal notranslate"><span class="pre">print(e)</span></code> gibt die Nachricht aus.</p></li>
+</ol>
+<ol class="arabic simple" start="14">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">1</span></code></strong><br />
+Die Operation <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">&quot;2&quot;</span></code> löst einen <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> aus. Standardmäßig wird die Fehlermeldung als ein einziges String-Argument an die Exception übergeben. <code class="docutils literal notranslate"><span class="pre">e.args</span></code> ist daher ein Tupel mit einem Element, und <code class="docutils literal notranslate"><span class="pre">len()</span></code> davon ist 1.</p></li>
+</ol>
+<ol class="arabic simple" start="15">
+<li><p><strong>C) <code class="docutils literal notranslate"><span class="pre">Fehlercode:</span> <span class="pre">404</span></code></strong><br />
+Die <code class="docutils literal notranslate"><span class="pre">__str__</span></code>-Methode der benutzerdefinierten Exception wird aufgerufen, wenn die Instanz <code class="docutils literal notranslate"><span class="pre">e</span></code> gedruckt wird. Diese Methode formatiert die Ausgabe wie definiert.</p></li>
+</ol>
+<ol class="arabic" start="16">
+<li><p><strong>A)</strong></p>
+<pre>Wird immer ausgeführt
+Gefangen
+</pre>  
+<p>Wenn <code class="docutils literal notranslate"><span class="pre">funktion()</span></code> aufgerufen wird, wird ein <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> ausgelöst. Bevor die Exception die Funktion verlässt, wird der <code class="docutils literal notranslate"><span class="pre">finally</span></code>-Block ausgeführt. Danach wird die Exception vom äußeren <code class="docutils literal notranslate"><span class="pre">try...except</span></code>-Block gefangen.</p>
+</li>
+</ol>
+<ol class="arabic" start="17">
+<li><p><strong>D)</strong></p>
+<pre>   
+Division durch Null!  
+Fertig.  
+Ergebnis: 5.0  
+Fertig.
+</pre>
+</li>
+</ol>
+<p>Beim ersten Funktionsaufruf <code class="docutils literal notranslate"><span class="pre">divide(10,</span> <span class="pre">2)</span></code> wird keine Ausnahme ausgelöst → <code class="docutils literal notranslate"><span class="pre">else</span></code>-Block wird ausgeführt → <code class="docutils literal notranslate"><span class="pre">Ergebnis:</span> <span class="pre">5.0</span></code>.</p>
+<p>Danach wird immer <code class="docutils literal notranslate"><span class="pre">finally</span></code> ausgeführt → Fertig.</p>
+<p>Beim zweiten Aufruf <code class="docutils literal notranslate"><span class="pre">divide(5,</span> <span class="pre">0)</span></code> löst <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code> eine <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> aus → <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block wird ausgeführt → <code class="docutils literal notranslate"><span class="pre">Division</span> <span class="pre">durch</span> <span class="pre">Null!</span></code></p>
+<p>Danach wird wieder <code class="docutils literal notranslate"><span class="pre">finally</span></code> ausgeführt → Fertig.</p>
+<ol class="arabic simple" start="18">
+<li><p><strong>A)</strong></p></li>
+</ol>
+<pre> 
+    1
+    4 
+</pre> 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`int(&quot;a&quot;)` löst einen `ValueError` aus. Der erste `except`-Block passt und druckt `1`. Der `else`-Block wird übersprungen, da ein Fehler auftrat. Der `finally`-Block wird immer ausgeführt und druckt `4`.
+</pre></div>
+</div>
+<ol class="arabic simple" start="19">
+<li><p><strong>A) <code class="docutils literal notranslate"><span class="pre">Erwischt!</span></code></strong><br />
+Ein <code class="docutils literal notranslate"><span class="pre">raise</span></code> ohne Argument in einem <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block löst die gerade aktive Exception erneut aus. <code class="docutils literal notranslate"><span class="pre">f()</span></code> fängt den <code class="docutils literal notranslate"><span class="pre">ZeroDivisionError</span></code> und löst ihn sofort wieder aus. Der äußere <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block fängt ihn dann.</p></li>
+</ol>
+<ol class="arabic simple" start="20">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">Hallo</span> <span class="pre">Welt</span></code></strong><br />
+Wenn Python im optimierten Modus (mit dem Flag <code class="docutils literal notranslate"><span class="pre">-O</span></code>) ausgeführt wird, werden alle <code class="docutils literal notranslate"><span class="pre">assert</span></code>-Anweisungen ignoriert. Die <code class="docutils literal notranslate"><span class="pre">assert</span></code>-Zeile wird übersprungen und der Code läuft normal weiter.</p></li>
+</ol>
+<ol class="arabic simple" start="21">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">Falscher</span> <span class="pre">Schlüssel</span></code></strong><br />
+Der Zugriff auf einen nicht existierenden Schlüssel in einem Dictionary löst einen <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> aus. Der erste <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block fängt diesen nicht ab, aber der zweite (<code class="docutils literal notranslate"><span class="pre">except</span> <span class="pre">KeyError:</span></code>) passt.</p></li>
+</ol>
+<ol class="arabic simple" start="22">
+<li><p><strong>C) Der Code bricht mit einem <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> ab, der besagt, dass eine Exception-Instanz erwartet wurde.</strong><br />
+<code class="docutils literal notranslate"><span class="pre">raise</span></code> erwartet eine <em>Instanz</em> einer Exception (z.B. <code class="docutils literal notranslate"><span class="pre">IndexError()</span></code>), nicht die Klasse selbst. Das Auslösen einer Klasse führt zu einem <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p></li>
+</ol>
+<ol class="arabic simple" start="23">
+<li><p><strong>A) <code class="docutils literal notranslate"><span class="pre">()</span></code></strong><br />
+Wenn eine Exception ohne Argumente instanziiert wird (<code class="docutils literal notranslate"><span class="pre">Exception()</span></code>), ist ihre <code class="docutils literal notranslate"><span class="pre">.args</span></code>-Eigenschaft ein leeres Tupel.</p></li>
+</ol>
+<ol class="arabic simple" start="24">
+<li><p><strong>B) <code class="docutils literal notranslate"><span class="pre">10.0</span> <span class="pre">T</span> <span class="pre">3.33...</span> <span class="pre">2.5</span> </code></strong><br />
+Die Schleife teilt 10 durch jedes Element. Bei <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span></code> und <code class="docutils literal notranslate"><span class="pre">4</span></code> funktioniert dies. Bei <code class="docutils literal notranslate"><span class="pre">'2'</span></code> schlägt die Division fehl, da <code class="docutils literal notranslate"><span class="pre">n</span></code> ein String ist (<code class="docutils literal notranslate"><span class="pre">TypeError</span></code>). Der entsprechende <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block wird ausgeführt und druckt <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
+</ol>
+<ol class="arabic simple" start="25">
+<li><p><strong>A) <code class="docutils literal notranslate"><span class="pre">Lookup</span> <span class="pre">Fehler</span></code></strong><br />
+Der Zugriff auf <code class="docutils literal notranslate"><span class="pre">my_dict[0]</span></code> löst einen <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> aus. Da <code class="docutils literal notranslate"><span class="pre">KeyError</span></code> eine Unterklasse von <code class="docutils literal notranslate"><span class="pre">LookupError</span></code> ist und der <code class="docutils literal notranslate"><span class="pre">except</span></code>-Block für <code class="docutils literal notranslate"><span class="pre">LookupError</span></code> zuerst steht, fängt dieser die Exception ab.</p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_14"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Uebungsklausur3_Loesungen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PCAP Übungsklausur 3 – Lösungsschlüssel</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Aufgaben_pcap_introspektion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aufgaben: Pcap introspektion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Aufgaben: Pcap exceptions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-1-von-25"><strong>Frage 1 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-2-von-25"><strong>Frage 2 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-3-von-25"><strong>Frage 3 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-4-von-25"><strong>Frage 4 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-5-von-25"><strong>Frage 5 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-6-von-25"><strong>Frage 6 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-7-von-25"><strong>Frage 7 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-8-von-25"><strong>Frage 8 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-9-von-25"><strong>Frage 9 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-10-von-25"><strong>Frage 10 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-11-von-25"><strong>Frage 11 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-12-von-25"><strong>Frage 12 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-13-von-25"><strong>Frage 13 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-14-von-25"><strong>Frage 14 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-15-von-25"><strong>Frage 15 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-16-von-25"><strong>Frage 16 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-17-von-25"><strong>Frage 17 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-18-von-25"><strong>Frage 18 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-19-von-25"><strong>Frage 19 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-20-von-25"><strong>Frage 20 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-21-von-25"><strong>Frage 21 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-22-von-25"><strong>Frage 22 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-23-von-25"><strong>Frage 23 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-24-von-25"><strong>Frage 24 von 25</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frage-25-von-25"><strong>Frage 25 von 25</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losungen">Lösungen</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

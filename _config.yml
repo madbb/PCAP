@@ -1,0 +1,21 @@
+title: PCAP Python Kurs
+author: Marcel
+logo: logo.png
+
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - html_image
+  myst_heading_anchors: 3
+
+execute:
+  execute_notebooks: "off"
+
+html:
+  use_repository_button: false
+  use_edit_page_button: false
+  use_issues_button: false
+
+sphinx:
+  config:
+    html_show_sourcelink: false

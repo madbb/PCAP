@@ -1,0 +1,1167 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tkinter grundlagen &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_11/11a_tkinter_grundlagen';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tkinter events" href="11b_tkinter_events.html" />
+    <link rel="prev" title="Github actions" href="../Kapitel_10/10d_github_actions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_11/11a_tkinter_grundlagen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tkinter grundlagen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tkinter-grundlagen">
+<h1>Tkinter grundlagen<a class="headerlink" href="#tkinter-grundlagen" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">tkinter: Grundlagen und erste Fenster</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 11: GUI &nbsp;|&nbsp; Notebook 11a</p>
+</div>
+</div><p><strong>Legende</strong></p>
+<blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook ist kein PCAP-Pruefungsinhalt</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Hinweis zur Ausfuehrung:</strong> Alle Code-Beispiele muessen als eigenstaendige <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Dateien ausgefuehrt werden – in PyCharm oder per <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">dateiname.py</span></code> im Terminal. Der Grund: <code class="docutils literal notranslate"><span class="pre">root.mainloop()</span></code> uebergibt die Kontrolle vollstaendig an tkinter und blockiert den Python-Prozess bis das Fenster geschlossen wird. Im Jupyter-Kernel fuehrt das zum Einfrieren.</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Was ist tkinter?
+</span>
+</div><p>Bisher liefen alle Programme in der Konsole. Das reicht fuer Entwickler – aber nicht fuer normale Nutzer. Eine <strong>grafische Benutzeroberflaeche</strong> (GUI) macht ein Programm zugaenglich: Buttons, Eingabefelder, Listen, Menus.</p>
+<p><strong>tkinter</strong> ist Pythons eingebautes GUI-Framework. Es ist in der Standardbibliothek, braucht keine Installation und laeuft auf Windows, macOS und Linux. Es ist nicht das modernste Framework – aber es ist das einfachste fuer den Einstieg und reicht fuer alle Projekte in diesem Kurs.</p>
+<p>Drei Konzepte tragen die gesamte tkinter-Logik:</p>
+<ol class="arabic simple">
+<li><p>Es gibt ein <strong>Hauptfenster</strong> – das Wurzelelement jeder Anwendung</p></li>
+<li><p>In das Fenster kommen <strong>Widgets</strong> – sichtbare Elemente wie Buttons, Labels, Eingabefelder</p></li>
+<li><p>Die Anwendung laeuft in einer <strong>Ereignisschleife</strong> – sie wartet auf Klicks und Tastatureingaben und reagiert darauf</p></li>
+</ol>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. Der Import -- warum immer `import tkinter as tk`?
+</span>
+</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+</pre></div>
+</div>
+<p>Das <code class="docutils literal notranslate"><span class="pre">as</span> <span class="pre">tk</span></code> ist technisch nicht noetig – man koennte auch <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">tkinter</span></code> schreiben und dann <code class="docutils literal notranslate"><span class="pre">tkinter.Label(...)</span></code> benutzen. Aber <code class="docutils literal notranslate"><span class="pre">tk</span></code> als Abkuerzung ist der universelle Standard in der gesamten tkinter-Welt. Jede Dokumentation, jedes Tutorial, jede Stack-Overflow-Antwort benutzt <code class="docutils literal notranslate"><span class="pre">tk</span></code>. Deshalb halten wir uns daran.</p>
+<p>Manchmal sieht man auch:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Das importiert alles direkt in den Namespace – dann schreibt man <code class="docutils literal notranslate"><span class="pre">Label(...)</span></code> statt <code class="docutils literal notranslate"><span class="pre">tk.Label(...)</span></code>. Wir vermeiden das, weil es unuebersichtlich wird und Namen aus dem Modul mit eigenen Variablennamen kollidieren koennen.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Das Grundgeruest -- drei Zeilen die immer da sind
+</span>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_01.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>                    <span class="c1"># Hauptfenster erstellen</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mein erstes Fenster&#39;</span><span class="p">)</span> <span class="c1"># Text in der Titelleiste</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;400x300&#39;</span><span class="p">)</span>          <span class="c1"># Startgroesse: 400 Pixel breit, 300 hoch</span>
+
+<span class="c1"># Hier kommen spaeter Widgets rein</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>                   <span class="c1"># Ereignisschleife -- blockiert bis Fenster zu</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Zeile fuer Zeile:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">root</span> <span class="pre">=</span> <span class="pre">tk.Tk()</span></code> – erstellt das Hauptfenster als Objekt. Der Name <code class="docutils literal notranslate"><span class="pre">root</span></code> ist Konvention – koennte auch <code class="docutils literal notranslate"><span class="pre">fenster</span></code> oder <code class="docutils literal notranslate"><span class="pre">app</span></code> heissen. <code class="docutils literal notranslate"><span class="pre">Tk()</span></code> ist die Klasse, <code class="docutils literal notranslate"><span class="pre">root</span></code> ist die Instanz.</p>
+<p><code class="docutils literal notranslate"><span class="pre">root.title('...')</span></code> – setzt den Text der in der Titelleiste des Fensters erscheint.</p>
+<p><code class="docutils literal notranslate"><span class="pre">root.geometry('400x300')</span></code> – setzt die Startgroesse. Das Format ist immer <code class="docutils literal notranslate"><span class="pre">'BreitexHoehe'</span></code> – ein kleines x als Trennzeichen, kein Leerzeichen. Ohne diesen Aufruf waehlt tkinter eine Standardgroesse.</p>
+<p><code class="docutils literal notranslate"><span class="pre">root.mainloop()</span></code> – das ist der entscheidende Aufruf. Er uebergibt die Kontrolle vollstaendig an tkinter. Ab hier laeuft intern eine Schleife die staendig prueft: Hat der Nutzer geklickt? Eine Taste gedrueckt? Das Fenster verschoben? Diese Schleife laeuft bis das Fenster geschlossen wird – erst dann kehrt <code class="docutils literal notranslate"><span class="pre">mainloop()</span></code> zurueck und das Programm endet. Ohne diesen Aufruf wuerde das Fenster kurz aufflackern und sofort verschwinden.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. Widget-Parameter -- was ist bg, fg, text, width?
+</span>
+</div><p>Wenn man ein Widget erstellt, uebergibt man Konfigurationsoptionen als Keyword-Argumente:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hallo&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Diese Parameter sind <strong>keine</strong> normalen <code class="docutils literal notranslate"><span class="pre">__init__</span></code>-Parameter und <strong>keine</strong> Instanzvariablen die man mit <code class="docutils literal notranslate"><span class="pre">label.bg</span></code> abrufen koennte. tkinter verwaltet sie intern in einer eigenen Konfigurationstabelle. Deshalb kann man sie auch nachtraeglich aendern – mit <code class="docutils literal notranslate"><span class="pre">.config()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Welt&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">)</span>   <span class="c1"># Parameter aendern</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="o">.</span><span class="n">cget</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">))</span>                      <span class="c1"># Parameter auslesen -&gt; &#39;Welt&#39;</span>
+</pre></div>
+</div>
+<p><strong>Die haeufigsten Parameter und ihre Abkuerzungen:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Kurzform</p></th>
+<th class="head"><p>Langform</p></th>
+<th class="head"><p>Bedeutung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">background</span></code></p></td>
+<td><p>Hintergrundfarbe des Widgets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">fg</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">foreground</span></code></p></td>
+<td><p>Textfarbe (“Vordergrund”)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
+<td><p>–</p></td>
+<td><p>Der angezeigte Text</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></td>
+<td><p>–</p></td>
+<td><p>Breite – bei Entry und Button in <strong>Zeichen</strong>, bei Frame in Pixeln</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">height</span></code></p></td>
+<td><p>–</p></td>
+<td><p>Hoehe – bei Frame in Pixeln</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">font</span></code></p></td>
+<td><p>–</p></td>
+<td><p>Schriftart, z.B. <code class="docutils literal notranslate"><span class="pre">('Arial',</span> <span class="pre">12,</span> <span class="pre">'bold')</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">padx</span></code></p></td>
+<td><p>–</p></td>
+<td><p>Innenabstand links/rechts innerhalb des Widgets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pady</span></code></p></td>
+<td><p>–</p></td>
+<td><p>Innenabstand oben/unten innerhalb des Widgets</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Beide Schreibweisen funktionieren – <code class="docutils literal notranslate"><span class="pre">bg='lightblue'</span></code> und <code class="docutils literal notranslate"><span class="pre">background='lightblue'</span></code> sind identisch. Die Kurzformen sind in der Praxis Standard.</p>
+<p><strong>Wie weiss man welche Parameter ein Widget hat?</strong> <code class="docutils literal notranslate"><span class="pre">help(tk.Label)</span></code>  Mit der Zeit kennt man die gaengigsten auswendig.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. Farben in tkinter
+</span>
+</div><p>tkinter akzeptiert Farben auf zwei Arten:</p>
+<p><strong>Benannte Farben</strong> – tkinter kennt ueber 700 Farbnamen aus dem X11-Farbsystem. Die gaengigsten:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;gray&#39;</span>
+<span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="s1">&#39;lightyellow&#39;</span><span class="p">,</span> <span class="s1">&#39;lightcoral&#39;</span>
+<span class="s1">&#39;darkblue&#39;</span><span class="p">,</span> <span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span> <span class="s1">&#39;darkred&#39;</span>
+</pre></div>
+</div>
+<p><strong>Hex-Farben</strong> – genau wie in HTML/CSS: <code class="docutils literal notranslate"><span class="pre">'#RRGGBB'</span></code> wobei RR, GG, BB Hexadezimalwerte von 00 bis FF sind.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span>   <span class="c1"># weiss (Rot=ff, Gruen=ff, Blau=ff)</span>
+<span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#000000&#39;</span>   <span class="c1"># schwarz</span>
+<span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e0e0e0&#39;</span>   <span class="c1"># helles Grau (alle drei Kanaele auf 224 von 255)</span>
+<span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#4fc3f7&#39;</span>   <span class="c1"># das Blau aus unserem Kursdesign</span>
+</pre></div>
+</div>
+<p>Hex-Farben sind praeziser – mit benannten Farben bekommt man auf verschiedenen Betriebssystemen manchmal leicht unterschiedliche Toene.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Die wichtigsten Widgets
+</span>
+</div><p>Jedes Widget wird in zwei Schritten verwendet – erstellen und platzieren. Ohne den zweiten Schritt ist das Widget unsichtbar.</p>
+<p>Man kann ein Widget in einer Variable speichern – oder den Aufruf direkt verketten. Beides ist gueltig:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variante A: Widget in Variable speichern</span>
+<span class="c1"># Benutzen wenn man das Widget spaeter nochmal ansprechen will</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="c1"># ... spaeter ...</span>
+<span class="n">label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Welt&#39;</span><span class="p">)</span>   <span class="c1"># moeglich weil Variable existiert</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variante B: direkt verketten</span>
+<span class="c1"># Benutzen wenn man das Widget nach dem Platzieren nie mehr anfasst</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In Beispiel-Code sieht man oft Variante B fuer einfache Labels die sich nie aendern.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_02.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Widgets&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x200&#39;</span><span class="p">)</span>
+
+<span class="c1"># Label: text= was angezeigt wird, bg= Hintergrund, fg= Textfarbe</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ich bin ein Label&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;darkblue&#39;</span><span class="p">)</span>
+<span class="n">label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Entry: einzeiliges Eingabefeld</span>
+<span class="c1"># width= Breite in ZEICHEN (nicht Pixel!)</span>
+<span class="n">eingabe</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Entry mit show=&#39;*&#39;: jedes Zeichen wird als * angezeigt -- fuer Passwoerter</span>
+<span class="n">passwort</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">passwort</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Button: text= Beschriftung, width= Breite in Zeichen</span>
+<span class="c1"># command= wird in 11b erklaert</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Klick mich&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Parameter nachtraeglich aendern mit .config()</span>
+<span class="n">label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Geaenderter Text&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>padx und pady tauchen in tkinter an zwei verschiedenen Stellen auf – mit unterschiedlicher Bedeutung:</p>
+<p><strong>Als Parameter beim Erstellen eines Widgets</strong> – steuert den Innenabstand zwischen dem Inhalt und dem Rand des Widgets selbst:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;OK&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="c1"># Der Button wird innen groesser -- mehr Luft um den Text</span>
+</pre></div>
+</div>
+<p><strong>Als Parameter in <code class="docutils literal notranslate"><span class="pre">.pack()</span></code></strong> – steuert den Aussenabstand zwischen dem Widget und seinen Nachbarn:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># 5 Pixel Abstand oben und unten zum naechsten Widget</span>
+</pre></div>
+</div>
+<p>Der einfachste Merker: Widget-Parameter = Innenabstand. pack-Parameter = Aussenabstand.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pad_vergleich.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;padx pady Vergleich&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;250x250&#39;</span><span class="p">)</span>
+
+<span class="c1"># Kein pad -- Widgets kleben aneinander</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Kein pad&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Kein pad&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;----------&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1"># pady in pack() -- Aussenabstand zum Nachbar</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;pady=10 in pack&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;pady=10 in pack&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;----------&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1"># padx/pady als Widget-Parameter -- Innenabstand</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;padx=20 pady=10 am Widget&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;padx=20 pady=10 am Widget&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+7. pack -- Layout Schritt fuer Schritt
+</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">pack()</span></code> ist der einfachste Layout-Manager. Er stapelt Widgets der Reihe nach in einen Container. Standardmaessig von oben nach unten.</p>
+<p>Wir gehen jeden Parameter einzeln durch – mit einem eigenen Beispiel.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">side -- an welche Wand wird das Widget gedrueckt?</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">side</span></code> bestimmt an welche Seite des verfuegbaren Platzes das Widget gedrueckt wird:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">side='top'</span></code> – an die Oberkante (Standardwert wenn man nichts angibt)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side='bottom'</span></code> – an die Unterkante</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side='left'</span></code> – an die linke Seite</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">side='right'</span></code> – an die rechte Seite</p></li>
+</ul>
+<p><strong>Wichtig zu verstehen:</strong> Jedes Widget belegt nach dem Platzieren einen Bereich. Das naechste Widget bekommt den Rest. Deshalb ist die Reihenfolge der <code class="docutils literal notranslate"><span class="pre">.pack()</span></code>-Aufrufe entscheidend – und <code class="docutils literal notranslate"><span class="pre">side='bottom'</span></code> muss vor <code class="docutils literal notranslate"><span class="pre">side='top'</span></code> (fuer den Inhaltsbereich) aufgerufen werden wenn man Toolbar + Inhalt + Statusleiste bauen will.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_03_side.py -- side ausprobieren</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;side&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;300x200&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reihenfolge bestimmt das Ergebnis!</span>
+<span class="c1"># top belegt einen Streifen oben vom verbleibenden Platz</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+<span class="c1"># bottom belegt einen Streifen unten vom verbleibenden Platz</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+<span class="c1"># left belegt einen Streifen links vom verbleibenden Platz</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="c1"># right belegt einen Streifen rechts vom verbleibenden Platz</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="c1"># Was uebrig bleibt: die Mitte -- kein Widget dort in diesem Beispiel</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">fill -- den zugewiesenen Bereich ausfuellen</span>
+</div><p>Ohne <code class="docutils literal notranslate"><span class="pre">fill</span></code> ist ein Widget genau so gross wie sein Inhalt – also so breit wie der Text. Mit <code class="docutils literal notranslate"><span class="pre">fill</span></code> dehnt es sich innerhalb des ihm zugewiesenen Bereichs aus:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fill='x'</span></code> – horizontal ausdehnen (die volle Breite des Bereichs belegen)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill='y'</span></code> – vertikal ausdehnen (die volle Hoehe des Bereichs belegen)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill='both'</span></code> – in beide Richtungen ausdehnen</p></li>
+</ul>
+<p><strong>Was ist der “zugewiesene Bereich”?</strong> Ein Widget mit <code class="docutils literal notranslate"><span class="pre">side='top'</span></code> bekommt einen horizontalen Streifen zugewiesen – so breit wie der Container, aber nur so hoch wie der Inhalt. <code class="docutils literal notranslate"><span class="pre">fill='x'</span></code> dehnt das Widget so aus dass es diesen Streifen in der Breite ausfuellt. <code class="docutils literal notranslate"><span class="pre">fill='y'</span></code> haette keinen Effekt weil der Streifen bereits die Hoehe des Inhalts hat – es gibt keinen zusaetzlichen vertikalen Spielraum.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_04_fill.py -- fill vergleichen</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;fill&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;300x200&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ohne fill: Label ist nur so breit wie der Text</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;kein fill&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># fill=&#39;x&#39;: Label dehnt sich auf volle Fensterbreite aus</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;fill=x&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># fill=&#39;x&#39; hat Wirkung -- fill=&#39;y&#39; haette hier keine, weil der</span>
+<span class="c1"># Bereich (horizontaler Streifen) keinen extra vertikalen Platz hat</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;fill=x (gleich)&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">expand -- extra Platz beim Vergroessern des Fensters beanspruchen</span>
+</div><p>Der Unterschied zwischen <code class="docutils literal notranslate"><span class="pre">fill</span></code> und <code class="docutils literal notranslate"><span class="pre">expand</span></code> ist subtil aber wichtig:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fill</span></code> sagt: <strong>nutze</strong> den Platz der dir bereits zugewiesen wurde</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">expand=True</span></code> sagt: <strong>fordere</strong> zusaetzlichen Platz an wenn das Fenster groesser wird</p></li>
+</ul>
+<p>Ohne <code class="docutils literal notranslate"><span class="pre">expand=True</span></code> behalten alle Widgets ihre Groesse wenn das Fenster vergroessert wird. Der leere Platz sammelt sich unten. Mit <code class="docutils literal notranslate"><span class="pre">expand=True</span></code> bekommt das Widget diesen extra Platz – und mit <code class="docutils literal notranslate"><span class="pre">fill='both'</span></code> benutzt es ihn auch.</p>
+<p>Fuer einen Inhaltsbereich der mit dem Fenster mitwachsen soll: <strong>immer beides zusammen</strong> – <code class="docutils literal notranslate"><span class="pre">fill='both',</span> <span class="pre">expand=True</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_05_expand.py -- Fenster mit der Maus vergroessern!</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;expand -- Fenster jetzt vergroessern!&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;300x200&#39;</span><span class="p">)</span>
+
+<span class="c1"># Feste Toolbar: fill=&#39;x&#39; aber kein expand</span>
+<span class="c1"># -&gt; beim Vergroessern nur breiter, nicht hoeher</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Toolbar&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#d0d0d0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="c1"># Inhaltsbereich: fill=&#39;both&#39; UND expand=True</span>
+<span class="c1"># -&gt; bekommt allen extra Platz, dehnt sich in beide Richtungen aus</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Inhalt waechst mit&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Feste Statusleiste: fill=&#39;x&#39; aber kein expand</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Statusleiste&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#d0d0d0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">padx und pady -- Aussenabstand</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">padx</span></code> und <code class="docutils literal notranslate"><span class="pre">pady</span></code> in <code class="docutils literal notranslate"><span class="pre">.pack()</span></code> fuer den <strong>Aussenabstand</strong> um das Widget – also der Abstand zwischen dem Widget und seinen Nachbarn:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">padx=10</span></code> – 10 Pixel Abstand links und rechts des Widgets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pady=5</span></code> – 5 Pixel Abstand oben und unten des Widgets</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">padx=(10,</span> <span class="pre">20)</span></code> – asymmetrisch: 10 links, 20 rechts</p></li>
+</ul>
+<p><strong>Nicht zu verwechseln</strong> mit <code class="docutils literal notranslate"><span class="pre">padx</span></code>/<code class="docutils literal notranslate"><span class="pre">pady</span></code> als Widget-Parameter – die steuern den <strong>Innenabstand</strong> (zwischen Inhalt und Rahmen des Widgets selbst):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Innenabstand: Button wird innen groesser</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;OK&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Aussenabstand: Abstand zum Nachbar-Widget</span>
+<span class="n">button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+8. grid -- praezise im Raster
+</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">grid()</span></code> platziert Widgets in einem unsichtbaren Tabellenraster. Man gibt Zeile (<code class="docutils literal notranslate"><span class="pre">row</span></code>) und Spalte (<code class="docutils literal notranslate"><span class="pre">column</span></code>) an – tkinter berechnet die tatsaechliche Position selbst. Zeilen und Spalten entstehen automatisch, man muss sie nicht deklarieren.</p>
+<p><strong>sticky</strong> – Ausrichtung innerhalb der Zelle. Funktioniert wie Kompassrichtungen:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sticky='w'</span></code> – West = linksbuendig in der Zelle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sticky='e'</span></code> – East = rechtsbuendig</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sticky='ew'</span></code> – Ost und West = Widget streckt sich horizontal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sticky='nsew'</span></code> – alle vier Richtungen = Zelle komplett ausfuellen</p></li>
+</ul>
+<p><strong>columnspan</strong> – Widget ueber mehrere Spalten erstrecken (wie “Zellen zusammenfuehren” in Excel).</p>
+<p><strong>columnconfigure(n, weight=1)</strong> – legt fest welche Spalte extra Platz bekommt wenn das Fenster breiter wird. Ohne das bleiben alle Spalten fest – die Eingabefelder wachsen nicht mit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_06_grid.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;grid&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x180&#39;</span><span class="p">)</span>
+
+<span class="c1"># Spalte 1 (die Eingabefelder) soll sich ausdehnen wenn Fenster breiter wird</span>
+<span class="c1"># weight=1 bedeutet: diese Spalte bekommt den extra Platz</span>
+<span class="n">root</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># row=0: erste Zeile. column=0: erste Spalte</span>
+<span class="c1"># sticky=&#39;w&#39;: Widget in der Zelle linksbuendig ausrichten</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Name:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>     <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;E-Mail:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>   <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Passwort:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># sticky=&#39;ew&#39;: Eingabefeld fuellt die gesamte Zellenbreite aus</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>           <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>           <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span> <span class="n">row</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># columnspan=2: Button ueber beide Spalten</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Anmelden&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">columnspan</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+9. Frame -- Bereiche trennen und pack + grid kombinieren
+</span>
+</div><p><strong>Regel: Innerhalb desselben Containers darf man pack und grid nicht mischen.</strong> tkinter wirft sonst einen Fehler – die beiden Layout-Manager “streiten” sich um die Kontrolle.</p>
+<p>Die Loesung ist <code class="docutils literal notranslate"><span class="pre">Frame</span></code>. Ein Frame ist ein unsichtbarer Container der Widgets gruppiert. Jeder Frame hat seinen eigenen Layout-Manager – unabhaengig vom Rest der Anwendung. Damit kann man gleichzeitig pack (im Hauptfenster fuer die Bereiche) und grid (im Inhaltsbereich fuer ein Formular) benutzen, weil sie in verschiedenen Containern sind.</p>
+<p><strong>pack_propagate(False)</strong> – ein Frame passt sich standardmaessig an die Groesse seines Inhalts an. Das bedeutet: wenn man <code class="docutils literal notranslate"><span class="pre">height=40</span></code> setzt aber der Inhalt kleiner ist, schrumpft der Frame auf den Inhalt. <code class="docutils literal notranslate"><span class="pre">pack_propagate(False)</span></code> schaltet dieses Verhalten ab – der Frame behaelt seine angegebene Groesse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_07_frames.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frames&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;400x300&#39;</span><span class="p">)</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Hauptfenster: pack() fuer die drei Bereiche</span>
+<span class="c1"># -------------------------------------------------------</span>
+
+<span class="c1"># Toolbar oben</span>
+<span class="n">toolbar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e0e0e0&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">toolbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="c1"># pack_propagate(False): Frame soll height=40 behalten</span>
+<span class="c1"># auch wenn die Buttons kleiner sind</span>
+<span class="n">toolbar</span><span class="o">.</span><span class="n">pack_propagate</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Statusleiste unten -- MUSS vor dem Inhaltsbereich kommen</span>
+<span class="n">statusleiste</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e0e0e0&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">statusleiste</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">statusleiste</span><span class="o">.</span><span class="n">pack_propagate</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Inhaltsbereich Mitte -- bekommt den Rest</span>
+<span class="n">inhalt</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">inhalt</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Innerhalb der Toolbar: pack() mit side=&#39;left&#39;</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">toolbar</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Neu&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>     <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">toolbar</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Oeffnen&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span> <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">toolbar</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Speichern&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Innerhalb der Statusleiste: pack()</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">statusleiste</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Bereit&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e0e0e0&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Innerhalb des Inhaltsbereichs: grid() fuer ein Formular</span>
+<span class="c1"># Das ist kein Mischen! grid laeuft in inhalt, pack in root/toolbar/status</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">inhalt</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">inhalt</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel:&#39;</span><span class="p">,</span>    <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>                          <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span>   <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">inhalt</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret:&#39;</span><span class="p">,</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>                          <span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span>   <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+10. Weitere nuetzliche Fenster-Optionen
+</span>
+</div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fenstergrösse fixieren -- Nutzer kann nicht vergroessern</span>
+<span class="c1"># resizable(width, height) -- True/False fuer jede Richtung</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>   <span class="c1"># weder Breite noch Hoehe veraenderbar</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>    <span class="c1"># nur Breite veraenderbar</span>
+
+<span class="c1"># Minimale und maximale Fenstergrösse</span>
+<span class="n">root</span><span class="o">.</span><span class="n">minsize</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>   <span class="c1"># mindestens 300x200 Pixel</span>
+<span class="n">root</span><span class="o">.</span><span class="n">maxsize</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>   <span class="c1"># hoechstens 800x600 Pixel</span>
+
+<span class="c1"># Fenster in der Mitte des Bildschirms positionieren</span>
+<span class="c1"># geometry(&#39;BREITExHOEHE+X+Y&#39;) -- X,Y ist die Position der oberen linken Ecke</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;400x300+100+100&#39;</span><span class="p">)</span>  <span class="c1"># 100 Pixel vom linken und oberen Rand</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>Zusammenfassung</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Konzept</p></th>
+<th class="head"><p>Erklaerung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">tkinter</span> <span class="pre">as</span> <span class="pre">tk</span></code></p></td>
+<td><p>Standard-Importname – <code class="docutils literal notranslate"><span class="pre">tk</span></code> ist universelle Konvention</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.Tk()</span></code></p></td>
+<td><p>Hauptfenster erstellen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">root.geometry('BxH')</span></code></p></td>
+<td><p>Startgroesse: kleines x, kein Leerzeichen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">root.mainloop()</span></code></p></td>
+<td><p>Ereignisschleife – blockiert bis Fenster geschlossen</p></td>
+</tr>
+<tr class="row-even"><td><p>Widget-Parameter</p></td>
+<td><p>Keyword-Argumente des Konstruktors – intern als Konfiguration gespeichert</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.config(param=wert)</span></code></p></td>
+<td><p>Parameter nachtraeglich aendern</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.cget('param')</span></code></p></td>
+<td><p>Parameter auslesen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bg</span></code> / <code class="docutils literal notranslate"><span class="pre">background</span></code></p></td>
+<td><p>Hintergrundfarbe – beide Schreibweisen funktionieren</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fg</span></code> / <code class="docutils literal notranslate"><span class="pre">foreground</span></code></p></td>
+<td><p>Textfarbe</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">width</span></code> bei Entry/Button</p></td>
+<td><p>Breite in <strong>Zeichen</strong> (nicht Pixeln!)</p></td>
+</tr>
+<tr class="row-even"><td><p>Hex-Farben</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">'#RRGGBB'</span></code> – praeziser als benannte Farben</p></td>
+</tr>
+<tr class="row-odd"><td><p>Variable vs. verkettung</p></td>
+<td><p>Variable wenn Widget spaeter benutzt wird; <code class="docutils literal notranslate"><span class="pre">.pack()</span></code> direkt wenn nicht</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pack(side=)</span></code></p></td>
+<td><p>Wand an die gedrueckt wird: <code class="docutils literal notranslate"><span class="pre">'top'</span></code>, <code class="docutils literal notranslate"><span class="pre">'bottom'</span></code>, <code class="docutils literal notranslate"><span class="pre">'left'</span></code>, <code class="docutils literal notranslate"><span class="pre">'right'</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pack(fill=)</span></code></p></td>
+<td><p>Bereich ausfuellen: <code class="docutils literal notranslate"><span class="pre">'x'</span></code>, <code class="docutils literal notranslate"><span class="pre">'y'</span></code>, <code class="docutils literal notranslate"><span class="pre">'both'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">pack(expand=True)</span></code></p></td>
+<td><p>Extra Platz beanspruchen wenn Fenster waechst</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">padx</span></code>/<code class="docutils literal notranslate"><span class="pre">pady</span></code> bei pack</p></td>
+<td><p>Aussenabstand um das Widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">padx</span></code>/<code class="docutils literal notranslate"><span class="pre">pady</span></code> als Widget-Parameter</p></td>
+<td><p>Innenabstand zwischen Inhalt und Widget-Rahmen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">grid(row=,</span> <span class="pre">column=)</span></code></p></td>
+<td><p>Rasterpositionierung</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">grid(sticky=)</span></code></p></td>
+<td><p>Ausrichtung in der Zelle: <code class="docutils literal notranslate"><span class="pre">'w'</span></code>=links, <code class="docutils literal notranslate"><span class="pre">'e'</span></code>=rechts, <code class="docutils literal notranslate"><span class="pre">'nsew'</span></code>=alles</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">grid(columnspan=)</span></code></p></td>
+<td><p>Widget ueber mehrere Spalten</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">columnconfigure(n,</span> <span class="pre">weight=1)</span></code></p></td>
+<td><p>Spalte darf beim Vergroessern wachsen</p></td>
+</tr>
+<tr class="row-odd"><td><p>pack + grid nicht mischen</p></td>
+<td><p>Nur innerhalb desselben Containers – Frames loesen das</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Frame</span></code></p></td>
+<td><p>Unsichtbarer Container mit eigenem Layout-Manager</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">pack_propagate(False)</span></code></p></td>
+<td><p>Frame behaelt seine angegebene Groesse statt auf Inhalt zu schrumpfen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">root.resizable(w,</span> <span class="pre">h)</span></code></p></td>
+<td><p>Fenstergroesse fixieren</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">root.minsize()</span> <span class="pre">/</span> <span class="pre">maxsize()</span></code></p></td>
+<td><p>Groessenbereich einschraenken</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Weiter:</strong> In Notebook <strong>11b – Ereignisse und Callbacks</strong> bringen wir die Widgets zum Leben: Buttons reagieren auf Klicks, Eingaben werden ausgelesen, Labels werden dynamisch aktualisiert.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_11"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Kapitel_10/10d_github_actions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Github actions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11b_tkinter_events.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tkinter events</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

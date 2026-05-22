@@ -1,0 +1,1208 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aufgaben: Genutzte Module &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Abschlussaufgabe Casino" href="06_Abschlussaufgabe_Casino.html" />
+    <link rel="prev" title="Aufgaben: Math Modul" href="04_Aufgaben_Math_Modul.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Aufgaben: Genutzte Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Aufgaben: Genutzte Module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-1">Aufgabe 1:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-2">Aufgabe 2:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-3">Aufgabe 3:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-4">Aufgabe 4:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-5">Aufgabe 5:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-6">Aufgabe 6:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7">Aufgabe 7:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-8">Aufgabe 8:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-9">Aufgabe 9:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-10">Aufgabe 10:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-11">Aufgabe 11:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-12">Aufgabe 12:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-13">Aufgabe 13:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-14">Aufgabe 14:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-15">Aufgabe 15:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losungen">Lösungen</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="aufgaben-genutzte-module">
+<h1>Aufgaben: Genutzte Module<a class="headerlink" href="#aufgaben-genutzte-module" title="Link to this heading">#</a></h1>
+<section id="aufgabe-1">
+<h2>Aufgabe 1:<a class="headerlink" href="#aufgabe-1" title="Link to this heading">#</a></h2>
+<p>Grundlegende Math-Funktionen</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">math</span></code> komplett.</p></li>
+<li><p>Berechne die Quadratwurzel von 144. Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">wurzel_144</span></code> und gib es aus.</p></li>
+<li><p>Berechne 2 hoch 10 (2^10) mit einer Funktion aus dem <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul.
+Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">zwei_hoch_zehn</span></code> und gib es aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-2">
+<h2>Aufgabe 2:<a class="headerlink" href="#aufgabe-2" title="Link to this heading">#</a></h2>
+<p>Trigonometrie und Konstanten</p>
+<ol class="arabic simple">
+<li><p>Importiere spezifisch die Funktionen <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code> und die Konstante <code class="docutils literal notranslate"><span class="pre">pi</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">math</span></code>.</p></li>
+<li><p>Berechne den Sinus von pi/2 Radiant (entspricht 90 Grad).
+Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">sinus_pi_halbe</span></code> und gib es aus.</p></li>
+<li><p>Berechne den Kosinus von pi Radiant (entspricht 180 Grad).
+Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">kosinus_pi</span></code> und gib es aus.</p></li>
+<li><p>Gib den importierten Wert von <code class="docutils literal notranslate"><span class="pre">pi</span></code> direkt aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-3">
+<h2>Aufgabe 3:<a class="headerlink" href="#aufgabe-3" title="Link to this heading">#</a></h2>
+<p>Runden und Logarithmen mit Alias</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">math</span></code> unter dem Alias <code class="docutils literal notranslate"><span class="pre">mth</span></code>.</p></li>
+<li><p>Gegeben ist die Zahl <code class="docutils literal notranslate"><span class="pre">zahl_zum_runden</span> <span class="pre">=</span> <span class="pre">7.654</span></code>.
+Runde diese Zahl auf die nächste ganze Zahl auf. Speichere in <code class="docutils literal notranslate"><span class="pre">aufgerundet</span></code>.
+Runde diese Zahl auf die nächste ganze Zahl ab. Speichere in <code class="docutils literal notranslate"><span class="pre">abgerundet</span></code>.
+Gib beide Ergebnisse aus.</p></li>
+<li><p>Berechne den natürlichen Logarithmus (Basis e) von <code class="docutils literal notranslate"><span class="pre">mth.e</span></code> (Eulersche Zahl).
+Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">nat_log_e</span></code> und gib es aus.
+(Hinweis: Das Ergebnis sollte nahe 1 sein).</p></li>
+</ol>
+</section>
+<section id="aufgabe-4">
+<h2>Aufgabe 4:<a class="headerlink" href="#aufgabe-4" title="Link to this heading">#</a></h2>
+<p>Fakultät und größter gemeinsamer Teiler (GCD)</p>
+<ol class="arabic simple">
+<li><p>Importiere spezifisch <code class="docutils literal notranslate"><span class="pre">factorial</span></code> und <code class="docutils literal notranslate"><span class="pre">gcd</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">math</span></code>.</p></li>
+<li><p>Berechne die Fakultät von 5. Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">fakultaet_5</span></code> und gib es aus.</p></li>
+<li><p>Berechne den größten gemeinsamen Teiler der Zahlen 54 und 24.
+Speichere das Ergebnis in <code class="docutils literal notranslate"><span class="pre">ggt_54_24</span></code> und gib es aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-5">
+<h2>Aufgabe 5:<a class="headerlink" href="#aufgabe-5" title="Link to this heading">#</a></h2>
+<p>Grundlegende Systeminformationen</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">platform</span></code> komplett.</p></li>
+<li><p>Ermittle den Namen des Betriebssystems (z.B. ‘Windows’, ‘Linux’, ‘Darwin’).
+Speichere ihn in <code class="docutils literal notranslate"><span class="pre">os_name</span></code> und gib ihn aus.</p></li>
+<li><p>Ermittle die Python-Implementierung (z.B. ‘CPython’, ‘Jython’).
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">python_impl</span></code> und gib sie aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-6">
+<h2>Aufgabe 6:<a class="headerlink" href="#aufgabe-6" title="Link to this heading">#</a></h2>
+<p>Python Version Details</p>
+<ol class="arabic simple">
+<li><p>Importiere spezifisch die Funktion <code class="docutils literal notranslate"><span class="pre">python_version_tuple</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">platform</span></code>.</p></li>
+<li><p>Rufe <code class="docutils literal notranslate"><span class="pre">python_version_tuple()</span></code> auf, um die Python-Version als Tupel von Strings zu erhalten
+(z.B. (‘3’, ‘9’, ‘7’)). Speichere das Tupel in <code class="docutils literal notranslate"><span class="pre">py_version_tupel</span></code> und gib es aus.</p></li>
+<li><p>Greife auf die Major- und Minor-Versionsteile aus dem Tupel zu und gib sie separat aus.
+(z.B. “Major: 3, Minor: 9”).</p></li>
+</ol>
+</section>
+<section id="aufgabe-7">
+<h2>Aufgabe 7:<a class="headerlink" href="#aufgabe-7" title="Link to this heading">#</a></h2>
+<p>Prozessorarchitektur</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">platform</span></code> unter dem Alias <code class="docutils literal notranslate"><span class="pre">pf</span></code>.</p></li>
+<li><p>Ermittle die Prozessorarchitektur des Systems (z.B. ‘x86_64’, ‘AMD64’).
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">prozessor_arch</span></code> und gib sie aus.</p></li>
+<li><p>Ermittle den generischen Prozessornamen (kann unspezifisch sein).
+Speichere ihn in <code class="docutils literal notranslate"><span class="pre">prozessor_name</span></code> und gib ihn aus.</p></li>
+</ol>
+<section id="aufgabe-8">
+<h3>Aufgabe 8:<a class="headerlink" href="#aufgabe-8" title="Link to this heading">#</a></h3>
+<p>System-Release und -Version</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">platform</span></code>.</p></li>
+<li><p>Ermittle die Release-Information des Betriebssystems (z.B.Build-Nummer bei Windows ,Kernel-Version bei Linux). Speichere sie in <code class="docutils literal notranslate"><span class="pre">os_release</span></code> und gib sie aus.</p></li>
+<li><p>Ermittle die detailliertere Version des Betriebssystems.
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">os_version</span></code> und gib sie aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-9">
+<h3>Aufgabe 9:<a class="headerlink" href="#aufgabe-9" title="Link to this heading">#</a></h3>
+<p>Die <code class="docutils literal notranslate"><span class="pre">uname</span></code> Funktion</p>
+<ol class="arabic simple">
+<li><p>Importiere die Funktion <code class="docutils literal notranslate"><span class="pre">uname</span></code> spezifisch aus dem Modul <code class="docutils literal notranslate"><span class="pre">platform</span></code>.</p></li>
+<li><p>Rufe <code class="docutils literal notranslate"><span class="pre">uname()</span></code> auf, um ein Objekt mit verschiedenen Systemattributen zu erhalten (Tipp: schaut euch den Datentyp an).
+Speichere dieses Objekt in <code class="docutils literal notranslate"><span class="pre">uname_info</span></code>.</p></li>
+<li><p>Gib das gesamte <code class="docutils literal notranslate"><span class="pre">uname_info</span></code> Objekt aus.</p></li>
+<li><p>Greife auf die Attribute <code class="docutils literal notranslate"><span class="pre">system</span></code> (Betriebssystemname) und <code class="docutils literal notranslate"><span class="pre">node</span></code> (Netzwerkname des Rechners)
+des <code class="docutils literal notranslate"><span class="pre">uname_info</span></code> Objekts zu und gib sie separat aus.</p></li>
+</ol>
+<p><a class="reference external" href="https://www.geeksforgeeks.org/python-os-uname-method/">Die uname Funktion erklärt</a>
+<br>
+<a class="reference external" href="https://zetcode.com/python/os-uname/">hier noch ein kleiner Tipp wie ihr auf sytem und node zugreifen könnt</a></p>
+</section>
+<section id="aufgabe-10">
+<h3>Aufgabe 10:<a class="headerlink" href="#aufgabe-10" title="Link to this heading">#</a></h3>
+<p>Grundlegende Zufallszahlen</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">random</span></code> komplett.</p></li>
+<li><p>Generiere eine zufällige Fließkommazahl zwischen 0.0 (inklusive) und 1.0 (exklusive).
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">zufall_float_0_1</span></code> und gib sie aus.</p></li>
+<li><p>Generiere eine zufällige Ganzzahl zwischen 10 und 20 (inklusive beider Grenzen).
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">zufall_ganzzahl_10_20</span></code> und gib sie aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-11">
+<h3>Aufgabe 11:<a class="headerlink" href="#aufgabe-11" title="Link to this heading">#</a></h3>
+<p>Auswahl aus Sequenzen</p>
+<ol class="arabic">
+<li><p>Importiere spezifisch die Funktionen <code class="docutils literal notranslate"><span class="pre">choice</span></code> und <code class="docutils literal notranslate"><span class="pre">sample</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">random</span></code>.</p></li>
+<li><p>Gegeben ist eine Liste von Farben:</p>
+<p><code class="docutils literal notranslate"><span class="pre">farben</span> <span class="pre">=</span> <span class="pre">[&quot;rot&quot;,</span> <span class="pre">&quot;grün&quot;,</span> <span class="pre">&quot;blau&quot;,</span> <span class="pre">&quot;gelb&quot;,</span> <span class="pre">&quot;schwarz&quot;]</span></code>.</p>
+</li>
+<li><p>Wähle eine zufällige Farbe aus der <code class="docutils literal notranslate"><span class="pre">farben</span></code>-Liste.
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">zufalls_farbe</span></code> und gib sie aus.</p></li>
+<li><p>Wähle 3 einzigartige zufällige Farben aus der <code class="docutils literal notranslate"><span class="pre">farben</span></code>-Liste.
+Speichere die Ergebnisliste in <code class="docutils literal notranslate"><span class="pre">drei_zufalls_farben</span></code> und gib sie aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-12">
+<h3>Aufgabe 12:<a class="headerlink" href="#aufgabe-12" title="Link to this heading">#</a></h3>
+<p>Mischen und Seed</p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">random</span></code> unter dem Alias <code class="docutils literal notranslate"><span class="pre">rnd</span></code>.</p></li>
+<li><p>Gegeben ist eine Liste von Zahlen: <code class="docutils literal notranslate"><span class="pre">zahlen_zum_mischen</span> <span class="pre">=</span> <span class="pre">list(range(1,</span> <span class="pre">6))</span></code>.</p></li>
+<li><p>Setze den Seed des Zufallsgenerators auf <code class="docutils literal notranslate"><span class="pre">42</span></code>.</p></li>
+<li><p>Mische die <code class="docutils literal notranslate"><span class="pre">zahlen_zum_mischen</span></code> Liste direkt (in-place).
+Gib die gemischte Liste aus.</p></li>
+<li><p>Setze den Seed erneut auf 42. Erstelle eine neue Liste <code class="docutils literal notranslate"><span class="pre">zahlen_zum_mischen_2</span> <span class="pre">=</span> <span class="pre">list(range(1,</span> <span class="pre">6))</span></code>.
+Mische <code class="docutils literal notranslate"><span class="pre">zahlen_zum_mischen_2</span></code>.
+<br>Gib auch diese gemischte Liste aus.
+(Was erwartest du?).</p></li>
+<li><p>Überprüfe ob die Inhalte der beide Listen identisch sind und lass dir das Ergebnis ausdrucken.</p></li>
+</ol>
+</section>
+<section id="aufgabe-13">
+<h3>Aufgabe 13:<a class="headerlink" href="#aufgabe-13" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">randrange</span></code> und <code class="docutils literal notranslate"><span class="pre">uniform</span></code></p>
+<ol class="arabic simple">
+<li><p>Importiere das Modul <code class="docutils literal notranslate"><span class="pre">random</span></code>.</p></li>
+<li><p>Generiere eine zufällige Ganzzahl aus dem Bereich [0, 10, 20, 30, …, 90].
+Nutze dafür eine Funktion des <code class="docutils literal notranslate"><span class="pre">random</span></code> Moduls.
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">zufall_vielfaches_von_10</span></code> und gib sie aus.</p></li>
+<li><p>Generiere eine zufällige Fließkommazahl zwischen 5.5 und 8.5 (inklusive Grenzen).
+Nutze dafür <code class="docutils literal notranslate"><span class="pre">random.uniform()</span></code>.
+Speichere sie in <code class="docutils literal notranslate"><span class="pre">zufall_float_5_8</span></code> und gib sie aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-14">
+<h3>Aufgabe 14:<a class="headerlink" href="#aufgabe-14" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">choices</span></code> mit Gewichten</p>
+<ol class="arabic">
+<li><p>Importiere spezifisch die Funktion <code class="docutils literal notranslate"><span class="pre">choices</span></code> aus dem Modul <code class="docutils literal notranslate"><span class="pre">random</span></code>.</p></li>
+<li><p>Gegeben sind mögliche Ergebnisse eines Experiments und deren Wahrscheinlichkeiten (Gewichte):</p>
+<p><code class="docutils literal notranslate"><span class="pre">ergebnisse</span> <span class="pre">=</span> <span class="pre">[&quot;Erfolg&quot;,</span> <span class="pre">&quot;Teilerfolg&quot;,</span> <span class="pre">&quot;Misserfolg&quot;]</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">gewichte</span> <span class="pre">=</span> <span class="pre">[0.6,</span> <span class="pre">0.3,</span> <span class="pre">0.1]</span></code></p>
+</li>
+<li><p>Simuliere das Experiment 10 Mal unter Berücksichtigung der Gewichte.
+Speichere die Ergebnisliste in <code class="docutils literal notranslate"><span class="pre">experiment_simulation</span></code> und gib sie aus.</p></li>
+</ol>
+</section>
+<section id="aufgabe-15">
+<h3>Aufgabe 15:<a class="headerlink" href="#aufgabe-15" title="Link to this heading">#</a></h3>
+<p>Letzte Aufgabe und kleine Projekt</p>
+<p>Ziel: Erstelle eine kleine Simulation, die auf Systeminformationen basiert
+und zufällige Berechnungen durchführt.</p>
+<ol class="arabic simple">
+<li><p><strong>Importiere die benötigten Module/Funktionen:</strong></p>
+<ul class="simple">
+<li><p>Das Modul <code class="docutils literal notranslate"><span class="pre">platform</span></code> komplett.</p></li>
+<li><p>Aus dem Modul <code class="docutils literal notranslate"><span class="pre">random</span></code>: <code class="docutils literal notranslate"><span class="pre">seed</span></code>, <code class="docutils literal notranslate"><span class="pre">randint</span></code>, <code class="docutils literal notranslate"><span class="pre">uniform</span></code>.</p></li>
+<li><p>Aus dem Modul <code class="docutils literal notranslate"><span class="pre">math</span></code>: <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">pow</span></code>, <code class="docutils literal notranslate"><span class="pre">log</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Systeminformationen als Seed-Basis:</strong></p>
+<ul class="simple">
+<li><p>Ermittle die Länge des <code class="docutils literal notranslate"><span class="pre">platform.node()</span></code>-Strings .</p></li>
+<li><p>Ermittle die Major-Versionsnummer der Python-Implementierung als Integer.</p></li>
+<li><p>Addiere diese beiden Zahlen. Wenn die Summe 0 ist (unwahrscheinlich, aber zur Sicherheit),
+setze sie auf 1. Diese Summe dient als Basis für den Seed.
+Speichere die Summe in <code class="docutils literal notranslate"><span class="pre">seed_basis</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Zufallsgenerator initialisieren:</strong></p>
+<ul class="simple">
+<li><p>Setze den Seed des Zufallsgenerators mit <code class="docutils literal notranslate"><span class="pre">seed(seed_basis)</span></code>.</p></li>
+</ul>
+</li>
+<li><p><strong>Zufällige Operationen:</strong></p>
+<ul class="simple">
+<li><p>Generiere eine zufällige Ganzzahl <code class="docutils literal notranslate"><span class="pre">a</span></code> zwischen 1 und dem Wert von <code class="docutils literal notranslate"><span class="pre">seed_basis</span></code> (inklusive).</p></li>
+<li><p>Generiere eine zufällige Fließkommazahl <code class="docutils literal notranslate"><span class="pre">b</span></code> zwischen 0.1 und 5.0.</p></li>
+<li><p>Berechne <code class="docutils literal notranslate"><span class="pre">ergebnis1</span> <span class="pre">=</span> <span class="pre">sqrt(a)</span> <span class="pre">+</span> <span class="pre">pow(b,</span> <span class="pre">2)</span></code>.</p></li>
+<li><p>Wenn <code class="docutils literal notranslate"><span class="pre">a</span></code> größer als 0 ist, berechne <code class="docutils literal notranslate"><span class="pre">ergebnis2</span> <span class="pre">=</span> <span class="pre">log(a)</span> <span class="pre">*</span> <span class="pre">b</span></code>. Andernfalls setze <code class="docutils literal notranslate"><span class="pre">ergebnis2</span></code> auf 0.</p></li>
+</ul>
+</li>
+<li><p><strong>Ausgabe:</strong></p>
+<ul class="simple">
+<li><p>Gib den verwendeten <code class="docutils literal notranslate"><span class="pre">seed_basis</span></code> Wert aus.</p></li>
+<li><p>Gib die generierten Zahlen <code class="docutils literal notranslate"><span class="pre">a</span></code> und <code class="docutils literal notranslate"><span class="pre">b</span></code> aus.</p></li>
+<li><p>Gib <code class="docutils literal notranslate"><span class="pre">ergebnis1</span></code> und <code class="docutils literal notranslate"><span class="pre">ergebnis2</span></code> (formatiert auf z.B. 4 Nachkommastellen) aus.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="losungen">
+<h1>Lösungen<a class="headerlink" href="#losungen" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 1:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">wurzel_144</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">144</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wurzel von 144:&quot;</span><span class="p">,</span> <span class="n">wurzel_144</span><span class="p">)</span>
+
+<span class="n">zwei_hoch_zehn</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;2 hoch 10:&quot;</span><span class="p">,</span> <span class="n">zwei_hoch_zehn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Wurzel von 144: 12.0
+2 hoch 10: 1024.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 2:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="n">sinus_pi_halbe</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sinus von pi/2:&quot;</span><span class="p">,</span> <span class="n">sinus_pi_halbe</span><span class="p">)</span>
+
+<span class="n">kosinus_pi</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Kosinus von pi:&quot;</span><span class="p">,</span> <span class="n">kosinus_pi</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Wert von pi:&quot;</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sinus von pi/2: 1.0
+Kosinus von pi: -1.0
+Wert von pi: 3.141592653589793
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 3:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mth</span>
+
+<span class="n">zahl_zum_runden</span> <span class="o">=</span> <span class="mf">7.654</span>
+<span class="n">aufgerundet</span> <span class="o">=</span> <span class="n">mth</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">zahl_zum_runden</span><span class="p">)</span>
+<span class="n">abgerundet</span> <span class="o">=</span> <span class="n">mth</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">zahl_zum_runden</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Zahl: </span><span class="si">{</span><span class="n">zahl_zum_runden</span><span class="si">}</span><span class="s2">, Aufgerundet: </span><span class="si">{</span><span class="n">aufgerundet</span><span class="si">}</span><span class="s2">, Abgerundet: </span><span class="si">{</span><span class="n">abgerundet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">nat_log_e</span> <span class="o">=</span> <span class="n">mth</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">mth</span><span class="o">.</span><span class="n">e</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Natürlicher Logarithmus von e:&quot;</span><span class="p">,</span> <span class="n">nat_log_e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zahl: 7.654, Aufgerundet: 8, Abgerundet: 7
+Natürlicher Logarithmus von e: 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 4:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">gcd</span>
+
+<span class="n">fakultaet_5</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fakultät von 5:&quot;</span><span class="p">,</span> <span class="n">fakultaet_5</span><span class="p">)</span>
+
+<span class="n">ggt_54_24</span> <span class="o">=</span> <span class="n">gcd</span><span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">24</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GGT von 54 und 24:&quot;</span><span class="p">,</span> <span class="n">ggt_54_24</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fakultät von 5: 120
+GGT von 54 und 24: 6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 5</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+
+<span class="n">os_name</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Betriebssystem:&quot;</span><span class="p">,</span> <span class="n">os_name</span><span class="p">)</span>
+
+<span class="n">python_impl</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">python_implementation</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python Implementierung:&quot;</span><span class="p">,</span> <span class="n">python_impl</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Betriebssystem: Windows
+Python Implementierung: CPython
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 6:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">python_version_tuple</span>
+
+<span class="n">py_version_tupel</span> <span class="o">=</span> <span class="n">python_version_tuple</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Python Version als Tupel:&quot;</span><span class="p">,</span> <span class="n">py_version_tupel</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">py_version_tupel</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Major Version: </span><span class="si">{</span><span class="n">py_version_tupel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, Minor Version: </span><span class="si">{</span><span class="n">py_version_tupel</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Konnte Major/Minor Version nicht extrahieren.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python Version als Tupel: (&#39;3&#39;, &#39;12&#39;, &#39;4&#39;)
+Major Version: 3, Minor Version: 12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 7:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pf</span>
+
+<span class="n">prozessor_arch</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">machine</span><span class="p">()</span> <span class="c1"># Gibt die Prozessorarchitektur zurück</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prozessorarchitektur:&quot;</span><span class="p">,</span> <span class="n">prozessor_arch</span><span class="p">)</span>
+
+<span class="n">prozessor_name</span> <span class="o">=</span> <span class="n">pf</span><span class="o">.</span><span class="n">processor</span><span class="p">()</span> <span class="c1"># Gibt den Prozessornamen zurück</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prozessorname:&quot;</span><span class="p">,</span> <span class="n">prozessor_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prozessorarchitektur: AMD64
+Prozessorname: AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 8:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span> 
+
+<span class="n">os_release</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OS Release:&quot;</span><span class="p">,</span> <span class="n">os_release</span><span class="p">)</span>
+
+<span class="n">os_version</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">version</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;OS Version (detailliert):&quot;</span><span class="p">,</span> <span class="n">os_version</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>OS Release: 11
+OS Version (detailliert): 10.0.26100
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 9:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">uname</span>
+
+<span class="n">uname_info</span> <span class="o">=</span> <span class="n">uname</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uname Info Objekt:&quot;</span><span class="p">,</span> <span class="n">uname_info</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uname System:&quot;</span><span class="p">,</span> <span class="n">uname_info</span><span class="o">.</span><span class="n">system</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Uname Node:&quot;</span><span class="p">,</span> <span class="n">uname_info</span><span class="o">.</span><span class="n">node</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Uname Info Objekt: uname_result(system=&#39;Windows&#39;, node=&#39;DESKTOP-D5NI795&#39;, release=&#39;11&#39;, version=&#39;10.0.26100&#39;, machine=&#39;AMD64&#39;)
+Uname System: Windows
+Uname Node: DESKTOP-D5NI795
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Aufgabe Lösung 10:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">zufall_float_0_1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zufällige Fließkommazahl [0,1]:&quot;</span><span class="p">,</span> <span class="n">zufall_float_0_1</span><span class="p">)</span>
+
+<span class="n">zufall_ganzzahl_10_20</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zufällige Ganzzahl [10,20]:&quot;</span><span class="p">,</span> <span class="n">zufall_ganzzahl_10_20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zufällige Fließkommazahl [0,1]: 0.34978514913633607
+Zufällige Ganzzahl [10,20]: 20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 11:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span><span class="p">,</span> <span class="n">sample</span>
+
+<span class="n">farben</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;rot&quot;</span><span class="p">,</span> <span class="s2">&quot;grün&quot;</span><span class="p">,</span> <span class="s2">&quot;blau&quot;</span><span class="p">,</span> <span class="s2">&quot;gelb&quot;</span><span class="p">,</span> <span class="s2">&quot;schwarz&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Farbenpool:&quot;</span><span class="p">,</span> <span class="n">farben</span><span class="p">)</span>
+
+<span class="n">zufalls_farbe</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">farben</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zufällige Farbe:&quot;</span><span class="p">,</span> <span class="n">zufalls_farbe</span><span class="p">)</span>
+
+<span class="n">drei_zufalls_farben</span> <span class="o">=</span> <span class="n">sample</span><span class="p">(</span><span class="n">farben</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Drei zufällige einzigartige Farben:&quot;</span><span class="p">,</span> <span class="n">drei_zufalls_farben</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Farbenpool: [&#39;rot&#39;, &#39;grün&#39;, &#39;blau&#39;, &#39;gelb&#39;, &#39;schwarz&#39;]
+Zufällige Farbe: gelb
+Drei zufällige einzigartige Farben: [&#39;blau&#39;, &#39;gelb&#39;, &#39;schwarz&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 12:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">rnd</span>
+
+<span class="n">zahlen_zum_mischen</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ursprüngliche Zahlen 1:&quot;</span><span class="p">,</span> <span class="n">zahlen_zum_mischen</span><span class="p">)</span>
+<span class="n">rnd</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">rnd</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">zahlen_zum_mischen</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gemischte Zahlen 1 (Seed 7):&quot;</span><span class="p">,</span> <span class="n">zahlen_zum_mischen</span><span class="p">)</span>
+
+<span class="n">zahlen_zum_mischen_2</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ursprüngliche Zahlen 2:&quot;</span><span class="p">,</span> <span class="n">zahlen_zum_mischen_2</span><span class="p">)</span>
+<span class="n">rnd</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> <span class="c1"># Seed erneut setzen</span>
+<span class="n">rnd</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">zahlen_zum_mischen_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gemischte Zahlen 2 (Seed 7):&quot;</span><span class="p">,</span> <span class="n">zahlen_zum_mischen_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sind Listen identisch?&quot;</span><span class="p">,</span> <span class="n">zahlen_zum_mischen</span> <span class="o">==</span> <span class="n">zahlen_zum_mischen_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ursprüngliche Zahlen 1: [1, 2, 3, 4, 5]
+Gemischte Zahlen 1 (Seed 7): [4, 2, 3, 5, 1]
+Ursprüngliche Zahlen 2: [1, 2, 3, 4, 5]
+Gemischte Zahlen 2 (Seed 7): [4, 2, 3, 5, 1]
+Sind Listen identisch? True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 13:</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span> 
+
+<span class="n">zufall_vielfaches_von_10</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zufälliges Vielfaches von 10 (&lt;100):&quot;</span><span class="p">,</span> <span class="n">zufall_vielfaches_von_10</span><span class="p">)</span>
+
+<span class="n">zufall_float_5_8</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zufällige Fließkommazahl [5.5, 8.5]:&quot;</span><span class="p">,</span> <span class="n">zufall_float_5_8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Zufälliges Vielfaches von 10 (&lt;100): 30
+Zufällige Fließkommazahl [5.5, 8.5]: 6.169632214446469
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung Aufgabe 14:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choices</span>
+
+<span class="n">ergebnisse</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Erfolg&quot;</span><span class="p">,</span> <span class="s2">&quot;Teilerfolg&quot;</span><span class="p">,</span> <span class="s2">&quot;Misserfolg&quot;</span><span class="p">]</span>
+<span class="n">gewichte</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span> <span class="c1"># oder [6, 3, 1] würde zum selben Ergebnis führen</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ergebnisse: </span><span class="si">{</span><span class="n">ergebnisse</span><span class="si">}</span><span class="s2">, Gewichte: </span><span class="si">{</span><span class="n">gewichte</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">experiment_simulation</span> <span class="o">=</span> <span class="n">choices</span><span class="p">(</span><span class="n">ergebnisse</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">gewichte</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simulation (10 Tests):&quot;</span><span class="p">,</span> <span class="n">experiment_simulation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ergebnisse: [&#39;Erfolg&#39;, &#39;Teilerfolg&#39;, &#39;Misserfolg&#39;], Gewichte: [0.6, 0.3, 0.1]
+Simulation (10 Tests): [&#39;Teilerfolg&#39;, &#39;Teilerfolg&#39;, &#39;Teilerfolg&#39;, &#39;Erfolg&#39;, &#39;Erfolg&#39;, &#39;Erfolg&#39;, &#39;Erfolg&#39;, &#39;Erfolg&#39;, &#39;Erfolg&#39;, &#39;Erfolg&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lösung  Aufgabe 15:</span>
+
+<span class="c1"># 1. Importe</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">platform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">seed</span><span class="p">,</span> <span class="n">randint</span><span class="p">,</span> <span class="n">uniform</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">log</span>
+
+<span class="c1"># 2. Systeminformationen als Seed-Basis</span>
+<span class="n">node_name_laenge</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">platform</span><span class="o">.</span><span class="n">node</span><span class="p">())</span>
+<span class="n">python_major_version</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">platform</span><span class="o">.</span><span class="n">python_version_tuple</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">seed_basis</span> <span class="o">=</span> <span class="n">node_name_laenge</span> <span class="o">+</span> <span class="n">python_major_version</span>
+<span class="k">if</span> <span class="n">seed_basis</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">seed_basis</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Sicherstellen, dass Seed nicht 0 ist, falls beide Werte 0 wären</span>
+
+<span class="c1"># 3. Zufallsgenerator initialisieren</span>
+<span class="n">seed</span><span class="p">(</span><span class="n">seed_basis</span><span class="p">)</span>
+
+<span class="c1"># 4. Zufällige Operationen</span>
+<span class="c1"># Stelle sicher, dass randint einen gültigen Bereich hat, falls seed_basis klein ist.</span>
+<span class="c1"># Für randint(1, N) muss N &gt;= 1 sein. Da seed_basis &gt;= 1 ist, ist das hier sicher.</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed_basis</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">)</span>
+
+<span class="n">ergebnis1</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1"># log(0) ist nicht definiert, log negativer Zahlen auch nicht für reelle Zahlen</span>
+    <span class="n">ergebnis2</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span>
+<span class="k">else</span><span class="p">:</span> <span class="c1"># Sollte durch randint(1, seed_basis) nicht eintreten, aber defensiv programmiert</span>
+    <span class="n">ergebnis2</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1"># 5. Ausgabe</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Verwendete Seed-Basis:&quot;</span><span class="p">,</span> <span class="n">seed_basis</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generierte Zufallszahl a (Ganzzahl): </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generierte Zufallszahl b (Fließkomma): </span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ergebnis 1 (sqrt(a) + pow(b, 2)): </span><span class="si">{</span><span class="n">ergebnis1</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ergebnis 2 (log(a) * b oder 0): </span><span class="si">{</span><span class="n">ergebnis2</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Verwendete Seed-Basis: 18
+Generierte Zufallszahl a (Ganzzahl): 6
+Generierte Zufallszahl b (Fließkomma): 0.7018
+Ergebnis 1 (sqrt(a) + pow(b, 2)): 2.9420
+Ergebnis 2 (log(a) * b oder 0): 1.2574
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_2\Aufgaben"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="04_Aufgaben_Math_Modul.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Aufgaben: Math Modul</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="06_Abschlussaufgabe_Casino.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Abschlussaufgabe Casino</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Aufgaben: Genutzte Module</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-1">Aufgabe 1:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-2">Aufgabe 2:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-3">Aufgabe 3:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-4">Aufgabe 4:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-5">Aufgabe 5:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-6">Aufgabe 6:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-7">Aufgabe 7:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-8">Aufgabe 8:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-9">Aufgabe 9:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-10">Aufgabe 10:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-11">Aufgabe 11:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-12">Aufgabe 12:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-13">Aufgabe 13:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-14">Aufgabe 14:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aufgabe-15">Aufgabe 15:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losungen">Lösungen</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

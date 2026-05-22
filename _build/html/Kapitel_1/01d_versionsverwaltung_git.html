@@ -1,0 +1,1241 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Versionsverwaltung git &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_1/01d_versionsverwaltung_git';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pycharm debugging" href="01e_pycharm_debugging.html" />
+    <link rel="prev" title="Import system" href="01c_import_system.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01c_import_system.html">Import system</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_1/01d_versionsverwaltung_git.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Versionsverwaltung git</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="versionsverwaltung-git">
+<h1>Versionsverwaltung git<a class="headerlink" href="#versionsverwaltung-git" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Versionsverwaltung mit Git</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 1: Fundament &nbsp;|&nbsp; Notebook 02</p>
+</div>
+</div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Lernziele</span></div>
+<p>Nach diesem Notebook kannst du:</p>
+<ul class="simple">
+<li><p>erklären, was Versionsverwaltung ist und warum sie unverzichtbar ist</p></li>
+<li><p>ein Git-Repository anlegen und grundlegende Befehle anwenden</p></li>
+<li><p>den Unterschied zwischen Working Directory, Staging Area und Repository verstehen</p></li>
+<li><p>eine sinnvolle <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> fuer Python-Projekte schreiben</p></li>
+<li><p>Branches erstellen, wechseln und zusammenfuehren</p></li>
+<li><p>mit einem Remote-Repository (GitHub/GitLab) arbeiten</p></li>
+<li><p>typische Konflikte lesen und auflösen</p></li>
+</ul>
+<p><strong>Voraussetzungen:</strong> 01a, 01b, 01c</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span> Dieses Notebook ist kein PCAP-Pruefungsinhalt.</span></div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>1. Warum Versionsverwaltung?</span></div>
+<p>Stell dir vor, du arbeitest an einem Python-Projekt. Du aenderst eine Funktion – und drei Stunden spaeter merkst du, dass die alte Version besser war. Oder ein Kollege hat gleichzeitig dieselbe Datei bearbeitet.</p>
+<p>Ohne Versionsverwaltung loesen die meisten das so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">skript</span><span class="o">.</span><span class="n">py</span>
+<span class="n">skript_neu</span><span class="o">.</span><span class="n">py</span>
+<span class="n">skript_neu2</span><span class="o">.</span><span class="n">py</span>
+<span class="n">skript_final</span><span class="o">.</span><span class="n">py</span>
+<span class="n">skript_final_wirklich</span><span class="o">.</span><span class="n">py</span>
+<span class="n">skript_final_wirklich_v2</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Git loest das sauber: Es speichert die vollstaendige Geschichte jeder Datei, wer was wann geaendert hat – und erlaubt es, jederzeit auf jeden frueheren Zustand zurueckzugehen.</p>
+<p><strong>Git ist heute der Standard.</strong> Kein professionelles Softwareprojekt arbeitet ohne es.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>2. Das Git-Modell: Drei Bereiche</span></div>
+<p>Git unterscheidet drei Bereiche, die du kennen musst:</p>
+<div style="display:inline-flex;flex-direction:row;align-items:stretch;gap:0;background:#080f17;border:1px solid #1a2e42;border-radius:8px;padding:1.5rem 2rem;margin:1rem 0;font-family:'Segoe UI',sans-serif;">
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.8em 1.4em;color:#e8eaf6;font-size:0.85rem;text-align:center;min-width:140px;">
+    <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4em;">Working Directory</div>
+    <div style="color:#7a7a90;font-size:0.8rem;">Deine Dateien auf der Festplatte</div>
+  </div>
+  <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 0.8em;gap:0.3em;">
+    <span style="color:#4fc3f7;font-size:0.75rem;white-space:nowrap;">git add &rarr;</span>
+    <span style="color:#7a7a90;font-size:0.75rem;white-space:nowrap;">&larr; git restore</span>
+  </div>
+  <div style="background:#0b1929;border:1px solid #1e4d6b;border-radius:5px;padding:0.8em 1.4em;color:#e8eaf6;font-size:0.85rem;text-align:center;min-width:140px;">
+    <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4em;">Staging Area</div>
+    <div style="color:#7a7a90;font-size:0.8rem;">Vorbereitete Aenderungen</div>
+  </div>
+  <div style="display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 0.8em;">
+    <span style="color:#4fc3f7;font-size:0.75rem;white-space:nowrap;">git commit &rarr;</span>
+  </div>
+  <div style="background:#0b1929;border:1px solid #4fc3f7;border-radius:5px;padding:0.8em 1.4em;color:#4fc3f7;font-size:0.85rem;text-align:center;min-width:140px;">
+    <div style="font-weight:700;margin-bottom:0.4em;">Repository (.git)</div>
+    <div style="color:#80cbc4;font-size:0.8rem;">Gespeicherte Commits</div>
+  </div>
+</div>
+<ul class="simple">
+<li><p><strong>Working Directory:</strong> Die Dateien, die du gerade bearbeitest</p></li>
+<li><p><strong>Staging Area:</strong> Aenderungen, die du fuer den naechsten Commit vorgemerkt hast</p></li>
+<li><p><strong>Repository:</strong> Die vollstaendige Geschichte aller Commits (liegt im <code class="docutils literal notranslate"><span class="pre">.git</span></code>-Ordner)</p></li>
+</ul>
+<p>Der Zwischenschritt ueber die Staging Area ist ein Feature, kein Bug: Er erlaubt dir, aus vielen gleichzeitigen Aenderungen gezielt nur bestimmte in einen Commit zu packen.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>3. Git einrichten</span></div>
+<p>Vor dem ersten Einsatz muss Git wissen, wer du bist. Diese Angaben landen in jedem Commit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Git-Konfiguration pruefen</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">git</span><span class="p">(</span><span class="n">befehl</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hilfsfunktion: Git-Befehl ausfuehren und Ausgabe zurueckgeben.&quot;&quot;&quot;</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">befehl</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
+        <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">cwd</span>
+    <span class="p">)</span>
+    <span class="n">ausgabe</span> <span class="o">=</span> <span class="n">ergebnis</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="n">ergebnis</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">ausgabe</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Name:  &#39;</span><span class="p">,</span> <span class="n">git</span><span class="p">(</span><span class="s1">&#39;config user.name&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Email: &#39;</span><span class="p">,</span> <span class="n">git</span><span class="p">(</span><span class="s1">&#39;config user.email&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Falls noch nicht konfiguriert -- einmalig ausfuehren:</span>
+<span class="c1"># Diese Befehle im Terminal ausfuehren, nicht hier im Notebook</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Im Terminal ausfuehren:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git config --global user.name &quot;Dein Name&quot;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git config --global user.email &quot;deine@email.de&quot;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git config --global init.defaultBranch main&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aktuelle globale Konfiguration:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">git</span><span class="p">(</span><span class="s1">&#39;config --global --list&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>4. Erstes Repository</span></div>
+<p>Alle folgenden Beispiele fuehren wir in einem temporaeren Verzeichnis durch, damit nichts am echten System veraendert wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+
+<span class="c1"># Arbeitsverzeichnis fuer die Demo</span>
+<span class="n">REPO</span> <span class="o">=</span> <span class="s1">&#39;/tmp/git_demo&#39;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">REPO</span><span class="p">):</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">REPO</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">REPO</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">g</span><span class="p">(</span><span class="n">befehl</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Git im Demo-Repo ausfuehren.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">git</span><span class="p">(</span><span class="n">befehl</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">REPO</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">schreibe</span><span class="p">(</span><span class="n">dateiname</span><span class="p">,</span> <span class="n">inhalt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Datei im Demo-Repo anlegen oder ueberschreiben.&quot;&quot;&quot;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO</span><span class="p">,</span> <span class="n">dateiname</span><span class="p">),</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span>
+
+<span class="c1"># Repository initialisieren</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;init&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;config user.name &quot;Demo User&quot;&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;config user.email &quot;demo@example.com&quot;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Erste Datei anlegen</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;rechner.py&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;&#39;def addiere(a, b):</span>
+<span class="s1">    return a + b</span>
+
+<span class="s1">def subtrahiere(a, b):</span>
+<span class="s1">    return a - b</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Status pruefen: Was sieht Git?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git status ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Datei zur Staging Area hinzufuegen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add rechner.py&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git status nach add ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Commit erstellen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;Grundfunktionen: addiere und subtrahiere&quot;&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git log ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Was macht eine gute Commit-Nachricht aus?</span></div>
+<p>Eine Commit-Nachricht beantwortet die Frage: <strong>Was und warum – nicht wie.</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Schlecht</p></th>
+<th class="head"><p>Gut</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">fix</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Divisionsfehler</span> <span class="pre">bei</span> <span class="pre">Eingabe</span> <span class="pre">0</span> <span class="pre">behoben</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">changes</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">CSV-Export:</span> <span class="pre">Sonderzeichen</span> <span class="pre">in</span> <span class="pre">Spaltennamen</span> <span class="pre">escaped</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">asdf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Login-Timeout</span> <span class="pre">von</span> <span class="pre">30</span> <span class="pre">auf</span> <span class="pre">60</span> <span class="pre">Sekunden</span> <span class="pre">erhoeht</span> <span class="pre">(#42)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">update</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Veraltete</span> <span class="pre">requests-Version</span> <span class="pre">auf</span> <span class="pre">2.31</span> <span class="pre">aktualisiert</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Konvention: Erste Zeile max. 72 Zeichen, Imperativ (<code class="docutils literal notranslate"><span class="pre">Behebt</span></code>, <code class="docutils literal notranslate"><span class="pre">Fuegt</span> <span class="pre">hinzu</span></code>, <code class="docutils literal notranslate"><span class="pre">Entfernt</span></code>), kein Punkt am Ende.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>5. .gitignore -- Was nicht ins Repository gehoert</span></div>
+<p>Nicht alles in einem Projektordner soll versioniert werden. Die <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>-Datei sagt Git, welche Dateien und Verzeichnisse ignoriert werden sollen.</p>
+<p>Fuer Python-Projekte gibt es eine Standardliste:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gitignore_inhalt</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;# Bytecode und Cache</span>
+<span class="s1">__pycache__/</span>
+<span class="s1">*.py[cod]</span>
+<span class="s1">*.pyo</span>
+
+<span class="s1"># Virtuelle Umgebungen</span>
+<span class="s1">.venv/</span>
+<span class="s1">venv/</span>
+<span class="s1">env/</span>
+<span class="s1">.env</span>
+
+<span class="s1"># Distribution / Packaging</span>
+<span class="s1">dist/</span>
+<span class="s1">build/</span>
+<span class="s1">*.egg-info/</span>
+
+<span class="s1"># Tests und Coverage</span>
+<span class="s1">.pytest_cache/</span>
+<span class="s1">.coverage</span>
+<span class="s1">htmlcov/</span>
+
+<span class="s1"># IDE-Konfigurationen</span>
+<span class="s1">.idea/</span>
+<span class="s1">.vscode/</span>
+<span class="s1">*.iml</span>
+
+<span class="s1"># Betriebssystem</span>
+<span class="s1">.DS_Store</span>
+<span class="s1">Thumbs.db</span>
+
+<span class="s1"># Geheimnisse -- niemals ins Repository!</span>
+<span class="s1">.env</span>
+<span class="s1">secrets.py</span>
+<span class="s1">config_local.py</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;.gitignore&#39;</span><span class="p">,</span> <span class="n">gitignore_inhalt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add .gitignore&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;gitignore fuer Python-Projekte hinzugefuegt&quot;&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Warum .venv nicht ins Repository?</span></div>
+<p>Eine virtuelle Umgebung enthaelt Hunderte von Dateien, ist betriebssystemabhaengig (Windows-Pfade funktionieren nicht auf Linux) und ist jederzeit aus einer <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> reproduzierbar.</p>
+<p>Der korrekte Workflow:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Abhaengigkeiten sichern</span>
+pip<span class="w"> </span>freeze<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt
+git<span class="w"> </span>add<span class="w"> </span>requirements.txt
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Abhaengigkeiten dokumentiert&quot;</span>
+
+<span class="c1"># Auf einem anderen Rechner wiederherstellen</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate<span class="w">        </span><span class="c1"># Windows</span>
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">     </span><span class="c1"># Linux/Mac</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>6. Der taegliche Workflow</span></div>
+<p>Die Befehle, die du taeglich brauchst:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aenderung vornehmen</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;rechner.py&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;&#39;def addiere(a, b):</span>
+<span class="s1">    return a + b</span>
+
+<span class="s1">def subtrahiere(a, b):</span>
+<span class="s1">    return a - b</span>
+
+<span class="s1">def multipliziere(a, b):</span>
+<span class="s1">    return a * b</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Was hat sich geaendert?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git diff ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;diff rechner.py&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ueberblick: Welche Dateien sind veraendert?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git status ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">))</span>
+
+<span class="c1"># Alle Aenderungen stagen</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add rechner.py&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;multipliziere Funktion hinzugefuegt&quot;&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git log ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Weitere nuetzliche Befehle</span>
+
+<span class="c1"># Ausfuehrlicheres Log</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git log --oneline --graph ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline --graph --all&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Wer hat was in einer Datei geaendert?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== git log -- rechner.py ===&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline -- rechner.py&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>7. Aenderungen rueckgaengig machen</span></div>
+<p>Das ist eine der wichtigsten Faehigkeiten – und der Grund, warum man ueberhaupt Git benutzt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Szenario: Datei versehentlich beschaedigt</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;rechner.py&#39;</span><span class="p">,</span> <span class="s1">&#39;# Ups, alles geloescht&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inhalt nach dem Unfall:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO</span><span class="p">,</span> <span class="s1">&#39;rechner.py&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># Noch nicht gestaget -- Datei auf letzten Commit zuruecksetzen</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;restore rechner.py&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inhalt nach git restore:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO</span><span class="p">,</span> <span class="s1">&#39;rechner.py&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Szenario: Datei versehentlich gestaget</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;versehen.py&#39;</span><span class="p">,</span> <span class="s1">&#39;diese Datei sollte nicht committet werden&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add versehen.py&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nach add:&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="c1"># Aus der Staging Area entfernen (Datei bleibt unveraendert)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;restore --staged versehen.py&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nach restore --staged:&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="s1">&#39;status&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Szenario: Letzten Commit rueckgaengig machen (sicher: neuer Revert-Commit)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Commit rueckgaengig machen (sicher, Geschichte bleibt erhalten):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git revert HEAD            -- letzten Commit umkehren&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git revert HEAD~2          -- vorletzten Commit umkehren&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zu einem alten Stand springen (fuer Inspektion, nicht fuer Aenderungen):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git checkout &lt;commit-hash&gt; -- Repository auf alten Stand setzen&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git switch -              -- zurueck zum letzten Branch&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ACHTUNG -- diese Befehle aendern die Geschichte (nur im lokalen Repo):&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git reset HEAD~1 --soft   -- letzten Commit aufloesen, Aenderungen bleiben gestaget&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git reset HEAD~1 --mixed  -- letzten Commit aufloesen, Aenderungen im Working Dir&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git reset HEAD~1 --hard   -- letzten Commit und alle Aenderungen vernichten&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>8. Branches</span></div>
+<p>Ein Branch ist ein unabhaengiger Entwicklungsstrang. Er erlaubt es, an einem Feature oder Bugfix zu arbeiten, ohne den Hauptzweig zu beeinflussen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="p">:</span>    <span class="n">A</span> <span class="o">---</span> <span class="n">B</span> <span class="o">---</span> <span class="n">C</span> <span class="o">-------</span> <span class="n">F</span>
+                      \       <span class="o">/</span>
+<span class="n">feature</span><span class="p">:</span>              <span class="n">D</span> <span class="o">---</span> <span class="n">E</span>
+</pre></div>
+</div>
+<p>Commits D und E passieren auf dem Feature-Branch. Wenn das Feature fertig ist, wird es in <code class="docutils literal notranslate"><span class="pre">main</span></code> gemergt (F).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Aktuellen Branch anzeigen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aktueller Branch:&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="s1">&#39;branch&#39;</span><span class="p">))</span>
+
+<span class="c1"># Neuen Branch erstellen und wechseln</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;switch -c feature/division&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Nach switch:&#39;</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="s1">&#39;branch&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Auf dem Feature-Branch arbeiten</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;rechner.py&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;&#39;def addiere(a, b):</span>
+<span class="s1">    return a + b</span>
+
+<span class="s1">def subtrahiere(a, b):</span>
+<span class="s1">    return a - b</span>
+
+<span class="s1">def multipliziere(a, b):</span>
+<span class="s1">    return a * b</span>
+
+<span class="s1">def dividiere(a, b):</span>
+<span class="s1">    if b == 0:</span>
+<span class="s1">        raise ValueError(&quot;Division durch Null ist nicht erlaubt&quot;)</span>
+<span class="s1">    return a / b</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add rechner.py&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;dividiere mit Nullpruefung hinzugefuegt&quot;&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline --graph --all&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zurueck zu main und Feature mergen</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;switch main&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Vor dem Merge: main hat die dividiere-Funktion noch nicht</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inhalt rechner.py auf main (vor merge):&#39;</span><span class="p">)</span>
+<span class="n">inhalt</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO</span><span class="p">,</span> <span class="s1">&#39;rechner.py&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dividiere vorhanden:&#39;</span><span class="p">,</span> <span class="s1">&#39;dividiere&#39;</span> <span class="ow">in</span> <span class="n">inhalt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;merge feature/division -m &quot;Feature: dividiere integriert&quot;&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;dividiere vorhanden nach merge:&#39;</span><span class="p">,</span> <span class="s1">&#39;dividiere&#39;</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO</span><span class="p">,</span> <span class="s1">&#39;rechner.py&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline --graph --all&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Merge-Konflikte</span></div>
+<p>Ein Konflikt entsteht, wenn dieselbe Stelle einer Datei auf zwei Branches unterschiedlich veraendert wurde. Git kann nicht automatisch entscheiden, welche Version richtig ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Konflikt simulieren</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;switch -c branch_a&#39;</span><span class="p">))</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;info.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Version von Branch A</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add info.txt&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;info.txt auf branch_a erstellt&quot;&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;switch main&#39;</span><span class="p">))</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;info.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Version von main</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add info.txt&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;info.txt auf main erstellt&quot;&#39;</span><span class="p">))</span>
+
+<span class="c1"># Jetzt mergen -- das gibt einen Konflikt</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;git&#39;</span><span class="p">,</span> <span class="s1">&#39;merge&#39;</span><span class="p">,</span> <span class="s1">&#39;branch_a&#39;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">REPO</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="o">.</span><span class="n">stdout</span> <span class="ow">or</span> <span class="n">ergebnis</span><span class="o">.</span><span class="n">stderr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># So sieht eine Konfliktdatei aus</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Inhalt von info.txt mit Konfliktmarkierungen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">REPO</span><span class="p">,</span> <span class="s1">&#39;info.txt&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erklaerung:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD         -- Beginn der eigenen Version (main)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  =======              -- Trenner zwischen den Versionen&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  &gt;&gt;&gt;&gt;&gt;&gt;&gt; branch_a     -- Ende der anderen Version (branch_a)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Loesung: Datei manuell bearbeiten, Markierungen entfernen, dann:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git add info.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git commit&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Konflikt aufloesen</span>
+<span class="n">schreibe</span><span class="p">(</span><span class="s1">&#39;info.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;Zusammengefuehrte Version: main und branch_a</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;add info.txt&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;commit -m &quot;Konflikt in info.txt aufgeloest&quot;&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="s1">&#39;log --oneline --graph --all&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>9. Remote-Repository (GitHub / GitLab)</span></div>
+<p>Ein Remote-Repository ist eine Kopie des Repositorys auf einem Server. Es dient als zentraler Austauschpunkt fuer Teams und als Backup.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Lokales</span> <span class="n">Repo</span>         <span class="n">Remote</span> <span class="n">Repo</span> <span class="p">(</span><span class="n">GitHub</span><span class="p">)</span>
+    <span class="o">|</span>                       <span class="o">|</span>
+    <span class="o">|</span>  <span class="n">git</span> <span class="n">push</span>  <span class="o">----------&gt;|</span>
+    <span class="o">|</span>                       <span class="o">|</span>
+    <span class="o">|</span>  <span class="n">git</span> <span class="n">pull</span>  <span class="o">&lt;----------|</span>
+    <span class="o">|</span>                       <span class="o">|</span>
+    <span class="o">|</span>  <span class="n">git</span> <span class="n">fetch</span> <span class="o">&lt;----------|</span> <span class="p">(</span><span class="n">nur</span> <span class="n">herunterladen</span><span class="p">,</span> <span class="n">nicht</span> <span class="n">mergen</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Typischer Workflow mit Remote-Repository:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# Neues Repo auf GitHub anlegen, dann lokal verknuepfen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git remote add origin https://github.com/user/repo.git&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git push -u origin main&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# Vorhandenes Repo klonen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git clone https://github.com/user/repo.git&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# Aenderungen hochladen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git push&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# Aenderungen holen und mergen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git pull&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;# Nur holen, noch nicht mergen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git fetch&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git diff main origin/main   # Unterschiede anzeigen&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  git merge origin/main       # dann mergen&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>10. Branch-Strategie fuer Python-Projekte</span></div>
+<p>In professionellen Projekten gibt es Konventionen, welche Branches wofuer genutzt werden. Ein einfaches Modell:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Branch</p></th>
+<th class="head"><p>Zweck</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">main</span></code></p></td>
+<td><p>Stabiler, produktionsreifer Code</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">develop</span></code></p></td>
+<td><p>Integrationsbranch fuer Features</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">feature/name</span></code></p></td>
+<td><p>Einzelnes Feature in Entwicklung</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bugfix/name</span></code></p></td>
+<td><p>Fehlerbehebung</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">hotfix/name</span></code></p></td>
+<td><p>Kritischer Fix direkt auf main</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Fuer kleine Projekte und Einzelpersonen reicht oft: <code class="docutils literal notranslate"><span class="pre">main</span></code> fuer stabilen Code, Feature-Branches fuer jede Aenderung.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>11. Git in PyCharm</span></div>
+<p>PyCharm hat eine vollstaendige Git-Integration – du musst die meisten Befehle nie in der Kommandozeile tippen.</p>
+<p><strong>Wichtige Stellen in PyCharm:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Git</span></code>-Menue in der Menueleiste: alle Befehle</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Commit</span></code>-Tab (links): Staging Area und Commit-Nachricht</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Git</span></code>-Tab (unten): Log, Branches, Remote</p></li>
+<li><p>Dateifarben im Projektbaum:</p>
+<ul>
+<li><p><strong>Gruen:</strong> neue, noch nicht commitete Datei</p></li>
+<li><p><strong>Blau:</strong> geaenderte, committete Datei</p></li>
+<li><p><strong>Grau:</strong> ignorierte Datei (in .gitignore)</p></li>
+<li><p><strong>Rot:</strong> Konflikt</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Konflikte loesen:</strong> PyCharm hat einen eingebauten Merge-Editor mit drei Spalten (lokal / Ergebnis / remote) – deutlich komfortabler als die Textmarkierungen.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Zusammenfassung</span></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Befehl</p></th>
+<th class="head"><p>Was er tut</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span></code></p></td>
+<td><p>Neues Repository anlegen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code></p></td>
+<td><p>Zustand des Working Directory anzeigen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">&lt;datei&gt;</span></code></p></td>
+<td><p>Datei zur Staging Area hinzufuegen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></p></td>
+<td><p>Alle Aenderungen stagen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;...&quot;</span></code></p></td>
+<td><p>Commit erstellen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span> <span class="pre">--oneline</span></code></p></td>
+<td><p>Geschichte anzeigen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code></p></td>
+<td><p>Aenderungen seit letztem Commit anzeigen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span> <span class="pre">&lt;datei&gt;</span></code></p></td>
+<td><p>Datei auf letzten Commit zuruecksetzen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">restore</span> <span class="pre">--staged</span> <span class="pre">&lt;datei&gt;</span></code></p></td>
+<td><p>Datei aus Staging Area entfernen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">switch</span> <span class="pre">-c</span> <span class="pre">&lt;n&gt;</span></code></p></td>
+<td><p>Neuen Branch erstellen und wechseln</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">switch</span> <span class="pre">&lt;n&gt;</span></code></p></td>
+<td><p>Branch wechseln</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">&lt;n&gt;</span></code></p></td>
+<td><p>Branch mergen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p></td>
+<td><p>Commits zum Remote senden</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code></p></td>
+<td><p>Commits vom Remote holen und mergen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">&lt;url&gt;</span></code></p></td>
+<td><p>Repository klonen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Merksatz:</strong> Commit oft, commit klein, commit mit aussagekraeftiger Nachricht. Ein Commit pro logischer Aenderung – nicht pro Arbeitsstunde.</p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Aufgaben</span></div><div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 1 (Grundlagen)</span></div>
+<p>Erstelle ein neues Verzeichnis <code class="docutils literal notranslate"><span class="pre">mein_projekt</span></code>, initialisiere darin ein Git-Repository und lege eine <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> fuer Python an. Mache einen ersten Commit mit einer leeren <code class="docutils literal notranslate"><span class="pre">main.py</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dein Code hier -- nutze subprocess oder fuehre die Befehle im Terminal aus</span>
+<span class="c1"># und dokumentiere sie hier als Kommentare</span>
+
+<span class="c1"># mkdir mein_projekt</span>
+<span class="c1"># cd mein_projekt</span>
+<span class="c1"># git init</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 2 (Workflow)</span></div>
+<p>Schreibe in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> eine Funktion <code class="docutils literal notranslate"><span class="pre">begruessung(name)</span></code>. Committe die Aenderung. Aendere danach die Funktion so, dass sie auch eine Uhrzeit enthaelt. Schau dir mit <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> die Aenderung an, bevor du den zweiten Commit machst.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dokumentiere die verwendeten Befehle:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 3 (Branches)</span></div>
+<p>Erstelle einen Branch <code class="docutils literal notranslate"><span class="pre">feature/abschied</span></code>. Fuege dort eine Funktion <code class="docutils literal notranslate"><span class="pre">verabschiedung(name)</span></code> hinzu und committe sie. Merge den Branch danach in <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dokumentiere die verwendeten Befehle:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 4 (Fehleranalyse)</span></div>
+<p>Was ist der Unterschied zwischen diesen drei Befehlen? Wann wuerdest du welchen einsetzen?</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>reset<span class="w"> </span>HEAD~1<span class="w"> </span>--soft
+git<span class="w"> </span>reset<span class="w"> </span>HEAD~1<span class="w"> </span>--mixed
+git<span class="w"> </span>reset<span class="w"> </span>HEAD~1<span class="w"> </span>--hard
+</pre></div>
+</div>
+<p><em>Deine Antwort hier…</em></p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 5 (Vertiefung)</span></div>
+<p>Was ist der Unterschied zwischen <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code> und <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code>? Recherchiere kurz und erklaere an einem eigenen Diagramm (ASCII-Art genuegt), wie die Geschichte nach einem Merge vs. nach einem Rebase aussieht.</p>
+<p><em>Deine Antwort hier…</em></p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Weiter</span></div>
+<p>Im naechsten Notebook <strong>03 – PyCharm und Debugging</strong> lernen wir die Entwicklungsumgebung kennen, die wir ab jetzt fuer alle weiteren Kapitel nutzen – inklusive der Git-Integration, die das meiste aus diesem Notebook grafisch abbildet.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01c_import_system.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Import system</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01e_pycharm_debugging.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pycharm debugging</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

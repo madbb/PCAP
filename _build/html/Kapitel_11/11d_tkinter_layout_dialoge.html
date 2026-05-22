@@ -1,0 +1,1242 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tkinter layout dialoge &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_11/11d_tkinter_layout_dialoge';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Aufgaben: Taschenrechner" href="11b_aufgabe_taschenrechner.html" />
+    <link rel="prev" title="Tkinter listen tabellen" href="11c_tkinter_listen_tabellen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_11/11d_tkinter_layout_dialoge.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tkinter layout dialoge</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tkinter-layout-dialoge">
+<h1>Tkinter layout dialoge<a class="headerlink" href="#tkinter-layout-dialoge" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">tkinter: Layout, Gestaltung und Dialoge</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 11: GUI &nbsp;|&nbsp; Notebook 11d</p>
+</div>
+</div><p><strong>Legende</strong></p>
+<blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook ist kein PCAP-Prüfungsinhalt</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Hinweis zur Ausführung:</strong> Alle Code-Beispiele müssen als eigenständige <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Dateien ausgeführt werden – in PyCharm oder per <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">dateiname.py</span></code> im Terminal.</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Schriften -- font-Parameter
+</span>
+</div><p>Den <code class="docutils literal notranslate"><span class="pre">font</span></code>-Parameter kennen wir schon aus 11a – er steuert die Schrift eines Widgets. Bisher haben wir ihn kaum genutzt. Hier lernen wir was man alles damit machen kann.</p>
+<p><strong>Kurzform als Tupel:</strong> Die einfachste Art eine Schrift anzugeben ist ein Tupel:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>             <span class="c1"># Schriftart und Größe</span>
+<span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">)</span>     <span class="c1"># fett</span>
+<span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;italic&#39;</span><span class="p">)</span>   <span class="c1"># kursiv</span>
+<span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;bold italic&#39;</span><span class="p">)</span>  <span class="c1"># beides</span>
+</pre></div>
+</div>
+<p><strong>Schriftarten die immer verfügbar sind</strong> – plattformunabhängig:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">'TkDefaultFont'</span></code> – die Standardschrift von tkinter</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'TkFixedFont'</span></code> – Monospace-Schrift (gut für Code)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'TkHeadingFont'</span></code> – Überschriften-Schrift</p></li>
+</ul>
+<p><strong>Schriftarten die auf den meisten Systemen vorhanden sind:</strong></p>
+<ul class="simple">
+<li><p>Windows: <code class="docutils literal notranslate"><span class="pre">'Arial'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Courier</span> <span class="pre">New'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Times</span> <span class="pre">New</span> <span class="pre">Roman'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Segoe</span> <span class="pre">UI'</span></code></p></li>
+<li><p>macOS/Linux: <code class="docutils literal notranslate"><span class="pre">'Helvetica'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Courier'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Times'</span></code></p></li>
+</ul>
+<p><strong>Vorsicht:</strong> Wenn man eine Schrift angibt die auf dem System nicht vorhanden ist, fällt tkinter auf eine Standardschrift zurück – ohne Fehlermeldung. Wenn Portabilität wichtig ist, besser <code class="docutils literal notranslate"><span class="pre">'TkDefaultFont'</span></code> benutzen.</p>
+<p><strong>Font-Objekt aus <code class="docutils literal notranslate"><span class="pre">tkinter.font</span></code>:</strong> Für mehr Kontrolle – zum Beispiel wenn man dieselbe Schrift an vielen Stellen benutzen will und sie zentral ändern möchte – gibt es <code class="docutils literal notranslate"><span class="pre">tkinter.font.Font</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">font</span>
+
+<span class="n">ueberschrift_font</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">Font</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">ueberschrift_font</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Wenn man dann <code class="docutils literal notranslate"><span class="pre">ueberschrift_font.config(size=20)</span></code> aufruft, aktualisieren sich alle Widgets die dieses Font-Objekt benutzen automatisch.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_21_schriften.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Schriften&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;380x280&#39;</span><span class="p">)</span>
+
+<span class="c1"># Verschiedene Schriften im Vergleich</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Standard (kein font-Parameter)&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Arial 12 fett&#39;</span><span class="p">,</span>
+         <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Courier New 11 kursiv&#39;</span><span class="p">,</span>
+         <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Courier New&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;italic&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;TkFixedFont -- immer Monospace&#39;</span><span class="p">,</span>
+         <span class="n">font</span><span class="o">=</span><span class="s1">&#39;TkFixedFont&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Groß: Arial 18&#39;</span><span class="p">,</span>
+         <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Button mit eigener Schrift</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Button mit groesser Schrift&#39;</span><span class="p">,</span>
+          <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. ttk.Style -- Treeview und andere ttk-Widgets gestalten
+</span>
+</div><p>Bei klassischen tk-Widgets funktionieren <code class="docutils literal notranslate"><span class="pre">bg</span></code>, <code class="docutils literal notranslate"><span class="pre">fg</span></code> und <code class="docutils literal notranslate"><span class="pre">font</span></code> direkt. Bei ttk-Widgets – also <code class="docutils literal notranslate"><span class="pre">ttk.Treeview</span></code>, <code class="docutils literal notranslate"><span class="pre">ttk.Button</span></code>, <code class="docutils literal notranslate"><span class="pre">ttk.Scrollbar</span></code> – funktioniert das nicht so. ttk-Widgets verwenden ein Style-System das von den Betriebssystem-Themes getrennt ist.</p>
+<p>Um zum Beispiel die Schriftgröße im Treeview zu ändern, benutzt man <code class="docutils literal notranslate"><span class="pre">ttk.Style</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="n">style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+<span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;Treeview&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="n">rowheight</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;Treeview.Heading&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">rowheight</span></code></strong> – die Zeilenhöhe in Pixeln. Standard ist oft zu gering. <code class="docutils literal notranslate"><span class="pre">25</span></code> ist ein guter Wert für normale Schriftgrößen.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Treeview.Heading</span></code></strong> – der Style-Name für die Überschriftenzeile. Die Überschriften sind ein eigener Style-Bereich getrennt von den Datenzeilen.</p>
+<p><strong>Abwechselnde Zeilenfarben (Striping):</strong> Der Treeview unterstützt Tags – damit kann man einzelnen Zeilen Farben zuweisen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span><span class="s1">&#39;gerade&#39;</span><span class="p">,</span>   <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#f0f0f0&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span><span class="s1">&#39;ungerade&#39;</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="c1"># Beim Einfügen Tag mitgeben:</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="o">...</span><span class="p">),</span> <span class="n">tags</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;gerade&#39;</span><span class="p">,))</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_22_treeview_style.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treeview gestaltet&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;500x280&#39;</span><span class="p">)</span>
+
+<span class="c1"># ttk.Style fuer Treeview konfigurieren</span>
+<span class="n">style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+<span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;Treeview&#39;</span><span class="p">,</span>
+                <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+                <span class="n">rowheight</span><span class="o">=</span><span class="mi">26</span><span class="p">)</span>           <span class="c1"># Zeilenhoehe in Pixeln</span>
+<span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;Treeview.Heading&#39;</span><span class="p">,</span>
+                <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span>
+
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dauer&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">170</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="c1"># Abwechselnde Zeilenfarben definieren</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span><span class="s1">&#39;gerade&#39;</span><span class="p">,</span>   <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#f5f5f5&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span><span class="s1">&#39;ungerade&#39;</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">songs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span>       <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>        <span class="s1">&#39;5:55&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>        <span class="s1">&#39;Eagles&#39;</span><span class="p">,</span>       <span class="s1">&#39;6:30&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Stairway to Heaven&#39;</span><span class="p">,</span>      <span class="s1">&#39;Led Zeppelin&#39;</span><span class="p">,</span> <span class="s1">&#39;8:02&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Smells Like Teen Spirit&#39;</span><span class="p">,</span> <span class="s1">&#39;Nirvana&#39;</span><span class="p">,</span>      <span class="s1">&#39;5:01&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Purple Haze&#39;</span><span class="p">,</span>             <span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;2:52&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">song</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">songs</span><span class="p">):</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="s1">&#39;gerade&#39;</span> <span class="k">if</span> <span class="n">index</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;ungerade&#39;</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">song</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">(</span><span class="n">tag</span><span class="p">,))</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Menüleiste -- Menu und Menubutton
+</span>
+</div><p>Eine Menüleiste (“Datei”, “Bearbeiten”, “Hilfe” etc.) ist in fast jeder Desktopanwendung vorhanden. In tkinter baut man sie so auf:</p>
+<p><strong>Schritt 1:</strong> Eine <code class="docutils literal notranslate"><span class="pre">Menu</span></code>-Instanz als Hauptmenüleiste erstellen und mit dem Fenster verbinden:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">menubar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="n">menubar</span><span class="p">)</span>   <span class="c1"># Fenster bekommt diese Menüleiste</span>
+</pre></div>
+</div>
+<p><strong>Schritt 2:</strong> Untermenüs erstellen und in die Leiste einhängen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">datei_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">menubar</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># tearoff=0 verhindert abreiÃbares Menü</span>
+<span class="n">menubar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datei&#39;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="n">datei_menu</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tearoff=0</span></code> ist wichtig – ohne diesen Parameter hat jedes Menü oben eine gestrichelte Linie die es “abreißbar” macht. Das sieht altmodisch aus und verwirrt Nutzer. Immer auf <code class="docutils literal notranslate"><span class="pre">0</span></code> setzen.</p>
+<p><strong>Schritt 3:</strong> Einträge zum Untermenü hinzufügen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Öffnen&#39;</span><span class="p">,</span>    <span class="n">command</span><span class="o">=</span><span class="n">oeffnen</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Speichern&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">speichern</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_separator</span><span class="p">()</span>               <span class="c1"># Trennlinie</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beenden&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">add_separator()</span></code></strong> fügt eine horizontale Trennlinie ein – gut um zusammengehörige Einträge zu gruppieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_23_menu.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">datei_neu</span><span class="p">():</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Neu&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">datei_oeffnen</span><span class="p">():</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Oeffnen...&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">datei_speichern</span><span class="p">():</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Gespeichert.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">info_anzeigen</span><span class="p">():</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Meine Anwendung v1.0&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Menüleiste&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;350x200&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Menüleiste aufbauen ---</span>
+<span class="n">menubar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="n">menubar</span><span class="p">)</span>   <span class="c1"># Fenster bekommt diese Menüleiste</span>
+
+<span class="c1"># Datei-Menü</span>
+<span class="n">datei_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">menubar</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># tearoff=0: kein abreißbares Menü</span>
+<span class="n">menubar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datei&#39;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="n">datei_menu</span><span class="p">)</span>
+
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Neu&#39;</span><span class="p">,</span>        <span class="n">command</span><span class="o">=</span><span class="n">datei_neu</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Öffnen ...&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">datei_oeffnen</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Speichern&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">datei_speichern</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_separator</span><span class="p">()</span>                 <span class="c1"># Trennlinie</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beenden&#39;</span><span class="p">,</span>    <span class="n">command</span><span class="o">=</span><span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+
+<span class="c1"># Hilfe-Menü</span>
+<span class="n">hilfe_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">menubar</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">menubar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Hilfe&#39;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="n">hilfe_menu</span><span class="p">)</span>
+<span class="n">hilfe_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Info&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">info_anzeigen</span><span class="p">)</span>
+
+<span class="c1"># --- Fensterinhalt ---</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Menüleiste ausprobieren&#39;</span><span class="p">,</span>
+         <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Bereit.&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">status</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. filedialog -- Datei- und Ordnerauswahl
+</span>
+</div><p>Für das MP3-Projekt müssen Nutzer Musikdateien vom Dateisystem auswählen. Dafür gibt es <code class="docutils literal notranslate"><span class="pre">tkinter.filedialog</span></code> – ein Submodul das die nativen Dateidialoge des Betriebssystems öffnet.</p>
+<p><strong>Import:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filedialog</span>
+</pre></div>
+</div>
+<p><strong>Die wichtigsten Funktionen:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">filedialog.askopenfilename()</span></code> – öffnet einen Dialog zur Auswahl einer einzelnen Datei. Gibt den Pfad als String zurück. Gibt einen leeren String zurück wenn der Nutzer abbricht.</p>
+<p><code class="docutils literal notranslate"><span class="pre">filedialog.askopenfilenames()</span></code> – wie oben, aber für mehrere Dateien gleichzeitig. Gibt ein Tupel von Pfaden zurück.</p>
+<p><code class="docutils literal notranslate"><span class="pre">filedialog.askdirectory()</span></code> – Ordnerauswahl statt Dateiauswahl. Gibt den Ordnerpfad zurück.</p>
+<p><code class="docutils literal notranslate"><span class="pre">filedialog.asksaveasfilename()</span></code> – Speicherdialog. Gibt den gewählten Pfad zurück, erstellt die Datei aber nicht automatisch – das muss man selbst tun.</p>
+<p><strong>Parameter die alle teilen:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title='...'</span></code> – Titel des Dialogfensters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initialdir='...'</span></code> – Startverzeichnis des Dialogs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">filetypes=[('Beschreibung',</span> <span class="pre">'*.endung')]</span></code> – Filter für Dateitypen</p></li>
+</ul>
+<p><strong>Wichtig:</strong> Der Rückgabewert muss immer auf leer geprüft werden. Wenn der Nutzer auf “Abbrechen” klickt, gibt die Funktion <code class="docutils literal notranslate"><span class="pre">''</span></code> zurück – nicht <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_24_filedialog.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">filedialog</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">datei_auswaehlen</span><span class="p">():</span>
+    <span class="n">pfad</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilename</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Datei auswaehlen&#39;</span><span class="p">,</span>
+        <span class="n">initialdir</span><span class="o">=</span><span class="s1">&#39;/&#39;</span><span class="p">,</span>                              <span class="c1"># Startverzeichnis</span>
+        <span class="n">filetypes</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">(</span><span class="s1">&#39;Textdateien&#39;</span><span class="p">,</span>  <span class="s1">&#39;*.txt&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;Python-Dateien&#39;</span><span class="p">,</span> <span class="s1">&#39;*.py&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="s1">&#39;Alle Dateien&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">),</span>                 <span class="c1"># immer als letzte Option</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">pfad</span><span class="p">:</span>                                         <span class="c1"># leer wenn Abbruch</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">pfad</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Abgebrochen.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mehrere_auswaehlen</span><span class="p">():</span>
+    <span class="n">pfade</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilenames</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Mehrere Dateien auswaehlen&#39;</span><span class="p">,</span>
+        <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Alle Dateien&#39;</span><span class="p">,</span> <span class="s1">&#39;*.*&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">pfade</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">pfade</span><span class="p">)</span><span class="si">}</span><span class="s1"> Dateien ausgewaehlt&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Abgebrochen.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ordner_auswaehlen</span><span class="p">():</span>
+    <span class="n">ordner</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askdirectory</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Ordner auswaehlen&#39;</span><span class="p">,</span>
+        <span class="n">initialdir</span><span class="o">=</span><span class="s1">&#39;/&#39;</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">ordner</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">ordner</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Abgebrochen.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">speichern_als</span><span class="p">():</span>
+    <span class="n">pfad</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">asksaveasfilename</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Speichern unter&#39;</span><span class="p">,</span>
+        <span class="n">defaultextension</span><span class="o">=</span><span class="s1">&#39;.txt&#39;</span><span class="p">,</span>                     <span class="c1"># wird angehaengt wenn Nutzer keine gibt</span>
+        <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;Textdateien&#39;</span><span class="p">,</span> <span class="s1">&#39;*.txt&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">pfad</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Speichern nach: </span><span class="si">{</span><span class="n">pfad</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pfad_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Abgebrochen.&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;filedialog&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;420x230&#39;</span><span class="p">)</span>
+
+<span class="n">button_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">button_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Eine Datei&#39;</span><span class="p">,</span>       <span class="n">command</span><span class="o">=</span><span class="n">datei_auswaehlen</span><span class="p">,</span>   <span class="n">width</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Mehrere Dateien&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">mehrere_auswaehlen</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ordner&#39;</span><span class="p">,</span>           <span class="n">command</span><span class="o">=</span><span class="n">ordner_auswaehlen</span><span class="p">,</span>  <span class="n">width</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Speichern unter&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">speichern_als</span><span class="p">,</span>      <span class="n">width</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ergebnis:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+<span class="n">pfad_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;#1a6ea8&#39;</span><span class="p">,</span> <span class="n">wraplength</span><span class="o">=</span><span class="mi">380</span><span class="p">)</span>
+<span class="n">pfad_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. messagebox -- Meldungen und Bestätigungen
+</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">tkinter.messagebox</span></code> zeigt kleine Dialogfenster an – für Fehlermeldungen, Warnungen, Informationen und Bestätigungen. Auch diese Dialoge sehen nativ aus und passen sich dem Betriebssystem an.</p>
+<p><strong>Import:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">messagebox</span>
+</pre></div>
+</div>
+<p><strong>Die wichtigsten Funktionen:</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Funktion</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>Verwendung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.showinfo(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>ℹ</p></td>
+<td><p>Reine Information, nur OK-Button</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.showwarning(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>⚠</p></td>
+<td><p>Warnung, nur OK-Button</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.showerror(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>✗</p></td>
+<td><p>Fehlermeldung, nur OK-Button</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.askyesno(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>?</p></td>
+<td><p>Ja/Nein-Frage, gibt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> zurück</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.askokcancel(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>?</p></td>
+<td><p>OK/Abbrechen, gibt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> zurück</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Rückgabewerte bei Frage-Dialogen:</strong> <code class="docutils literal notranslate"><span class="pre">askyesno</span></code> und <code class="docutils literal notranslate"><span class="pre">askokcancel</span></code> geben <code class="docutils literal notranslate"><span class="pre">True</span></code> zurück wenn der Nutzer zustimmt, <code class="docutils literal notranslate"><span class="pre">False</span></code> wenn er abbricht. Das macht die Abfrage sehr einfach:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="s1">&#39;Bestätigung&#39;</span><span class="p">,</span> <span class="s1">&#39;Wirklich löschen?&#39;</span><span class="p">):</span>
+    <span class="n">datei_loeschen</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_25_messagebox.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">messagebox</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">info</span><span class="p">():</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;Information&#39;</span><span class="p">,</span> <span class="s1">&#39;Die Datei wurde gespeichert.&#39;</span><span class="p">)</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Info angezeigt.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">warnung</span><span class="p">():</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showwarning</span><span class="p">(</span><span class="s1">&#39;Warnung&#39;</span><span class="p">,</span> <span class="s1">&#39;Die Datei existiert bereits.&#39;</span><span class="p">)</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Warnung angezeigt.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fehler</span><span class="p">():</span>
+    <span class="n">messagebox</span><span class="o">.</span><span class="n">showerror</span><span class="p">(</span><span class="s1">&#39;Fehler&#39;</span><span class="p">,</span> <span class="s1">&#39;Datei konnte nicht geöffnet werden.&#39;</span><span class="p">)</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Fehler angezeigt.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ja_nein</span><span class="p">():</span>
+    <span class="n">antwort</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="s1">&#39;Bestätigung&#39;</span><span class="p">,</span> <span class="s1">&#39;Wirklich alle Eintraege loeschen?&#39;</span><span class="p">)</span>
+    <span class="c1"># antwort ist True (Ja) oder False (Nein)</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Antwort: </span><span class="si">{</span><span class="s2">&quot;Ja&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">antwort</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;Nein&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ok_abbrechen</span><span class="p">():</span>
+    <span class="n">antwort</span> <span class="o">=</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askokcancel</span><span class="p">(</span><span class="s1">&#39;Beenden&#39;</span><span class="p">,</span> <span class="s1">&#39;Anwendung wirklich beenden?&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">antwort</span><span class="p">:</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>      <span class="c1"># nur beenden wenn bestaetigt</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Beenden abgebrochen.&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;messagebox&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x240&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">text</span><span class="p">,</span> <span class="n">fn</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;showinfo&#39;</span><span class="p">,</span>      <span class="n">info</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;showwarning&#39;</span><span class="p">,</span>   <span class="n">warnung</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;showerror&#39;</span><span class="p">,</span>     <span class="n">fehler</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;askyesno&#39;</span><span class="p">,</span>      <span class="n">ja_nein</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;askokcancel&#39;</span><span class="p">,</span>   <span class="n">ok_abbrechen</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">fn</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">status</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Abschlussbeispiel: MP3-Player-Grundgerüst
+</span>
+</div><p>Alle Elemente aus Kapitel 11 in einem vollständigen Anwendungsgerüst: Menüleiste mit Dateidialog, Treeview für die Titelliste, Statuszeile, Bestätigungsdialoge, Schriften und Styles. Der Code hat noch keine echte Musikwiedergabe – das kommt im MP3-Projekt – aber er zeigt wie die GUI-Schicht aufgebaut ist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_26_mp3_geruest.py -- GUI-Grundgeruest fuer das MP3-Projekt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span><span class="p">,</span> <span class="n">filedialog</span><span class="p">,</span> <span class="n">messagebox</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Hilfsfunktionen (Platzhalter -- im Projekt ersetzt)</span>
+<span class="c1"># -------------------------------------------------------</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">titel_hinzufuegen</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Öffnet Dateidialog und fügt ausgewaehlte MP3s zur Liste hinzu.&quot;&quot;&quot;</span>
+    <span class="n">pfade</span> <span class="o">=</span> <span class="n">filedialog</span><span class="o">.</span><span class="n">askopenfilenames</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s1">&#39;MP3-Dateien auswaehlen&#39;</span><span class="p">,</span>
+        <span class="n">filetypes</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;MP3-Dateien&#39;</span><span class="p">,</span> <span class="s1">&#39;*.mp3&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;Alle Audiodateien&#39;</span><span class="p">,</span> <span class="s1">&#39;*.mp3 *.wav *.ogg&#39;</span><span class="p">)]</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">pfad</span> <span class="ow">in</span> <span class="n">pfade</span><span class="p">:</span>
+        <span class="n">dateiname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span>    <span class="c1"># nur den Dateinamen ohne Pfad</span>
+        <span class="n">name_ohne_endung</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">dateiname</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># Im echten Projekt wuerde man hier ID3-Tags auslesen</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">name_ohne_endung</span><span class="p">,</span> <span class="s1">&#39;Unbekannt&#39;</span><span class="p">,</span> <span class="s1">&#39;Unbekannt&#39;</span><span class="p">,</span> <span class="s1">&#39;?:??&#39;</span><span class="p">),</span> <span class="n">tags</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;ungerade&#39;</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">else</span> <span class="s1">&#39;gerade&#39;</span><span class="p">,))</span>
+    <span class="n">status_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span><span class="si">}</span><span class="s1"> Titel in der Liste.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ausgewaehlt_loeschen</span><span class="p">():</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="s1">&#39;Löschen&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">auswahl</span><span class="p">)</span><span class="si">}</span><span class="s1"> Eintrag/Eintraege aus der Liste entfernen?&#39;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">auswahl</span><span class="p">:</span>
+            <span class="n">baum</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+        <span class="n">status_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span><span class="si">}</span><span class="s1"> Titel in der Liste.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">alle_loeschen</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">():</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askyesno</span><span class="p">(</span><span class="s1">&#39;Alle loeschen&#39;</span><span class="p">,</span> <span class="s1">&#39;Alle Eintraege entfernen?&#39;</span><span class="p">):</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="o">*</span><span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">())</span>
+        <span class="n">status_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Liste geleert.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">abspielen_platzhalter</span><span class="p">():</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="n">messagebox</span><span class="o">.</span><span class="n">showinfo</span><span class="p">(</span><span class="s1">&#39;Hinweis&#39;</span><span class="p">,</span> <span class="s1">&#39;Bitte einen Titel auswaehlen.&#39;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="n">werte</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">auswahl</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;values&#39;</span><span class="p">)</span>
+    <span class="n">status_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Spiele: </span><span class="si">{</span><span class="n">werte</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">beenden</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">messagebox</span><span class="o">.</span><span class="n">askokcancel</span><span class="p">(</span><span class="s1">&#39;Beenden&#39;</span><span class="p">,</span> <span class="s1">&#39;Anwendung beenden?&#39;</span><span class="p">):</span>
+        <span class="n">root</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Fenster</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;MP3-Player&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;620x440&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">minsize</span><span class="p">(</span><span class="mi">480</span><span class="p">,</span> <span class="mi">320</span><span class="p">)</span>
+
+<span class="c1"># Style</span>
+<span class="n">style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+<span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;Treeview&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">rowheight</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;Treeview.Heading&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Menüleiste</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">menubar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">menu</span><span class="o">=</span><span class="n">menubar</span><span class="p">)</span>
+
+<span class="n">datei_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">menubar</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">menubar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Datei&#39;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="n">datei_menu</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Titel hinzufügen ...&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">titel_hinzufuegen</span><span class="p">)</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_separator</span><span class="p">()</span>
+<span class="n">datei_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Beenden&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">beenden</span><span class="p">)</span>
+
+<span class="n">bearbeiten_menu</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Menu</span><span class="p">(</span><span class="n">menubar</span><span class="p">,</span> <span class="n">tearoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">menubar</span><span class="o">.</span><span class="n">add_cascade</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bearbeiten&#39;</span><span class="p">,</span> <span class="n">menu</span><span class="o">=</span><span class="n">bearbeiten_menu</span><span class="p">)</span>
+<span class="n">bearbeiten_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ausgewaehlte loeschen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">ausgewaehlt_loeschen</span><span class="p">)</span>
+<span class="n">bearbeiten_menu</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Alle loeschen&#39;</span><span class="p">,</span>         <span class="n">command</span><span class="o">=</span><span class="n">alle_loeschen</span><span class="p">)</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Toolbar</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">toolbar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e8e8e8&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">38</span><span class="p">)</span>
+<span class="n">toolbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">toolbar</span><span class="o">.</span><span class="n">pack_propagate</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">toolbar</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;+ Hinzufügen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">titel_hinzufuegen</span><span class="p">,</span>
+          <span class="n">relief</span><span class="o">=</span><span class="s1">&#39;flat&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e8e8e8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">toolbar</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;▶ Abspielen&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">abspielen_platzhalter</span><span class="p">,</span>
+          <span class="n">relief</span><span class="o">=</span><span class="s1">&#39;flat&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e8e8e8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">toolbar</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;✕ Loeschen&#39;</span><span class="p">,</span>   <span class="n">command</span><span class="o">=</span><span class="n">ausgewaehlt_loeschen</span><span class="p">,</span>
+          <span class="n">relief</span><span class="o">=</span><span class="s1">&#39;flat&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e8e8e8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Treeview mit Scrollbar</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">inhalt</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">inhalt</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">sb</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">inhalt</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">SPALTEN</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;album&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">)</span>
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">inhalt</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">SPALTEN</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">,</span> <span class="n">yscrollcommand</span><span class="o">=</span><span class="n">sb</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">baum</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">spalte</span><span class="p">,</span> <span class="n">breite</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>    <span class="mi">230</span><span class="p">,</span> <span class="s1">&#39;Titel&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span> <span class="s1">&#39;Interpret&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">,</span>    <span class="mi">130</span><span class="p">,</span> <span class="s1">&#39;Album&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;Dauer&#39;</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">spalte</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="n">spalte</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">breite</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span> <span class="k">if</span> <span class="n">spalte</span> <span class="o">!=</span> <span class="s1">&#39;dauer&#39;</span> <span class="k">else</span> <span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span><span class="s1">&#39;gerade&#39;</span><span class="p">,</span>   <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#f5f5f5&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">tag_configure</span><span class="p">(</span><span class="s1">&#39;ungerade&#39;</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s1">&#39;#ffffff&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Doppelklick = Abspielen</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Double-Button-1&gt;&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">abspielen_platzhalter</span><span class="p">())</span>
+
+<span class="c1"># -------------------------------------------------------</span>
+<span class="c1"># Statusleiste</span>
+<span class="c1"># -------------------------------------------------------</span>
+<span class="n">statusleiste</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e0e0e0&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">statusleiste</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">statusleiste</span><span class="o">.</span><span class="n">pack_propagate</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">status_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Bereit. Titel über Datei &gt; Titel hinzufügen laden.&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">statusleiste</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">status_var</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;#e0e0e0&#39;</span><span class="p">,</span>
+         <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Segoe UI&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Zusammenfassung</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Konzept</p></th>
+<th class="head"><p>Erklärung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">font=('Arial',</span> <span class="pre">12,</span> <span class="pre">'bold')</span></code></p></td>
+<td><p>Schrift als Tupel: Name, Größe, Stil</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'TkDefaultFont'</span></code>, <code class="docutils literal notranslate"><span class="pre">'TkFixedFont'</span></code></p></td>
+<td><p>Plattformunabhängige Systemschriften</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ttk.Style()</span></code></p></td>
+<td><p>Style-Objekt für ttk-Widgets</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">style.configure('Treeview',</span> <span class="pre">font=...,</span> <span class="pre">rowheight=...)</span></code></p></td>
+<td><p>Treeview-Schrift und Zeilenhöhe setzen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">style.configure('Treeview.Heading',</span> <span class="pre">...)</span></code></p></td>
+<td><p>Überschriften-Zeile des Treeview</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">baum.tag_configure('name',</span> <span class="pre">background='...')</span></code></p></td>
+<td><p>Tag mit Farbe definieren</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">baum.insert(...,</span> <span class="pre">tags=('name',))</span></code></p></td>
+<td><p>Tag beim Einfügen zuweisen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.Menu(root)</span></code> + <code class="docutils literal notranslate"><span class="pre">root.config(menu=...)</span></code></p></td>
+<td><p>Menüleiste erstellen und anhängen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tk.Menu(menubar,</span> <span class="pre">tearoff=0)</span></code></p></td>
+<td><p>Untermenü – <code class="docutils literal notranslate"><span class="pre">tearoff=0</span></code> immer setzen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">menubar.add_cascade(label='...',</span> <span class="pre">menu=...)</span></code></p></td>
+<td><p>Untermenü in Leiste einhängen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">menu.add_command(label='...',</span> <span class="pre">command=...)</span></code></p></td>
+<td><p>Menüeintrag hinzufügen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">menu.add_separator()</span></code></p></td>
+<td><p>Trennlinie im Menü</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tkinter</span> <span class="pre">import</span> <span class="pre">filedialog</span></code></p></td>
+<td><p>Dateidialog-Modul</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filedialog.askopenfilename(filetypes=[...])</span></code></p></td>
+<td><p>Einzelne Datei auswählen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filedialog.askopenfilenames(...)</span></code></p></td>
+<td><p>Mehrere Dateien auswählen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filedialog.askdirectory(...)</span></code></p></td>
+<td><p>Ordner auswählen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">filedialog.asksaveasfilename(...)</span></code></p></td>
+<td><p>Speicherpfad auswählen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Rückgabe bei Abbruch</p></td>
+<td><p>Immer <code class="docutils literal notranslate"><span class="pre">''</span></code> – nicht <code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tkinter</span> <span class="pre">import</span> <span class="pre">messagebox</span></code></p></td>
+<td><p>Meldungsdialog-Modul</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.showinfo/showwarning/showerror(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>Reine Meldung</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.askyesno(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>Ja/Nein, gibt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">messagebox.askokcancel(titel,</span> <span class="pre">text)</span></code></p></td>
+<td><p>OK/Abbrechen, gibt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Weiter:</strong> In <strong>Kapitel 12 – Projekt: MP3-Verwaltung</strong> wird das vollständige MP3-Projekt umgesetzt. Alle tkinter-Konzepte aus Kapitel 11 fließen dort zusammen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">row</span><span class="p">,(</span><span class="n">feldname</span><span class="p">,</span> <span class="n">var</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([(</span><span class="s1">&#39;Name :&#39;</span><span class="p">,</span> <span class="s1">&#39;Herbert&#39;</span>  <span class="p">),(</span><span class="s1">&#39;Klasse :&#39;</span><span class="p">,</span><span class="s1">&#39;KFZ Mechaniker&#39;</span> <span class="p">),(</span><span class="s1">&#39;HP :&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">feldname</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name :
+Herbert
+0
+Klasse :
+KFZ Mechaniker
+1
+HP :
+500
+2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_11"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11c_tkinter_listen_tabellen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tkinter listen tabellen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11b_aufgabe_taschenrechner.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aufgaben: Taschenrechner</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

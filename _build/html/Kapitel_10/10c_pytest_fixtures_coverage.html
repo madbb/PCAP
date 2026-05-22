@@ -1,0 +1,1021 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pytest fixtures coverage &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_10/10c_pytest_fixtures_coverage';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Github actions" href="10d_github_actions.html" />
+    <link rel="prev" title="Pytest grundlagen" href="10b_pytest_grundlagen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_10/10c_pytest_fixtures_coverage.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pytest fixtures coverage</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pytest-fixtures-coverage">
+<h1>Pytest fixtures coverage<a class="headerlink" href="#pytest-fixtures-coverage" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">pytest: Fixtures, Parametrisierung und Coverage</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 10: Testing &nbsp;|&nbsp; Notebook 10c</p>
+</div>
+</div><p><strong>Legende</strong></p>
+<blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook ist kein PCAP-Pruefungsinhalt</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Das naechste Problem: Wiederholung in Tests
+</span>
+</div><p>In 10b haben wir 30 Tests geschrieben. Das funktioniert gut – aber schau dir die Tests fuer <code class="docutils literal notranslate"><span class="pre">heilen()</span></code> an: Jeder Test erstellt dieselben Grundannahmen neu. Und wenn wir anfangen, komplexere Objekte zu testen – zum Beispiel einen ganzen <code class="docutils literal notranslate"><span class="pre">Held</span></code> mit Name, HP, Angriff und Level – dann wuerde jeder Test dieses Objekt neu aufbauen.</p>
+<p>Schauen wir uns an wie das aussieht wenn man es nicht loest:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Stell dir vor, wir testen eine Held-Klasse</span>
+<span class="c1"># Ohne Fixtures sieht jeder Test so aus:</span>
+
+<span class="n">beispiel_ohne_fixture</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">def test_held_erhaelt_schaden():</span>
+<span class="s1">    held = Held(name=&quot;Aldric&quot;, hp=100, max_hp=100, angriff=15, verteidigung=5)</span>
+<span class="s1">    held.erleidet_schaden(20)</span>
+<span class="s1">    assert held.hp == 80</span>
+
+<span class="s1">def test_held_wird_geheilt():</span>
+<span class="s1">    held = Held(name=&quot;Aldric&quot;, hp=100, max_hp=100, angriff=15, verteidigung=5)</span>
+<span class="s1">    held.erleidet_schaden(50)</span>
+<span class="s1">    held.heilen(20)</span>
+<span class="s1">    assert held.hp == 70</span>
+
+<span class="s1">def test_held_ist_besiegt():</span>
+<span class="s1">    held = Held(name=&quot;Aldric&quot;, hp=100, max_hp=100, angriff=15, verteidigung=5)</span>
+<span class="s1">    held.erleidet_schaden(100)</span>
+<span class="s1">    assert held.ist_besiegt() == True</span>
+
+<span class="s1"># ... 20 weitere Tests, alle beginnen mit denselben 5 Zeilen</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Problem: Jeder Test baut denselben Held neu auf.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wenn sich die Held-Klasse aendert, muss man 20 Tests anpassen.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das verletzt das DRY-Prinzip (Don’t Repeat Yourself) – und macht Tests schwer zu warten. pytest loest das mit <strong>Fixtures</strong>.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. Fixtures -- Testdaten einmal definieren, ueberall verwenden
+</span>
+</div><p>Eine <strong>Fixture</strong> ist eine Funktion die mit <code class="docutils literal notranslate"><span class="pre">&#64;pytest.fixture</span></code> dekoriert wird. pytest ruft sie automatisch auf und uebergibt ihr Ergebnis an den Test – einfach indem man den Fixture-Namen als Parameter des Tests angibt.</p>
+<p>Das klingt wie Magie, ist aber simples Dependency Injection: pytest sieht dass ein Test einen Parameter mit dem Namen <code class="docutils literal notranslate"><span class="pre">standard_held</span></code> hat, sucht nach einer Fixture dieses Namens und reicht den Rueckgabewert weiter.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir erweitern combat.py um eine Held-Klasse</span>
+<span class="n">held_klasse</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">from combat import berechne_schaden, heilen as heilen_fn, ist_besiegt, statuseffekt_anwenden</span>
+
+
+<span class="s1">class Held:</span>
+<span class="s1">    def __init__(self, name, hp, max_hp, angriff, verteidigung):</span>
+<span class="s1">        self.name        = name</span>
+<span class="s1">        self.hp          = hp</span>
+<span class="s1">        self.max_hp      = max_hp</span>
+<span class="s1">        self.angriff     = angriff</span>
+<span class="s1">        self.verteidigung = verteidigung</span>
+
+<span class="s1">    def erleidet_schaden(self, schaden):</span>
+<span class="s1">        netto = berechne_schaden(schaden, self.verteidigung)</span>
+<span class="s1">        self.hp -= netto</span>
+
+<span class="s1">    def heilen(self, menge):</span>
+<span class="s1">        self.hp = heilen_fn(self.hp, self.max_hp, menge)</span>
+
+<span class="s1">    def ist_besiegt(self):</span>
+<span class="s1">        return ist_besiegt(self.hp)</span>
+
+<span class="s1">    def __repr__(self):</span>
+<span class="s1">        return f&quot;Held(</span><span class="si">{self.name}</span><span class="s1">, HP=</span><span class="si">{self.hp}</span><span class="s1">/</span><span class="si">{self.max_hp}</span><span class="s1">)&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;held.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">held_klasse</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;held.py erstellt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_mit_fixtures</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">import pytest</span>
+<span class="s1">from held import Held</span>
+
+
+<span class="s1"># Fixture: wird vor jedem Test der sie verwendet aufgerufen</span>
+<span class="s1">@pytest.fixture</span>
+<span class="s1">def standard_held():</span>
+<span class="s1">    &quot;&quot;&quot;Ein frischer Held mit vollen HP fuer jeden Test.&quot;&quot;&quot;</span>
+<span class="s1">    return Held(name=&quot;Aldric&quot;, hp=100, max_hp=100, angriff=15, verteidigung=5)</span>
+
+
+<span class="s1">@pytest.fixture</span>
+<span class="s1">def verletzter_held():</span>
+<span class="s1">    &quot;&quot;&quot;Ein Held der bereits Schaden erlitten hat.&quot;&quot;&quot;</span>
+<span class="s1">    return Held(name=&quot;Lyria&quot;, hp=30, max_hp=100, angriff=12, verteidigung=3)</span>
+
+
+<span class="s1"># Tests verwenden Fixture als Parameter -- pytest injiziert sie automatisch</span>
+<span class="s1">def test_held_erhaelt_schaden(standard_held):</span>
+<span class="s1">    standard_held.erleidet_schaden(20)</span>
+<span class="s1">    # Nettoschaden: 20 - 5 (Verteidigung) = 15</span>
+<span class="s1">    assert standard_held.hp == 85</span>
+
+
+<span class="s1">def test_held_wird_geheilt(verletzter_held):</span>
+<span class="s1">    verletzter_held.heilen(20)</span>
+<span class="s1">    assert verletzter_held.hp == 50</span>
+
+
+<span class="s1">def test_held_heilung_cap(verletzter_held):</span>
+<span class="s1">    # Heilung weit ueber max_hp -- wird gekappt</span>
+<span class="s1">    verletzter_held.heilen(999)</span>
+<span class="s1">    assert verletzter_held.hp == 100</span>
+
+
+<span class="s1">def test_held_ist_besiegt(standard_held):</span>
+<span class="s1">    standard_held.erleidet_schaden(999)</span>
+<span class="s1">    assert standard_held.ist_besiegt() == True</span>
+
+
+<span class="s1">def test_held_lebt_noch(standard_held):</span>
+<span class="s1">    standard_held.erleidet_schaden(10)</span>
+<span class="s1">    assert standard_held.ist_besiegt() == False</span>
+
+
+<span class="s1">def test_jeder_test_bekommt_frischen_held(standard_held):</span>
+<span class="s1">    # Dieser Test aendert den Held -- aber der naechste Test bekommt</span>
+<span class="s1">    # einen frischen Held, nicht diesen veraenderten</span>
+<span class="s1">    standard_held.erleidet_schaden(999)</span>
+<span class="s1">    assert standard_held.hp &lt; 0</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test_held.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">test_mit_fixtures</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test_held.py erstellt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="s1">&#39;test_held.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wichtig: pytest erstellt die Fixture <strong>vor jedem Test neu</strong>. <code class="docutils literal notranslate"><span class="pre">test_held_ist_besiegt</span></code> bekommt einen Held mit 100 HP – nicht den Held mit 0 HP aus <code class="docutils literal notranslate"><span class="pre">test_held_erhaelt_schaden</span></code>. Jeder Test ist isoliert. Das ist das Kernprinzip.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Parametrisierung -- einen Test mit vielen Eingaben
+</span>
+</div><p>Schau dir die Tests fuer <code class="docutils literal notranslate"><span class="pre">berechne_schaden()</span></code> aus 10b an – viele Tests die dasselbe pruefen, nur mit anderen Zahlen. Das ist ein weiteres Wiederholungsmuster.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.parametrize</span></code> loest das: Man schreibt den Test einmal und gibt eine Liste von Eingabe-Erwartungs-Paaren mit. pytest fuehrt den Test automatisch fuer jede Kombination aus – und zeigt jeden Fall einzeln in der Ausgabe.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">test_parametrize</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">import pytest</span>
+<span class="s1">from combat import berechne_schaden, heilen, trefferchance, statuseffekt_anwenden</span>
+
+
+<span class="s1"># Ohne Parametrisierung: 4 separate Tests</span>
+<span class="s1">def test_schaden_v1(): assert berechne_schaden(50, 20) == 30</span>
+<span class="s1">def test_schaden_v2(): assert berechne_schaden(20, 20) == 1</span>
+<span class="s1">def test_schaden_v3(): assert berechne_schaden(10, 50) == 1</span>
+<span class="s1">def test_schaden_v4(): assert berechne_schaden(100, 0) == 100</span>
+
+
+<span class="s1"># Mit Parametrisierung: ein Test, vier Faelle</span>
+<span class="s1"># Format: &quot;angriff, verteidigung, erwartet&quot;</span>
+<span class="s1">@pytest.mark.parametrize(&quot;angriff, verteidigung, erwartet&quot;, [</span>
+<span class="s1">    (50, 20, 30),   # Normalfall</span>
+<span class="s1">    (20, 20,  1),   # Grenzwert: gleiche Werte -&gt; Mindestschaden</span>
+<span class="s1">    (10, 50,  1),   # Grenzwert: Verteidigung &gt; Angriff -&gt; Mindestschaden</span>
+<span class="s1">    (100, 0, 100),  # Grenzwert: keine Verteidigung</span>
+<span class="s1">    (1,   0,   1),  # Grenzwert: minimaler Angriff</span>
+<span class="s1">])</span>
+<span class="s1">def test_berechne_schaden(angriff, verteidigung, erwartet):</span>
+<span class="s1">    assert berechne_schaden(angriff, verteidigung) == erwartet</span>
+
+
+<span class="s1"># Grenzwerte fuer trefferchance</span>
+<span class="s1">@pytest.mark.parametrize(&quot;angreifer, ziel, erwartet&quot;, [</span>
+<span class="s1">    (10, 10,  50),   # gleich schnell</span>
+<span class="s1">    (10,  8,  60),   # etwas schneller</span>
+<span class="s1">    ( 1, 20,  10),   # Grenzwert: Minimum -- sehr langsam</span>
+<span class="s1">    (20,  1,  95),   # Grenzwert: Maximum -- sehr schnell</span>
+<span class="s1">    ( 2, 20,  10),   # Aequivalenzklasse: unter Minimum bleibt bei 10</span>
+<span class="s1">    (19,  1,  95),   # Aequivalenzklasse: ueber Maximum bleibt bei 95</span>
+<span class="s1">])</span>
+<span class="s1">def test_trefferchance(angreifer, ziel, erwartet):</span>
+<span class="s1">    assert trefferchance(angreifer, ziel) == erwartet</span>
+
+
+<span class="s1"># Alle gueltigen Statuseffekte</span>
+<span class="s1">@pytest.mark.parametrize(&quot;effekt, schaden, erwartet&quot;, [</span>
+<span class="s1">    (&quot;normal&quot;,    20, 20),</span>
+<span class="s1">    (&quot;vergiftet&quot;, 20, 30),</span>
+<span class="s1">    (&quot;geschwaeht&quot;,20, 15),</span>
+<span class="s1">    (&quot;verstaerkt&quot;,20, 40),</span>
+<span class="s1">    (&quot;vergiftet&quot;,  0,  0),   # Grenzwert: Schaden = 0</span>
+<span class="s1">])</span>
+<span class="s1">def test_statuseffekt_anwenden(effekt, schaden, erwartet):</span>
+<span class="s1">    assert statuseffekt_anwenden(schaden, effekt) == erwartet</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;test_parametrize.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">test_parametrize</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;test_parametrize.py erstellt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="s1">&#39;test_parametrize.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>pytest zeigt jeden Testfall einzeln – mit den Parameterwerten im Namen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test_berechne_schaden</span><span class="p">[</span><span class="mi">50</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">30</span><span class="p">]</span> <span class="n">PASSED</span>
+<span class="n">test_berechne_schaden</span><span class="p">[</span><span class="mi">20</span><span class="o">-</span><span class="mi">20</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="n">PASSED</span>
+<span class="n">test_berechne_schaden</span><span class="p">[</span><span class="mi">10</span><span class="o">-</span><span class="mi">50</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="n">PASSED</span>
+</pre></div>
+</div>
+<p>Wenn ein einzelner Fall fehlschlaegt, sieht man sofort welche Parameterkombination das Problem verursacht hat.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. Coverage -- wie viel Code ist wirklich getestet?
+</span>
+</div><p>Wir haben viele Tests geschrieben – aber woher wissen wir ob wir alle Codepfade abgedeckt haben? Gibt es Zeilen in <code class="docutils literal notranslate"><span class="pre">combat.py</span></code> die nie ausgefuehrt werden weil kein Test sie erreicht?</p>
+<p><strong>Coverage</strong> (Testabdeckung) misst genau das: welcher Prozentsatz des Codes durch Tests ausgefuehrt wird. Das Werkzeug dafuer heisst <code class="docutils literal notranslate"><span class="pre">pytest-cov</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pytest-cov
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pytest_cov</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pytest-cov installiert&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bitte ausfuehren: pip install pytest-cov&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="c1"># --cov=combat: Coverage fuer combat.py messen</span>
+<span class="c1"># --cov-report=term-missing: zeigt welche Zeilen fehlen</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="p">[</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;pytest&#39;</span><span class="p">,</span> <span class="s1">&#39;test_combat.py&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;--cov=combat&#39;</span><span class="p">,</span> <span class="s1">&#39;--cov-report=term-missing&#39;</span><span class="p">,</span> <span class="s1">&#39;-v&#39;</span><span class="p">],</span>
+    <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">returncode</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="s1">&#39;no module named pytest_cov&#39;</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;pytest-cov nicht installiert -- pip install pytest-cov&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Coverage-Ausgabe sieht so aus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span>        <span class="n">Stmts</span>   <span class="n">Miss</span>  <span class="n">Cover</span>   <span class="n">Missing</span>
+<span class="o">-------------------------------------------</span>
+<span class="n">combat</span><span class="o">.</span><span class="n">py</span>      <span class="mi">28</span>      <span class="mi">0</span>   <span class="mi">100</span><span class="o">%</span>
+</pre></div>
+</div>
+<p>100% bedeutet: jede Zeile in <code class="docutils literal notranslate"><span class="pre">combat.py</span></code> wurde durch mindestens einen Test ausgefuehrt. Wenn eine Zeile nie erreicht wird, erscheint sie in der <code class="docutils literal notranslate"><span class="pre">Missing</span></code>-Spalte – ein Hinweis dass entweder ein Testfall fehlt oder der Code selbst unerreichbar ist.</p>
+<p><strong>Wichtig:</strong> 100% Coverage bedeutet nicht dass der Code fehlerfrei ist. Es bedeutet nur dass jede Zeile ausgefuehrt wurde – nicht dass alle moeglichen Eingaben getestet wurden. Coverage ist ein Werkzeug, keine Garantie.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. Das AAA-Prinzip -- wie ein guter Test aussieht
+</span>
+</div><p>Ein guter Test folgt dem <strong>AAA-Prinzip</strong>: Arrange, Act, Assert.</p>
+<ul class="simple">
+<li><p><strong>Arrange</strong> – Vorbereitung: Testdaten und Ausgangszustand herstellen</p></li>
+<li><p><strong>Act</strong> – Ausfuehren: genau eine Aktion ausfuehren</p></li>
+<li><p><strong>Assert</strong> – Pruefen: das Ergebnis pruefen</p></li>
+</ul>
+<p>Das klingt trivial – aber es zwingt dazu, jeden Test auf genau eine Sache zu fokussieren. Ein Test der viele Dinge gleichzeitig prueft ist schwer zu lesen und wenn er fehlschlaegt, weiss man nicht was genau das Problem war.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># AAA-Prinzip am Beispiel</span>
+
+<span class="c1"># SCHLECHT: prueft zu viele Dinge auf einmal</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_kampfrunde_komplett_schlecht</span><span class="p">():</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">held</span><span class="w"> </span><span class="kn">import</span> <span class="n">Held</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">Aetheria_Game.combat</span><span class="w"> </span><span class="kn">import</span> <span class="n">berechne_schaden</span>
+    <span class="n">held</span>    <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s2">&quot;Aldric&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">gegner</span>  <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s2">&quot;Drache&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># Held greift an</span>
+    <span class="n">schaden_an_gegner</span> <span class="o">=</span> <span class="n">berechne_schaden</span><span class="p">(</span><span class="n">held</span><span class="o">.</span><span class="n">angriff</span><span class="p">,</span> <span class="n">gegner</span><span class="o">.</span><span class="n">verteidigung</span><span class="p">)</span>
+    <span class="n">gegner</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="n">held</span><span class="o">.</span><span class="n">angriff</span><span class="p">)</span>
+    <span class="c1"># Gegner greift an</span>
+    <span class="n">schaden_an_held</span> <span class="o">=</span> <span class="n">berechne_schaden</span><span class="p">(</span><span class="n">gegner</span><span class="o">.</span><span class="n">angriff</span><span class="p">,</span> <span class="n">held</span><span class="o">.</span><span class="n">verteidigung</span><span class="p">)</span>
+    <span class="n">held</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="n">gegner</span><span class="o">.</span><span class="n">angriff</span><span class="p">)</span>
+    <span class="c1"># Alles auf einmal pruefen -- wenn etwas fehlschlaegt, was genau?</span>
+    <span class="k">assert</span> <span class="n">schaden_an_gegner</span> <span class="o">==</span> <span class="mi">5</span>
+    <span class="k">assert</span> <span class="n">gegner</span><span class="o">.</span><span class="n">hp</span> <span class="o">==</span> <span class="mi">195</span>
+    <span class="k">assert</span> <span class="n">schaden_an_held</span> <span class="o">==</span> <span class="mi">25</span>
+    <span class="k">assert</span> <span class="n">held</span><span class="o">.</span><span class="n">hp</span> <span class="o">==</span> <span class="mi">75</span>
+    <span class="k">assert</span> <span class="n">held</span><span class="o">.</span><span class="n">ist_besiegt</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span>
+    <span class="k">assert</span> <span class="n">gegner</span><span class="o">.</span><span class="n">ist_besiegt</span><span class="p">()</span> <span class="o">==</span> <span class="kc">False</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dieser Test prueft 6 Dinge -- zu viel&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># GUT: jeder Test prueft genau eine Sache</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">held</span><span class="w"> </span><span class="kn">import</span> <span class="n">Held</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pytest</span>
+
+<span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">held_und_gegner</span><span class="p">():</span>
+    <span class="c1"># Arrange: Testdaten vorbereiten</span>
+    <span class="n">held</span>   <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s2">&quot;Aldric&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">gegner</span> <span class="o">=</span> <span class="n">Held</span><span class="p">(</span><span class="s2">&quot;Drache&quot;</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">held</span><span class="p">,</span> <span class="n">gegner</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_held_schaden_an_gegner</span><span class="p">(</span><span class="n">held_und_gegner</span><span class="p">):</span>
+    <span class="n">held</span><span class="p">,</span> <span class="n">gegner</span> <span class="o">=</span> <span class="n">held_und_gegner</span>
+    <span class="c1"># Act</span>
+    <span class="n">gegner</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="n">held</span><span class="o">.</span><span class="n">angriff</span><span class="p">)</span>
+    <span class="c1"># Assert -- genau eine Sache</span>
+    <span class="k">assert</span> <span class="n">gegner</span><span class="o">.</span><span class="n">hp</span> <span class="o">==</span> <span class="mi">195</span>   <span class="c1"># 200 - (15-10) = 195</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_gegner_schaden_an_held</span><span class="p">(</span><span class="n">held_und_gegner</span><span class="p">):</span>
+    <span class="n">held</span><span class="p">,</span> <span class="n">gegner</span> <span class="o">=</span> <span class="n">held_und_gegner</span>
+    <span class="c1"># Act</span>
+    <span class="n">held</span><span class="o">.</span><span class="n">erleidet_schaden</span><span class="p">(</span><span class="n">gegner</span><span class="o">.</span><span class="n">angriff</span><span class="p">)</span>
+    <span class="c1"># Assert</span>
+    <span class="k">assert</span> <span class="n">held</span><span class="o">.</span><span class="n">hp</span> <span class="o">==</span> <span class="mi">75</span>   <span class="c1"># 100 - (30-5) = 75</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zwei Tests, jeder prueft genau eine Sache&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Projektstruktur und conftest.py
+</span>
+</div><p>In einem echten Projekt liegen Tests in einem eigenen Ordner. Fixtures die mehrere Testdateien brauchen, kommen in eine spezielle Datei: <code class="docutils literal notranslate"><span class="pre">conftest.py</span></code>. pytest findet und laedt sie automatisch.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mein_projekt</span><span class="o">/</span>
+    <span class="n">combat</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">held</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">tests</span><span class="o">/</span>
+        <span class="n">conftest</span><span class="o">.</span><span class="n">py</span>          <span class="o">&lt;--</span> <span class="n">gemeinsame</span> <span class="n">Fixtures</span> <span class="n">fuer</span> <span class="n">alle</span> <span class="n">Tests</span>
+        <span class="n">test_combat</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">test_held</span><span class="o">.</span><span class="n">py</span>
+        <span class="n">test_integration</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">conftest.py</span></code> enthaelt keine Tests – nur Fixtures:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;tests&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">conftest</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">import pytest</span>
+<span class="s1">from held import Held</span>
+
+
+<span class="s1">@pytest.fixture</span>
+<span class="s1">def standard_held():</span>
+<span class="s1">    &quot;&quot;&quot;Frischer Held mit vollen HP -- verfuegbar in allen Testdateien.&quot;&quot;&quot;</span>
+<span class="s1">    return Held(name=&quot;Aldric&quot;, hp=100, max_hp=100, angriff=15, verteidigung=5)</span>
+
+
+<span class="s1">@pytest.fixture</span>
+<span class="s1">def verletzter_held():</span>
+<span class="s1">    &quot;&quot;&quot;Held mit niedrigen HP -- fuer Tests rund um Heilung und Tod.&quot;&quot;&quot;</span>
+<span class="s1">    return Held(name=&quot;Lyria&quot;, hp=10, max_hp=100, angriff=12, verteidigung=3)</span>
+
+
+<span class="s1">@pytest.fixture</span>
+<span class="s1">def starker_gegner():</span>
+<span class="s1">    &quot;&quot;&quot;Ein starker Gegner fuer Kampftests.&quot;&quot;&quot;</span>
+<span class="s1">    return Held(name=&quot;Drache&quot;, hp=500, max_hp=500, angriff=60, verteidigung=20)</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tests/conftest.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">conftest</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;tests/conftest.py erstellt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alle Tests in tests/ haben jetzt Zugriff auf standard_held, verletzter_held, starker_gegner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Zusammenfassung</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Konzept</p></th>
+<th class="head"><p>Erklaerung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;pytest.fixture</span></code></p></td>
+<td><p>Testdaten einmal definieren – pytest injiziert sie automatisch</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fixture ist isoliert</p></td>
+<td><p>Jeder Test bekommt eine frische Kopie – Aenderungen wirken sich nicht auf andere Tests aus</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;pytest.mark.parametrize</span></code></p></td>
+<td><p>Einen Test mit vielen Eingabe-Erwartungs-Paaren laufen lassen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Coverage</p></td>
+<td><p>Misst wie viel Prozent des Codes durch Tests ausgefuehrt wird</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--cov</span> <span class="pre">--cov-report=term-missing</span></code></p></td>
+<td><p>Zeigt welche Zeilen nicht getestet wurden</p></td>
+</tr>
+<tr class="row-odd"><td><p>AAA-Prinzip</p></td>
+<td><p>Arrange, Act, Assert – ein Test prueft genau eine Sache</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">conftest.py</span></code></p></td>
+<td><p>Gemeinsame Fixtures fuer alle Testdateien im Verzeichnis</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Weiter:</strong> In Notebook <strong>10d</strong> automatisieren wir das Ausfuehren der Tests mit <strong>GitHub Actions</strong> – damit bei jedem Push in das Repository alle Tests automatisch laufen.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_10"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="10b_pytest_grundlagen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pytest grundlagen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="10d_github_actions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Github actions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1271 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Projekt mastermind loesung &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_13/13_projekt_mastermind_loesung';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Projekt mp3" href="13_projekt_mp3.html" />
+    <link rel="prev" title="Projekt mastermind" href="13_projekt_mastermind.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_13/13_projekt_mastermind_loesung.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Projekt mastermind loesung</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="projekt-mastermind-loesung">
+<h1>Projekt mastermind loesung<a class="headerlink" href="#projekt-mastermind-loesung" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Mastermind: Von der Idee zur Implementierung</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python &nbsp;|&nbsp; Kapitel 13: Abschlussprojekt &nbsp;|&nbsp; Loesung und Herleitung</p>
+</div>
+</div><blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook zeigt den vollstaendigen Loesungsweg – von der Spielidee bis zur lauffaehigen Implementierung. Es ersetzt nicht das eigenstaendige Loesen, sondern dient der Nachbereitung und dem Verstaendnis der Entwurfsentscheidungen.</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Das Spiel verstehen -- bevor eine Zeile Code entsteht
+</span>
+</div><p>Mastermind ist ein Zwei-Spieler-Ratespiel aus dem Jahr 1970. Ein Spieler legt einen geheimen Farbcode fest – vier Farben aus sechs moeglichen, Wiederholungen erlaubt. Der andere Spieler versucht diesen Code in maximal zehn Versuchen zu erraten.</p>
+<p>Nach jedem Versuch erhaelt der Ratende eine Rueckmeldung:</p>
+<ul class="simple">
+<li><p>Ein <strong>schwarzer Pin</strong> fuer jede Farbe an der <strong>richtigen Position</strong></p></li>
+<li><p>Ein <strong>weisser Pin</strong> fuer jede Farbe die im Code vorkommt aber an der <strong>falschen Position</strong> steht</p></li>
+</ul>
+<p>Das Ziel: vier schwarze Pins – der Code ist vollstaendig erraten.</p>
+<p><strong>Bevor wir programmieren, spielen wir ein Beispiel manuell durch:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Geheimcode:  rot   blau  rot   gruen
+
+Versuch 1:   rot   rot   blau  gelb     -&gt;  S=1, W=1
+Versuch 2:   blau  blau  rot   rot      -&gt;  S=1, W=2
+Versuch 3:   rot   blau  rot   gruen    -&gt;  S=4, W=0  (gewonnen!)
+</pre></div>
+</div>
+<p>Was faellt auf?</p>
+<ul class="simple">
+<li><p>Versuch 1: <code class="docutils literal notranslate"><span class="pre">rot</span></code> an Position 0 trifft (S=1). Das <code class="docutils literal notranslate"><span class="pre">rot</span></code> an Position 1 des Versuchs trifft nicht exakt – aber es gibt noch ein <code class="docutils literal notranslate"><span class="pre">rot</span></code> im Code (Position 2). Also W=1.</p></li>
+<li><p>Die Bewertung sagt nie <em>welche</em> Position stimmt, nur <em>wie viele</em>.</p></li>
+</ul>
+<p>Daraus folgt schon die erste Programmierfrage: <strong>Wie berechnen wir S und W korrekt, wenn eine Farbe mehrfach vorkommt?</strong></p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. Das Kernproblem isolieren
+</span>
+</div><p>Bevor man ein Projekt baut, lohnt es sich zu fragen: <strong>Was ist die schwierigste Teilaufgabe?</strong> Alles andere ist Verpackung.</p>
+<p>Bei Mastermind ist das die Bewertungslogik. Den Code erzeugen ist trivial (<code class="docutils literal notranslate"><span class="pre">random.choices</span></code>). Eingaben lesen ist Fleissarbeit. Aber die korrekte Bewertung mit Wiederholungen – das ist der einzige Punkt wo man echte Fehler bauen kann.</p>
+<p><strong>Warum ist es schwierig?</strong></p>
+<p>Betrachte diesen Fall:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Code</span><span class="p">:</span>    <span class="n">rot</span>  <span class="n">rot</span>  <span class="n">blau</span>  <span class="n">gruen</span>
+<span class="n">Versuch</span><span class="p">:</span> <span class="n">rot</span>  <span class="n">rot</span>  <span class="n">rot</span>   <span class="n">rot</span>
+</pre></div>
+</div>
+<p>Intuitiv moechte man sagen: der Code hat 2x <code class="docutils literal notranslate"><span class="pre">rot</span></code>, der Versuch hat 4x <code class="docutils literal notranslate"><span class="pre">rot</span></code> – also 2 schwarze Treffer und… wie viele weisse? Die Antwort muss 0 sein. Die beiden <code class="docutils literal notranslate"><span class="pre">rot</span></code> im Versuch an Positionen 2 und 3 finden kein entsprechendes <code class="docutils literal notranslate"><span class="pre">rot</span></code> mehr im Code – beide wurden bereits als schwarz verbraucht.</p>
+<p>Oder dieser:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Code</span><span class="p">:</span>    <span class="n">rot</span>  <span class="n">blau</span>  <span class="n">rot</span>   <span class="n">gruen</span>
+<span class="n">Versuch</span><span class="p">:</span> <span class="n">rot</span>  <span class="n">rot</span>   <span class="n">blau</span>  <span class="n">gelb</span>
+</pre></div>
+</div>
+<p>Erwartetes Ergebnis: S=1, W=2. Warum 2?</p>
+<ul class="simple">
+<li><p>Position 0: <code class="docutils literal notranslate"><span class="pre">rot</span> <span class="pre">==</span> <span class="pre">rot</span></code> -&gt; schwarz, beide verbraucht</p></li>
+<li><p>Position 1 (Versuch): <code class="docutils literal notranslate"><span class="pre">rot</span></code> – kein exakter Treffer, aber Code hat noch <code class="docutils literal notranslate"><span class="pre">rot</span></code> an Position 2 -&gt; weiss</p></li>
+<li><p>Position 2 (Versuch): <code class="docutils literal notranslate"><span class="pre">blau</span></code> – kein exakter Treffer, aber Code hat <code class="docutils literal notranslate"><span class="pre">blau</span></code> an Position 1 -&gt; weiss</p></li>
+<li><p>Position 3 (Versuch): <code class="docutils literal notranslate"><span class="pre">gelb</span></code> – nicht im Code</p></li>
+</ul>
+<p>Der Schluessel: <strong>schwarze Treffer muessen zuerst gezaehlt und verbraucht werden</strong>, bevor weisse gesucht werden. Sonst zaehlt ein exakter Treffer doppelt.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Erster Ansatz: naiv und falsch
+</span>
+</div><p>Der naheliegendste erste Versuch: Position fuer Position durchgehen und zaehlen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Versuch 1: der naive Ansatz ---</span>
+<span class="c1"># Wir gehen Position fuer Position durch.</span>
+<span class="c1"># Schwarz: gleiche Position, gleiche Farbe.</span>
+<span class="c1"># Weiss: Farbe kommt irgendwo im Code vor.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bewerte_v1</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">versuch</span><span class="p">):</span>
+    <span class="n">schwarz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">weiss</span>   <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">code</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">versuch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">code</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">schwarz</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">elif</span> <span class="n">versuch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">code</span><span class="p">:</span>   <span class="c1"># Fehler steckt hier</span>
+            <span class="n">weiss</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span>
+
+
+<span class="c1"># Dieser einfache Fall funktioniert noch:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v1</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">]))</span>  <span class="c1"># erwartet: (2, 0)</span>
+
+<span class="c1"># Hier versagt der naive Ansatz:</span>
+<span class="c1"># Code hat 1x &#39;r&#39;. Versuch hat 4x &#39;r&#39;. Erwartetes Ergebnis: (1, 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v1</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">]))</span>  <span class="c1"># erwartet: (1, 0) -- liefert aber?</span>
+
+<span class="c1"># Und dieser:</span>
+<span class="c1"># Code: r b r g | Versuch: r r b y</span>
+<span class="c1"># Erwartet: (1, 2) -- &#39;r&#39; an Pos 0 schwarz, &#39;r&#39; an Pos 1 weiss (Code hat noch r an Pos 2), &#39;b&#39; weiss</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v1</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span>  <span class="c1"># erwartet: (1, 2) -- liefert aber?</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der naive Ansatz hat zwei Fehler:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">versuch[i]</span> <span class="pre">in</span> <span class="pre">code</span></code> prueft ob die Farbe <em>irgendwo</em> im original-Code vorkommt – egal ob diese Position schon als schwarz gezaehlt wurde. Eine schwarz gezaehlte Farbe kann nochmal als weiss auftauchen.</p></li>
+<li><p>Es wird nicht gezaehlt wie oft eine Farbe noch verfuegbar ist. Steht <code class="docutils literal notranslate"><span class="pre">r</span></code> einmal im Code aber viermal im Versuch, wuerde der naive Ansatz bis zu dreimal weiss vergeben.</p></li>
+</ol>
+<p><strong>Die Erkenntnis:</strong> Wir brauchen ein Konzept von <em>verbrauchten</em> Positionen.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. Zweiter Ansatz: mit verbrauchten Positionen
+</span>
+</div><p>Die Idee: wir arbeiten nicht mit den Originallisten, sondern mit Kopien. Jede Position die gezaehlt wurde – egal ob schwarz oder weiss – markieren wir als <code class="docutils literal notranslate"><span class="pre">None</span></code>. So kann sie nicht nochmal zaehlen.</p>
+<p>Ausserdem trennen wir die zwei Phasen sauber:</p>
+<ol class="arabic simple">
+<li><p>Erst alle schwarzen Treffer einsammeln (exakte Matches)</p></li>
+<li><p>Dann erst nach weissen Treffern suchen – aber nur in den noch nicht verbrauchten Positionen</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Versuch 2: Zweiphasen-Algorithmus mit Verbrauchsmarkierung ---</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bewerte_v2</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">versuch</span><span class="p">):</span>
+    <span class="c1"># Kopien anlegen -- die Originale werden nicht veraendert</span>
+    <span class="n">code_rest</span>    <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+    <span class="n">versuch_rest</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+
+    <span class="c1"># Phase 1: Schwarze Treffer</span>
+    <span class="c1"># Exakte Uebereinstimmungen finden und verbrauchen</span>
+    <span class="n">schwarz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">code_rest</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">schwarz</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>    <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># verbraucht</span>
+            <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># verbraucht</span>
+
+    <span class="c1"># Phase 2: Weisse Treffer</span>
+    <span class="c1"># Jede noch nicht verbrauchte Versuchsposition: kommt die Farbe noch im Code vor?</span>
+    <span class="n">weiss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">versuch_rest</span><span class="p">)):</span>
+        <span class="n">farbe</span> <span class="o">=</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">farbe</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>        <span class="c1"># bereits als schwarz verbraucht</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">farbe</span> <span class="ow">in</span> <span class="n">code_rest</span><span class="p">:</span>   <span class="c1"># Farbe noch im restlichen Code?</span>
+            <span class="n">weiss</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">code_rest</span><span class="p">[</span><span class="n">code_rest</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">farbe</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">None</span>   <span class="c1"># diese Fundstelle verbrauchen</span>
+
+    <span class="k">return</span> <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span>
+
+
+<span class="c1"># Dieselben Testfaelle nochmal:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v2</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">]))</span>   <span class="c1"># erwartet: (1, 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v2</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">]))</span>   <span class="c1"># erwartet: (1, 2)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v2</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">]))</span>   <span class="c1"># erwartet: (0, 4)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bewerte_v2</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">]))</span>   <span class="c1"># erwartet: (2, 0)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alle Testfaelle stimmen. Warum funktioniert das?</p>
+<p>Der entscheidende Schritt ist <code class="docutils literal notranslate"><span class="pre">code_rest[code_rest.index(farbe)]</span> <span class="pre">=</span> <span class="pre">None</span></code> in Phase 2. Wenn <code class="docutils literal notranslate"><span class="pre">r</span></code> einmal im Code steht und zweimal im Versuch vorkommt (beide nicht-schwarz), findet der erste Weiss-Treffer das <code class="docutils literal notranslate"><span class="pre">r</span></code> und verbraucht es. Der zweite Versuch findet kein <code class="docutils literal notranslate"><span class="pre">r</span></code> mehr – kein doppelter Weiss-Treffer.</p>
+<p><strong>Diese Funktion ist der Kern des gesamten Projekts.</strong> Alles andere – Code erzeugen, Eingabe lesen, GUI zeichnen – ist Infrastruktur um diese eine Funktion herum.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. Den Algorithmus Schritt fuer Schritt verfolgen
+</span>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Wir instrumentieren bewerte_v2 mit print()-Ausgaben um den Ablauf zu verfolgen.</span>
+<span class="c1"># Das ist eine klassische Debugging-Technik: print-Tracing.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bewerte_trace</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">versuch</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Code:    </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Versuch: </span><span class="si">{</span><span class="n">versuch</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="n">code_rest</span>    <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+    <span class="n">versuch_rest</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+
+    <span class="n">schwarz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  --- Phase 1: Schwarze Treffer ---&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">code_rest</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; == &#39;</span><span class="si">{</span><span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; -&gt; SCHWARZ&quot;</span><span class="p">)</span>
+            <span class="n">schwarz</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>    <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; != &#39;</span><span class="si">{</span><span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  code_rest nach Phase 1:    </span><span class="si">{</span><span class="n">code_rest</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  versuch_rest nach Phase 1: </span><span class="si">{</span><span class="n">versuch_rest</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="n">weiss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  --- Phase 2: Weisse Treffer ---&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">versuch_rest</span><span class="p">)):</span>
+        <span class="n">farbe</span> <span class="o">=</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">farbe</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: bereits verbraucht&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">farbe</span> <span class="ow">in</span> <span class="n">code_rest</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">farbe</span><span class="si">}</span><span class="s2">&#39; in code_rest -&gt; WEISS&quot;</span><span class="p">)</span>
+            <span class="n">weiss</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">code_rest</span><span class="p">[</span><span class="n">code_rest</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">farbe</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: &#39;</span><span class="si">{</span><span class="n">farbe</span><span class="si">}</span><span class="s2">&#39; nicht im restlichen Code&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  =&gt; Ergebnis: Schwarz=</span><span class="si">{</span><span class="n">schwarz</span><span class="si">}</span><span class="s2">, Weiss=</span><span class="si">{</span><span class="n">weiss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span>
+
+
+<span class="c1"># Der schwierige Fall -- jetzt sieht man genau warum es (1, 2) ergibt:</span>
+<span class="n">bewerte_trace</span><span class="p">([</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Den Geheimcode erzeugen
+</span>
+</div><p>Der Geheimcode ist eine zufaellige Auswahl von 4 Farben aus 6 – mit Wiederholung erlaubt. <code class="docutils literal notranslate"><span class="pre">random.choices</span></code> loest das in einer Zeile.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">FARBEN</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;blau&#39;</span><span class="p">,</span> <span class="s1">&#39;gruen&#39;</span><span class="p">,</span> <span class="s1">&#39;gelb&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;lila&#39;</span><span class="p">]</span>
+
+<span class="c1"># random.choices zieht k Elemente MIT Zuruecklegen (Wiederholungen moeglich)</span>
+<span class="c1"># random.sample waere OHNE Zuruecklegen -- das waere hier falsch</span>
+<span class="n">code</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">FARBEN</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Geheimcode: </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Mit seed: reproduzierbar fuer Tests</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mit seed=42: </span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">FARBEN</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mit seed=42: </span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">FARBEN</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>  <span class="c1"># identisch)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Der <code class="docutils literal notranslate"><span class="pre">seed</span></code>-Parameter ist fuer Tests unverzichtbar: ohne ihn ist der Code bei jedem Aufruf anders – Tests werden unzuverlaessig. Mit <code class="docutils literal notranslate"><span class="pre">seed=42</span></code> bekommt man immer denselben Code, egal wie oft man ihn aufruft.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+7. Eingabe lesen und validieren
+</span>
+</div><p>Der Spieler gibt eine Eingabe wie <code class="docutils literal notranslate"><span class="pre">rot</span> <span class="pre">blau</span> <span class="pre">rot</span> <span class="pre">gruen</span></code> ein. Diese muss in eine Liste umgewandelt und validiert werden. Fehlerhafte Eingaben sollen eine verstaendliche Meldung liefern – keinen Absturz.</p>
+<p>Die Funktion wirft <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> bei ungueltiger Eingabe. Der Aufrufer (Konsole oder GUI) faengt den Fehler ab und zeigt die Meldung an.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ABKUERZUNGEN</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="s1">&#39;blau&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="s1">&#39;gruen&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;ge&#39;</span><span class="p">:</span> <span class="s1">&#39;gelb&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="s1">&#39;lila&#39;</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalisiere_eingabe</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">laenge</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parst einen Eingabe-String.</span>
+<span class="sd">    Wirft ValueError bei ungueltiger Eingabe.</span>
+<span class="sd">    Gibt eine bereinigte Farbliste zurueck.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># strip() entfernt fuehrendes/nachfolgendes Whitespace</span>
+    <span class="c1"># lower() macht gross/klein egal</span>
+    <span class="c1"># split() teilt an Leerzeichen auf</span>
+    <span class="n">teile</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">teile</span><span class="p">)</span> <span class="o">!=</span> <span class="n">laenge</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Bitte genau </span><span class="si">{</span><span class="n">laenge</span><span class="si">}</span><span class="s2"> Farben eingeben. Du hast </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">teile</span><span class="p">)</span><span class="si">}</span><span class="s2"> eingegeben.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">teile</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">ABKUERZUNGEN</span><span class="p">:</span>
+            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ABKUERZUNGEN</span><span class="p">[</span><span class="n">token</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">FARBEN</span><span class="p">:</span>
+            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; ist keine gueltige Farbe.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ergebnis</span>
+
+
+<span class="c1"># Valide Eingaben:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalisiere_eingabe</span><span class="p">(</span><span class="s1">&#39;rot blau gruen gelb&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalisiere_eingabe</span><span class="p">(</span><span class="s1">&#39;R B G Ge&#39;</span><span class="p">))</span>           <span class="c1"># Grossschreibung</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normalisiere_eingabe</span><span class="p">(</span><span class="s1">&#39;r b g ge&#39;</span><span class="p">))</span>           <span class="c1"># Abkuerzungen</span>
+
+<span class="c1"># Ungueltige Eingaben -- ValueError wird gefangen und ausgegeben:</span>
+<span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;rot blau&#39;</span><span class="p">,</span> <span class="s1">&#39;rot blau gruen pink&#39;</span><span class="p">,</span> <span class="s1">&#39;rot blau gruen gelb orange&#39;</span><span class="p">]:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">normalisiere_eingabe</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fehler: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+8. Entwurfsentscheidung: Warum eine Spiel-Klasse?
+</span>
+</div><p>Wir haben jetzt alle Bausteine als Funktionen. Man koennte das Spiel direkt mit Variablen in einer Schleife bauen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">code</span>     <span class="o">=</span> <span class="n">erzeuge_code</span><span class="p">()</span>
+<span class="n">versuche</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">gewonnen</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">versuche</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">gewonnen</span><span class="p">:</span>
+    <span class="n">eingabe</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>Das funktioniert fuer eine Konsolenversion. Aber sobald eine GUI dazukommt, wird es problematisch: Die GUI kann nicht einfach <code class="docutils literal notranslate"><span class="pre">input()</span></code> aufrufen – sie wartet auf Klicks. Der Spielzustand muss irgendwo gespeichert sein, und zwar unabhaengig davon ob gerade Konsole oder GUI laeuft.</p>
+<p>Die Loesung: eine Klasse <code class="docutils literal notranslate"><span class="pre">Spiel</span></code> die den <strong>Zustand</strong> kapselt. Sie weiss:</p>
+<ul class="simple">
+<li><p>Was der Geheimcode ist</p></li>
+<li><p>Wie viele Versuche gemacht wurden</p></li>
+<li><p>Ob das Spiel gewonnen oder verloren ist</p></li>
+</ul>
+<p>Sowohl Konsole als auch GUI benutzen dieselbe Klasse – sie rufen nur <code class="docutils literal notranslate"><span class="pre">spiel.versuch_ausfuehren(...)</span></code> auf und lesen den Zustand aus. <strong>Die Klasse weiss nichts von der Darstellung.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die Spiel-Klasse -- Zustandscontainer fuer eine laufende Partie</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Spiel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laenge</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_versuche</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">laenge</span>       <span class="o">=</span> <span class="n">laenge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_versuche</span> <span class="o">=</span> <span class="n">max_versuche</span>
+        <span class="c1"># Code beim Start erzeugen -- danach unveraenderlich</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">geheimcode</span>   <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">FARBEN</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">laenge</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">versuche</span>     <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># alle bisherigen Versuche</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bewertungen</span>  <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># Bewertung zu jedem Versuch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gewonnen</span>     <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_versuche</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">versuche</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_beendet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gewonnen</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">anzahl_versuche</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_versuche</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">versuch_ausfuehren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">versuch</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Fuehrt einen Versuch aus. Gibt (schwarz, weiss) zurueck.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_beendet</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Das Spiel ist bereits beendet.&#39;</span><span class="p">)</span>
+
+        <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span> <span class="o">=</span> <span class="n">bewerte_v2</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geheimcode</span><span class="p">,</span> <span class="n">versuch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">versuche</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bewertungen</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">schwarz</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">laenge</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gewonnen</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">return</span> <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span>
+
+
+<span class="c1"># Demonstration: ein komplettes Spiel mit bekanntem Code</span>
+<span class="n">spiel</span> <span class="o">=</span> <span class="n">Spiel</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Code (normalerweise geheim): </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">geheimcode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">versuche</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span>    <span class="s1">&#39;rot&#39;</span><span class="p">,</span>    <span class="s1">&#39;rot&#39;</span><span class="p">,</span>    <span class="s1">&#39;rot&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;blau&#39;</span><span class="p">,</span>   <span class="s1">&#39;blau&#39;</span><span class="p">,</span>   <span class="s1">&#39;blau&#39;</span><span class="p">,</span>   <span class="s1">&#39;blau&#39;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s1">&#39;lila&#39;</span><span class="p">,</span>   <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;lila&#39;</span><span class="p">,</span>   <span class="s1">&#39;blau&#39;</span><span class="p">],</span>   <span class="c1"># nah dran...</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">versuche</span><span class="p">:</span>
+    <span class="n">s</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">spiel</span><span class="o">.</span><span class="n">versuch_ausfuehren</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Versuch </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">anzahl_versuche</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">  -&gt;  S=</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">, W=</span><span class="si">{</span><span class="n">w</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Spiel beendet: </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">ist_beendet</span><span class="si">}</span><span class="s2">, Gewonnen: </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">gewonnen</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+9. Modularer Aufbau: Logik von Darstellung trennen
+</span>
+</div><p>Das fertige Projekt besteht aus drei Dateien. Die wichtigste Entwurfsentscheidung: <strong><code class="docutils literal notranslate"><span class="pre">logik.py</span></code> hat kein <code class="docutils literal notranslate"><span class="pre">print()</span></code>, kein <code class="docutils literal notranslate"><span class="pre">input()</span></code> und kein <code class="docutils literal notranslate"><span class="pre">tkinter</span></code>.</strong> Sie gibt Werte zurueck und erwartet Werte – die Darstellung entscheidet was damit passiert.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logik</span><span class="o">.</span><span class="n">py</span>                    <span class="n">konsole</span><span class="o">.</span><span class="n">py</span>              <span class="n">gui</span><span class="o">.</span><span class="n">py</span>
+                                                    
+<span class="n">erzeuge_code</span><span class="p">()</span>  <span class="o">&lt;---------</span>  <span class="n">spiel</span> <span class="o">=</span> <span class="n">Spiel</span><span class="p">()</span>  <span class="o">&lt;---</span>  <span class="n">app</span> <span class="o">=</span> <span class="n">MastermindApp</span><span class="p">()</span>
+<span class="n">bewerte</span><span class="p">()</span>       <span class="o">&lt;---------</span>  <span class="n">versuch_ausfuehren</span><span class="p">()</span>    <span class="n">versuch_absenden</span><span class="p">()</span>
+<span class="n">Spiel</span>           <span class="o">&lt;---------</span>  <span class="nb">print</span><span class="p">(</span><span class="n">verlauf</span><span class="p">)</span>          <span class="n">treeview</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+                                                    
+<span class="n">Kein</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="o">.</span>                   <span class="n">Text</span><span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="o">.</span>              <span class="n">GUI</span><span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="o">.</span>
+<span class="n">Keine</span> <span class="n">GUI</span><span class="o">.</span>                  <span class="n">Kein</span> <span class="n">tkinter</span><span class="o">.</span>           <span class="n">Kein</span> <span class="nb">print</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Diese Trennung hat einen konkreten Vorteil: <code class="docutils literal notranslate"><span class="pre">logik.py</span></code> kann ohne laufendes Fenster getestet werden. Die Tests in <code class="docutils literal notranslate"><span class="pre">test_logik.py</span></code> importieren nur <code class="docutils literal notranslate"><span class="pre">logik.py</span></code> – kein GUI, kein Eingabeprompt.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+10. Die fertige logik.py -- vollstaendig und kommentiert
+</span>
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># logik.py -- der vollstaendige, produktionsreife Code</span>
+<span class="c1"># Dieser Block entspricht exakt der Datei die im Projekt verwendet wird.</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+
+<span class="n">FARBEN</span>             <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;blau&#39;</span><span class="p">,</span> <span class="s1">&#39;gruen&#39;</span><span class="p">,</span> <span class="s1">&#39;gelb&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;lila&#39;</span><span class="p">]</span>
+<span class="n">ABKUERZUNGEN</span>       <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;r&#39;</span><span class="p">:</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;blau&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">:</span><span class="s1">&#39;gruen&#39;</span><span class="p">,</span><span class="s1">&#39;ge&#39;</span><span class="p">:</span><span class="s1">&#39;gelb&#39;</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">:</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;l&#39;</span><span class="p">:</span><span class="s1">&#39;lila&#39;</span><span class="p">}</span>
+<span class="n">STANDARD_LAENGE</span>    <span class="o">=</span> <span class="mi">4</span>
+<span class="n">STANDARD_VERSUCHE</span>  <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">erzeuge_code</span><span class="p">(</span><span class="n">laenge</span><span class="o">=</span><span class="n">STANDARD_LAENGE</span><span class="p">,</span> <span class="n">farben</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">farben</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">farben</span> <span class="o">=</span> <span class="n">FARBEN</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">farben</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">laenge</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">normalisiere_eingabe</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">laenge</span><span class="o">=</span><span class="n">STANDARD_LAENGE</span><span class="p">,</span> <span class="n">farben</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">farben</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">farben</span> <span class="o">=</span> <span class="n">FARBEN</span>
+    <span class="n">teile</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">teile</span><span class="p">)</span> <span class="o">!=</span> <span class="n">laenge</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Bitte genau </span><span class="si">{</span><span class="n">laenge</span><span class="si">}</span><span class="s2"> Farben eingeben. Du hast </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">teile</span><span class="p">)</span><span class="si">}</span><span class="s2"> eingegeben.&quot;</span>
+        <span class="p">)</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">teile</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">ABKUERZUNGEN</span><span class="p">:</span>
+            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ABKUERZUNGEN</span><span class="p">[</span><span class="n">token</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">farben</span><span class="p">:</span>
+            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">token</span><span class="si">}</span><span class="s2">&#39; ist keine gueltige Farbe.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ergebnis</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bewerte</span><span class="p">(</span><span class="n">geheimcode</span><span class="p">,</span> <span class="n">versuch</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">geheimcode</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+    <span class="n">code_rest</span>    <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">geheimcode</span><span class="p">)</span>
+    <span class="n">versuch_rest</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+
+    <span class="n">schwarz</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">code_rest</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+            <span class="n">schwarz</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">code_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">weiss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">versuch_rest</span><span class="p">)):</span>
+        <span class="n">farbe</span> <span class="o">=</span> <span class="n">versuch_rest</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">farbe</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">farbe</span> <span class="ow">in</span> <span class="n">code_rest</span><span class="p">:</span>
+            <span class="n">weiss</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">code_rest</span><span class="p">[</span><span class="n">code_rest</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">farbe</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Spiel</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">laenge</span><span class="o">=</span><span class="n">STANDARD_LAENGE</span><span class="p">,</span> <span class="n">max_versuche</span><span class="o">=</span><span class="n">STANDARD_VERSUCHE</span><span class="p">,</span>
+                 <span class="n">farben</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">laenge</span>       <span class="o">=</span> <span class="n">laenge</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_versuche</span> <span class="o">=</span> <span class="n">max_versuche</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">farben</span>       <span class="o">=</span> <span class="n">farben</span> <span class="ow">or</span> <span class="n">FARBEN</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">geheimcode</span>   <span class="o">=</span> <span class="n">erzeuge_code</span><span class="p">(</span><span class="n">laenge</span><span class="o">=</span><span class="n">laenge</span><span class="p">,</span> <span class="n">farben</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">farben</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">versuche</span>     <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bewertungen</span>  <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gewonnen</span>     <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">anzahl_versuche</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">versuche</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">versuche_uebrig</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_versuche</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">anzahl_versuche</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ist_beendet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">gewonnen</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">anzahl_versuche</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_versuche</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">versuch_ausfuehren</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">versuch</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">ist_beendet</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;Das Spiel ist bereits beendet.&#39;</span><span class="p">)</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">bewerte</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">geheimcode</span><span class="p">,</span> <span class="n">versuch</span><span class="p">)</span>
+        <span class="n">schwarz</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ergebnis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">versuche</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">bewertungen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">schwarz</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">laenge</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gewonnen</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">ergebnis</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">verlauf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;nr&#39;</span><span class="p">:</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;versuch&#39;</span><span class="p">:</span> <span class="n">v</span><span class="p">,</span> <span class="s1">&#39;schwarz&#39;</span><span class="p">:</span> <span class="n">s</span><span class="p">,</span> <span class="s1">&#39;weiss&#39;</span><span class="p">:</span> <span class="n">w</span><span class="p">}</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">versuche</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bewertungen</span><span class="p">))</span>
+        <span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;logik.py geladen.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Testcode: </span><span class="si">{</span><span class="n">erzeuge_code</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Bewertung: </span><span class="si">{</span><span class="n">bewerte</span><span class="p">([</span><span class="s2">&quot;rot&quot;</span><span class="p">,</span><span class="s2">&quot;blau&quot;</span><span class="p">,</span><span class="s2">&quot;gruen&quot;</span><span class="p">,</span><span class="s2">&quot;gelb&quot;</span><span class="p">],[</span><span class="s2">&quot;rot&quot;</span><span class="p">,</span><span class="s2">&quot;blau&quot;</span><span class="p">,</span><span class="s2">&quot;gruen&quot;</span><span class="p">,</span><span class="s2">&quot;gelb&quot;</span><span class="p">]))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+11. Die Konsolenversion -- Logik in eine Spielschleife einbetten
+</span>
+</div><p>Die Konsolenversion verbindet <code class="docutils literal notranslate"><span class="pre">Spiel</span></code> mit <code class="docutils literal notranslate"><span class="pre">input()</span></code> und <code class="docutils literal notranslate"><span class="pre">print()</span></code>. Der einzige Trick: die Eingabe sitzt in einer inneren Schleife die erst verlassen wird wenn eine gueltige Eingabe kommt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vereinfachte Konsolenversion -- illustriert die Grundstruktur.</span>
+<span class="c1"># Die vollstaendige Version liegt in konsole.py.</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">spielrunde_mini</span><span class="p">():</span>
+    <span class="n">spiel</span> <span class="o">=</span> <span class="n">Spiel</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mastermind -- errate den Code (</span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">laenge</span><span class="si">}</span><span class="s2"> Farben, </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">max_versuche</span><span class="si">}</span><span class="s2"> Versuche)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Farben: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">FARBEN</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">spiel</span><span class="o">.</span><span class="n">ist_beendet</span><span class="p">:</span>
+        <span class="c1"># Innere Schleife: laeuft bis eine gueltige Eingabe kommt</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">text</span>    <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Versuch </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">anzahl_versuche</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">: &quot;</span><span class="p">)</span>
+                <span class="n">versuch</span> <span class="o">=</span> <span class="n">normalisiere_eingabe</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+                <span class="k">break</span>   <span class="c1"># gueltige Eingabe -&gt; innere Schleife verlassen</span>
+            <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Fehler: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">schwarz</span><span class="p">,</span> <span class="n">weiss</span> <span class="o">=</span> <span class="n">spiel</span><span class="o">.</span><span class="n">versuch_ausfuehren</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  -&gt; S=</span><span class="si">{</span><span class="n">schwarz</span><span class="si">}</span><span class="s2">, W=</span><span class="si">{</span><span class="n">weiss</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">spiel</span><span class="o">.</span><span class="n">gewonnen</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Gewonnen in </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">anzahl_versuche</span><span class="si">}</span><span class="s2"> Versuch(en)!&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Leider verloren. Code war: </span><span class="si">{</span><span class="n">spiel</span><span class="o">.</span><span class="n">geheimcode</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># spielrunde_mini()   # auskommentiert -- wuerde input() aufrufen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das Muster der inneren <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">True</span></code>-Schleife ist Standard fuer validierte Eingaben in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wert</span> <span class="o">=</span> <span class="n">verarbeite</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="o">...</span><span class="p">))</span>
+        <span class="k">break</span>          <span class="c1"># erfolgreich -&gt; Schleife verlassen</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>   <span class="c1"># Fehler anzeigen, nochmal fragen</span>
+</pre></div>
+</div>
+<p>Die aeussere Schleife (<code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">not</span> <span class="pre">spiel.ist_beendet</span></code>) ist die eigentliche Spielschleife – sie laeuft bis das Spiel vorbei ist.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+12. Die GUI-Version -- dieselbe Logik, andere Darstellung
+</span>
+</div><p>In der GUI gibt es kein <code class="docutils literal notranslate"><span class="pre">input()</span></code> und keine <code class="docutils literal notranslate"><span class="pre">while</span></code>-Schleife. Stattdessen reagiert die Anwendung auf <strong>Ereignisse</strong>: ein Klick auf einen Farbkreis, ein Klick auf “Absenden”.</p>
+<p>Die Struktur ist dieselbe – nur umgekehrt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Konsole</span><span class="p">:</span>                         <span class="n">GUI</span><span class="p">:</span>
+
+<span class="k">while</span> <span class="ow">not</span> <span class="n">spiel</span><span class="o">.</span><span class="n">ist_beendet</span><span class="p">:</span>     <span class="k">def</span><span class="w"> </span><span class="nf">_farbe_gewaehlt</span><span class="p">(</span><span class="n">farbe</span><span class="p">):</span>
+    <span class="n">versuch</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>                <span class="n">aktuelle_eingabe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">farbe</span><span class="p">)</span>
+    <span class="n">bewerte</span><span class="p">(</span><span class="n">versuch</span><span class="p">)</span>                 <span class="n">zeichne_eingabe</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>              
+                                 <span class="k">def</span><span class="w"> </span><span class="nf">_versuch_absenden</span><span class="p">():</span>
+                                     <span class="n">spiel</span><span class="o">.</span><span class="n">versuch_ausfuehren</span><span class="p">(</span><span class="n">eingabe</span><span class="p">)</span>
+                                     <span class="n">zeichne_zeile</span><span class="p">(</span><span class="n">ergebnis</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In beiden Faellen ist der zentrale Aufruf <code class="docutils literal notranslate"><span class="pre">spiel.versuch_ausfuehren(versuch)</span></code> – die Logik ist identisch. Nur die Eingabe und die Ausgabe unterscheiden sich.</p>
+<p><strong>Das Canvas-Prinzip in der GUI:</strong></p>
+<p>Das Spielfeld wird auf einem <code class="docutils literal notranslate"><span class="pre">tk.Canvas</span></code> gezeichnet. Jeder Kreis ist ein Oval-Element mit einer ID. Um eine Farbe zu aendern, wird <code class="docutils literal notranslate"><span class="pre">canvas.itemconfig(id,</span> <span class="pre">fill=farbe)</span></code> aufgerufen – das Oval bleibt bestehen, nur seine Farbe aendert sich.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Beim Aufbau: Oval erstellen, ID merken</span>
+<span class="n">oid</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">create_oval</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#2a2a3a&#39;</span><span class="p">)</span>
+<span class="n">kreis_ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oid</span><span class="p">)</span>
+
+<span class="c1"># Wenn der Spieler eine Farbe waehlt: Oval einfarben</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">itemconfig</span><span class="p">(</span><span class="n">kreis_ids</span><span class="p">[</span><span class="n">position</span><span class="p">],</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;#e53935&#39;</span><span class="p">)</span>  <span class="c1"># rot</span>
+</pre></div>
+</div>
+<p>Die <code class="docutils literal notranslate"><span class="pre">VersuchsZeile</span></code>-Klasse in <code class="docutils literal notranslate"><span class="pre">gui.py</span></code> kapselt genau das: sie zeichnet sich initial mit leeren Kreisen und bietet <code class="docutils literal notranslate"><span class="pre">setze_farben()</span></code> und <code class="docutils literal notranslate"><span class="pre">setze_bewertung()</span></code> an. Die <code class="docutils literal notranslate"><span class="pre">MastermindApp</span></code> ruft diese Methoden auf – sie muss nicht wissen wie die Kreise intern gespeichert sind.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+13. Tests schreiben -- warum und wie
+</span>
+</div><p>Tests sind kein Luxus – sie sind das Werkzeug mit dem man sicher stellen kann dass <code class="docutils literal notranslate"><span class="pre">bewerte()</span></code> korrekt funktioniert, auch fuer die unintuitiven Faelle mit Wiederholungen.</p>
+<p>Der wichtigste Testfall ist genau der den wir in Abschnitt 2 manuell durchgerechnet haben:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die wichtigsten Testfaelle fuer bewerte() -- alle manuell nachvollziehbar</span>
+
+<span class="n">testfaelle</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1"># (code, versuch, erwartetes_ergebnis, beschreibung)</span>
+    <span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span>
+        <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s1">&#39;Perfekter Treffer&#39;</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">],</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="s1">&#39;Alle Farben enthalten, alle verschoben&#39;</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">],</span>
+        <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s1">&#39;Code hat 2x r -- Versuch hat 4x r -- nur 2 zaehlen&#39;</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s1">&#39;Der schwierige Fall aus Abschnitt 2&#39;</span>
+    <span class="p">),</span>
+    <span class="p">(</span>
+        <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">],</span>
+        <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="s1">&#39;Schwarz darf nicht nochmal als Weiss zaehlen&#39;</span>
+    <span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">alle_ok</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">for</span> <span class="n">code</span><span class="p">,</span> <span class="n">versuch</span><span class="p">,</span> <span class="n">erwartet</span><span class="p">,</span> <span class="n">beschreibung</span> <span class="ow">in</span> <span class="n">testfaelle</span><span class="p">:</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">bewerte</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">versuch</span><span class="p">)</span>
+    <span class="n">status</span>   <span class="o">=</span> <span class="s1">&#39;OK&#39;</span> <span class="k">if</span> <span class="n">ergebnis</span> <span class="o">==</span> <span class="n">erwartet</span> <span class="k">else</span> <span class="s1">&#39;FEHLER&#39;</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;FEHLER&#39;</span><span class="p">:</span>
+        <span class="n">alle_ok</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">beschreibung</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;FEHLER&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;       erwartet </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s2">, bekommen </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Alle Tests bestanden.&#39;</span> <span class="k">if</span> <span class="n">alle_ok</span> <span class="k">else</span> <span class="s1">&#39;Es gibt Fehler!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+14. Rueckblick: der Weg vom Problem zum Programm
+</span>
+</div><p>Dieser Weg hat sich durch das gesamte Notebook gezogen:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Schritt</p></th>
+<th class="head"><p>Was wir getan haben</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p>Das Spiel manuell gespielt und verstanden was berechnet werden muss</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
+<td><p>Das Kernproblem isoliert: Bewertung mit Wiederholungen</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p>Einen naiven Ansatz gebaut – und seine Fehler gefunden</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4</strong></p></td>
+<td><p>Den korrekten Zweiphasen-Algorithmus entwickelt</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>5</strong></p></td>
+<td><p>Den Algorithmus mit print-Tracing Schritt fuer Schritt verfolgt</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>6</strong></p></td>
+<td><p>Die einfachen Teile (Code erzeugen, Eingabe) gebaut</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>7</strong></p></td>
+<td><p>Die Architekturentscheidung getroffen: <code class="docutils literal notranslate"><span class="pre">Spiel</span></code>-Klasse als Zustandscontainer</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>8</strong></p></td>
+<td><p>Logik, Konsole und GUI sauber getrennt</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>9</strong></p></td>
+<td><p>Tests fuer die kritischste Funktion geschrieben</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Der einzige wirklich schwierige Schritt war Schritt 3-4: der Bewertungsalgorithmus. Alles andere war handwerkliche Arbeit. Das ist typisch fuer Software-Projekte: es gibt meistens <strong>einen</strong> zentralen Algorithmus der die eigentliche Denkarbeit erfordert – der Rest ist Struktur und Verkabelung.</p>
+<hr class="docutils" />
+<p><strong>Dateien des Projekts:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logik</span><span class="o">.</span><span class="n">py</span>         <span class="n">Spiellogik</span> <span class="o">--</span> <span class="n">kein</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="p">,</span> <span class="n">kein</span> <span class="n">GUI</span>
+<span class="n">konsole</span><span class="o">.</span><span class="n">py</span>       <span class="n">Konsolenversion</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">py</span>           <span class="n">tkinter</span><span class="o">-</span><span class="n">GUI</span>
+<span class="n">test_logik</span><span class="o">.</span><span class="n">py</span>    <span class="n">pytest</span><span class="o">-</span><span class="n">Tests</span>
+</pre></div>
+</div>
+<p>Starten: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">gui.py</span></code></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_13"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="13_projekt_mastermind.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Projekt mastermind</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="13_projekt_mp3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Projekt mp3</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

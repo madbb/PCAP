@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Module &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_2/02a_Module';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Random Modul" href="02b_Random_Modul.html" />
+    <link rel="prev" title="Debugging step by step" href="../Kapitel_1/01f_debugging_step_by_step.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_2/02a_Module.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module">
+<h1>Module<a class="headerlink" href="#module" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">Module und Pakete in Python</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 2: Module &nbsp;|&nbsp; Notebook 02</p>
+</div>
+</div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">1. Einleitung: Warum Module und Pakete?</span></div>
+<p>Stellt euch vor, eure Python-Projekte wachsen und werden immer komplexer. Irgendwann wird es echt unübersichtlich, den gesamten Code in einer einzigen Datei zu haben. Das führt meistens zu ein paar typischen Problemen:</p>
+<ul class="simple">
+<li><p><strong>Lesbarkeitsprobleme</strong>: Lange Dateien sind wie ein Labyrinth – schwer zu durchblicken und zu verstehen.</p></li>
+<li><p><strong>Wartungsprobleme</strong>: Wenn ihr an einer Stelle etwas ändert, kann das ungewollt andere Teile eures Codes durcheinanderbringen.</p></li>
+<li><p><strong>Mangelnde Wiederverwendbarkeit</strong>: Code, den ihr für ein Projekt geschrieben habt, lässt sich nur mühsam in einem anderen Projekt wiederverwenden.</p></li>
+</ul>
+<p>Pythons Antwort auf diese Herausforderungen sind <strong>Module</strong> und <strong>Pakete</strong>.</p>
+<p><strong>Modul:</strong> Eine einzelne <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Datei. Darin könnt ihr Python-Definitionen (Funktionen, Klassen, Variablen) und Anweisungen sammeln. Module helfen dabei, euren Code logisch zu gliedern – wie Kapitel in einem Buch.</p>
+<p><strong>Paket (Package):</strong> Ein Ordner, der eine Sammlung von Modulen enthält, die thematisch zusammengehören. Diese Ordner können weitere Unterordner (Unterpakete) enthalten. Die einzelnen Teile sprecht ihr über Punktnotation an: <code class="docutils literal notranslate"><span class="pre">paket.modul.funktion</span></code>.</p>
+<p>Die Verwendung von Modulen und Paketen bietet folgende Vorteile: Code-Organisation, Wiederverwendbarkeit, Namensraumverwaltung (Namenskonflikte vermeiden) und bessere Zusammenarbeit im Team.</p>
+<hr class="docutils" />
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Was ist ein Modul?</span></div>
+<p>Ein Modul ist eine Datei, die Python-Code enthält – meist Funktionen oder Klassen – und die in anderen Skripten wiederverwendet werden kann.</p>
+<p>Die unterschiedlichen Importvarianten und warum es wichtig ist, diese zu kennen!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modulname</span></code></p>
+<ul class="simple">
+<li><p>Das ganze math-Modul wird importiert.</p></li>
+<li><p>ABER: Es wird nur ein einziger Name in deinen Namensraum eingeführt: <code class="docutils literal notranslate"><span class="pre">math</span></code>.</p></li>
+<li><p>Du musst explizit sagen, woher die benötigte Funktion kommt (<code class="docutils literal notranslate"><span class="pre">math.sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">math.pi</span></code>, …).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">modulname</span> <span class="pre">import</span> <span class="pre">funktion</span></code></p>
+<ul class="simple">
+<li><p>Es wird nur die ausgewählte Funktion importiert.</p></li>
+<li><p>Ist ungefährlich, aber man muss jede Funktion einzeln importieren.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">modulname</span> <span class="pre">as</span> <span class="pre">alias</span></code></p>
+<ul class="simple">
+<li><p>Ein Alias bewirkt Abhilfe, um nicht zu viel tippen zu müssen.</p></li>
+<li><p>Es sollte aber eine klare Namensgebung gewählt werden. <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">os</span></code> wäre verwirrend.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">modulname</span> <span class="pre">import</span> <span class="pre">*</span></code></p>
+<ul class="simple">
+<li><p>Alle Namen (z. B. <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>, <code class="docutils literal notranslate"><span class="pre">pi</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code>, <code class="docutils literal notranslate"><span class="pre">exp</span></code>, …) werden direkt in den globalen Namensraum geladen.</p></li>
+<li><p>Du musst nicht mehr <code class="docutils literal notranslate"><span class="pre">math.sqrt()</span></code> schreiben, sondern nur <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> – das wirkt bequem, kann aber gefährlich sein.</p></li>
+</ul>
+<p>Auch ein Import von mehreren Modulen gleichzeitig ist möglich.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span> <span class="k">as</span> <span class="n">s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Diese <code class="docutils literal notranslate"><span class="pre">imports</span></code> sind alle gültig, wobei die erste (untereinander stehende Variante) bevorzugt wird, besonders in größeren Projekten.</p>
+<hr class="docutils" />
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Was passiert beim Import eines Moduls?</span></div>
+<p>Wenn ein Modul mit dem angegebenen Namen existiert und zugänglich ist, dann wird es von Python <strong>importiert</strong>. Das bedeutet:</p>
+<ul class="simple">
+<li><p>Alle im Modul definierten Namen (z. B. Funktionen, Variablen, Konstanten) <strong>werden bekannt</strong>,</p></li>
+<li><p><strong>aber sie betreten nicht automatisch den Namespace deines Codes</strong>.</p></li>
+</ul>
+<p>Deshalb importieren wir so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+</pre></div>
+</div>
+<p>Und nicht so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>Dann kannst du z. B. in deinem eigenen Code Funktionen oder Variablen mit dem Namen <code class="docutils literal notranslate"><span class="pre">sin</span></code> oder <code class="docutils literal notranslate"><span class="pre">pi</span></code> definieren, <strong>ohne dass sie vom Import des Moduls <code class="docutils literal notranslate"><span class="pre">math</span></code> beeinflusst werden</strong>.</p>
+<p>Beispiele:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.1</span> <span class="c1">#selbst festgelegter Wert für PI</span>
+<span class="n">hallo</span> <span class="o">=</span> <span class="s2">&quot;hello&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">who</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+<span class="c1"># in Jupyter werden damit die EIGENEN Variablen angezeigt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span> <span class="c1">#import des genauen Werts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14</span> <span class="c1">#überschreiben des genauen Werts</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1">#mit diesem Aufruf wird explizit das pi aus dem math Modul aufgerufen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">whos</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">2. Erstellen und Verwenden eines einfachen Moduls</span></div>
+<p>Jede Python-Datei, die ihr erstellt, kann im Prinzip schon als Modul dienen. Lasst uns das direkt ausprobieren und ein eigenes kleines Modul basteln, das uns ein paar nützliche Funktionen bereitstellt.</p>
+<p>Stellt euch vor, wir brauchen ein paar einfache mathematische Helferlein und eine Begrüßungsfunktion. Erstellt eine Datei namens <code class="docutils literal notranslate"><span class="pre">meine_helfer.py</span></code> mit folgendem Code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># meine_helfer.py</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Modul meine_helfer wird importiert!&quot;</span><span class="p">)</span>
+
+<span class="n">PI_NAHE</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="n">EULER_ZAHL_NAHE</span> <span class="o">=</span> <span class="mf">2.71828</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">addieren</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt die Summe von x und y zurück.&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [meine_helfer] Addiere: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">begruesse</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt eine persönliche Begrüßung zurück.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hallo </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">, willkommen im Modul!&quot;</span>
+
+<span class="c1"># Dieser Teil wird nur ausgeführt, wenn ihr die Datei direkt startet,</span>
+<span class="c1"># nicht, wenn sie als Modul importiert wird.</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meine_helfer.py wird direkt als Skript ausgeführt.&quot;</span><span class="p">)</span>
+    
+    <span class="n">test_summe</span> <span class="o">=</span> <span class="n">addieren</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Testergebnis für addieren(5, 3): </span><span class="si">{</span><span class="n">test_summe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="n">test_begruessung</span> <span class="o">=</span> <span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Python-Lerner&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">test_begruessung</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Der Wert von PI_NAHE ist: </span><span class="si">{</span><span class="n">PI_NAHE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nun wollen wir unser Modul selber aufrufen:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starte hauptanwendung.py...&quot;</span><span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">meine_helfer</span> <span class="c1"># Achtung: Die print-Anweisung oben im Modul wird jetzt ausgeführt!</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zugriff auf Elemente aus meine_helfer&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Der Näherungswert für Pi ist: </span><span class="si">{</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">PI_NAHE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Euler&#39;sche Zahl ist etwa: </span><span class="si">{</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">EULER_ZAHL_NAHE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">summe1</span> <span class="o">=</span> <span class="n">meine_helfer</span><span class="o">.</span><span class="n">addieren</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Das Ergebnis von 10 + 5 ist: </span><span class="si">{</span><span class="n">summe1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">summe2</span> <span class="o">=</span> <span class="n">meine_helfer</span><span class="o">.</span><span class="n">addieren</span><span class="p">(</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">PI_NAHE</span><span class="p">,</span> <span class="n">meine_helfer</span><span class="o">.</span><span class="n">EULER_ZAHL_NAHE</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi + e ist ungefähr: </span><span class="si">{</span><span class="n">summe2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">willkommen</span> <span class="o">=</span> <span class="n">meine_helfer</span><span class="o">.</span><span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Tim&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">willkommen</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;... hauptanwendung.py beendet.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Was macht <code style="background:rgba(79,195,247,0.1);color:#4fc3f7;padding:0.1em 0.3em;border-radius:3px;">if __name__ == "__main__"</code>?</span></div>
+<p>Diese Zeile sieht erstmal kompliziert aus, ist aber sehr nützlich! Sie hilft dabei, zu unterscheiden, ob eine Datei direkt gestartet oder nur als Modul importiert wurde.</p>
+<p><code class="docutils literal notranslate"><span class="pre">__name__</span></code> ist eine eingebaute Variable in jeder <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Datei. Der Wert hängt davon ab, wie die Datei genutzt wird:</p>
+<p><strong>1. Direktes Ausführen</strong> (<code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">meine_helfer.py</span></code> oder als Notebook in Jupyter) → <code class="docutils literal notranslate"><span class="pre">__name__</span></code> ist automatisch <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code>. Bedeutet: Die Datei wird gerade direkt gestartet.</p>
+<p><strong>2. Importieren als Modul</strong> (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">meine_datei</span></code>) → <code class="docutils literal notranslate"><span class="pre">__name__</span></code> ist der Modulname, also z. B. <code class="docutils literal notranslate"><span class="pre">&quot;meine_helfer&quot;</span></code>. Bedeutet: Die Datei ist nur ein Hilfsmodul im Hintergrund.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Wird die Datei direkt gestartet? → Dann führe diesen Code aus.</span>
+    <span class="c1"># Wird sie nur importiert? → Dann überspringe diesen Teil.</span>
+    <span class="n">test_summe</span> <span class="o">=</span> <span class="n">addieren</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Testergebnis für addieren(5, 3): </span><span class="si">{</span><span class="n">test_summe</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">3. Aliase -- kurze Namen fuer lange Pfade</span></div>
+<p>Wir haben <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">m</span></code> schon gesehen. Aliase können aber noch mehr: Ihr könnt auch einzelne Funktionen beim Import umbenennen.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Warum Aliase?</span></div>
+<ul class="simple">
+<li><p>Lange Modulnamen würden den Code unlesbar machen (z. B. <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>)</p></li>
+<li><p>Bestimmte Aliase sind Konventionen, die alle Python-Entwicklerinnen und -Entwickler kennen</p></li>
+<li><p>Ihr könnt Namenskollisionen vermeiden, indem ihr eine importierte Funktion umbenennt</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modul-Alias: der Originalname ist danach NICHT mehr verfuegbar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">m</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>   <span class="c1"># funktioniert</span>
+<span class="c1"># print(math.sqrt(9))  # NameError! math existiert nicht mehr im Namespace</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Funktions-Alias: sehr nuetzlich wenn ihr eine eigene Funktion gleichen Namens habt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span> <span class="k">as</span> <span class="n">math_sqrt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eigene Version: prueft auf negative Eingabe.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Negative Wurzel nicht definiert: </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">math_sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>       <span class="c1"># nutzt unsere Funktion</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math_sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>  <span class="c1"># nutzt math.sqrt direkt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Konventionelle Aliase -- diese solltet ihr kennen</span></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>          <span class="c1"># Datenverarbeitung</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>          <span class="c1"># Tabellendaten</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>  <span class="c1"># Diagramme</span>
+</pre></div>
+</div>
+<p>Diese Abkürzungen sind so weit verbreitet, dass jeder im Python-Umfeld sie sofort versteht. Erfindet <strong>keine eigenen kryptischen Aliase</strong> – <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">math</span> <span class="pre">as</span> <span class="pre">x</span></code> verwirrt jeden, der euren Code liest.</p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">4. Wie findet Python eure Module? -- sys.path</span></div>
+<p>Wenn ihr <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">meine_helfer</span></code> schreibt, muss Python wissen, wo es suchen soll. Die Antwort steckt in <code class="docutils literal notranslate"><span class="pre">sys.path</span></code> – einer Liste von Verzeichnissen, die Python der Reihe nach durchsucht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># sys.path zeigt, wo Python nach Modulen sucht -- in dieser Reihenfolge!</span>
+<span class="k">for</span> <span class="n">pfad</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">pfad</span> <span class="k">if</span> <span class="n">pfad</span> <span class="k">else</span> <span class="s1">&#39;(aktuelles Verzeichnis)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Suchreihenfolge von Python</span></div>
+<p>Python sucht <strong>in dieser Reihenfolge</strong>:</p>
+<ol class="arabic simple">
+<li><p>Das aktuelle Verzeichnis (leerer String in der Liste)</p></li>
+<li><p>Verzeichnisse aus der Umgebungsvariable <code class="docutils literal notranslate"><span class="pre">PYTHONPATH</span></code> (falls gesetzt)</p></li>
+<li><p>Die Standardbibliothek (z. B. <code class="docutils literal notranslate"><span class="pre">math</span></code>, <code class="docutils literal notranslate"><span class="pre">random</span></code>, <code class="docutils literal notranslate"><span class="pre">os</span></code> …)</p></li>
+<li><p>Installierte Pakete (<code class="docutils literal notranslate"><span class="pre">site-packages</span></code> – also alles, was ihr mit <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> installiert habt)</p></li>
+</ol>
+<p>Deshalb könnt ihr <code class="docutils literal notranslate"><span class="pre">meine_helfer.py</span></code> importieren, wenn sie im <strong>gleichen Verzeichnis</strong> wie euer Notebook liegt.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Was steckt eigentlich in einem Modul? -- <code style="background:rgba(79,195,247,0.1);color:#4fc3f7;padding:0.1em 0.3em;border-radius:3px;">dir()</code></span></div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">dir()</span></code> könnt ihr nachschauen, welche Namen ein Modul mitbringt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="c1"># Alle oeffentlichen Namen in math (ohne die Dunder-Attribute)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">math</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># dir() ohne Argument zeigt die Namen im aktuellen Namespace</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Python&#39;</span>
+
+<span class="nb">print</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">5. Das eigene Modul wirklich importieren</span></div>
+<p>Oben haben wir <code class="docutils literal notranslate"><span class="pre">meine_helfer.py</span></code> als Markdown-Codeblock gezeigt. Jetzt erstellen wir die Datei tatsächlich und importieren sie – damit ihr den ganzen Ablauf live seht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Schritt 1: Datei meine_helfer.py im aktuellen Verzeichnis anlegen</span>
+
+<span class="n">modul_code</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1"># meine_helfer.py</span>
+<span class="s1">print(&quot;Modul meine_helfer wird importiert!&quot;)</span>
+
+<span class="s1">PI_NAHE = 3.14159</span>
+<span class="s1">EULER_ZAHL_NAHE = 2.71828</span>
+
+<span class="s1">def addieren(x, y):</span>
+<span class="s1">    &quot;&quot;&quot;Gibt die Summe von x und y zurueck.&quot;&quot;&quot;</span>
+<span class="s1">    print(f&quot;  [meine_helfer] Addiere: </span><span class="si">{x}</span><span class="s1"> + </span><span class="si">{y}</span><span class="s1">&quot;)</span>
+<span class="s1">    return x + y</span>
+
+<span class="s1">def begruesse(name):</span>
+<span class="s1">    &quot;&quot;&quot;Gibt eine persoenliche Begrueszung zurueck.&quot;&quot;&quot;</span>
+<span class="s1">    return f&quot;Hallo </span><span class="si">{name}</span><span class="s1">, willkommen im Modul!&quot;</span>
+
+<span class="s1">if __name__ == &quot;__main__&quot;:</span>
+<span class="s1">    print()</span>
+<span class="s1">    print(&quot;meine_helfer.py wird direkt als Skript ausgefuehrt.&quot;)</span>
+<span class="s1">    test_summe = addieren(5, 3)</span>
+<span class="s1">    print(f&quot;Testergebnis fuer addieren(5, 3): </span><span class="si">{test_summe}</span><span class="s1">&quot;)</span>
+<span class="s1">    test_begruessung = begruesse(&quot;Python-Lerner&quot;)</span>
+<span class="s1">    print(test_begruessung)</span>
+<span class="s1">    print(f&quot;Der Wert von PI_NAHE ist: </span><span class="si">{PI_NAHE}</span><span class="s1">&quot;)</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;meine_helfer.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">modul_code</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;meine_helfer.py wurde erstellt!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Schritt 2: Modul importieren -- die print-Anweisung im Modul laeuft jetzt!</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">meine_helfer</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Zugriff auf Elemente aus meine_helfer:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PI_NAHE:       </span><span class="si">{</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">PI_NAHE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EULER_ZAHL:    </span><span class="si">{</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">EULER_ZAHL_NAHE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;addieren:      </span><span class="si">{</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">addieren</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;begruesse:     </span><span class="si">{</span><span class="n">meine_helfer</span><span class="o">.</span><span class="n">begruesse</span><span class="p">(</span><span class="s1">&#39;Tim&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Beachtet: Das <code class="docutils literal notranslate"><span class="pre">print(&quot;Modul</span> <span class="pre">meine_helfer</span> <span class="pre">wird</span> <span class="pre">importiert!&quot;)</span></code> läuft <strong>nur einmal</strong>, egal wie oft ihr <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">meine_helfer</span></code> schreibt. Python speichert importierte Module in einem internen Cache (<code class="docutils literal notranslate"><span class="pre">sys.modules</span></code>) und lädt sie nicht ein zweites Mal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Zweiter Import -- kein erneutes Ausfuehren des Modulcodes!</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">meine_helfer</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Zweiter Import: kein Print-Aufruf aus dem Modul&quot;</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Im Cache?&quot;</span><span class="p">,</span> <span class="s1">&#39;meine_helfer&#39;</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">)</span>  <span class="c1"># True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Alle Import-Varianten mit dem eigenen Modul</span></div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from ... import -- nur einzelne Namen</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">meine_helfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">addieren</span><span class="p">,</span> <span class="n">PI_NAHE</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">addieren</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PI_NAHE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import ... as -- Alias fuer das Modul</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">meine_helfer</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mh</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Welt&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">addieren</span><span class="p">(</span><span class="n">mh</span><span class="o">.</span><span class="n">PI_NAHE</span><span class="p">,</span> <span class="n">mh</span><span class="o">.</span><span class="n">EULER_ZAHL_NAHE</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from ... import ... as -- Funktion mit Alias importieren</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">meine_helfer</span><span class="w"> </span><span class="kn">import</span> <span class="n">begruesse</span> <span class="k">as</span> <span class="n">hallo</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hallo</span><span class="p">(</span><span class="s2">&quot;Marcel&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">6. Pakete -- Module in Ordnern</span></div>
+<p>Wenn ein Projekt größer wird, reicht eine einzelne Moduldatei irgendwann nicht mehr. Pakete lösen das: Ein Paket ist einfach ein <strong>Ordner mit einer <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>-Datei</strong> darin. Diese Datei – die auch leer sein darf – signalisiert Python: <em>Dieser Ordner ist ein Paket.</em></p>
+<p>Eine typische Paketstruktur sieht so aus:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mein_paket</span><span class="o">/</span>
+    <span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>       <span class="o">&lt;--</span> <span class="n">macht</span> <span class="n">den</span> <span class="n">Ordner</span> <span class="n">zum</span> <span class="n">Paket</span>
+    <span class="n">rechner</span><span class="o">.</span><span class="n">py</span>
+    <span class="n">texte</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># Ordnerstruktur anlegen</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s1">&#39;mein_paket&#39;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># __init__.py -- kann leer sein oder Paket-Infos enthalten</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mein_paket/__init__.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# Paket mein_paket</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;VERSION = &quot;1.0&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># rechner.py</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mein_paket/rechner.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;def addiere(a, b):</span><span class="se">\n</span><span class="s1">    return a + b</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;def subtrahiere(a, b):</span><span class="se">\n</span><span class="s1">    return a - b</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># texte.py</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;mein_paket/texte.py&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;def begruesse(name):</span><span class="se">\n</span><span class="s1">    return f&quot;Hallo </span><span class="si">{name}</span><span class="s1">!&quot;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paket erstellt:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;mein_paket&#39;</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">datei</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">root</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">datei</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Paket importieren -- greift auf __init__.py zu</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mein_paket</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mein_paket</span><span class="o">.</span><span class="n">VERSION</span><span class="p">)</span>
+
+<span class="c1"># Untermodul importieren</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mein_paket</span><span class="w"> </span><span class="kn">import</span> <span class="n">rechner</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rechner</span><span class="o">.</span><span class="n">addiere</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Direkt aus einem Untermodul importieren</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mein_paket.texte</span><span class="w"> </span><span class="kn">import</span> <span class="n">begruesse</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">begruesse</span><span class="p">(</span><span class="s2">&quot;Kurs&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die einzelnen Teile sprecht ihr über <strong>Punktnotation</strong> an: <code class="docutils literal notranslate"><span class="pre">paket.modul.funktion</span></code>.</p>
+<p>Ohne <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> erkennt Python den Ordner nicht als Paket – der Import schlägt dann mit einem <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> fehl.</p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">7. Was ist <code style="color:#4fc3f7;font-size:0.9em;">__pycache__</code>?</span></div>
+<p>Nach dem ersten Import eines eigenen Moduls werdet ihr in eurem Verzeichnis einen neuen Ordner namens <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> sehen. Der wurde nicht von euch angelegt – Python hat das automatisch gemacht.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;__pycache__&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;__pycache__ existiert. Inhalt:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">datei</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s1">&#39;__pycache__&#39;</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">datei</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Noch kein __pycache__ vorhanden&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Was steckt darin?</span></div>
+<p>Python übersetzt euren Quellcode (<code class="docutils literal notranslate"><span class="pre">.py</span></code>) beim ersten Import in sogenannten <strong>Bytecode</strong> (<code class="docutils literal notranslate"><span class="pre">.pyc</span></code>). Der Bytecode wird in <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> gespeichert. Beim nächsten Import prüft Python:</p>
+<ul class="simple">
+<li><p>Hat sich die <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Datei verändert? → Dann neu übersetzen.</p></li>
+<li><p>Unverändert? → Bytecode direkt laden. Das ist schneller.</p></li>
+</ul>
+<p>Ihr müsst <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code> <strong>nicht in euer Git-Repository</strong> aufnehmen – es wird automatisch neu erzeugt. Tragt es einfach in eure <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> ein:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">__pycache__</span><span class="o">/</span>
+<span class="o">*.</span><span class="n">pyc</span>
+</pre></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Kapitel_1/01f_debugging_step_by_step.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Debugging step by step</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02b_Random_Modul.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Random Modul</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

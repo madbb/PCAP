@@ -1,0 +1,1213 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tkinter listen tabellen &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_11/11c_tkinter_listen_tabellen';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tkinter layout dialoge" href="11d_tkinter_layout_dialoge.html" />
+    <link rel="prev" title="Tkinter events" href="11b_tkinter_events.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_11/11c_tkinter_listen_tabellen.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tkinter listen tabellen</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tkinter-listen-tabellen">
+<h1>Tkinter listen tabellen<a class="headerlink" href="#tkinter-listen-tabellen" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">tkinter: Listen und Tabellen</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 11: GUI &nbsp;|&nbsp; Notebook 11c</p>
+</div>
+</div><p><strong>Legende</strong></p>
+<blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook ist kein PCAP-Prüfungsinhalt</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Hinweis zur Ausführung:</strong> Alle Code-Beispiele müssen als eigenständige <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Dateien ausgeführt werden – in PyCharm oder per <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">dateiname.py</span></code> im Terminal.</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Warum Listbox und Treeview?
+</span>
+</div><p>In 11a und 11b haben wir Fenster, Widgets, Layout und Ereignisse kennengelernt. Alle Beispiele zeigten dabei einzelne Werte – ein Label, ein Eingabefeld, ein Button. Das reicht für einfache Formulare, aber nicht für Anwendungen die mit Daten arbeiten.</p>
+<p>Das MP3-Projekt zum Beispiel braucht eine Ansicht die viele Titel gleichzeitig anzeigt – mit Titelname, Interpret, Album und Dauer nebeneinander. Dafür gibt es zwei Widgets:</p>
+<p><strong>Listbox</strong> – zeigt eine Liste von Einträgen, einer pro Zeile. Einfach, aber ohne Spalten. Gut für einfache Auswahllisten: eine Liste von Dateinamen, eine Liste von Optionen.</p>
+<p><strong>Treeview</strong> – zeigt Daten in Spalten, ähnlich einer Tabelle. Jede Zeile kann Werte in mehreren Spalten haben. Der Name “Tree” kommt daher, dass es auch Baumstrukturen darstellen kann (Zeilen mit Unterzeilen) – aber für unsere Zwecke benutzen wir es als einfache Tabelle.</p>
+<p>Wir lernen zuerst die Listbox, weil sie einfacher ist und die Grundprinzipien zeigt. Dann kommt der Treeview der für das Projekt gebraucht wird.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. Listbox -- eine einfache Auswahlliste
+</span>
+</div><p>Eine <code class="docutils literal notranslate"><span class="pre">Listbox</span></code> zeigt eine scrollbare Liste von Texteinträgen. Der Nutzer kann einen oder mehrere Einträge auswählen – ähnlich wie in einem Dateiauswahldialog.</p>
+<p><strong>Erstellen:</strong> <code class="docutils literal notranslate"><span class="pre">tk.Listbox(parent,</span> <span class="pre">height=10)</span></code> – <code class="docutils literal notranslate"><span class="pre">height</span></code> ist die Anzahl sichtbarer Zeilen, nicht Pixel. Ohne <code class="docutils literal notranslate"><span class="pre">height</span></code> zeigt die Listbox fünf Zeilen.</p>
+<p><strong>Einträge hinzufügen:</strong> <code class="docutils literal notranslate"><span class="pre">.insert(position,</span> <span class="pre">wert)</span></code> – fügt einen Eintrag an der angegebenen Position ein. <code class="docutils literal notranslate"><span class="pre">tk.END</span></code> fügt am Ende an. <code class="docutils literal notranslate"><span class="pre">0</span></code> fügt ganz vorne ein.</p>
+<p><strong>Einträge entfernen:</strong> <code class="docutils literal notranslate"><span class="pre">.delete(start,</span> <span class="pre">end)</span></code> – löscht Einträge von <code class="docutils literal notranslate"><span class="pre">start</span></code> bis <code class="docutils literal notranslate"><span class="pre">end</span></code>. <code class="docutils literal notranslate"><span class="pre">.delete(0,</span> <span class="pre">tk.END)</span></code> leert die gesamte Liste.</p>
+<p><strong>Ausgewählten Eintrag lesen:</strong> <code class="docutils literal notranslate"><span class="pre">.curselection()</span></code> gibt ein Tupel mit den Indizes der ausgewählten Einträge zurück – zum Beispiel <code class="docutils literal notranslate"><span class="pre">(2,)</span></code> wenn der dritte Eintrag markiert ist. Das Tupel ist leer wenn nichts ausgewählt ist. Mit <code class="docutils literal notranslate"><span class="pre">.get(index)</span></code> holt man den Text an einem bestimmten Index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_15_listbox.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hinzufuegen</span><span class="p">():</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">eingabe</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">text</span><span class="p">:</span>                          <span class="c1"># nicht hinzufuegen wenn leer</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>    <span class="c1"># ans Ende der Liste anhaengen</span>
+        <span class="n">eingabe</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>     <span class="c1"># Eingabefeld leeren</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">loeschen</span><span class="p">():</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">curselection</span><span class="p">()</span>    <span class="c1"># Tupel mit Indizes der markierten Eintraege</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="k">return</span>                        <span class="c1"># nichts tun wenn nichts ausgewaehlt</span>
+    <span class="c1"># Rueckwaerts loeschen damit Indizes nicht verrutschen</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">auswahl</span><span class="p">):</span>
+        <span class="n">liste</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ausgeben</span><span class="p">():</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">curselection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">auswahl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># ersten ausgewaehlten Index nehmen</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">liste</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>       <span class="c1"># Text an diesem Index lesen</span>
+        <span class="n">info_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Ausgewaehlt: </span><span class="si">{</span><span class="n">text</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">info_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Nichts ausgewaehlt&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Listbox&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x300&#39;</span><span class="p">)</span>
+
+<span class="c1"># Eingabebereich oben</span>
+<span class="n">eingabe_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">eingabe</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hinzufuegen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">hinzufuegen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Listbox in der Mitte</span>
+<span class="c1"># height=8: acht Zeilen sichtbar</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Vorab ein paar Eintraege befuellen</span>
+<span class="k">for</span> <span class="n">eintrag</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Apfel&#39;</span><span class="p">,</span> <span class="s1">&#39;Banane&#39;</span><span class="p">,</span> <span class="s1">&#39;Kirsche&#39;</span><span class="p">,</span> <span class="s1">&#39;Dattel&#39;</span><span class="p">,</span> <span class="s1">&#39;Erdbeere&#39;</span><span class="p">]:</span>
+    <span class="n">liste</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">eintrag</span><span class="p">)</span>
+
+<span class="c1"># Buttons unten</span>
+<span class="n">button_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">button_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ausgewaehlt anzeigen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">ausgeben</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Loeschen&#39;</span><span class="p">,</span>             <span class="n">command</span><span class="o">=</span><span class="n">loeschen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Infozeile unten</span>
+<span class="n">info_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">info_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">selectmode -- ein oder mehrere Einträge auswählen</span>
+</div><p>Standardmäßig kann man in einer Listbox immer nur einen Eintrag auswählen. Das lässt sich mit dem Parameter <code class="docutils literal notranslate"><span class="pre">selectmode</span></code> ändern:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">selectmode='single'</span></code> – nur ein Eintrag gleichzeitig (Standard)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selectmode='browse'</span></code> – wie <code class="docutils literal notranslate"><span class="pre">single</span></code>, aber Auswahl folgt der Maus beim Ziehen</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selectmode='multiple'</span></code> – mehrere Einträge mit Klick auswählen, nochmaliger Klick hebt Auswahl auf</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selectmode='extended'</span></code> – mehrere Einträge mit Shift+Klick und Strg+Klick (wie in Windows-Explorer)</p></li>
+</ul>
+<p>Für das MP3-Projekt reicht <code class="docutils literal notranslate"><span class="pre">single</span></code> – man wählt immer einen Titel aus und spielt ihn ab.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Scrollbar -- wenn die Liste länger als sichtbar ist
+</span>
+</div><p>Eine Listbox hat keinen eingebauten Scrollbalken. Wenn die Liste mehr Einträge hat als Zeilen sichtbar sind, kann man zwar mit der Maus scrollen – aber ohne sichtbare Scrollbar ist das für den Nutzer nicht erkennbar.</p>
+<p>Eine <code class="docutils literal notranslate"><span class="pre">Scrollbar</span></code> ist ein eigenständiges Widget das man mit einer Listbox oder einem anderen scrollbaren Widget <strong>verbindet</strong>. Die Verbindung funktioniert in beide Richtungen:</p>
+<ul class="simple">
+<li><p>Die Scrollbar steuert die Listbox: <code class="docutils literal notranslate"><span class="pre">scrollbar.config(command=liste.yview)</span></code> – wenn der Nutzer die Scrollbar bewegt, ruft sie <code class="docutils literal notranslate"><span class="pre">liste.yview()</span></code> auf</p></li>
+<li><p>Die Listbox informiert die Scrollbar: <code class="docutils literal notranslate"><span class="pre">liste.config(yscrollcommand=scrollbar.set)</span></code> – wenn sich die Listbox scrollt, aktualisiert sie die Scrollbar-Position</p></li>
+</ul>
+<p>Das klingt kompliziert, ist aber immer dasselbe Muster – man kopiert es einmal und versteht es dann.</p>
+<p><strong>Platzierung:</strong> Listbox und Scrollbar müssen nebeneinander platziert werden. Dafür eignet sich ein Frame mit <code class="docutils literal notranslate"><span class="pre">pack(side='left')</span></code> und <code class="docutils literal notranslate"><span class="pre">pack(side='right')</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_16_scrollbar.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Listbox mit Scrollbar&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;280x250&#39;</span><span class="p">)</span>
+
+<span class="c1"># Frame der Listbox und Scrollbar zusammenhaelt</span>
+<span class="n">liste_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">liste_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Scrollbar erstellen -- noch nicht verbunden</span>
+<span class="n">scrollbar</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">liste_frame</span><span class="p">)</span>
+<span class="n">scrollbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>     <span class="c1"># rechts, volle Hoehe</span>
+
+<span class="c1"># Listbox erstellen und mit Scrollbar verbinden</span>
+<span class="c1"># yscrollcommand: wenn Listbox scrollt, aktualisiert sie die Scrollbar</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Listbox</span><span class="p">(</span><span class="n">liste_frame</span><span class="p">,</span> <span class="n">yscrollcommand</span><span class="o">=</span><span class="n">scrollbar</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Scrollbar mit Listbox verbinden</span>
+<span class="c1"># command: wenn Scrollbar bewegt wird, scrollt sie die Listbox</span>
+<span class="n">scrollbar</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">liste</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>
+
+<span class="c1"># Viele Eintraege hinzufuegen damit die Scrollbar sichtbar wird</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">):</span>
+    <span class="n">liste</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eintrag </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">02d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. Treeview -- Daten in Spalten anzeigen
+</span>
+</div><p>Der <code class="docutils literal notranslate"><span class="pre">ttk.Treeview</span></code> ist das leistungsfähigste Listenelement in tkinter. Er kommt aus dem <code class="docutils literal notranslate"><span class="pre">ttk</span></code>-Submodul – “ttk” steht für “themed tk” und bezeichnet modernere Widgets die besser aussehen als die klassischen tk-Widgets.</p>
+<p><strong>Der Import:</strong> Der Treeview kommt aus <code class="docutils literal notranslate"><span class="pre">tkinter.ttk</span></code>, nicht aus <code class="docutils literal notranslate"><span class="pre">tkinter</span></code> direkt:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Der Treeview hat zwei Konzepte die man verstehen muss bevor man ihn benutzt:</p>
+<p><strong>Spalten</strong> – man definiert welche Spalten es gibt, mit welchen Namen. Die erste Spalte (<code class="docutils literal notranslate"><span class="pre">#0</span></code>) ist immer vorhanden und heißt intern die “Tree-Spalte” – sie zeigt das Baumstruktur-Symbol. Wenn man den Treeview als reine Tabelle nutzt, blendet man diese Spalte aus.</p>
+<p><strong>Zeilen</strong> – man fügt Zeilen mit <code class="docutils literal notranslate"><span class="pre">.insert()</span></code> ein. Anders als bei der Listbox übergibt man hier einen Eltern-Knoten (für reine Tabellen immer <code class="docutils literal notranslate"><span class="pre">''</span></code>), eine Position (<code class="docutils literal notranslate"><span class="pre">tk.END</span></code>) und die Werte als Tupel.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Treeview Schritt für Schritt aufbauen</span>
+</div><p>Ein Treeview entsteht in vier Schritten:</p>
+<p><strong>Schritt 1: Spalten definieren</strong> – beim Erstellen gibt man eine Liste von Spalten-IDs an. Das sind interne Namen, keine Überschriften:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">show='headings'</span></code> blendet die erste Baumspalte (<code class="docutils literal notranslate"><span class="pre">#0</span></code>) aus – wir wollen eine reine Tabelle ohne Baumstruktur.</p>
+<p><strong>Schritt 2: Überschriften setzen</strong> – für jede Spalte wird eine sichtbare Überschrift definiert:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>    <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dauer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Schritt 3: Spaltenbreiten setzen</strong> – optional aber empfohlen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>    <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>    <span class="n">width</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Schritt 4: Zeilen einfügen</strong> – <code class="docutils literal notranslate"><span class="pre">.insert()</span></code> mit dem Elternknoten <code class="docutils literal notranslate"><span class="pre">''</span></code> für Toplevel-Zeilen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;5:55&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_17_treeview.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treeview als Tabelle&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;550x300&#39;</span><span class="p">)</span>
+
+<span class="c1"># Schritt 1: Treeview erstellen</span>
+<span class="c1"># columns: interne Namen der Spalten -- keine Ueberschriften!</span>
+<span class="c1"># show=&#39;headings&#39;: Baumspalte #0 ausblenden, nur echte Spalten zeigen</span>
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;album&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">)</span>
+
+<span class="c1"># Schritt 2: Ueberschriften setzen</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Album&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dauer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Schritt 3: Spaltenbreiten und Ausrichtung</span>
+<span class="c1"># anchor: Textausrichtung innerhalb der Spalte</span>
+<span class="c1"># &#39;w&#39; = west = linksbuendig</span>
+<span class="c1"># &#39;center&#39; = zentriert</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">130</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>  <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Schritt 4: Zeilen einfuegen</span>
+<span class="c1"># &#39;&#39; = kein Elternelement (Toplevel-Zeile)</span>
+<span class="c1"># values: Tupel mit den Spaltenwerten in derselben Reihenfolge wie columns</span>
+<span class="n">songs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>        <span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">,</span> <span class="s1">&#39;5:55&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>  <span class="s1">&#39;Eagles&#39;</span><span class="p">,</span>       <span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>     <span class="s1">&#39;6:30&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Stairway to Heaven&#39;</span><span class="p">,</span><span class="s1">&#39;Led Zeppelin&#39;</span><span class="p">,</span> <span class="s1">&#39;Led Zeppelin IV&#39;</span><span class="p">,</span>      <span class="s1">&#39;8:02&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Smells Like Teen Spirit&#39;</span><span class="p">,</span> <span class="s1">&#39;Nirvana&#39;</span><span class="p">,</span><span class="s1">&#39;Nevermind&#39;</span><span class="p">,</span>            <span class="s1">&#39;5:01&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Purple Haze&#39;</span><span class="p">,</span>       <span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Are You Experienced&#39;</span><span class="p">,</span>  <span class="s1">&#39;2:52&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">songs</span><span class="p">:</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">song</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. Treeview -- Auswahl, Einfügen, Löschen
+</span>
+</div><p>Ein statischer Treeview ist schön – aber für das MP3-Projekt muss man Einträge hinzufügen, auswählen und entfernen können.</p>
+<p><strong>Ausgewählte Zeile lesen:</strong> <code class="docutils literal notranslate"><span class="pre">.selection()</span></code> gibt ein Tupel von Item-IDs zurück. Eine Item-ID ist ein interner Bezeichner den tkinter beim <code class="docutils literal notranslate"><span class="pre">.insert()</span></code> automatisch vergibt – man kann aber auch selbst einen vergeben. Mit <code class="docutils literal notranslate"><span class="pre">.item(id,</span> <span class="pre">'values')</span></code> holt man die Spaltenwerte einer Zeile.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">auswahl</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>       <span class="c1"># Tupel von Item-IDs</span>
+<span class="k">if</span> <span class="n">auswahl</span><span class="p">:</span>
+    <span class="n">item_id</span> <span class="o">=</span> <span class="n">auswahl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>         <span class="c1"># erste ausgewaehlte Zeile</span>
+    <span class="n">werte</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">)</span>  <span class="c1"># Werte als Tupel</span>
+    <span class="n">titel</span> <span class="o">=</span> <span class="n">werte</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>             <span class="c1"># erste Spalte</span>
+</pre></div>
+</div>
+<p><strong>Zeile löschen:</strong> <code class="docutils literal notranslate"><span class="pre">.delete(item_id)</span></code> löscht eine Zeile anhand ihrer ID. <code class="docutils literal notranslate"><span class="pre">.delete(*baum.get_children())</span></code> löscht alle Zeilen auf einmal.</p>
+<p><strong>Auf Klick reagieren:</strong> Das Ereignis <code class="docutils literal notranslate"><span class="pre">'&lt;&lt;TreeviewSelect&gt;&gt;'</span></code> wird ausgelöst wenn der Nutzer eine Zeile anklickt. Man bindet es mit <code class="docutils literal notranslate"><span class="pre">.bind()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;&lt;TreeviewSelect&gt;&gt;&#39;</span><span class="p">,</span> <span class="n">bei_auswahl</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Die Callback-Funktion bekommt ein Event-Objekt – aber man braucht es oft nicht, weil man die Auswahl einfach mit <code class="docutils literal notranslate"><span class="pre">.selection()</span></code> direkt aus dem Treeview liest.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_18_treeview_interaktion.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_auswahl</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># event wird nicht benoetigt -- Auswahl direkt aus Treeview lesen</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">item_id</span> <span class="o">=</span> <span class="n">auswahl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">werte</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">)</span>
+    <span class="c1"># werte ist ein Tupel: (titel, interpret, dauer)</span>
+    <span class="n">info_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">werte</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> von </span><span class="si">{</span><span class="n">werte</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">zeile_hinzufuegen</span><span class="p">():</span>
+    <span class="n">titel</span>    <span class="o">=</span> <span class="n">titel_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">interpret</span> <span class="o">=</span> <span class="n">interpret_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">titel</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">interpret</span><span class="p">:</span>
+        <span class="k">return</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">titel</span><span class="p">,</span> <span class="n">interpret</span><span class="p">,</span> <span class="s1">&#39;?:??&#39;</span><span class="p">))</span>
+    <span class="n">titel_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">interpret_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">zeile_loeschen</span><span class="p">():</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>           <span class="c1"># jede ausgewaehlte Zeile loeschen</span>
+    <span class="n">info_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treeview Interaktion&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;480x380&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Eingabebereich oben ---</span>
+<span class="n">eingabe_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">titel_var</span>    <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">interpret_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>    <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">titel_var</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">interpret_var</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hinzufuegen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">zeile_hinzufuegen</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># --- Treeview mit Scrollbar ---</span>
+<span class="n">baum_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">baum_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">scrollbar</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">baum_frame</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+<span class="n">scrollbar</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span>
+    <span class="n">baum_frame</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">),</span>
+    <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">,</span>
+    <span class="n">yscrollcommand</span><span class="o">=</span><span class="n">scrollbar</span><span class="o">.</span><span class="n">set</span>    <span class="c1"># Treeview informiert Scrollbar</span>
+<span class="p">)</span>
+<span class="n">scrollbar</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">baum</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>  <span class="c1"># Scrollbar steuert Treeview</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret&#39;</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dauer&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Auf Auswahl reagieren</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;&lt;TreeviewSelect&gt;&gt;&#39;</span><span class="p">,</span> <span class="n">bei_auswahl</span><span class="p">)</span>
+
+<span class="c1"># Startdaten</span>
+<span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>   <span class="s1">&#39;5:55&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>  <span class="s1">&#39;Eagles&#39;</span><span class="p">,</span>  <span class="s1">&#39;6:30&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Smells Like Teen Spirit&#39;</span><span class="p">,</span> <span class="s1">&#39;Nirvana&#39;</span><span class="p">,</span> <span class="s1">&#39;5:01&#39;</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">song</span><span class="p">)</span>
+
+<span class="c1"># --- Buttons und Info unten ---</span>
+<span class="n">unten_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">unten_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">unten_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ausgewaehlte Zeile loeschen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">zeile_loeschen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">info_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">unten_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">info_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Treeview -- Sortierung durch Klick auf Spaltenüberschrift
+</span>
+</div><p>Professionelle Tabellen erlauben dem Nutzer durch Klick auf eine Überschrift nach dieser Spalte zu sortieren. Der Treeview bietet das nicht eingebaut – man implementiert es selbst.</p>
+<p>Das Prinzip:</p>
+<ol class="arabic simple">
+<li><p>Alle Zeilen aus dem Treeview auslesen</p></li>
+<li><p>Die Daten nach der gewünschten Spalte sortieren</p></li>
+<li><p>Alle Zeilen löschen</p></li>
+<li><p>Die sortierten Daten neu einfügen</p></li>
+</ol>
+<p>Um auf Klicks auf die Überschrift zu reagieren, übergibt man der <code class="docutils literal notranslate"><span class="pre">heading()</span></code>-Methode ein <code class="docutils literal notranslate"><span class="pre">command</span></code>-Argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">sortiere</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Hier sieht man warum <code class="docutils literal notranslate"><span class="pre">lambda</span></code> praktisch ist – man braucht eine Funktion ohne Argumente für <code class="docutils literal notranslate"><span class="pre">command</span></code>, will aber trotzdem übergeben nach welcher Spalte sortiert wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_19_sortieren.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="c1"># Sortierrichtung pro Spalte merken: True = aufsteigend, False = absteigend</span>
+<span class="n">sortierung</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;titel&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sortiere</span><span class="p">(</span><span class="n">spalte</span><span class="p">):</span>
+    <span class="c1"># Alle Item-IDs aus dem Treeview holen</span>
+    <span class="n">alle_ids</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Daten als Liste von Tupeln sammeln: (spaltenwert, item_id)</span>
+    <span class="c1"># Damit wir nach dem Wert sortieren koennen, die ID aber noch kennen</span>
+    <span class="n">daten</span> <span class="o">=</span> <span class="p">[(</span><span class="n">baum</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">),</span> <span class="n">item_id</span><span class="p">)</span> <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">alle_ids</span><span class="p">]</span>
+
+    <span class="c1"># Spaltenindex bestimmen</span>
+    <span class="n">spalten</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">spalten</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">spalte</span><span class="p">)</span>
+
+    <span class="c1"># Sortieren nach dem Wert an Position idx</span>
+    <span class="n">aufsteigend</span> <span class="o">=</span> <span class="n">sortierung</span><span class="p">[</span><span class="n">spalte</span><span class="p">]</span>
+    <span class="n">daten</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="ow">not</span> <span class="n">aufsteigend</span><span class="p">)</span>
+
+    <span class="c1"># Richtung fuer naechsten Klick umkehren</span>
+    <span class="n">sortierung</span><span class="p">[</span><span class="n">spalte</span><span class="p">]</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">aufsteigend</span>
+
+    <span class="c1"># Zeilen in neuer Reihenfolge verschieben</span>
+    <span class="k">for</span> <span class="n">reihe</span><span class="p">,</span> <span class="p">(</span><span class="n">werte</span><span class="p">,</span> <span class="n">item_id</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">reihe</span><span class="p">)</span>   <span class="c1"># .move() verschiebt ohne neu einzufuegen</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Treeview sortierbar&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;480x280&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">),</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">)</span>
+
+<span class="c1"># command in heading: Klick auf Ueberschrift loest Sortierung aus</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel&#39;</span><span class="p">,</span>     <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">sortiere</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">))</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">sortiere</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">))</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dauer&#39;</span><span class="p">,</span>     <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">sortiere</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">))</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">170</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="n">width</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">songs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span>      <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>        <span class="s1">&#39;5:55&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>       <span class="s1">&#39;Eagles&#39;</span><span class="p">,</span>       <span class="s1">&#39;6:30&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Stairway to Heaven&#39;</span><span class="p">,</span>     <span class="s1">&#39;Led Zeppelin&#39;</span><span class="p">,</span> <span class="s1">&#39;8:02&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Smells Like Teen Spirit&#39;</span><span class="p">,</span><span class="s1">&#39;Nirvana&#39;</span><span class="p">,</span>       <span class="s1">&#39;5:01&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Purple Haze&#39;</span><span class="p">,</span>            <span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;2:52&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Johnny B. Goode&#39;</span><span class="p">,</span>        <span class="s1">&#39;Chuck Berry&#39;</span><span class="p">,</span>  <span class="s1">&#39;2:41&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">songs</span><span class="p">:</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">song</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Auf eine Spaltenüberschrift klicken um zu sortieren.&#39;</span><span class="p">,</span>
+         <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+7. Abschlussbeispiel: Mini-Musikverwaltung
+</span>
+</div><p>Alle Konzepte aus diesem Notebook in einem lauffähigen Beispiel: Treeview mit Scrollbar, Einträge hinzufügen und löschen, Auswahl anzeigen, sortierbare Spalten. Das ist die Basis für das spätere MP3-Projekt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_20_musikverwaltung.py -- Abschlussbeispiel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+
+<span class="n">SPALTEN</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;album&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">)</span>
+<span class="n">sortierung</span> <span class="o">=</span> <span class="p">{</span><span class="n">s</span><span class="p">:</span> <span class="kc">True</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">SPALTEN</span><span class="p">}</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sortiere</span><span class="p">(</span><span class="n">spalte</span><span class="p">):</span>
+    <span class="n">alle_ids</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">get_children</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">daten</span> <span class="o">=</span> <span class="p">[(</span><span class="n">baum</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;values&#39;</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">alle_ids</span><span class="p">]</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">SPALTEN</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">spalte</span><span class="p">)</span>
+    <span class="n">daten</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">idx</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="ow">not</span> <span class="n">sortierung</span><span class="p">[</span><span class="n">spalte</span><span class="p">])</span>
+    <span class="n">sortierung</span><span class="p">[</span><span class="n">spalte</span><span class="p">]</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">sortierung</span><span class="p">[</span><span class="n">spalte</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">pos</span><span class="p">,</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">item_id</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">item_id</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hinzufuegen</span><span class="p">():</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">titel_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">interpret_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">album_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="s1">&#39;Unbekannt&#39;</span>
+    <span class="k">if</span> <span class="n">t</span> <span class="ow">and</span> <span class="n">i</span><span class="p">:</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;?:??&#39;</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">(</span><span class="n">titel_var</span><span class="p">,</span> <span class="n">interpret_var</span><span class="p">,</span> <span class="n">album_var</span><span class="p">):</span>
+            <span class="n">var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">loeschen</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">item_id</span> <span class="ow">in</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">():</span>
+        <span class="n">baum</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">item_id</span><span class="p">)</span>
+    <span class="n">status_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Eintrag gelöscht.&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_auswahl</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">auswahl</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">selection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">auswahl</span><span class="p">:</span>
+        <span class="n">werte</span> <span class="o">=</span> <span class="n">baum</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">auswahl</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;values&#39;</span><span class="p">)</span>
+        <span class="n">status_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ausgewaehlt: </span><span class="si">{</span><span class="n">werte</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> -- </span><span class="si">{</span><span class="n">werte</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># ------- Fenster aufbauen -------</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mini-Musikverwaltung&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;620x420&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Eingabebereich ---</span>
+<span class="n">eingabe_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">columnconfigure</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">titel_var</span>    <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">interpret_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">album_var</span>    <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Titel:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>    <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">titel_var</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Interpret:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">interpret_var</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Album:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span>    <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">album_var</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;ew&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Hinzufuegen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">hinzufuegen</span><span class="p">)</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># --- Treeview mit Scrollbar ---</span>
+<span class="n">baum_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">baum_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">sb</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Scrollbar</span><span class="p">(</span><span class="n">baum_frame</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Treeview</span><span class="p">(</span><span class="n">baum_frame</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">SPALTEN</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="s1">&#39;headings&#39;</span><span class="p">,</span> <span class="n">yscrollcommand</span><span class="o">=</span><span class="n">sb</span><span class="o">.</span><span class="n">set</span><span class="p">)</span>
+<span class="n">sb</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">command</span><span class="o">=</span><span class="n">baum</span><span class="o">.</span><span class="n">yview</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">spalte</span><span class="p">,</span> <span class="n">breite</span><span class="p">,</span> <span class="n">titel</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;titel&#39;</span><span class="p">,</span>    <span class="mi">220</span><span class="p">,</span> <span class="s1">&#39;Titel&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;interpret&#39;</span><span class="p">,</span><span class="mi">150</span><span class="p">,</span> <span class="s1">&#39;Interpret&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;album&#39;</span><span class="p">,</span>    <span class="mi">140</span><span class="p">,</span> <span class="s1">&#39;Album&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;dauer&#39;</span><span class="p">,</span>     <span class="mi">70</span><span class="p">,</span> <span class="s1">&#39;Dauer&#39;</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">heading</span><span class="p">(</span><span class="n">spalte</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">titel</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="o">=</span><span class="n">spalte</span><span class="p">:</span> <span class="n">sortiere</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">column</span><span class="p">(</span> <span class="n">spalte</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">breite</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span> <span class="k">if</span> <span class="n">spalte</span> <span class="o">!=</span> <span class="s1">&#39;dauer&#39;</span> <span class="k">else</span> <span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="n">baum</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">baum</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;&lt;TreeviewSelect&gt;&gt;&#39;</span><span class="p">,</span> <span class="n">bei_auswahl</span><span class="p">)</span>
+
+<span class="c1"># Startdaten</span>
+<span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span>      <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>        <span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">,</span> <span class="s1">&#39;5:55&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>       <span class="s1">&#39;Eagles&#39;</span><span class="p">,</span>       <span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>     <span class="s1">&#39;6:30&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Stairway to Heaven&#39;</span><span class="p">,</span>     <span class="s1">&#39;Led Zeppelin&#39;</span><span class="p">,</span> <span class="s1">&#39;Led Zeppelin IV&#39;</span><span class="p">,</span>      <span class="s1">&#39;8:02&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Smells Like Teen Spirit&#39;</span><span class="p">,</span><span class="s1">&#39;Nirvana&#39;</span><span class="p">,</span>       <span class="s1">&#39;Nevermind&#39;</span><span class="p">,</span>           <span class="s1">&#39;5:01&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Purple Haze&#39;</span><span class="p">,</span>            <span class="s1">&#39;Jimi Hendrix&#39;</span><span class="p">,</span> <span class="s1">&#39;Are You Experienced&#39;</span><span class="p">,</span>  <span class="s1">&#39;2:52&#39;</span><span class="p">),</span>
+<span class="p">]:</span>
+    <span class="n">baum</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">song</span><span class="p">)</span>
+
+<span class="c1"># --- Buttons und Statuszeile ---</span>
+<span class="n">unten_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">unten_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">unten_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ausgewaehlten Titel loeschen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">loeschen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">status_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Bereit.&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">unten_frame</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">status_var</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Zusammenfassung</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Konzept</p></th>
+<th class="head"><p>Erklärung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tk.Listbox(root,</span> <span class="pre">height=8)</span></code></p></td>
+<td><p>Einfache Liste, <code class="docutils literal notranslate"><span class="pre">height</span></code> in Zeilen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.insert(tk.END,</span> <span class="pre">wert)</span></code></p></td>
+<td><p>Eintrag ans Ende anhängen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.delete(index)</span></code></p></td>
+<td><p>Eintrag löschen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.curselection()</span></code></p></td>
+<td><p>Tupel mit Indizes der ausgewählten Einträge</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.get(index)</span></code></p></td>
+<td><p>Text an Position <code class="docutils literal notranslate"><span class="pre">index</span></code> lesen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">selectmode='extended'</span></code></p></td>
+<td><p>Mehrfachauswahl mit Shift/Strg</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tk.Scrollbar(frame)</span></code></p></td>
+<td><p>Scrollbar – muss mit Widget verbunden werden</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">yscrollcommand=sb.set</span></code></p></td>
+<td><p>Widget informiert Scrollbar beim Scrollen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sb.config(command=widget.yview)</span></code></p></td>
+<td><p>Scrollbar steuert Widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tkinter</span> <span class="pre">import</span> <span class="pre">ttk</span></code></p></td>
+<td><p>Moderner Widget-Satz (Themed Tk)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ttk.Treeview(root,</span> <span class="pre">columns=...,</span> <span class="pre">show='headings')</span></code></p></td>
+<td><p>Tabelle ohne Baumspalte</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.heading(spalte,</span> <span class="pre">text='...')</span></code></p></td>
+<td><p>Sichtbare Überschrift setzen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.column(spalte,</span> <span class="pre">width=...)</span></code></p></td>
+<td><p>Spaltenbreite und Ausrichtung</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.insert('',</span> <span class="pre">tk.END,</span> <span class="pre">values=(...))</span></code></p></td>
+<td><p>Zeile einfügen, <code class="docutils literal notranslate"><span class="pre">''</span></code> = kein Elternelement</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.selection()</span></code></p></td>
+<td><p>Tupel mit Item-IDs der ausgewählten Zeilen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.item(id,</span> <span class="pre">'values')</span></code></p></td>
+<td><p>Spaltenwerte einer Zeile als Tupel</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.delete(item_id)</span></code></p></td>
+<td><p>Zeile löschen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.get_children('')</span></code></p></td>
+<td><p>Alle Item-IDs der Toplevel-Zeilen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.move(id,</span> <span class="pre">'',</span> <span class="pre">position)</span></code></p></td>
+<td><p>Zeile verschieben ohne neu einzufügen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">baum.bind('&lt;&lt;TreeviewSelect&gt;&gt;',</span> <span class="pre">fn)</span></code></p></td>
+<td><p>Auf Zeilenauswahl reagieren</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.heading(spalte,</span> <span class="pre">command=fn)</span></code></p></td>
+<td><p>Klick auf Überschrift löst Funktion aus</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Weiter:</strong> In Notebook <strong>11d – Layout, Gestaltung und Dialoge</strong> lernen wir Schriften, Farben und Menüs – und die Dateidialoge die im MP3-Projekt zum Öffnen von Musikdateien gebraucht werden.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_11"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11b_tkinter_events.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tkinter events</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11d_tkinter_layout_dialoge.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tkinter layout dialoge</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

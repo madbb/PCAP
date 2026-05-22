@@ -1,0 +1,1428 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Projekt mp3 loesung &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_13/13_projekt_mp3_loesung';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="PCAP-31-03 Fragenpool – 100 Fragen" href="../Kapitel_14/PCAP__100_Fragen.html" />
+    <link rel="prev" title="Projekt mp3" href="13_projekt_mp3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_13/13_projekt_mp3_loesung.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Projekt mp3 loesung</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="projekt-mp3-loesung">
+<h1>Projekt mp3 loesung<a class="headerlink" href="#projekt-mp3-loesung" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">MP3-Verwaltung: Von der Idee zur Implementierung</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python &nbsp;|&nbsp; Kapitel 13: Abschlussprojekt &nbsp;|&nbsp; Loesung und Herleitung</p>
+</div>
+</div><blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook zeigt den vollstaendigen Loesungsweg – von der Problemanalyse bis zur lauffaehigen Implementierung. Es dient der Nachbereitung und dem Verstaendnis der Entwurfsentscheidungen.</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Das Problem verstehen -- bevor eine Zeile Code entsteht
+</span>
+</div><p>Wer viele MP3-Dateien hat, kennt das Problem: Die Sammlung waechst ueber Jahre. Dateien landen in verschiedenen Ordnern. Dateinamen wie <code class="docutils literal notranslate"><span class="pre">track01.mp3</span></code> oder <code class="docutils literal notranslate"><span class="pre">Unbekannt</span> <span class="pre">-</span> <span class="pre">Unbekannt.mp3</span></code> sagen nichts. Manche Songs sind doppelt vorhanden, mit leicht unterschiedlichen Dateinamen. Die eingebetteten Metadaten – Interpret, Titel, Album – stimmen manchmal nicht mit dem Dateinamen ueberein oder fehlen ganz.</p>
+<p>Das Programm soll diesem Chaos Herr werden. Konkret:</p>
+<ul class="simple">
+<li><p>Ein Verzeichnis nach MP3-Dateien durchsuchen (auch Unterordner)</p></li>
+<li><p>Die eingebetteten Metadaten auslesen</p></li>
+<li><p>Die Sammlung anzeigen, sortierbar und durchsuchbar</p></li>
+<li><p>Den Zustand speichern – damit man nicht bei jedem Start neu scannt</p></li>
+</ul>
+<p><strong>Bevor man anfaengt zu programmieren, lohnt sich eine Frage: Was ist hier eigentlich schwierig?</strong></p>
+<p>Nicht die GUI. Nicht das Speichern. Die zwei wirklich interessanten Probleme sind:</p>
+<ol class="arabic simple">
+<li><p><strong>Metadaten in MP3-Dateien lesen</strong> – MP3-Dateien koennen Metadaten in verschiedenen Formaten einbetten. Das gaengigste heisst ID3. Wir brauchen eine Bibliothek die das versteht, und muessen damit umgehen dass Tags fehlen oder in unerwarteten Formaten vorliegen.</p></li>
+<li><p><strong>Fehlende Metadaten sinnvoll behandeln</strong> – nicht jede MP3-Datei hat einen Titel-Tag. Das Programm darf deshalb nicht abstuerzen. Es muss eine Fallback-Strategie haben.</p></li>
+</ol>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. Was sind ID3-Tags?
+</span>
+</div><p>Eine MP3-Datei besteht aus zwei Teilen: den Audiodaten (die eigentliche Musik) und einem optionalen Metadatenblock am Anfang oder Ende der Datei. Dieser Block heisst ID3-Header.</p>
+<p>Der ID3-Header enthaelt sogenannte Frames – jeder Frame hat einen vierstelligen Schluessel und einen Wert:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Schluessel</p></th>
+<th class="head"><p>Bedeutung</p></th>
+<th class="head"><p>Beispielwert</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TIT2</span></code></p></td>
+<td><p>Titel</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Bohemian</span> <span class="pre">Rhapsody</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TPE1</span></code></p></td>
+<td><p>Interpret (Artist)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Queen</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TALB</span></code></p></td>
+<td><p>Album</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">Night</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">Opera</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">TDRC</span></code></p></td>
+<td><p>Aufnahmedatum/Jahr</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1975</span></code> oder <code class="docutils literal notranslate"><span class="pre">1975-11-21</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">TRCK</span></code></p></td>
+<td><p>Track-Nummer</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">11</span></code> oder <code class="docutils literal notranslate"><span class="pre">11/17</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">APIC</span></code></p></td>
+<td><p>Albumcover (Bild-Bytes)</p></td>
+<td><p><em>(binaere Daten)</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Die Schluessel sind standardisiert (ID3v2.3 und ID3v2.4), aber aeltere Dateien koennen ID3v1 haben – ein kompakteres Format mit fixen Feldgroessen. Das Paket <code class="docutils literal notranslate"><span class="pre">mutagen</span></code> abstrahiert den Unterschied weitgehend.</p>
+<p><strong>Die wichtigste Erkenntnis:</strong> Jeder dieser Frames kann fehlen. <code class="docutils literal notranslate"><span class="pre">TIT2</span></code> fehlt bei einer Datei die nie korrekt getaggt wurde. <code class="docutils literal notranslate"><span class="pre">TDRC</span></code> kann ein vollstaendiges Datum enthalten (<code class="docutils literal notranslate"><span class="pre">1975-11-21</span></code>) statt nur das Jahr. Das Programm muss mit all diesen Faellen umgehen.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Erster Kontakt mit mutagen
+</span>
+</div><p>mutagen ist eine Python-Bibliothek zum Lesen und Schreiben von Audiometadaten. Installation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>mutagen
+</pre></div>
+</div>
+<p>Zwei Klassen sind fuer uns relevant: <code class="docutils literal notranslate"><span class="pre">MP3</span></code> liest die technischen Audioinformationen (Dauer, Bitrate), <code class="docutils literal notranslate"><span class="pre">ID3</span></code> liest die Metadaten-Tags.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Der naive erste Ansatz -- direkt auf Tags zugreifen</span>
+<span class="c1"># Was passiert wenn ein Tag fehlt?</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mutagen.mp3</span><span class="w"> </span><span class="kn">import</span> <span class="n">MP3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mutagen.id3</span><span class="w"> </span><span class="kn">import</span> <span class="n">ID3</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Wir erstellen eine Testdatei um die Beispiele ausfuehren zu koennen</span>
+<span class="c1"># (normalerweise wuerde man hier eine echte MP3-Datei angeben)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mutagen.id3</span><span class="w"> </span><span class="kn">import</span> <span class="n">TIT2</span><span class="p">,</span> <span class="n">TPE1</span><span class="p">,</span> <span class="n">TALB</span><span class="p">,</span> <span class="n">TDRC</span>
+
+<span class="n">testdir</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span>
+
+<span class="c1"># Datei MIT vollstaendigen Tags</span>
+<span class="n">pfad_voll</span> <span class="o">=</span> <span class="n">testdir</span> <span class="o">/</span> <span class="s1">&#39;bohemian.mp3&#39;</span>
+<span class="n">pfad_voll</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFB</span><span class="p">,</span> <span class="mh">0x90</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">])</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+<span class="n">tags</span> <span class="o">=</span> <span class="n">ID3</span><span class="p">()</span>
+<span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TIT2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TIT2</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">)</span>
+<span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TPE1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TPE1</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Queen&#39;</span><span class="p">)</span>
+<span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TALB&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TALB</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">)</span>
+<span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TDRC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TDRC</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;1975-11-21&#39;</span><span class="p">)</span>  <span class="c1"># vollstaendiges Datum!</span>
+<span class="n">tags</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">pfad_voll</span><span class="p">)</span>
+
+<span class="c1"># Datei OHNE Tags</span>
+<span class="n">pfad_leer</span> <span class="o">=</span> <span class="n">testdir</span> <span class="o">/</span> <span class="s1">&#39;unbekannt.mp3&#39;</span>
+<span class="n">pfad_leer</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="nb">bytes</span><span class="p">([</span><span class="mh">0xFF</span><span class="p">,</span> <span class="mh">0xFB</span><span class="p">,</span> <span class="mh">0x90</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">])</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">(</span><span class="mi">128</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testdateien erstellt.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Mit Tags:    </span><span class="si">{</span><span class="n">pfad_voll</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Ohne Tags:   </span><span class="si">{</span><span class="n">pfad_leer</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Naiver Ansatz: direkt auf Tags zugreifen ---</span>
+<span class="c1"># Wir lesen die Datei MIT Tags -- das funktioniert.</span>
+
+<span class="n">tags</span> <span class="o">=</span> <span class="n">ID3</span><span class="p">(</span><span class="n">pfad_voll</span><span class="p">)</span>
+
+<span class="n">titel</span>    <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TIT2&#39;</span><span class="p">])</span>
+<span class="n">interpret</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TPE1&#39;</span><span class="p">])</span>
+<span class="n">album</span>    <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TALB&#39;</span><span class="p">])</span>
+<span class="n">jahr</span>     <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TDRC&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Titel:    </span><span class="si">{</span><span class="n">titel</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Interpret: </span><span class="si">{</span><span class="n">interpret</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Album:    </span><span class="si">{</span><span class="n">album</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Jahr:     </span><span class="si">{</span><span class="n">jahr</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># Achtung: &#39;1975-11-21&#39; -- nicht nur das Jahr!</span>
+
+<span class="c1"># Problem 1: TDRC enthaelt manchmal ein vollstaendiges Datum</span>
+<span class="c1"># Problem 2: Wenn ein Tag fehlt, wirft tags[&#39;TIT2&#39;] einen KeyError</span>
+<span class="c1"># Problem 3: str(tags[&#39;TIT2&#39;]) gibt ein Tag-Objekt als String aus, nicht direkt den Text</span>
+
+<span class="c1"># Naiven Ansatz auf die Datei OHNE Tags:</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mutagen.id3</span><span class="w"> </span><span class="kn">import</span> <span class="n">ID3NoHeaderError</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">tags_leer</span> <span class="o">=</span> <span class="n">ID3</span><span class="p">(</span><span class="n">pfad_leer</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tags_leer</span><span class="p">[</span><span class="s1">&#39;TIT2&#39;</span><span class="p">]))</span>  <span class="c1"># KeyError!</span>
+<span class="k">except</span> <span class="n">ID3NoHeaderError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Datei ohne Tags: ID3NoHeaderError&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tag fehlt: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Drei Probleme sichtbar:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ID3NoHeaderError</span></code> wenn die Datei gar keine ID3-Tags hat</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">KeyError</span></code> wenn ein bestimmter Tag fehlt</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">TDRC</span></code> kann <code class="docutils literal notranslate"><span class="pre">'1975-11-21'</span></code> enthalten statt nur <code class="docutils literal notranslate"><span class="pre">'1975'</span></code> – wir wollen nur das Jahr</p></li>
+</ol>
+<p>Der naive Ansatz faellt bei jedem davon um. Wir brauchen eine robustere Strategie.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. Robustes Tag-Lesen: jeder Fehler einzeln abgefangen
+</span>
+</div><p>Das Prinzip: jeden einzelnen Tag-Zugriff in eine eigene Hilfsfunktion kapseln, die <code class="docutils literal notranslate"><span class="pre">None</span></code> zurueckgibt statt abzusturzen. Und die aeussere <code class="docutils literal notranslate"><span class="pre">ID3NoHeaderError</span></code>-Exception separat abfangen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Robuster Ansatz: Hilfsfunktionen fangen jeden Fehler einzeln ab ---</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lese_tag</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="n">schluessel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Liest einen Tag-Wert als String.</span>
+<span class="sd">    Gibt None zurueck wenn der Tag fehlt oder leer ist.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wert</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="n">schluessel</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">wert</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="kc">None</span>   <span class="c1"># leere Strings -&gt; None</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lese_tag_jahr</span><span class="p">(</span><span class="n">tags</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Liest nur das Jahr aus TDRC.</span>
+<span class="sd">    &#39;1975-11-21&#39; -&gt; &#39;1975&#39;</span>
+<span class="sd">    &#39;1975&#39;       -&gt; &#39;1975&#39;</span>
+<span class="sd">    fehlt        -&gt; None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">wert</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tags</span><span class="p">[</span><span class="s1">&#39;TDRC&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">wert</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="k">if</span> <span class="n">wert</span> <span class="k">else</span> <span class="kc">None</span>   <span class="c1"># erste 4 Zeichen = Jahr</span>
+    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">lese_song_robust</span><span class="p">(</span><span class="n">pfad</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Liest eine MP3-Datei -- robust gegen fehlende Tags.</span>
+<span class="sd">    Gibt immer ein Dictionary zurueck, nie eine Exception.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">mutagen.id3</span><span class="w"> </span><span class="kn">import</span> <span class="n">ID3NoHeaderError</span>
+
+    <span class="c1"># Schritt 1: Audiodaten (Dauer) -- separat von den Tags</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">audio</span> <span class="o">=</span> <span class="n">MP3</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span>
+        <span class="n">dauer</span> <span class="o">=</span> <span class="n">audio</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">length</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="n">dauer</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c1"># Schritt 2: ID3-Tags -- komplett optional</span>
+    <span class="n">titel</span> <span class="o">=</span> <span class="n">interpret</span> <span class="o">=</span> <span class="n">album</span> <span class="o">=</span> <span class="n">jahr</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tags</span> <span class="o">=</span> <span class="n">ID3</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span>
+        <span class="n">titel</span>    <span class="o">=</span> <span class="n">lese_tag</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="s1">&#39;TIT2&#39;</span><span class="p">)</span>
+        <span class="n">interpret</span> <span class="o">=</span> <span class="n">lese_tag</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="s1">&#39;TPE1&#39;</span><span class="p">)</span>
+        <span class="n">album</span>    <span class="o">=</span> <span class="n">lese_tag</span><span class="p">(</span><span class="n">tags</span><span class="p">,</span> <span class="s1">&#39;TALB&#39;</span><span class="p">)</span>
+        <span class="n">jahr</span>     <span class="o">=</span> <span class="n">lese_tag_jahr</span><span class="p">(</span><span class="n">tags</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">ID3NoHeaderError</span><span class="p">:</span>
+        <span class="k">pass</span>   <span class="c1"># keine Tags -- alle Felder bleiben None</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;pfad&#39;</span><span class="p">:</span>      <span class="nb">str</span><span class="p">(</span><span class="n">pfad</span><span class="p">),</span>
+        <span class="s1">&#39;titel&#39;</span><span class="p">:</span>     <span class="n">titel</span><span class="p">,</span>
+        <span class="s1">&#39;interpret&#39;</span><span class="p">:</span> <span class="n">interpret</span><span class="p">,</span>
+        <span class="s1">&#39;album&#39;</span><span class="p">:</span>     <span class="n">album</span><span class="p">,</span>
+        <span class="s1">&#39;jahr&#39;</span><span class="p">:</span>      <span class="n">jahr</span><span class="p">,</span>
+        <span class="s1">&#39;dauer&#39;</span><span class="p">:</span>     <span class="n">dauer</span><span class="p">,</span>
+    <span class="p">}</span>
+
+
+<span class="c1"># Test: beide Dateien</span>
+<span class="k">for</span> <span class="n">pfad</span> <span class="ow">in</span> <span class="p">[</span><span class="n">pfad_voll</span><span class="p">,</span> <span class="n">pfad_leer</span><span class="p">]:</span>
+    <span class="n">daten</span> <span class="o">=</span> <span class="n">lese_song_robust</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">pfad</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">daten</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;pfad&#39;</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Datei ohne Tags liefert jetzt <code class="docutils literal notranslate"><span class="pre">None</span></code> fuer alle Felder – kein Absturz. Das ist die Grundregel fuer Daten aus externen Quellen: <strong>lieber <code class="docutils literal notranslate"><span class="pre">None</span></code> als Exception, lieber explizit als implizit.</strong></p>
+<p>Und das Jahr <code class="docutils literal notranslate"><span class="pre">'1975-11-21'</span></code> wird sauber auf <code class="docutils literal notranslate"><span class="pre">'1975'</span></code> reduziert – <code class="docutils literal notranslate"><span class="pre">wert[:4]</span></code> schneidet genau die ersten vier Zeichen aus, egal wie lang der String danach ist.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. Entwurfsentscheidung: Warum @dataclass fuer Song?
+</span>
+</div><p>Ein Song hat fuenf Dateneigenschaften: Pfad, Titel, Interpret, Album, Jahr, Dauer. Man koennte das als Dictionary speichern – <code class="docutils literal notranslate"><span class="pre">song['titel']</span></code>. Oder als einfache Klasse mit <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
+<p>Wir entscheiden uns fuer <code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code>. Warum?</p>
+<p>Ein normales Dictionary hat keine Methoden – <code class="docutils literal notranslate"><span class="pre">song['titel_anzeige']</span></code> geht nicht, man muesste ueberall <code class="docutils literal notranslate"><span class="pre">song['titel']</span> <span class="pre">or</span> <span class="pre">Path(song['pfad']).stem</span></code> schreiben. Eine normale Klasse wuerde einen <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> und <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> brauchen den man von Hand schreibt.</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code> erledigt <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">__repr__</span></code> und <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> automatisch aus den Felddeklarationen heraus. Wir koennen trotzdem Methoden und Properties hinzufuegen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vergleich: Dictionary vs. normale Klasse vs. @dataclass</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span>
+
+<span class="c1"># --- Option A: Dictionary ---</span>
+<span class="n">song_dict</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;pfad&#39;</span><span class="p">:</span> <span class="s1">&#39;/musik/bohemian.mp3&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;titel&#39;</span><span class="p">:</span> <span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;interpret&#39;</span><span class="p">:</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1"># Zugriff: song_dict[&#39;titel&#39;]</span>
+<span class="c1"># Fallback: song_dict[&#39;titel&#39;] or Path(song_dict[&#39;pfad&#39;]).stem  -- ueberall wiederholen</span>
+<span class="c1"># Vergleich: song_dict == anderes_dict  -- funktioniert, aber unuebersichtlich</span>
+<span class="c1"># Methoden: nicht moeglich</span>
+
+<span class="c1"># --- Option B: @dataclass ---</span>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Song</span><span class="p">:</span>
+    <span class="n">pfad</span><span class="p">:</span>      <span class="nb">str</span>
+    <span class="n">titel</span><span class="p">:</span>     <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">interpret</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">album</span><span class="p">:</span>     <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">jahr</span><span class="p">:</span>      <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">dauer</span><span class="p">:</span>     <span class="nb">float</span>         <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="c1"># Properties kapseln die Fallback-Logik einmalig</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">titel_anzeige</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">titel</span> <span class="ow">or</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pfad</span><span class="p">)</span><span class="o">.</span><span class="n">stem</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">interpret_anzeige</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpret</span> <span class="ow">or</span> <span class="s1">&#39;Unbekannt&#39;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dauer_anzeige</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">dauer</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s1">&#39;–&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dauer</span><span class="p">)</span><span class="o">//</span><span class="mi">60</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dauer</span><span class="p">)</span><span class="o">%</span><span class="mi">60</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">interpret_anzeige</span><span class="si">}</span><span class="s2"> – </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">titel_anzeige</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dauer_anzeige</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+
+<span class="n">s1</span> <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/musik/bohemian.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">,</span> <span class="s1">&#39;1975&#39;</span><span class="p">,</span> <span class="mf">354.0</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/musik/unbekannt.mp3&#39;</span><span class="p">)</span>   <span class="c1"># alle Felder optional</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>                        <span class="c1"># __str__ automatisch</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">repr</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>                  <span class="c1"># __repr__ automatisch (von @dataclass)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>                  <span class="c1"># __eq__ automatisch</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">titel_anzeige</span><span class="p">)</span>          <span class="c1"># Fallback auf Dateiname</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">interpret_anzeige</span><span class="p">)</span>      <span class="c1"># Fallback auf &#39;Unbekannt&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">dauer_anzeige</span><span class="p">)</span>          <span class="c1"># &#39;5:54&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Das <code class="docutils literal notranslate"><span class="pre">&#64;property</span></code>-Muster ist hier zentral: Die Fallback-Logik (<code class="docutils literal notranslate"><span class="pre">or</span> <span class="pre">Path(...).stem</span></code>) steht <strong>einmal</strong> in der Klasse – nicht ueberall im Programm wo ein Titel angezeigt wird. Aendert sich die Fallback-Logik, muss man sie nur an einer Stelle anpassen.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Persistenz: Song-Objekte als JSON speichern und laden
+</span>
+</div><p>Das Scannen einer grossen Musiksammlung kann Minuten dauern. Die Bibliothek soll deshalb gespeichert werden – beim naechsten Start wird die JSON-Datei geladen statt alles neu zu scannen.</p>
+<p>Das Problem: <code class="docutils literal notranslate"><span class="pre">json.dump()</span></code> versteht keine Python-Objekte, nur Dictionaries, Listen, Strings und Zahlen. Wir brauchen eine Umwandlung in beide Richtungen: <code class="docutils literal notranslate"><span class="pre">Song</span> <span class="pre">-&gt;</span> <span class="pre">dict</span></code> und <code class="docutils literal notranslate"><span class="pre">dict</span> <span class="pre">-&gt;</span> <span class="pre">Song</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">asdict</span>
+
+<span class="c1"># asdict() ist eine Funktion aus dem dataclasses-Modul.</span>
+<span class="c1"># Sie wandelt eine @dataclass-Instanz in ein Dictionary um -- kostenlos.</span>
+
+<span class="n">song</span> <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/musik/bohemian.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">,</span> <span class="s1">&#39;1975&#39;</span><span class="p">,</span> <span class="mf">354.0</span><span class="p">)</span>
+
+<span class="c1"># Song -&gt; Dictionary</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">asdict</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Als Dictionary:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Dictionary -&gt; JSON-String</span>
+<span class="n">json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Als JSON:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json_str</span><span class="p">[:</span><span class="mi">200</span><span class="p">])</span>   <span class="c1"># nur Anfang anzeigen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary -&gt; Song: mit Schutz gegen unbekannte Felder</span>
+<span class="c1"># (wenn das JSON-Format sich in einer zukuenftigen Version aendert,</span>
+<span class="c1">#  sollen alte Dateien trotzdem geladen werden koennen)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">song_aus_dict</span><span class="p">(</span><span class="n">daten</span><span class="p">):</span>
+    <span class="n">bekannte_felder</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pfad&#39;</span><span class="p">,</span> <span class="s1">&#39;titel&#39;</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">,</span> <span class="s1">&#39;album&#39;</span><span class="p">,</span> <span class="s1">&#39;jahr&#39;</span><span class="p">,</span> <span class="s1">&#39;dauer&#39;</span><span class="p">}</span>
+    <span class="n">gefiltert</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">daten</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">bekannte_felder</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">Song</span><span class="p">(</span><span class="o">**</span><span class="n">gefiltert</span><span class="p">)</span>
+
+
+<span class="c1"># Roundtrip-Test: Song -&gt; dict -&gt; JSON -&gt; dict -&gt; Song</span>
+<span class="n">original</span>     <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/musik/bohemian.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">,</span> <span class="s1">&#39;1975&#39;</span><span class="p">,</span> <span class="mf">354.0</span><span class="p">)</span>
+<span class="n">als_json_str</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">asdict</span><span class="p">(</span><span class="n">original</span><span class="p">))</span>
+<span class="n">als_dict</span>     <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">als_json_str</span><span class="p">)</span>
+<span class="n">rekonstruiert</span> <span class="o">=</span> <span class="n">song_aus_dict</span><span class="p">(</span><span class="n">als_dict</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Original:      </span><span class="si">{</span><span class="n">original</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Rekonstruiert: </span><span class="si">{</span><span class="n">rekonstruiert</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Identisch:     </span><span class="si">{</span><span class="n">original</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">rekonstruiert</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>   <span class="c1"># True dank @dataclass __eq__</span>
+
+<span class="c1"># Test: unbekanntes Feld im JSON wird ignoriert</span>
+<span class="n">mit_extra_feld</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pfad&#39;</span><span class="p">:</span> <span class="s1">&#39;/a.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;titel&#39;</span><span class="p">:</span> <span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;unbekanntes_feld&#39;</span><span class="p">:</span> <span class="s1">&#39;ignoriert&#39;</span><span class="p">}</span>
+<span class="n">song_aus_dict</span><span class="p">(</span><span class="n">mit_extra_feld</span><span class="p">)</span>   <span class="c1"># kein Fehler</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Unbekannte Felder werden ignoriert: OK&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+7. Die Bibliothek-Klasse: Suche, Sortierung und Duplikate
+</span>
+</div><p>Eine Liste von Songs allein reicht nicht. Wir brauchen Operationen darauf: suchen, sortieren, Duplikate finden. Diese Operationen gehoeren in eine eigene Klasse – die <code class="docutils literal notranslate"><span class="pre">Bibliothek</span></code>.</p>
+<p>Warum eine Klasse statt einfach Funktionen? Eine Funktion <code class="docutils literal notranslate"><span class="pre">suchen(songs,</span> <span class="pre">begriff)</span></code> wuerde die Liste als Parameter brauchen. Ueberall im Programm wuerde <code class="docutils literal notranslate"><span class="pre">songs</span></code> weitergegeben. Eine Klasse kapselt die Liste intern und stellt Methoden bereit – der Rest des Programms muss die interne Struktur nicht kennen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suche -- case-insensitiv, Teilstrings, mehrere Felder gleichzeitig</span>
+
+<span class="c1"># Testdaten</span>
+<span class="n">songs</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/a.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span>       <span class="s1">&#39;Queen&#39;</span><span class="p">,</span>        <span class="s1">&#39;A Night at the Opera&#39;</span><span class="p">,</span> <span class="s1">&#39;1975&#39;</span><span class="p">,</span> <span class="mf">354.0</span><span class="p">),</span>
+    <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/b.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Stairway to Heaven&#39;</span><span class="p">,</span>      <span class="s1">&#39;Led Zeppelin&#39;</span><span class="p">,</span> <span class="s1">&#39;Led Zeppelin IV&#39;</span><span class="p">,</span>      <span class="s1">&#39;1971&#39;</span><span class="p">,</span> <span class="mf">482.0</span><span class="p">),</span>
+    <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/c.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>        <span class="s1">&#39;Eagles&#39;</span><span class="p">,</span>       <span class="s1">&#39;Hotel California&#39;</span><span class="p">,</span>     <span class="s1">&#39;1977&#39;</span><span class="p">,</span> <span class="mf">391.0</span><span class="p">),</span>
+    <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/d.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Smells Like Teen Spirit&#39;</span><span class="p">,</span> <span class="s1">&#39;Nirvana&#39;</span><span class="p">,</span>      <span class="s1">&#39;Nevermind&#39;</span><span class="p">,</span>            <span class="s1">&#39;1991&#39;</span><span class="p">,</span> <span class="mf">301.0</span><span class="p">),</span>
+    <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/e.mp3&#39;</span><span class="p">,</span>  <span class="kc">None</span><span class="p">,</span>                     <span class="s1">&#39;The Beatles&#39;</span><span class="p">,</span>  <span class="s1">&#39;Abbey Road&#39;</span><span class="p">,</span>           <span class="s1">&#39;1969&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">suchen</span><span class="p">(</span><span class="n">songs</span><span class="p">,</span> <span class="n">suchbegriff</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gibt alle Songs zurueck die den Suchbegriff in Titel,</span>
+<span class="sd">    Interpret oder Album enthalten.</span>
+<span class="sd">    Case-insensitive, Teilstrings.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">suchbegriff</span><span class="o">.</span><span class="n">strip</span><span class="p">():</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">songs</span><span class="p">)</span>   <span class="c1"># leere Suche -&gt; alles zurueck</span>
+
+    <span class="n">begrif</span> <span class="o">=</span> <span class="n">suchbegriff</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">songs</span><span class="p">:</span>
+        <span class="c1"># In mehreren Feldern gleichzeitig suchen</span>
+        <span class="n">felder</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">song</span><span class="o">.</span><span class="n">titel_anzeige</span><span class="p">,</span>
+            <span class="n">song</span><span class="o">.</span><span class="n">interpret_anzeige</span><span class="p">,</span>
+            <span class="n">song</span><span class="o">.</span><span class="n">album_anzeige</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">begrif</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">felder</span><span class="p">):</span>
+            <span class="n">ergebnis</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ergebnis</span>
+
+
+<span class="c1"># Tests</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Suche &quot;queen&quot;:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suchen</span><span class="p">(</span><span class="n">songs</span><span class="p">,</span> <span class="s1">&#39;queen&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Suche &quot;HEAVEN&quot; (Grossbuchstaben):&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suchen</span><span class="p">(</span><span class="n">songs</span><span class="p">,</span> <span class="s1">&#39;HEAVEN&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Suche &quot;1969&quot; (nur im Album-Jahr):&#39;</span><span class="p">)</span>
+<span class="c1"># Jahr ist kein Suchfeld -- &#39;Abbey Road&#39; wird nicht gefunden wenn man &#39;1969&#39; sucht</span>
+<span class="c1"># Das ist eine bewusste Entscheidung -- man sucht nach Namen, nicht nach Metadaten</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">suchen</span><span class="p">(</span><span class="n">songs</span><span class="p">,</span> <span class="s1">&#39;1969&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  (leer -- Jahr ist kein Suchfeld)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sortierung -- mit None-Behandlung</span>
+<span class="c1"># Das Problem: ein Song ohne Interpret hat interpret=None.</span>
+<span class="c1"># sorted() kann None nicht mit Strings vergleichen.</span>
+
+<span class="c1"># Falscher Ansatz:</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">sorted</span><span class="p">(</span><span class="n">songs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">interpret</span><span class="p">)</span>   <span class="c1"># TypeError: &#39;&lt;&#39; not supported between None and str</span>
+<span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fehler beim naiven Sortieren: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Richtiger Ansatz: None-Werte ans Ende schieben</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sort_key</span><span class="p">(</span><span class="n">song</span><span class="p">,</span> <span class="n">feld</span><span class="p">,</span> <span class="n">absteigend</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">wert</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">song</span><span class="p">,</span> <span class="n">feld</span><span class="p">)</span>   <span class="c1"># dynamisch das gewuenschte Feld lesen</span>
+    <span class="k">if</span> <span class="n">wert</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># None immer ans Ende -- unabhaengig von der Sortierrichtung</span>
+        <span class="k">return</span> <span class="s1">&#39;zzz&#39;</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">absteigend</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">wert</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>   <span class="c1"># case-insensitive</span>
+
+
+<span class="n">sortiert</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">songs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">sort_key</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;interpret&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sortiert nach Interpret (None ans Ende):&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sortiert</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">interpret_anzeige</span><span class="si">:</span><span class="s1">15</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">titel_anzeige</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Duplikaterkennung</span>
+<span class="c1"># Zwei Songs gelten als Duplikat wenn Interpret UND Titel uebereinstimmen.</span>
+<span class="c1"># Strategie: Gruppierung per Dictionary -- Schluessel ist &#39;interpret|titel&#39;</span>
+
+<span class="n">songs_mit_duplikat</span> <span class="o">=</span> <span class="n">songs</span> <span class="o">+</span> <span class="p">[</span>
+    <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/kopie.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Bohemian Rhapsody&#39;</span><span class="p">,</span> <span class="s1">&#39;Queen&#39;</span><span class="p">,</span> <span class="s1">&#39;Greatest Hits&#39;</span><span class="p">,</span> <span class="s1">&#39;1981&#39;</span><span class="p">,</span> <span class="mf">354.0</span><span class="p">),</span>   <span class="c1"># Duplikat!</span>
+<span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">finde_duplikate</span><span class="p">(</span><span class="n">songs</span><span class="p">):</span>
+    <span class="n">gruppen</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">songs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">song</span><span class="o">.</span><span class="n">titel</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">song</span><span class="o">.</span><span class="n">interpret</span><span class="p">:</span>
+            <span class="k">continue</span>   <span class="c1"># Songs ohne Metadaten koennen nicht verglichen werden</span>
+        <span class="c1"># Schluessel: normalisiert auf Kleinschreibung</span>
+        <span class="n">schluessel</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">song</span><span class="o">.</span><span class="n">interpret</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">song</span><span class="o">.</span><span class="n">titel</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">gruppen</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="n">schluessel</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+
+    <span class="c1"># Nur Gruppen mit mehr als einem Song zurueckgeben</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">gruppe</span> <span class="k">for</span> <span class="n">gruppe</span> <span class="ow">in</span> <span class="n">gruppen</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gruppe</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span>
+
+
+<span class="n">duplikate</span> <span class="o">=</span> <span class="n">finde_duplikate</span><span class="p">(</span><span class="n">songs_mit_duplikat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">duplikate</span><span class="p">)</span><span class="si">}</span><span class="s1"> Duplikatgruppe(n) gefunden:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">gruppe</span> <span class="ow">in</span> <span class="n">duplikate</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">gruppe</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">interpret_anzeige</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">gruppe</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">titel_anzeige</span><span class="si">}</span><span class="s1">:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">gruppe</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;    </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">pfad</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+8. Verzeichnis rekursiv scannen mit pathlib
+</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">pathlib.Path.rglob()</span></code> durchsucht ein Verzeichnis rekursiv – also auch alle Unterordner. Das <code class="docutils literal notranslate"><span class="pre">r</span></code> in <code class="docutils literal notranslate"><span class="pre">rglob</span></code> steht fuer <em>recursive</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Testverzeichnis mit Unterordnern anlegen</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">())</span> <span class="o">/</span> <span class="s1">&#39;musik&#39;</span>
+<span class="p">(</span><span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;Rock&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">(</span><span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;Pop&#39;</span> <span class="o">/</span> <span class="s1">&#39;Alben&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Einige Dummy-Dateien anlegen</span>
+<span class="n">dateien</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;song01.mp3&#39;</span><span class="p">,</span>
+    <span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;Rock&#39;</span> <span class="o">/</span> <span class="s1">&#39;song02.mp3&#39;</span><span class="p">,</span>
+    <span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;Rock&#39;</span> <span class="o">/</span> <span class="s1">&#39;song03.MP3&#39;</span><span class="p">,</span>       <span class="c1"># Grossbuchstaben!</span>
+    <span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;Pop&#39;</span> <span class="o">/</span> <span class="s1">&#39;Alben&#39;</span> <span class="o">/</span> <span class="s1">&#39;song04.mp3&#39;</span><span class="p">,</span>
+    <span class="n">basis</span> <span class="o">/</span> <span class="s1">&#39;Pop&#39;</span> <span class="o">/</span> <span class="s1">&#39;notiz.txt&#39;</span><span class="p">,</span>          <span class="c1"># keine MP3</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dateien</span><span class="p">:</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># rglob findet rekursiv alle .mp3-Dateien</span>
+<span class="n">gefunden_klein</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.mp3&#39;</span><span class="p">))</span>
+<span class="n">gefunden_gross</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.MP3&#39;</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*.mp3 (Kleinbuchstaben):&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">gefunden_klein</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;*.MP3 (Grossbuchstaben):&#39;</span><span class="p">,</span> <span class="p">[</span><span class="n">f</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">gefunden_gross</span><span class="p">])</span>
+
+<span class="c1"># Beide zusammenfassen und Duplikate entfernen</span>
+<span class="c1"># dict.fromkeys() entfernt Duplikate und behaelt die Reihenfolge</span>
+<span class="n">alle_mp3</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">gefunden_klein</span> <span class="o">+</span> <span class="n">gefunden_gross</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Insgesamt: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">alle_mp3</span><span class="p">)</span><span class="si">}</span><span class="s1"> MP3-Dateien&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">alle_mp3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+9. Fehlertoleranz beim Scan: eine schlechte Datei stoppt nicht alles
+</span>
+</div><p>Was passiert wenn eine Datei korrupt ist, kein echtes MP3 ist, oder die Rechte fehlen? Ein <code class="docutils literal notranslate"><span class="pre">raise</span></code> wuerde den gesamten Scan abbrechen – alle danach folgenden Dateien werden nicht eingelesen.</p>
+<p>Die bessere Strategie: Fehler pro Datei abfangen, in eine Fehlerliste schreiben, und weitermachen. Am Ende wird die Fehlerliste zusammen mit den Songs zurueckgegeben.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Das Muster: Fehler sammeln statt abbrechen</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">scanne_verzeichnis</span><span class="p">(</span><span class="n">verzeichnis</span><span class="p">,</span> <span class="n">fortschritt_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gibt immer (songs, fehler) zurueck -- nie eine Exception.</span>
+<span class="sd">    Fehler werden gesammelt, der Scan laeuft weiter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">verzeichnis</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">verzeichnis</span><span class="p">)</span>
+
+    <span class="c1"># Verzeichnis existiert? Hier darf eine Exception geworfen werden --</span>
+    <span class="c1"># ein fehlendes Verzeichnis ist ein Programmierfehler, kein Datenfehler.</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">verzeichnis</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">FileNotFoundError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Nicht gefunden: </span><span class="si">{</span><span class="n">verzeichnis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">mp3_dateien</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">verzeichnis</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.mp3&#39;</span><span class="p">))</span> <span class="o">+</span>
+            <span class="nb">list</span><span class="p">(</span><span class="n">verzeichnis</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s1">&#39;*.MP3&#39;</span><span class="p">))</span>
+        <span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="n">songs</span>  <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fehler</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># Fehlermeldungen als Strings</span>
+
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pfad</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">mp3_dateien</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># Fortschritt melden wenn Callback angegeben</span>
+        <span class="k">if</span> <span class="n">fortschritt_callback</span><span class="p">:</span>
+            <span class="n">fortschritt_callback</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mp3_dateien</span><span class="p">),</span> <span class="n">pfad</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">song</span> <span class="o">=</span> <span class="n">lese_song_robust</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span>
+            <span class="n">songs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Song</span><span class="p">(</span><span class="o">**</span><span class="n">song</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Diese Datei ueberspringen, aber nicht den gesamten Scan stoppen</span>
+            <span class="n">fehler</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">pfad</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">songs</span><span class="p">,</span> <span class="n">fehler</span>
+
+
+<span class="c1"># Demonstration mit Fortschritts-Callback</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zeige_fortschritt</span><span class="p">(</span><span class="n">aktuell</span><span class="p">,</span> <span class="n">gesamt</span><span class="p">,</span> <span class="n">dateiname</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  [</span><span class="si">{</span><span class="n">aktuell</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">gesamt</span><span class="si">}</span><span class="s1">] </span><span class="si">{</span><span class="n">dateiname</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">songs_gefunden</span><span class="p">,</span> <span class="n">fehler_liste</span> <span class="o">=</span> <span class="n">scanne_verzeichnis</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span> <span class="n">zeige_fortschritt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">songs_gefunden</span><span class="p">)</span><span class="si">}</span><span class="s1"> Songs eingelesen, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fehler_liste</span><span class="p">)</span><span class="si">}</span><span class="s1"> Fehler.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+10. Modularer Aufbau: Warum drei Dateien?
+</span>
+</div><p>Das Projekt besteht aus drei Dateien mit klar getrennten Verantwortlichkeiten:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modell</span><span class="o">.</span><span class="n">py</span>      <span class="n">Song</span><span class="p">,</span> <span class="n">Bibliothek</span>
+               <span class="n">Kein</span> <span class="n">mutagen</span><span class="p">,</span> <span class="n">kein</span> <span class="n">tkinter</span><span class="p">,</span> <span class="n">kein</span> <span class="nb">print</span><span class="p">()</span>
+               <span class="n">Reine</span> <span class="n">Datenlogik</span> <span class="o">--</span> <span class="n">direkt</span> <span class="n">testbar</span>
+
+<span class="n">scanner</span><span class="o">.</span><span class="n">py</span>     <span class="n">lese_song</span><span class="p">(),</span> <span class="n">scanne_verzeichnis</span><span class="p">()</span>
+               <span class="n">Einzige</span> <span class="n">Stelle</span> <span class="n">die</span> <span class="n">mutagen</span> <span class="n">kennt</span>
+               <span class="n">Gibt</span> <span class="n">Song</span><span class="o">-</span><span class="n">Objekte</span> <span class="n">zurueck</span> <span class="o">--</span> <span class="n">kein</span> <span class="n">tkinter</span><span class="p">,</span> <span class="n">kein</span> <span class="nb">print</span><span class="p">()</span>
+
+<span class="n">gui</span><span class="o">.</span><span class="n">py</span>         <span class="n">MP3App</span><span class="p">,</span> <span class="n">ScanDialog</span><span class="p">,</span> <span class="n">StatistikFenster</span>
+               <span class="n">Importiert</span> <span class="n">modell</span> <span class="n">und</span> <span class="n">scanner</span>
+               <span class="n">Kein</span> <span class="n">mutagen</span> <span class="n">direkt</span> <span class="o">--</span> <span class="n">nur</span> <span class="n">Song</span><span class="o">-</span><span class="n">Objekte</span>
+</pre></div>
+</div>
+<p><strong>Warum diese Trennung?</strong> Weil <code class="docutils literal notranslate"><span class="pre">modell.py</span></code> so vollstaendig ohne GUI getestet werden kann. <code class="docutils literal notranslate"><span class="pre">pytest</span> <span class="pre">test_mp3.py</span></code> laeuft ohne Display, ohne Fenster, ohne mutagen-Dateien im Filesystem. Die Tests in <code class="docutils literal notranslate"><span class="pre">test_mp3.py</span></code> importieren nur <code class="docutils literal notranslate"><span class="pre">modell</span></code> – und koennen alle Logik direkt pruefen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Illustration der Abhaengigkeiten</span>
+<span class="c1"># (kein ausfuehrbarer Code -- nur Darstellung)</span>
+
+<span class="n">ABHAENGIGKEITEN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">test_mp3.py</span>
+<span class="s2">    import modell       -&gt; Song, Bibliothek testen</span>
+<span class="s2">    import scanner      -&gt; scanne_verzeichnis testen (mit echten Testdateien)</span>
+
+<span class="s2">gui.py</span>
+<span class="s2">    import modell       -&gt; Bibliothek als Datenzustand</span>
+<span class="s2">    import scanner      -&gt; Scan in Thread starten</span>
+<span class="s2">    import tkinter      -&gt; Fenster, Canvas, Treeview</span>
+
+<span class="s2">scanner.py</span>
+<span class="s2">    import modell       -&gt; Song-Objekte erstellen</span>
+<span class="s2">    import mutagen      -&gt; MP3-Dateien lesen</span>
+
+<span class="s2">modell.py</span>
+<span class="s2">    import json         -&gt; Persistenz</span>
+<span class="s2">    import pathlib      -&gt; Pfad-Operationen</span>
+<span class="s2">    import dataclasses  -&gt; @dataclass, asdict</span>
+<span class="s2">    -- keine weiteren Abhaengigkeiten --</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ABHAENGIGKEITEN</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+11. Die GUI: Treeview als Songliste
+</span>
+</div><p>Die zentrale GUI-Frage: Welches Widget zeigt eine Liste von Songs am besten?</p>
+<p><code class="docutils literal notranslate"><span class="pre">tk.Listbox</span></code> zeigt eine Liste von Strings – keine Spalten. Fuer eine Songliste mit Titel, Interpret und Album brauchen wir ein tabellarisches Widget: <code class="docutils literal notranslate"><span class="pre">ttk.Treeview</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ttk.Treeview</span></code> ist tkinters eingebautes Tabellen-Widget. Es hat benannte Spalten, klickbare Header und eine Scrollbar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Treeview -- Grundprinzip (nicht ausfuehren: braucht Display)</span>
+<span class="c1"># Dieser Block zeigt die Struktur, kein laufendes Fenster.</span>
+
+<span class="n">TREEVIEW_KONZEPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2"># Spalten definieren</span>
+<span class="s2">tree = ttk.Treeview(</span>
+<span class="s2">    root,</span>
+<span class="s2">    columns=[&#39;titel&#39;, &#39;interpret&#39;, &#39;album&#39;, &#39;jahr&#39;, &#39;dauer&#39;],</span>
+<span class="s2">    show=&#39;headings&#39;   # keine Icon-Spalte links</span>
+<span class="s2">)</span>
+
+<span class="s2"># Spaltenbreiten und Ausrichtung</span>
+<span class="s2">tree.column(&#39;titel&#39;,     width=280, anchor=&#39;w&#39;)</span>
+<span class="s2">tree.column(&#39;interpret&#39;, width=160, anchor=&#39;w&#39;)</span>
+<span class="s2">tree.column(&#39;dauer&#39;,     width=55,  anchor=&#39;center&#39;)</span>
+
+<span class="s2"># Klickbarer Header -- sortiert bei Klick</span>
+<span class="s2">tree.heading(&#39;titel&#39;,     text=&#39;Titel&#39;,     command=lambda: sortiere_nach(&#39;titel&#39;))</span>
+<span class="s2">tree.heading(&#39;interpret&#39;, text=&#39;Interpret&#39;, command=lambda: sortiere_nach(&#39;interpret&#39;))</span>
+
+<span class="s2"># Zeilen einfuegen</span>
+<span class="s2">for song in bibliothek.sortieren():</span>
+<span class="s2">    tree.insert(&#39;&#39;, &#39;end&#39;, values=(</span>
+<span class="s2">        song.titel_anzeige,</span>
+<span class="s2">        song.interpret_anzeige,</span>
+<span class="s2">        song.album_anzeige,</span>
+<span class="s2">        song.jahr_anzeige,</span>
+<span class="s2">        song.dauer_anzeige,</span>
+<span class="s2">    ))</span>
+
+<span class="s2"># Treeview leeren und neu befuellen (bei Suche oder Sortieraenderung)</span>
+<span class="s2">tree.delete(*tree.get_children())   # alle Zeilen loeschen</span>
+<span class="s2"># ...dann wieder einfuegen</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">TREEVIEW_KONZEPT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+12. Das Thread-Problem beim Scannen
+</span>
+</div><p>Wenn <code class="docutils literal notranslate"><span class="pre">scanne_verzeichnis()</span></code> direkt im Haupt-Thread aufgerufen wird, friert das Fenster ein – tkinter kann keine Ereignisse verarbeiten solange Python-Code laeuft.</p>
+<p>Die Loesung: den Scan in einem eigenen Thread starten. Das Ergebnis wird per <code class="docutils literal notranslate"><span class="pre">root.after()</span></code> in den Haupt-Thread zurueckgegeben – das ist die einzige thread-sichere Methode um tkinter zu aktualisieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Das Thread-Muster fuer den Scan (vereinfacht, ohne laufendes Fenster)</span>
+
+<span class="n">THREAD_KONZEPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">import threading</span>
+
+<span class="s2">def scan_starten():</span>
+<span class="s2">    verzeichnis = filedialog.askdirectory()</span>
+<span class="s2">    if not verzeichnis:</span>
+<span class="s2">        return</span>
+
+<span class="s2">    dialog = ScanDialog(root)   # Fortschrittsfenster oeffnen</span>
+
+<span class="s2">    def im_thread():</span>
+<span class="s2">        # Laeuft NICHT im Haupt-Thread.</span>
+<span class="s2">        # Kein tkinter-Zugriff erlaubt!</span>
+
+<span class="s2">        def fortschritt(aktuell, gesamt, name):</span>
+<span class="s2">            # after() delegiert den Update in den Haupt-Thread</span>
+<span class="s2">            root.after(0, dialog.aktualisieren, aktuell, gesamt, name)</span>
+
+<span class="s2">        songs, fehler = scanne_verzeichnis(verzeichnis, fortschritt)</span>
+
+<span class="s2">        # Ergebnis zurueck in den Haupt-Thread</span>
+<span class="s2">        root.after(0, scan_fertig, songs, fehler, dialog)</span>
+
+<span class="s2">    threading.Thread(target=im_thread, daemon=True).start()</span>
+
+
+<span class="s2">def scan_fertig(songs, fehler, dialog):</span>
+<span class="s2">    # Laeuft wieder im Haupt-Thread -- tkinter-Zugriff OK</span>
+<span class="s2">    dialog.destroy()</span>
+<span class="s2">    bibliothek.alle_hinzufuegen(songs)</span>
+<span class="s2">    liste_aktualisieren()</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="c1"># Warum daemon=True?</span>
+<span class="c1"># Ein Daemon-Thread wird automatisch beendet wenn das Hauptprogramm endet.</span>
+<span class="c1"># Ohne daemon=True wuerde Python warten bis der Thread fertig ist --</span>
+<span class="c1"># das Fenster koennte nicht geschlossen werden solange ein Scan laeuft.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Thread-Konzept (ohne laufendes Fenster -- nur zur Illustration)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">THREAD_KONZEPT</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+13. Das Problem der veralteten Bibliothek
+</span>
+</div><p>Die Bibliothek wird als JSON gespeichert. Was passiert wenn der Nutzer danach Dateien loescht oder verschiebt? Beim naechsten Start zeigt die Bibliothek Eintraege fuer Dateien die nicht mehr existieren.</p>
+<p>Die Loesung ist einfach: beim Laden pruefen ob die gespeicherten Pfade noch existieren.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># existiert()-Methode im Song: nutzt pathlib</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Echte Datei anlegen, dann loeschen</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">mktemp</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s1">&#39;.mp3&#39;</span><span class="p">))</span>
+<span class="n">tmp</span><span class="o">.</span><span class="n">write_bytes</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;dummy&#39;</span><span class="p">)</span>
+
+<span class="n">song_existiert</span> <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tmp</span><span class="p">),</span> <span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Interpret&#39;</span><span class="p">)</span>
+<span class="n">song_fehlt</span>     <span class="o">=</span> <span class="n">Song</span><span class="p">(</span><span class="s1">&#39;/gibt/es/nicht.mp3&#39;</span><span class="p">,</span> <span class="s1">&#39;Geloescht&#39;</span><span class="p">,</span> <span class="s1">&#39;Jemand&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">song_existiert</span><span class="o">.</span><span class="n">titel</span><span class="si">}</span><span class="s1">: existiert = </span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">song_existiert</span><span class="o">.</span><span class="n">pfad</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">song_fehlt</span><span class="o">.</span><span class="n">titel</span><span class="si">}</span><span class="s1">:     existiert = </span><span class="si">{</span><span class="n">Path</span><span class="p">(</span><span class="n">song_fehlt</span><span class="o">.</span><span class="n">pfad</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Bibliothek bereinigen: nur existierende Songs behalten</span>
+<span class="n">alle</span> <span class="o">=</span> <span class="p">[</span><span class="n">song_existiert</span><span class="p">,</span> <span class="n">song_fehlt</span><span class="p">]</span>
+<span class="n">fehlende</span>  <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">alle</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pfad</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()]</span>
+<span class="n">vorhandene</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">alle</span> <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">pfad</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Bereinigt: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">vorhandene</span><span class="p">)</span><span class="si">}</span><span class="s1"> vorhanden, </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">fehlende</span><span class="p">)</span><span class="si">}</span><span class="s1"> entfernt&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fehlende</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  Entfernt: </span><span class="si">{</span><span class="n">s</span><span class="o">.</span><span class="n">titel</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">tmp</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span>   <span class="c1"># aufraumen</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+14. Rueckblick: der Weg vom Problem zum Programm
+</span>
+</div><div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Schritt</p></th>
+<th class="head"><p>Was wir getan haben</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td><p>Das Problem konkret beschrieben: chaotische MP3-Sammlung, fehlende Metadaten</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2</strong></p></td>
+<td><p>ID3-Tags verstanden: Schluessel-Wert-Paare, optional, verschiedene Formate</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>3</strong></p></td>
+<td><p>Naiven Tag-Zugriff ausprobiert – drei Fehlerquellen identifiziert</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>4</strong></p></td>
+<td><p>Robuste Hilfsfunktionen gebaut: <code class="docutils literal notranslate"><span class="pre">None</span></code> statt Exception, <code class="docutils literal notranslate"><span class="pre">[:4]</span></code> fuer das Jahr</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>5</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;dataclass</span></code> als Datencontainer gewaehlt – <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">__eq__</span></code> kostenlos, Properties fuer Fallbacks</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>6</strong></p></td>
+<td><p>JSON-Persistenz mit <code class="docutils literal notranslate"><span class="pre">asdict()</span></code> und gefilterten <code class="docutils literal notranslate"><span class="pre">aus_dict()</span></code>-Konstruktoren</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>7</strong></p></td>
+<td><p>Suche, Sortierung und Duplikatserkennung als Bibliothek-Klasse</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>8</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">pathlib.rglob()</span></code> fuer rekursiven Scan, <code class="docutils literal notranslate"><span class="pre">dict.fromkeys()</span></code> fuer Deduplizierung</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>9</strong></p></td>
+<td><p>Fehlertoleranz: Fehler pro Datei sammeln statt den Scan abzubrechen</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>10</strong></p></td>
+<td><p>Drei Dateien mit sauberer Trennung: <code class="docutils literal notranslate"><span class="pre">modell</span></code>, <code class="docutils literal notranslate"><span class="pre">scanner</span></code>, <code class="docutils literal notranslate"><span class="pre">gui</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>11</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ttk.Treeview</span></code> als Tabellen-Widget fuer die Songliste</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>12</strong></p></td>
+<td><p>Scan in eigenem Thread – <code class="docutils literal notranslate"><span class="pre">root.after()</span></code> fuer thread-sicheres GUI-Update</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>13</strong></p></td>
+<td><p>Veraltete Eintraege: <code class="docutils literal notranslate"><span class="pre">Path.is_file()</span></code> prueft ob Dateien noch existieren</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Das zentrale Thema dieses Projekts war <strong>Robustheit gegenueber realen Daten</strong>. Eine Musiksammlung ist kein sauberer Datensatz – Tags fehlen, Formate variieren, Dateien verschwinden. Jede dieser Situationen musste bedacht und abgefangen werden.</p>
+<hr class="docutils" />
+<p><strong>Dateien des Projekts:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">modell</span><span class="o">.</span><span class="n">py</span>        <span class="n">Song</span> <span class="p">(</span><span class="nd">@dataclass</span><span class="p">),</span> <span class="n">Bibliothek</span> <span class="o">--</span> <span class="n">kein</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span><span class="p">,</span> <span class="n">kein</span> <span class="n">GUI</span>
+<span class="n">scanner</span><span class="o">.</span><span class="n">py</span>       <span class="n">lese_song</span><span class="p">(),</span> <span class="n">scanne_verzeichnis</span><span class="p">()</span> <span class="o">--</span> <span class="n">mutagen</span> <span class="n">gekapselt</span>
+<span class="n">gui</span><span class="o">.</span><span class="n">py</span>           <span class="n">tkinter</span><span class="o">-</span><span class="n">GUI</span> <span class="n">mit</span> <span class="n">Treeview</span><span class="p">,</span> <span class="n">ScanDialog</span><span class="p">,</span> <span class="n">Statistiken</span>
+<span class="n">test_mp3</span><span class="o">.</span><span class="n">py</span>      <span class="n">pytest</span><span class="o">-</span><span class="n">Tests</span> <span class="n">fuer</span> <span class="n">Modell</span> <span class="n">und</span> <span class="n">Scanner</span>
+</pre></div>
+</div>
+<p>Starten: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">gui.py</span></code></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_13"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="13_projekt_mp3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Projekt mp3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Kapitel_14/PCAP__100_Fragen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">PCAP-31-03  Fragenpool – 100 Fragen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

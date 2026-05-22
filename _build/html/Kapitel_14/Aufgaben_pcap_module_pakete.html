@@ -1,0 +1,926 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Aufgaben: Pcap module pakete &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_14/Aufgaben_pcap_module_pakete';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Aufgaben: Pcap oop" href="Aufgaben_pcap_oop.html" />
+    <link rel="prev" title="Aufgaben: Pcap list comprehension" href="Aufgaben_pcap_list_comprehension.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_14/Aufgaben_pcap_module_pakete.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Aufgaben: Pcap module pakete</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Aufgaben: Pcap module pakete</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losungen">Lösungen</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="aufgaben-pcap-module-pakete">
+<h1>Aufgaben: Pcap module pakete<a class="headerlink" href="#aufgaben-pcap-module-pakete" title="Link to this heading">#</a></h1>
+<p><strong>Frage 1 von 25</strong></p>
+<p>Wie würden man <code class="docutils literal notranslate"><span class="pre">helper_func</span></code> aus <code class="docutils literal notranslate"><span class="pre">module_y.py</span></code> innerhalb von <code class="docutils literal notranslate"><span class="pre">module_x.py</span></code> importieren?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">mypackage</span> <span class="pre">import</span> <span class="pre">module_y</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">module_y</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.module_y</span> <span class="pre">import</span> <span class="pre">helper_func</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">..mypackage</span> <span class="pre">import</span> <span class="pre">module_y</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">([</span><span class="s1">&#39;cherry&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">])[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cherry
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Frage 2 von 25</strong></p>
+<p>Was enthält eine <code class="docutils literal notranslate"><span class="pre">.pyc</span></code>-Datei?</p>
+<p>A) Kompilierter Python-Code (Bytecode)</p>
+<p>B) Ein Python-Compiler</p>
+<p>C) Ein Python-Interpreter</p>
+<p>D) Python-Quellcode</p>
+<p><strong>Frage 3 von 25</strong></p>
+<p>Angenommen, eine Funktion namens <code class="docutils literal notranslate"><span class="pre">fun()</span></code> befindet sich in einem Modul namens <code class="docutils literal notranslate"><span class="pre">mod</span></code>. Wähle den korrekten Weg, um sie zu importieren, sodass sie direkt mit <code class="docutils literal notranslate"><span class="pre">fun()</span></code> aufgerufen werden kann.</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">mod</span> <span class="pre">import</span> <span class="pre">fun</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">fun</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">fun</span> <span class="pre">from</span> <span class="pre">mod</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">fun</span> <span class="pre">import</span> <span class="pre">mod</span></code></p>
+<p><strong>Frage 4 von 25</strong></p>
+<p>Welche eingebaute Funktion gibt eine Liste aller Attribute zurück, die in einem Modul verfügbar sind?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">listmodule()</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">content()</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">entities()</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">dir()</span></code></p>
+<p><strong>Frage 5 von 25</strong></p>
+<p>Ein Entwickler möchte das Modul <code class="docutils literal notranslate"><span class="pre">settings.py</span></code> aus dem Hauptpaket <code class="docutils literal notranslate"><span class="pre">config</span></code> in einer beliebigen Datei des Projekts importieren. Was ist die empfohlene Methode?</p>
+<p>A) from config import settings</p>
+<p>B) import settings</p>
+<p>C) import config</p>
+<p>D) from settings import config</p>
+<p><strong>Frage 6 von 25</strong></p>
+<p>In welchem Verzeichnis legt Python beim ersten Import eines Moduls die <code class="docutils literal notranslate"><span class="pre">.pyc</span></code>-Dateien ab?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">mymodules</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">hashbang</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">__init__</span></code></p>
+<p><strong>Frage 7 von 25</strong></p>
+<p>Angenommen, eine Funktion namens <code class="docutils literal notranslate"><span class="pre">fun()</span></code> befindet sich in einem Modul namens <code class="docutils literal notranslate"><span class="pre">mod</span></code>, und es wurde mit folgender Zeile importiert:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mod</span>
+</pre></div>
+</div>
+<p>Wählen Sie den Weg, wie die Funktion <code class="docutils literal notranslate"><span class="pre">fun()</span></code> in Ihrem Code aufgerufen werden kann.</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">mod::fun()</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">fun()</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">mod.fun()</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">mod_fun()</span></code></p>
+<p><strong>Frage 8 von 25</strong></p>
+<p>Was ist der erwartete Wert der Variable <code class="docutils literal notranslate"><span class="pre">result</span></code> nachdem der folgende Code ausgeführt wurde?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">e</span> <span class="o">!=</span> <span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>A) True</p>
+<p>B) 0</p>
+<p>C) 1</p>
+<p>D) False</p>
+<p><strong>Frage 9 von 25</strong></p>
+<p>Die folgende Anweisung:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">package_a.module_b</span><span class="w"> </span><span class="kn">import</span> <span class="n">item_c</span>
+</pre></div>
+</div>
+<p>bewirkt den Import von:</p>
+<p>A) Item <code class="docutils literal notranslate"><span class="pre">item_c</span></code> aus Modul <code class="docutils literal notranslate"><span class="pre">module_b</span></code>, welches sich im Paket <code class="docutils literal notranslate"><span class="pre">package_a</span></code> befindet.</p>
+<p>B) Modul <code class="docutils literal notranslate"><span class="pre">module_b</span></code> aus Modul <code class="docutils literal notranslate"><span class="pre">package_a</span></code>, welches sich im Paket <code class="docutils literal notranslate"><span class="pre">item_c</span></code> befindet.</p>
+<p>C) Paket <code class="docutils literal notranslate"><span class="pre">package_a</span></code> aus Modul <code class="docutils literal notranslate"><span class="pre">module_b</span></code>, welches sich im Paket <code class="docutils literal notranslate"><span class="pre">item_c</span></code> befindet.</p>
+<p>D) Item <code class="docutils literal notranslate"><span class="pre">item_c</span></code> aus Modul <code class="docutils literal notranslate"><span class="pre">package_a</span></code>, welches sich im Paket <code class="docutils literal notranslate"><span class="pre">module_b</span></code> befindet.</p>
+<p><strong>Frage 10 von 25</strong></p>
+<p>Welchen Zweck erfüllt die Datei <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in einem Python-Paketverzeichnis?</p>
+<p>A) Sie enthält den Haupt-Quellcode des Pakets.</p>
+<p>B) Sie markiert das Verzeichnis als Python-Paket und kann Initialisierungscode für das Paket enthalten.</p>
+<p>C) Sie wird automatisch generiert und speichert Metadaten über das Paket.</p>
+<p>D) Sie ist optional und hat keine spezielle Funktion.</p>
+<p><strong>Frage 11 von 25</strong></p>
+<p>Wie können Sie alle Namen auflisten, die nach dem Import des <code class="docutils literal notranslate"><span class="pre">math</span></code>-Moduls direkt verfügbar sind?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="c1"># Welcher Code kommt hier hin?</span>
+</pre></div>
+</div>
+<p>A) <code class="docutils literal notranslate"><span class="pre">print(math.list_all())</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">print(dir(math))</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">print(help(math))</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">print(names(math))</span></code></p>
+<p><strong>Frage 12 von 25</strong></p>
+<p>Was ist der Wert der speziellen Variable <code class="docutils literal notranslate"><span class="pre">__name__</span></code>, wenn ein Python-Skript direkt ausgeführt wird?</p>
+<p>A) Der Name der Datei ohne die <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Endung.</p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">&quot;__script__&quot;</span></code></p>
+<p>D) Leerstring</p>
+<p><strong>Frage 13 von 25</strong></p>
+<p>Welche der folgenden Anweisungen importiert das Modul <code class="docutils literal notranslate"><span class="pre">os.path</span></code> und weist ihm den Alias <code class="docutils literal notranslate"><span class="pre">p</span></code> zu?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os.path</span> <span class="pre">as</span> <span class="pre">p</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">os</span> <span class="pre">import</span> <span class="pre">path</span> <span class="pre">as</span> <span class="pre">os.p</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">p</span> <span class="pre">from</span> <span class="pre">os.path</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">alias</span> <span class="pre">os.path</span> <span class="pre">to</span> <span class="pre">p</span></code></p>
+<p><strong>Frage 14 von 25</strong></p>
+<p>Gegeben ist ein Paket <code class="docutils literal notranslate"><span class="pre">tools</span></code> mit einem Modul <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> darin. Wie würdest du die Funktion <code class="docutils literal notranslate"><span class="pre">helper()</span></code> aus <code class="docutils literal notranslate"><span class="pre">utils.py</span></code> importieren, um sie direkt mit <code class="docutils literal notranslate"><span class="pre">helper()</span></code> aufrufen zu können?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">tools.utils.helper</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tools.utils</span> <span class="pre">import</span> <span class="pre">helper</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">helper</span> <span class="pre">from</span> <span class="pre">tools.utils</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">tools.utils.import(helper)</span></code></p>
+<p><strong>Frage 15 von 25</strong></p>
+<p>Was passiert, wenn Sie versuchen, ein nicht existentes Modul zu importieren?</p>
+<p>z.B. <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">non_existent_module</span></code></p>
+<p>A) Das Programm läuft weiter, aber <code class="docutils literal notranslate"><span class="pre">non_existent_module</span></code> ist <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>B) Es wird ein <code class="docutils literal notranslate"><span class="pre">ImportError</span></code> ausgelöst.</p>
+<p>C) Es wird ein <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> ausgelöst.</p>
+<p>D) Es wird ein <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code> ausgelöst.</p>
+<p><strong>Frage 16 von 25</strong></p>
+<p>Welcher Befehl wird verwendet, um eine Liste aller mit <code class="docutils literal notranslate"><span class="pre">pip</span></code> installierten Pakete anzuzeigen?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">show</span> <span class="pre">all</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">installed</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">query</span> <span class="pre">--installed</span></code></p>
+<p><strong>Frage 17 von 25</strong></p>
+<p>Was muss gegeben sein, damit ein Import wie <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">analytics.data</span> <span class="pre">import</span> <span class="pre">reader</span></code> funktioniert?</p>
+<p>A) Die Datei <code class="docutils literal notranslate"><span class="pre">reader.py</span></code> muss im aktuellen Arbeitsverzeichnis liegen</p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">analytics</span></code> und <code class="docutils literal notranslate"><span class="pre">data</span></code> müssen gültige Pakete mit <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code>-Dateien sein</p>
+<p>C) Die Datei <code class="docutils literal notranslate"><span class="pre">reader.py</span></code> muss in <code class="docutils literal notranslate"><span class="pre">sys.argv</span></code> registriert sein</p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">reader</span></code> muss ein Modul in der Standardbibliothek sein</p>
+<p><strong>Frage 18 von 25</strong></p>
+<p>Welche der folgenden Aussagen über die Anweisung <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">math</span> <span class="pre">import</span> <span class="pre">*</span></code> ist im Allgemeinen wahr?</p>
+<p>A) Sie importiert alle Namen aus dem <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul in den globalen Namensraum und gilt als gute Praxis für Lesbarkeit.</p>
+<p>B) Sie importiert alle Namen aus dem <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul in den aktuellen Namensraum und kann zu Namenskonflikten führen, weshalb sie oft vermieden wird.</p>
+<p>C) Sie importiert nur Funktionen, die mit <code class="docutils literal notranslate"><span class="pre">_math</span></code> beginnen.</p>
+<p>D) Sie ist syntaktisch falsch und führt zu einem Fehler.</p>
+<p><strong>Frage 19 von 25</strong></p>
+<p>Betrachte den folgenden Code in einer Datei <code class="docutils literal notranslate"><span class="pre">rechner.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># rechner.py</span>
+<span class="n">PI</span> <span class="o">=</span> <span class="mf">3.14159</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PI in rechner: </span><span class="si">{</span><span class="n">PI</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Und in einer anderen Datei <code class="docutils literal notranslate"><span class="pre">main.py</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># main.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rechner</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">rechner</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Was wird ausgegeben, wenn <code class="docutils literal notranslate"><span class="pre">main.py</span></code> ausgeführt wird?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">PI</span> <span class="pre">in</span> <span class="pre">rechner:</span> <span class="pre">3.14159</span></code> gefolgt von <code class="docutils literal notranslate"><span class="pre">8</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">PI</span> <span class="pre">in</span> <span class="pre">rechner:</span> <span class="pre">3.14159</span></code></p>
+<p>D) Nur ein Fehler, da <code class="docutils literal notranslate"><span class="pre">PI</span></code> nicht in <code class="docutils literal notranslate"><span class="pre">main.py</span></code> definiert ist.</p>
+<p><strong>Frage 20 von 25</strong></p>
+<p>Wie kann der Code aus Frage 19 (<code class="docutils literal notranslate"><span class="pre">rechner.py</span></code>) modifiziert werden, sodass <code class="docutils literal notranslate"><span class="pre">print(f&quot;PI</span> <span class="pre">in</span> <span class="pre">rechner:</span> <span class="pre">{PI}&quot;)</span></code> nur ausgeführt wird, wenn <code class="docutils literal notranslate"><span class="pre">rechner.py</span></code> direkt ausgeführt wird, aber nicht, wenn es importiert wird?</p>
+<p>A) Indem man die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung in eine Funktion <code class="docutils literal notranslate"><span class="pre">main_rechner()</span></code> packt.</p>
+<p>B) Indem man <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__module__&quot;:</span></code> vor die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung setzt.</p>
+<p>C) Indem man <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> vor die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung setzt.</p>
+<p>D) Indem man <code class="docutils literal notranslate"><span class="pre">execute_if_direct:</span> <span class="pre">print(...)</span></code> verwendet.</p>
+<p><strong>Frage 21 von 25</strong></p>
+<p>Welches der folgenden ist <strong>kein</strong> Standardmodul in Python (d.h. es muss typischerweise separat mit <code class="docutils literal notranslate"><span class="pre">pip</span></code> installiert werden)?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">os</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">sys</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">datetime</span></code></p>
+<p><strong>Frage 22 von 25</strong></p>
+<p>Wenn ein Modul <code class="docutils literal notranslate"><span class="pre">mein_modul.py</span></code> vorliegt und es mit <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">mein_modul</span></code> importieren werden soll, wie greift man auf eine Variable <code class="docutils literal notranslate"><span class="pre">meine_variable</span></code> zu, die in <code class="docutils literal notranslate"><span class="pre">mein_modul.py</span></code> definiert ist?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">meine_variable</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">mein_modul.meine_variable</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">mein_modul-&gt;meine_variable</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">get_var(mein_modul,</span> <span class="pre">&quot;meine_variable&quot;)</span></code></p>
+<p><strong>Frage 23 von 25</strong></p>
+<p>Was ist der Zweck des <code class="docutils literal notranslate"><span class="pre">random.seed()</span></code> Funktion im <code class="docutils literal notranslate"><span class="pre">random</span></code> Modul?</p>
+<p>A) Sie generiert eine zufällige Seed-Nummer für spätere Operationen.</p>
+<p>B) Sie initialisiert den Zufallszahlengenerator, sodass Sequenzen von Zufallszahlen reproduzierbar werden, wenn derselbe Seed verwendet wird.</p>
+<p>C) Sie wählt zufällig eine Pflanze aus einer Liste von Samen aus.</p>
+<p>D) Sie löscht alle zuvor generierten Zufallszahlen.</p>
+<p><strong>Frage 24 von 25</strong></p>
+<p>Angenommen, es gibt die folgende Paketstruktur:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>mypackage/
+├── __init__.py
+└── subpackage/
+    ├── __init__.py
+    └── module_a.py (enthält `def my_func(): ...`)
+</pre></div>
+</div>
+<p>Von außerhalb des <code class="docutils literal notranslate"><span class="pre">mypackage</span></code>-Verzeichnisses, wie würde man <code class="docutils literal notranslate"><span class="pre">my_func</span></code> importieren und aufrufen?</p>
+<p>A)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mypackage.subpackage.module_a</span>
+<span class="n">mypackage</span><span class="o">.</span><span class="n">subpackage</span><span class="o">.</span><span class="n">module_a</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>B)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mypackage</span><span class="w"> </span><span class="kn">import</span> <span class="n">module_a</span>
+<span class="n">module_a</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>C)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">module_a</span> <span class="kn">from</span><span class="w"> </span><span class="nn">mypackage.subpackage</span>
+<span class="n">module_a</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>D)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">my_func_</span> <span class="kn">from</span><span class="w"> </span><span class="nn">mypackage.subpackage.module_a</span>
+<span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Frage 25 von 25</strong></p>
+<p>Welcher <code class="docutils literal notranslate"><span class="pre">pip</span></code>-Befehl wird verwendet, um ein Paket namens <code class="docutils literal notranslate"><span class="pre">oldpackage</span></code> zu deinstallieren?</p>
+<p>A) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">remove</span> <span class="pre">oldpackage</span></code></p>
+<p>B) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">delete</span> <span class="pre">oldpackage</span></code></p>
+<p>C) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">oldpackage</span></code></p>
+<p>D) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">erase</span> <span class="pre">oldpackage</span></code></p>
+</section>
+<section id="losungen">
+<h1>Lösungen<a class="headerlink" href="#losungen" title="Link to this heading">#</a></h1>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple">
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">.module_y</span> <span class="pre">import</span> <span class="pre">helper_func</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="2">
+<li><p>A) Kompilierter Python-Code (Bytecode)</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="3">
+<li><p>A) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">mod</span> <span class="pre">import</span> <span class="pre">fun</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="4">
+<li><p>D) <code class="docutils literal notranslate"><span class="pre">dir()</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="5">
+<li><p>A) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">config</span> <span class="pre">import</span> <span class="pre">settings</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="6">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">__pycache__</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="7">
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">mod.fun()</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="8">
+<li><p>C) 1 (Da <code class="docutils literal notranslate"><span class="pre">True</span></code> den Wert 1 hat)</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="9">
+<li><p>A) Item <code class="docutils literal notranslate"><span class="pre">item_c</span></code> aus Modul <code class="docutils literal notranslate"><span class="pre">module_b</span></code>, welches sich im Paket <code class="docutils literal notranslate"><span class="pre">package_a</span></code> befindet.</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="10">
+<li><p>B) Sie markiert das Verzeichnis als Python-Paket und kann Initialisierungscode für das Paket enthalten.</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="11">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">print(dir(math))</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="12">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">&quot;__main__&quot;</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="13">
+<li><p>A) <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">os.path</span> <span class="pre">as</span> <span class="pre">p</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="14">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">tools.utils</span> <span class="pre">import</span> <span class="pre">helper</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="15">
+<li><p>C) Es wird ein <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> ausgelöst.</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="16">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">list</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="17">
+<li><p>B) analytics und data müssen gültige Pakete mit <strong>init</strong>.py-Dateien sein</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="18">
+<li><p>B) Sie importiert alle Namen aus dem <code class="docutils literal notranslate"><span class="pre">math</span></code>-Modul in den aktuellen Namensraum und kann zu Namenskonflikten führen, weshalb sie oft vermieden wird.</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="19">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">PI</span> <span class="pre">in</span> <span class="pre">rechner:</span> <span class="pre">3.14159</span></code> gefolgt von <code class="docutils literal notranslate"><span class="pre">8</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="20">
+<li><p>C) Indem man <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">&quot;__main__&quot;:</span></code> vor die <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisung setzt.</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="21">
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">numpy</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="22">
+<li><p>B) <code class="docutils literal notranslate"><span class="pre">mein_modul.meine_variable</span></code></p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="23">
+<li><p>B) Sie initialisiert den Zufallszahlengenerator, sodass Sequenzen von Zufallszahlen reproduzierbar werden, wenn derselbe Seed verwendet wird.</p></li>
+</ol>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="24">
+<li><p>A)</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mypackage.subpackage.module_a</span>
+<span class="n">mypackage</span><span class="o">.</span><span class="n">subpackage</span><span class="o">.</span><span class="n">module_a</span><span class="o">.</span><span class="n">my_func</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Lösung</strong></p>
+<ol class="arabic simple" start="25">
+<li><p>C) <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">uninstall</span> <span class="pre">oldpackage</span></code></p></li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_14"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Aufgaben_pcap_list_comprehension.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Aufgaben: Pcap list comprehension</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Aufgaben_pcap_oop.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Aufgaben: Pcap oop</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Aufgaben: Pcap module pakete</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#losungen">Lösungen</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

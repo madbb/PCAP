@@ -1,0 +1,147 @@
+format: jb-book
+root: Kapitel_0/00_linksammlung
+
+parts:
+  - caption: Kapitel 1 – Laufzeitmodell & Werkzeuge
+    chapters:
+      - file: Kapitel_1/01a_laufzeitmodell_python
+      - file: Kapitel_1/01b_namespaces_legb
+      - file: Kapitel_1/01c_import_system
+      - file: Kapitel_1/01d_versionsverwaltung_git
+      - file: Kapitel_1/01e_pycharm_debugging
+      - file: Kapitel_1/01f_debugging_step_by_step
+
+  - caption: Kapitel 2 – Module & Pakete
+    chapters:
+      - file: Kapitel_2/02a_Module
+      - file: Kapitel_2/02b_Random_Modul
+      - file: Kapitel_2/02c_Platform_Modul
+      - file: Kapitel_2/02d_Math_Modul
+      - file: Kapitel_2/02e_Pakete
+      - file: Kapitel_2/Aufgaben/01_Aufgaben_Module
+      - file: Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul
+      - file: Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul
+      - file: Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul
+      - file: Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module
+      - file: Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino
+
+  - caption: Kapitel 3 – Funktionale Programmierung
+    chapters:
+      - file: Kapitel_3/03a_funktionen_als_daten
+      - file: Kapitel_3/03b_funktionale_programmierung
+      - file: Kapitel_3/03b2_flexible_parameter
+      - file: Kapitel_3/03c_closures
+      - file: Kapitel_3/03d_decorators
+      - file: Kapitel_3/03e_lambda
+      - file: Kapitel_3/03f_map_filter
+      - file: Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte
+      - file: Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen
+      - file: Kapitel_3/Aufgaben/03c_Aufgaben_Closures
+      - file: Kapitel_3/Aufgaben/03d_Aufgaben_Decorators
+      - file: Kapitel_3/Aufgaben/03e_Aufgaben_Lambda
+      - file: Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter
+      - file: Kapitel_3/Aufgaben/03g_Szenario_PyTunes
+
+  - caption: Kapitel 4 – Objektorientierung
+    chapters:
+      - file: Kapitel_4/04a_oop_grundlagen
+      - file: Kapitel_4/04b_oop_variablen
+      - file: Kapitel_4/04c_oop_introspection
+      - file: Kapitel_4/04d_oop_vererbung
+      - file: Kapitel_4/04e_oop_erweiterung
+      - file: Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen
+      - file: Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen
+      - file: Kapitel_4/Aufgaben/04c_Aufgaben_Introspection
+      - file: Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung
+      - file: Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns
+
+  - caption: Kapitel 5 – Exceptions & Testing
+    chapters:
+      - file: Kapitel_5/05a_exceptions_grundlagen
+      - file: Kapitel_5/05b_exceptions_hierarchie
+      - file: Kapitel_5/05c_eigene_exceptions
+      - file: Kapitel_5/05d_unittests
+      - file: Kapitel_5/05e_multithreading
+      - file: Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen
+      - file: Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie
+      - file: Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions
+
+  - caption: Kapitel 6 – Strings & Regex
+    chapters:
+      - file: Kapitel_6/06a_strings_encoding
+      - file: Kapitel_6/06b_string_methoden
+      - file: Kapitel_6/06c_regex
+      - file: Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding
+      - file: Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden
+      - file: Kapitel_6/Aufgaben/06c_Aufgaben_Regex
+
+  - caption: Kapitel 7 – Dateien & I/O
+    chapters:
+      - file: Kapitel_7/07_io_dateien
+      - file: Kapitel_7/07b_dateien_lesen_schreiben
+      - file: Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen
+      - file: Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben
+      - file: Kapitel_7/Aufgaben/07c_Aufgaben_bytearray
+      - file: Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell
+
+  - caption: Kapitel 8 – Comprehensions & Generatoren
+    chapters:
+      - file: Kapitel_8/08_list_comprehensions
+      - file: Kapitel_8/08b_generators
+      - file: Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions
+      - file: Kapitel_8/Aufgabe/08b_Aufgaben_Generators
+      - file: Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt
+
+  - caption: Kapitel 9 – Prüfungsvorbereitung
+    chapters:
+      - file: Kapitel_9/09a_prep_module_exceptions
+      - file: Kapitel_9/09b_prep_strings
+      - file: Kapitel_9/09c_prep_oop
+      - file: Kapitel_9/09d_prep_misc
+
+  - caption: Kapitel 10 – Testing & CI/CD
+    chapters:
+      - file: Kapitel_10/10a_testing_einfuehrung
+      - file: Kapitel_10/10b_pytest_grundlagen
+      - file: Kapitel_10/10c_pytest_fixtures_coverage
+      - file: Kapitel_10/10d_github_actions
+
+  - caption: Kapitel 11 – Tkinter GUI
+    chapters:
+      - file: Kapitel_11/11a_tkinter_grundlagen
+      - file: Kapitel_11/11b_tkinter_events
+      - file: Kapitel_11/11c_tkinter_listen_tabellen
+      - file: Kapitel_11/11d_tkinter_layout_dialoge
+      - file: Kapitel_11/11b_aufgabe_taschenrechner
+
+  - caption: Kapitel 12 – Web Services & Scraping
+    chapters:
+      - file: Kapitel_12/12a_web_services_rest
+      - file: Kapitel_12/12b_web_scraping
+      - file: Kapitel_12/Aufgaben/aufgaben_12a_web_services
+      - file: Kapitel_12/Aufgaben/aufgaben_12b_web_scraping
+
+  - caption: Kapitel 13 – Projekte
+    chapters:
+      - file: Kapitel_13/13_projekt_mastermind
+      - file: Kapitel_13/13_projekt_mastermind_loesung
+      - file: Kapitel_13/13_projekt_mp3
+      - file: Kapitel_13/13_projekt_mp3_loesung
+
+  - caption: Kapitel 14 – PCAP Prüfungsvorbereitung
+    chapters:
+      - file: Kapitel_14/PCAP__100_Fragen
+      - file: Kapitel_14/Uebungsklausur_40_Fragen
+      - file: Kapitel_14/Uebungsklausur_Loesungen
+      - file: Kapitel_14/Uebungsklausur2_40_Fragen
+      - file: Kapitel_14/Uebungsklausur2_Loesungen
+      - file: Kapitel_14/Uebungsklausur3_40_Fragen
+      - file: Kapitel_14/Uebungsklausur3_Loesungen
+      - file: Kapitel_14/Aufgaben_pcap_exceptions
+      - file: Kapitel_14/Aufgaben_pcap_introspektion
+      - file: Kapitel_14/Aufgaben_pcap_io
+      - file: Kapitel_14/Aufgaben_pcap_list_comprehension
+      - file: Kapitel_14/Aufgaben_pcap_module_pakete
+      - file: Kapitel_14/Aufgaben_pcap_oop
+      - file: Kapitel_14/Aufgaben_pcap_strings
+      - file: Kapitel_14/Aufgaben_pcap_vererbung

@@ -1,0 +1,1587 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tkinter events &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_11/11b_tkinter_events';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tkinter listen tabellen" href="11c_tkinter_listen_tabellen.html" />
+    <link rel="prev" title="Tkinter grundlagen" href="11a_tkinter_grundlagen.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01e_pycharm_debugging.html">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_1/01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_11/11b_tkinter_events.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tkinter events</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tkinter-events">
+<h1>Tkinter events<a class="headerlink" href="#tkinter-events" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">tkinter: Ereignisse und Callbacks</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 11: GUI &nbsp;|&nbsp; Notebook 11b</p>
+</div>
+</div><p><strong>Legende</strong></p>
+<blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook ist kein PCAP-Prüfungsinhalt</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>Hinweis zur Ausführung:</strong> Alle Code-Beispiele müssen als eigenständige <code class="docutils literal notranslate"><span class="pre">.py</span></code>-Dateien ausgeführt werden – in PyCharm oder per <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">dateiname.py</span></code> im Terminal. Der Grund: <code class="docutils literal notranslate"><span class="pre">root.mainloop()</span></code> übergibt die Kontrolle vollständig an tkinter und blockiert den Python-Prozess bis das Fenster geschlossen wird. Im Jupyter-Kernel führt das zum Einfrieren.</p>
+</div></blockquote>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+1. Was ist ein Callback?
+</span>
+</div><p>In 11a haben wir Fenster, Widgets und Layout gebaut – aber die Widgets tun noch nichts. Ein Button der nicht reagiert ist sinnlos. Um Widgets zum Leben zu erwecken, braucht man <strong>Callbacks</strong>.</p>
+<p>Ein <strong>Callback</strong> ist eine Funktion die nicht sofort aufgerufen wird, sondern zu einem späteren Zeitpunkt – nämlich dann wenn ein bestimmtes Ereignis eintritt. Man übergibt die Funktion als Argument und sagt damit: “Wenn der Button geklickt wird, ruf diese Funktion auf.”</p>
+<p>Das Schlüsselprinzip: Man übergibt die <strong>Referenz</strong> auf die Funktion – nicht das Ergebnis des Aufrufs.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">command</span><span class="o">=</span><span class="n">meine_funktion</span>     <span class="c1"># RICHTIG: Referenz -- tkinter ruft sie später auf</span>
+<span class="n">command</span><span class="o">=</span><span class="n">meine_funktion</span><span class="p">()</span>   <span class="c1"># FALSCH:  sofortiger Aufruf -- gibt None zurück</span>
+</pre></div>
+</div>
+<p>Das ist ein Fehler der sehr häufig passiert. Wenn man <code class="docutils literal notranslate"><span class="pre">meine_funktion()</span></code> mit Klammern schreibt, wird die Funktion sofort beim Erstellen des Buttons ausgeführt – und der Rückgabewert (meistens <code class="docutils literal notranslate"><span class="pre">None</span></code>) wird als <code class="docutils literal notranslate"><span class="pre">command</span></code> gesetzt. Der Button tut dann beim Klicken gar nichts. Keine Fehlermeldung, einfach Stille.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_08_callback.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="c1"># Diese Funktion wird als Callback registriert.</span>
+<span class="c1"># Sie wird NICHT sofort aufgerufen -- tkinter ruft sie auf wenn der Nutzer klickt.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_klick</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Button wurde geklickt!&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Erster Callback&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;250x120&#39;</span><span class="p">)</span>
+
+<span class="c1"># command=bei_klick: Referenz auf die Funktion, KEINE Klammern</span>
+<span class="c1"># tkinter speichert die Referenz und ruft sie bei jedem Klick auf</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Klick mich&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">bei_klick</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Zum Vergleich -- was passiert mit Klammern:</span>
+<span class="c1"># command=bei_klick()  &lt;-- bei_klick() wird JETZT ausgefuehrt, gibt None zurueck</span>
+<span class="c1">#                          Der Button bekommt None als command -&gt; tut nichts</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Die Ausgabe <code class="docutils literal notranslate"><span class="pre">'Button</span> <span class="pre">wurde</span> <span class="pre">geklickt!'</span></code> erscheint im Terminal – nicht im Fenster. Das ist für den Anfang in Ordnung. Später schreiben wir die Ausgabe in ein Label im Fenster selbst.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+2. Eingaben auslesen -- entry.get(), entry.delete(), entry.insert()
+</span>
+</div><p>Mit <code class="docutils literal notranslate"><span class="pre">entry.get()</span></code> liest man den aktuellen Inhalt eines Eingabefelds aus. Das klingt einfach – aber es gibt drei Details die man kennen muss:</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">get()</span></code> gibt immer einen String zurück – auch wenn der Nutzer eine Zahl eingibt.</strong> <code class="docutils literal notranslate"><span class="pre">'42'</span></code> ist nicht dasselbe wie <code class="docutils literal notranslate"><span class="pre">42</span></code>. Wenn man mit der Eingabe rechnen will, muss man sie zuerst umwandeln: <code class="docutils literal notranslate"><span class="pre">int(entry.get())</span></code> oder <code class="docutils literal notranslate"><span class="pre">float(entry.get())</span></code>. Diese Umwandlung kann scheitern – sie gehört immer in einen <code class="docutils literal notranslate"><span class="pre">try/except</span></code>-Block.</p>
+<p><strong>Leeres Feld:</strong> Wenn das Eingabefeld leer ist, gibt <code class="docutils literal notranslate"><span class="pre">get()</span></code> einen leeren String <code class="docutils literal notranslate"><span class="pre">''</span></code> zurück – nicht <code class="docutils literal notranslate"><span class="pre">None</span></code>. Das ist wichtig für die Fehlerbehandlung: <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">not</span> <span class="pre">entry.get()</span></code> prüft ob das Feld leer ist.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">entry.delete(start,</span> <span class="pre">end)</span></code></strong> – löscht Zeichen aus dem Eingabefeld. Die beiden Parameter sind Zeichenpositionen: <code class="docutils literal notranslate"><span class="pre">0</span></code> ist das erste Zeichen, <code class="docutils literal notranslate"><span class="pre">tk.END</span></code> ist eine tkinter-Konstante die “bis zum Ende” bedeutet. <code class="docutils literal notranslate"><span class="pre">entry.delete(0,</span> <span class="pre">tk.END)</span></code> löscht also den gesamten Inhalt. Man kann auch nur Teile löschen: <code class="docutils literal notranslate"><span class="pre">entry.delete(0,</span> <span class="pre">3)</span></code> löscht die ersten drei Zeichen.</p>
+<p><strong>Was ist <code class="docutils literal notranslate"><span class="pre">tk.END</span></code>?</strong> Eine von tkinter definierte Konstante – ihr Wert ist der String <code class="docutils literal notranslate"><span class="pre">'end'</span></code>. tkinter benutzt solche Konstanten an vielen Stellen. Man könnte <code class="docutils literal notranslate"><span class="pre">entry.delete(0,</span> <span class="pre">'end')</span></code> schreiben und es wäre dasselbe – aber <code class="docutils literal notranslate"><span class="pre">tk.END</span></code> ist lesbarer und weniger fehleranfällig.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">entry.insert(position,</span> <span class="pre">text)</span></code></strong> – fügt Text an einer Position ein. <code class="docutils literal notranslate"><span class="pre">entry.insert(0,</span> <span class="pre">'Hallo')</span></code> fügt am Anfang ein. <code class="docutils literal notranslate"><span class="pre">entry.insert(tk.END,</span> <span class="pre">'</span> <span class="pre">Welt')</span></code> hängt am Ende an. Wenn man das Feld komplett neu befüllen will, löscht man zuerst mit <code class="docutils literal notranslate"><span class="pre">delete(0,</span> <span class="pre">tk.END)</span></code> und fügt dann neu ein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_09_entry.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">auslesen</span><span class="p">():</span>
+    <span class="n">inhalt</span> <span class="o">=</span> <span class="n">eingabe</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>           <span class="c1"># gibt immer einen String zurueck!</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Inhalt: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1"># repr() macht leer vs. Text sichtbar</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Typ: </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>    <span class="c1"># immer &lt;class &#39;str&#39;&gt;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">leeren</span><span class="p">():</span>
+    <span class="c1"># delete(start, end): loescht von Position 0 bis zum Ende</span>
+    <span class="c1"># tk.END ist eine Konstante -- ihr Wert ist der String &#39;end&#39;</span>
+    <span class="n">eingabe</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">neu_befuellen</span><span class="p">():</span>
+    <span class="n">eingabe</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>        <span class="c1"># erst loeschen -- sonst wird Text nur angehaengt</span>
+    <span class="n">eingabe</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Hallo Welt&#39;</span><span class="p">)</span>  <span class="c1"># dann neu einsetzen -- 0 = am Anfang</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">anhaengen</span><span class="p">():</span>
+    <span class="c1"># insert(tk.END, text): haengt Text ans Ende des bestehenden Inhalts an</span>
+    <span class="n">eingabe</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Entry-Methoden&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x200&#39;</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Eingabefeld:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># width=30: Breite in ZEICHEN -- nicht Pixel (wie bei allen Entry- und Button-Widgets)</span>
+<span class="n">eingabe</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Auslesen&#39;</span><span class="p">,</span>     <span class="n">command</span><span class="o">=</span><span class="n">auslesen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>    <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Leeren&#39;</span><span class="p">,</span>       <span class="n">command</span><span class="o">=</span><span class="n">leeren</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>      <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Befuellen&#39;</span><span class="p">,</span>    <span class="n">command</span><span class="o">=</span><span class="n">neu_befuellen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;! anhaengen&#39;</span><span class="p">,</span>  <span class="n">command</span><span class="o">=</span><span class="n">anhaengen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>   <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Fehlerbehandlung in Callbacks -- warum try/except Pflicht ist</span>
+</div><p>Was passiert wenn man <code class="docutils literal notranslate"><span class="pre">int(entry.get())</span></code> aufruft und das Feld leer ist oder Text enthält? Ein <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>. In einem normalen Python-Skript würde der Fehler im Terminal erscheinen und das Programm beenden. In tkinter ist das anders.</p>
+<p><strong>tkinter schluckt Fehler in Callbacks manchmal stillschweigend.</strong> Das Fenster bleibt offen, der Button tut nichts, und man sieht keine Fehlermeldung. Das ist gefährlicher als ein Programmabsturz – man weiß nicht warum etwas nicht funktioniert.</p>
+<p>Deshalb gilt in tkinter: <strong>Callbacks immer mit try/except absichern.</strong> Fehler müssen explizit behandelt werden. Die beste Strategie: Fehlermeldungen direkt im Fenster anzeigen, zum Beispiel indem man ein Label rot einfärbt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_10_fehler.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># float() statt int() -- akzeptiert auch Dezimalzahlen</span>
+        <span class="n">wert</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">eingabe</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>      <span class="c1"># kann ValueError werfen wenn kein gueltiger Wert</span>
+        <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">wert</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="c1"># Ergebnis anzeigen -- Textfarbe auf schwarz zuruecksetzen</span>
+        <span class="n">anzeige</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Ergebnis: </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># Fehlermeldung IM FENSTER anzeigen -- nicht auf der Konsole</span>
+        <span class="c1"># fg=&#39;red&#39;: Textfarbe auf rot setzen damit der Fehler auffaellt</span>
+        <span class="n">anzeige</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Bitte eine gueltige Zahl eingeben!&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fehlerbehandlung&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;300x140&#39;</span><span class="p">)</span>
+
+<span class="n">eingabe</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Berechnen (Wert * 2)&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">berechne</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1"># Dieses Label zeigt entweder das Ergebnis oder eine Fehlermeldung</span>
+<span class="c1"># Am Anfang ist es leer</span>
+<span class="n">anzeige</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">anzeige</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+3. Widgets dynamisch ändern -- .config() und die Dictionary-Syntax
+</span>
+</div><p>Aus 11a kennen wir <code class="docutils literal notranslate"><span class="pre">.config()</span></code> – damit kann man Parameter eines Widgets nachträglich ändern. Das ist der Standardweg um die Oberfläche dynamisch zu aktualisieren.</p>
+<p>Man kann alle Parameter die man beim Erstellen angegeben hat auch nachträglich ändern: <code class="docutils literal notranslate"><span class="pre">text</span></code>, <code class="docutils literal notranslate"><span class="pre">bg</span></code>, <code class="docutils literal notranslate"><span class="pre">fg</span></code>, <code class="docutils literal notranslate"><span class="pre">font</span></code>, <code class="docutils literal notranslate"><span class="pre">width</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code> und mehr.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">.cget(parametername)</span></code></strong> – liest den aktuellen Wert eines Parameters aus:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aktueller_text</span> <span class="o">=</span> <span class="n">label</span><span class="o">.</span><span class="n">cget</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)</span>   <span class="c1"># gibt den aktuellen Text zurück</span>
+</pre></div>
+</div>
+<p><strong>Alternative Schreibweise mit Dictionary-Syntax:</strong> In fremdem Code sieht man häufig eine andere Schreibweise:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Neuer Text&#39;</span><span class="p">)</span>   <span class="c1"># Variante A -- am gebräuchlichsten</span>
+<span class="n">label</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Neuer Text&#39;</span>      <span class="c1"># Variante B -- Dictionary-Syntax</span>
+</pre></div>
+</div>
+<p>Beide tun exakt dasselbe. Variante B sieht aus wie ein Dictionary-Zugriff – und das ist kein Zufall. tkinter speichert Widget-Optionen intern tatsächlich ähnlich wie ein Dictionary. Man liest auch so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>    <span class="c1"># wie label.cget(&#39;text&#39;)</span>
+</pre></div>
+</div>
+<p>Variante A bevorzugen weil lesbarer – aber Variante B in fremdem Code erkennen können.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_11_config.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rot</span><span class="p">():</span>
+    <span class="c1"># .config() aendert mehrere Parameter auf einmal</span>
+    <span class="n">anzeige</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Rot!&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gruen</span><span class="p">():</span>
+    <span class="n">anzeige</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Gruen!&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightgreen&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">zurueck</span><span class="p">():</span>
+    <span class="c1"># Variante B: Dictionary-Syntax -- tut dasselbe wie .config()</span>
+    <span class="n">anzeige</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Normal&#39;</span>
+    <span class="n">anzeige</span><span class="p">[</span><span class="s1">&#39;bg&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="s1">&#39;lightyellow&#39;</span>
+    <span class="n">anzeige</span><span class="p">[</span><span class="s1">&#39;fg&#39;</span><span class="p">]</span>   <span class="o">=</span> <span class="s1">&#39;black&#39;</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">aktuellen_text_ausgeben</span><span class="p">():</span>
+    <span class="c1"># .cget(&#39;parametername&#39;) liest den aktuellen Wert eines Parameters</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Aktueller Text: </span><span class="si">{</span><span class="n">anzeige</span><span class="o">.</span><span class="n">cget</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Gleich mit []: </span><span class="si">{</span><span class="n">anzeige</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;.config() und Dictionary-Syntax&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x180&#39;</span><span class="p">)</span>
+
+<span class="c1"># Das Label das veraendert wird</span>
+<span class="c1"># width=20: Breite in Zeichen -- verhindert dass das Fenster bei kurzem Text schrumpft</span>
+<span class="n">anzeige</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Normal&#39;</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">13</span><span class="p">))</span>
+<span class="n">anzeige</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># Buttons in einer Reihe</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Rot&#39;</span><span class="p">,</span>           <span class="n">command</span><span class="o">=</span><span class="n">rot</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>                  <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Gruen&#39;</span><span class="p">,</span>         <span class="n">command</span><span class="o">=</span><span class="n">gruen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>                <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Normal&#39;</span><span class="p">,</span>        <span class="n">command</span><span class="o">=</span><span class="n">zurueck</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>              <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Text ausgeben&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">aktuellen_text_ausgeben</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+4. StringVar, IntVar, BooleanVar -- tkinter-Variablen
+</span>
+</div><p>Es gibt eine elegantere Alternative zu <code class="docutils literal notranslate"><span class="pre">entry.get()</span></code> und <code class="docutils literal notranslate"><span class="pre">label.config()</span></code> – tkinters eigene <strong>Variable-Klassen</strong>.</p>
+<p>Was sind das? Spezielle Objekte die einen Wert speichern – und alle Widgets die mit dieser Variable verbunden sind, aktualisieren sich automatisch wenn der Wert sich ändert. Man muss nicht manuell mit <code class="docutils literal notranslate"><span class="pre">.config()</span></code> nachziehen.</p>
+<p>tkinter kennt vier Variable-Klassen:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Klasse</p></th>
+<th class="head"><p>Speichert</p></th>
+<th class="head"><p>Verwendung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tk.StringVar()</span></code></p></td>
+<td><p>Text (<code class="docutils literal notranslate"><span class="pre">str</span></code>)</p></td>
+<td><p>Entry, Label, Optionmenus</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.IntVar()</span></code></p></td>
+<td><p>Ganzzahl (<code class="docutils literal notranslate"><span class="pre">int</span></code>)</p></td>
+<td><p>Checkbutton, Radiobutton</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tk.DoubleVar()</span></code></p></td>
+<td><p>Dezimalzahl (<code class="docutils literal notranslate"><span class="pre">float</span></code>)</p></td>
+<td><p>Scale-Widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.BooleanVar()</span></code></p></td>
+<td><p>Wahrheitswert (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</p></td>
+<td><p>Checkbutton</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Man verbindet ein Widget mit einer Variablen über den <code class="docutils literal notranslate"><span class="pre">textvariable=</span></code>-Parameter (bei Entry und Label) oder den <code class="docutils literal notranslate"><span class="pre">variable=</span></code>-Parameter (bei Checkbutton und Radiobutton):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mein_text</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>                          <span class="c1"># Variable erstellen</span>
+<span class="n">entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">mein_text</span><span class="p">)</span>      <span class="c1"># Entry verbinden</span>
+<span class="n">label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">mein_text</span><span class="p">)</span>      <span class="c1"># Label verbinden</span>
+</pre></div>
+</div>
+<p>Jetzt sind Entry und Label <strong>mit derselben Variable</strong> verbunden. Was der Nutzer ins Entry-Feld tippt, erscheint sofort im Label. Man braucht keinen Button und keinen Callback.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">.get()</span></code> und <code class="docutils literal notranslate"><span class="pre">.set()</span></code></strong> sind die Methoden um den Wert zu lesen und zu setzen:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mein_text</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Hallo&#39;</span><span class="p">)</span>    <span class="c1"># Wert setzen -- alle verbundenen Widgets aktualisieren sich</span>
+<span class="n">wert</span> <span class="o">=</span> <span class="n">mein_text</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>    <span class="c1"># Wert lesen</span>
+</pre></div>
+</div>
+<p><strong>Wann <code class="docutils literal notranslate"><span class="pre">entry.get()</span></code>, wann <code class="docutils literal notranslate"><span class="pre">StringVar</span></code>?</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">entry.get()</span></code> ist einfacher wenn man den Wert nur einmal beim Button-Klick braucht</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">StringVar</span></code> ist eleganter wenn mehrere Widgets denselben Wert teilen sollen, oder wenn man auf jede Änderung sofort reagieren will (mit <code class="docutils literal notranslate"><span class="pre">trace</span></code> – dazu gleich mehr)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_12_stringvar.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;StringVar&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;320x200&#39;</span><span class="p">)</span>
+
+<span class="c1"># StringVar erstellen -- noch mit keinem Widget verbunden</span>
+<span class="n">eingabe_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Eingabe:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># textvariable=: verbindet das Entry mit der StringVar</span>
+<span class="c1"># Jede Aenderung im Feld aktualisiert automatisch eingabe_var</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">eingabe_var</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Vorschau (live):&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Dieses Label zeigt automatisch was im Entry steht --</span>
+<span class="c1"># ohne Button, ohne Callback, einfach weil es dieselbe Variable teilt</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">eingabe_var</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">28</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">vorbefuellen</span><span class="p">():</span>
+    <span class="c1"># .set() setzt den Wert der Variable --</span>
+    <span class="c1"># BEIDE verbundenen Widgets (Entry und Label) aktualisieren sich sofort</span>
+    <span class="n">eingabe_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;Hallo Welt&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">wert_lesen</span><span class="p">():</span>
+    <span class="c1"># .get() liest den aktuellen Wert -- egal ob Entry oder Variable</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Aktueller Wert: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">eingabe_var</span><span class="o">.</span><span class="n">get</span><span class="p">())</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Vorbefuellen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">vorbefuellen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Wert ausgeben&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">wert_lesen</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">trace_add -- bei jeder Änderung reagieren</span>
+</div><p>Mit <code class="docutils literal notranslate"><span class="pre">textvariable=</span></code> aktualisieren sich Widgets automatisch – aber man kann noch einen Schritt weitergehen: Eine eigene Funktion aufrufen die bei <strong>jeder Änderung</strong> ausgeführt wird. Das nennt sich <strong>Trace</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">var</span><span class="o">.</span><span class="n">trace_add</span><span class="p">(</span><span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">'write'</span></code> bedeutet: reagiere wenn der Wert der Variable geschrieben (verändert) wird. Es gibt auch <code class="docutils literal notranslate"><span class="pre">'read'</span></code> (beim Lesen) und <code class="docutils literal notranslate"><span class="pre">'unset'</span></code> (beim Löschen) – aber <code class="docutils literal notranslate"><span class="pre">'write'</span></code> ist bei weitem das Häufigste.</p>
+<p><strong>Der Callback bekommt drei Argumente</strong> die tkinter intern braucht – man nennt sie per Konvention <code class="docutils literal notranslate"><span class="pre">name</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code>. Man braucht sie fast nie, muss sie aber in der Signatur stehen haben:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bei_aenderung</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="n">aktueller_wert</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p><strong>Typischer Einsatz:</strong> Suchfeld das die Liste sofort filtert während der Nutzer tippt – ohne dass der Nutzer einen Button drücken muss. Oder ein Passwortfeld das die Stärke live anzeigt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_13_trace.py -- Live-Zeichenzaehler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_eingabe</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">mode</span><span class="p">):</span>
+    <span class="c1"># Diese Funktion wird bei JEDER Aenderung der Variable aufgerufen --</span>
+    <span class="c1"># also bei jedem Tastendruck, nicht erst beim Klick auf einen Button.</span>
+    <span class="c1"># name, index, mode: interne tkinter-Argumente -- hier nicht benoetigt,</span>
+    <span class="c1"># muessen aber in der Signatur stehen</span>
+    <span class="n">aktuell</span> <span class="o">=</span> <span class="n">eingabe_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="n">anzahl</span>  <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">aktuell</span><span class="p">)</span>
+
+    <span class="c1"># Zeichenzaehler aktualisieren</span>
+    <span class="n">zaehler_var</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">anzahl</span><span class="si">}</span><span class="s1"> / 50 Zeichen&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Farbe wechseln wenn nahe am Limit</span>
+    <span class="k">if</span> <span class="n">anzahl</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+        <span class="n">zaehler_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">anzahl</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">:</span>
+        <span class="n">zaehler_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">zaehler_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Vorschau aktualisieren (auch ohne textvariable moeglich)</span>
+    <span class="n">vorschau</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">aktuell</span> <span class="k">if</span> <span class="n">aktuell</span> <span class="k">else</span> <span class="s1">&#39;(leer)&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;trace_add -- Live-Reaktion&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;350x180&#39;</span><span class="p">)</span>
+
+<span class="n">eingabe_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">()</span>
+<span class="n">zaehler_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;0 / 50 Zeichen&#39;</span><span class="p">)</span>
+
+<span class="c1"># &#39;write&#39;: Callback ausfuehren wenn Variable VERAENDERT wird</span>
+<span class="c1"># bei_eingabe wird bei jedem Tastendruck aufgerufen</span>
+<span class="n">eingabe_var</span><span class="o">.</span><span class="n">trace_add</span><span class="p">(</span><span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="n">bei_eingabe</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Nachricht:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">eingabe_var</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1"># Zeichenzaehler -- textvariable zeigt den Zaehlertext live</span>
+<span class="n">zaehler_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">textvariable</span><span class="o">=</span><span class="n">zaehler_var</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">zaehler_label</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Vorschau:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">vorschau</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;(leer)&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">vorschau</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+5. Checkbutton und Radiobutton
+</span>
+</div><p>Bisher haben wir nur Buttons und Entry-Felder gesehen. Für Ja/Nein-Entscheidungen und Auswahlgruppen gibt es zwei weitere wichtige Widgets.</p>
+<p><strong>Checkbutton</strong> – eine Checkbox die an- und abgehakt werden kann. Jede Checkbox ist unabhängig von den anderen. Man verbindet sie mit einer <code class="docutils literal notranslate"><span class="pre">BooleanVar</span></code> (oder <code class="docutils literal notranslate"><span class="pre">IntVar</span></code>) über den <code class="docutils literal notranslate"><span class="pre">variable=</span></code>-Parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">opt_a</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">()</span>   <span class="c1"># speichert True/False</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Option A&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">opt_a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">opt_a.get()</span></code> gibt <code class="docutils literal notranslate"><span class="pre">True</span></code> zurück wenn die Box angehakt ist, <code class="docutils literal notranslate"><span class="pre">False</span></code> wenn nicht. Man kann auch direkt setzen: <code class="docutils literal notranslate"><span class="pre">opt_a.set(True)</span></code> setzt die Checkbox.</p>
+<p><strong>Radiobutton</strong> – mehrere Optionen von denen immer genau eine ausgewählt ist (wie bei alten Radiogeräten). Alle Radiobuttons einer Gruppe teilen dieselbe <code class="docutils literal notranslate"><span class="pre">StringVar</span></code> oder <code class="docutils literal notranslate"><span class="pre">IntVar</span></code>. Jeder Button hat einen eigenen <code class="docutils literal notranslate"><span class="pre">value</span></code> der in die Variable geschrieben wird wenn er ausgewählt wird:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">auswahl</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>   <span class="c1"># Startwert</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Option A&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">auswahl</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Option B&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">auswahl</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Option C&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">auswahl</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Wenn der Nutzer “Option B” anklickt, setzt tkinter automatisch <code class="docutils literal notranslate"><span class="pre">auswahl.set('b')</span></code>. Die anderen Buttons werden dabei automatisch abgewählt. <code class="docutils literal notranslate"><span class="pre">auswahl.get()</span></code> gibt dann <code class="docutils literal notranslate"><span class="pre">'b'</span></code> zurück.</p>
+<p><strong>Warum <code class="docutils literal notranslate"><span class="pre">BooleanVar</span></code> für Checkbutton und nicht <code class="docutils literal notranslate"><span class="pre">StringVar</span></code>?</strong> Weil <code class="docutils literal notranslate"><span class="pre">BooleanVar</span></code> direkt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code> zurückgibt statt <code class="docutils literal notranslate"><span class="pre">'1'</span></code>/<code class="docutils literal notranslate"><span class="pre">'0'</span></code> – das macht die Abfrage einfacher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_14_check_radio.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">auswerten</span><span class="p">():</span>
+    <span class="n">zeilen</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Checkbuttons: .get() gibt True oder False zurueck</span>
+    <span class="n">zeilen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Tomaten:  </span><span class="si">{</span><span class="s2">&quot;Ja&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">tomaten_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;Nein&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">zeilen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Kaese:    </span><span class="si">{</span><span class="s2">&quot;Ja&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">kaese_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="w">   </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;Nein&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">zeilen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Oliven:   </span><span class="si">{</span><span class="s2">&quot;Ja&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">oliven_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;Nein&quot;</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Radiobutton: .get() gibt den value des ausgewaehlten Buttons zurueck</span>
+    <span class="n">zeilen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Groesse:  </span><span class="si">{</span><span class="n">groesse_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">ergebnis</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">zeilen</span><span class="p">))</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Checkbutton und Radiobutton&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;280x320&#39;</span><span class="p">)</span>
+
+<span class="c1"># --- Checkbuttons ---</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Zutaten:&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># BooleanVar: speichert True/False je nach Hakenstatus</span>
+<span class="c1"># value=False: am Anfang nicht angehakt</span>
+<span class="n">tomaten_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">kaese_var</span>   <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1"># am Anfang angehakt</span>
+<span class="n">oliven_var</span>  <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">BooleanVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># variable=: verbindet den Checkbutton mit der BooleanVar</span>
+<span class="c1"># Haken setzen -&gt; var.get() gibt True zurueck</span>
+<span class="c1"># Haken loesen -&gt; var.get() gibt False zurueck</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Tomaten&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">tomaten_var</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Kaese&#39;</span><span class="p">,</span>   <span class="n">variable</span><span class="o">=</span><span class="n">kaese_var</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>  <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Checkbutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Oliven&#39;</span><span class="p">,</span>  <span class="n">variable</span><span class="o">=</span><span class="n">oliven_var</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># --- Radiobuttons ---</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Groesse:&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;bold&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># StringVar: alle drei Radiobuttons teilen DIESELBE Variable</span>
+<span class="c1"># value=&#39;M&#39;: Startwert -- &#39;M&#39; ist am Anfang ausgewaehlt</span>
+<span class="n">groesse_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span>
+
+<span class="c1"># variable= und value=: alle drei zeigen auf dieselbe Variable,</span>
+<span class="c1"># haben aber verschiedene value= -- das unterscheidet sie</span>
+<span class="c1"># Wenn der Nutzer &#39;S&#39; waehlt: groesse_var.get() gibt &#39;S&#39; zurueck</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Klein (S)&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">groesse_var</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;S&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Mittel (M)&#39;</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="n">groesse_var</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Gross (L)&#39;</span><span class="p">,</span>  <span class="n">variable</span><span class="o">=</span><span class="n">groesse_var</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;L&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Bestellung anzeigen&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">auswerten</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># justify=&#39;left&#39;: mehrzeiliger Text linksbuendig ausrichten</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Courier&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">ergebnis</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+6. Lambda bei command -- Argumente an Callbacks übergeben
+</span>
+</div><p>Was wenn man einer Callback-Funktion ein Argument mitgeben will? <code class="docutils literal notranslate"><span class="pre">command=</span></code> erwartet eine Funktion ohne Argumente – man kann nicht einfach <code class="docutils literal notranslate"><span class="pre">command=meine_funktion('hallo')</span></code> schreiben, weil das die Funktion sofort aufrufen würde (Klammernproblem von Abschnitt 1).</p>
+<p>Die Lösung: <strong>lambda</strong>. Man verpackt den Aufruf in eine parameterlose Lambda-Funktion:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">meine_funktion</span><span class="p">(</span><span class="s1">&#39;hallo&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Das erzeugt eine neue, parameterlose Funktion. tkinter speichert die Referenz auf diese Lambda-Funktion. Beim Klick ruft tkinter die Lambda auf – und die Lambda ruft dann <code class="docutils literal notranslate"><span class="pre">meine_funktion('hallo')</span></code> auf.</p>
+<p>Das ist besonders nützlich wenn man mehrere Buttons hat die dieselbe Funktion aufrufen, aber mit verschiedenen Argumenten.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Die Schleifenfalle -- warum lambda f=farbe statt lambda: farbe</span>
+</div><p>Wenn man Buttons in einer Schleife erzeugt, gibt es eine gefährliche Falle:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">farben</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;rot&#39;</span><span class="p">,</span> <span class="s1">&#39;gruen&#39;</span><span class="p">,</span> <span class="s1">&#39;blau&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">farbe</span> <span class="ow">in</span> <span class="n">farben</span><span class="p">:</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">farbe</span><span class="p">))</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Man erwartet drei Buttons die jeweils ihre Farbe ausgeben. Tatsächlich geben alle drei <code class="docutils literal notranslate"><span class="pre">'blau'</span></code> aus – den letzten Wert der Schleifenvariable.</p>
+<p><strong>Warum?</strong> Weil Lambda keine eigene Kopie von <code class="docutils literal notranslate"><span class="pre">farbe</span></code> erstellt – es speichert nur die Referenz auf die Variable. Nach der Schleife hat <code class="docutils literal notranslate"><span class="pre">farbe</span></code> den Wert <code class="docutils literal notranslate"><span class="pre">'blau'</span></code>. Alle drei Lambdas zeigen auf dieselbe Variable und lesen beim Klick <code class="docutils literal notranslate"><span class="pre">'blau'</span></code>.</p>
+<p><strong>Die Lösung:</strong> Den Wert zum Zeitpunkt der Lambda-Erstellung einfrieren mit einem Default-Argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">command</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="o">=</span><span class="n">farbe</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>   <span class="c1"># f=farbe: Wert jetzt festhalten</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">f=farbe</span></code> ist ein Default-Parameter der Lambda. Er wird sofort beim Erstellen ausgewertet – nicht erst beim Aufruf. Jede Lambda bekommt so ihren eigenen eingefrorenen Wert. Das ist dasselbe Prinzip das wir aus den Closures in Kapitel 3 kennen.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_15_lambda.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">setze_hintergrund</span><span class="p">(</span><span class="n">farbe</span><span class="p">):</span>
+    <span class="c1"># Diese Funktion erwartet ein Argument -- command= kann sie nicht direkt benutzen</span>
+    <span class="n">hintergrund</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="n">farbe</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lambda bei command&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;350x220&#39;</span><span class="p">)</span>
+
+<span class="n">hintergrund</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">hintergrund</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">button_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">hintergrund</span><span class="p">)</span>
+<span class="n">button_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Alle vier Buttons rufen dieselbe Funktion auf, aber mit verschiedenem Argument.</span>
+<span class="c1"># lambda loest das Problem -- ohne lambda muesste man vier separate Funktionen schreiben.</span>
+<span class="n">farben</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;Rot&#39;</span><span class="p">,</span>    <span class="s1">&#39;lightcoral&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Gruen&#39;</span><span class="p">,</span>  <span class="s1">&#39;lightgreen&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Blau&#39;</span><span class="p">,</span>   <span class="s1">&#39;lightblue&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;Gelb&#39;</span><span class="p">,</span>   <span class="s1">&#39;lightyellow&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">farbe</span> <span class="ow">in</span> <span class="n">farben</span><span class="p">:</span>
+    <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span>
+        <span class="n">button_frame</span><span class="p">,</span>
+        <span class="n">text</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+        <span class="c1"># f=farbe: Default-Argument friert den Wert zum Zeitpunkt der Lambda-Erstellung ein.</span>
+        <span class="c1"># Ohne f=farbe wuerden alle Buttons denselben Wert benutzen (den letzten aus der Schleife).</span>
+        <span class="n">command</span><span class="o">=</span><span class="k">lambda</span> <span class="n">f</span><span class="o">=</span><span class="n">farbe</span><span class="p">:</span> <span class="n">setze_hintergrund</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Erklaerung der Schleifenfalle als Kommentar:</span>
+<span class="c1"># FALSCH: command=lambda: setze_hintergrund(farbe)</span>
+<span class="c1">#         Nach der Schleife hat farbe den Wert &#39;lightyellow&#39; -- alle Buttons machen dasselbe</span>
+<span class="c1"># RICHTIG: command=lambda f=farbe: setze_hintergrund(f)</span>
+<span class="c1">#          f=farbe wird sofort ausgewertet -- jede Lambda hat ihre eigene Kopie</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">hintergrund</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Buttons anklicken um Farbe zu aendern&#39;</span><span class="p">,</span>
+         <span class="n">bg</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+7. Widgets aktivieren und deaktivieren -- state=
+</span>
+</div><p>Widgets können in verschiedenen Zuständen sein. Der Zustand steuert ob das Widget auf Eingaben reagiert oder nicht – und wie es aussieht.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">state='normal'</span></code></strong> – das Widget funktioniert normal. Das ist der Standardzustand.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">state='disabled'</span></code></strong> – das Widget ist deaktiviert. Es wird ausgegraut dargestellt, Klicks werden ignoriert, Tastatureingaben werden nicht akzeptiert. Ein deaktivierter Button kann nicht geklickt werden, ein deaktiviertes Entry-Feld kann nicht bearbeitet werden.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">state='readonly'</span></code></strong> – <strong>nur bei Entry</strong> verfügbar. Das Feld zeigt den Text an, der Nutzer kann ihn aber nicht ändern. Man kann den Inhalt aber trotzdem programmatisch mit <code class="docutils literal notranslate"><span class="pre">.delete()</span></code> und <code class="docutils literal notranslate"><span class="pre">.insert()</span></code> verändern. Das ist nützlich für Felder die Ergebnisse anzeigen – der Nutzer soll lesen aber nicht tippen.</p>
+<p><strong>Warum <code class="docutils literal notranslate"><span class="pre">disabled</span></code> und nicht einfach das Widget verstecken?</strong> <code class="docutils literal notranslate"><span class="pre">disabled</span></code> ist besser als das Widget zu entfernen, weil der Nutzer sehen kann dass die Option existiert – sie ist nur gerade nicht verfügbar. Das ist ein wichtiges GUI-Designprinzip: Dem Nutzer zeigen was möglich wäre, nicht alles verstecken.</p>
+<p>Den Zustand ändert man mit <code class="docutils literal notranslate"><span class="pre">.config(state=...)</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span>   <span class="c1"># deaktivieren</span>
+<span class="n">button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>     <span class="c1"># wieder aktivieren</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_16_state.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">aktivieren</span><span class="p">():</span>
+    <span class="n">ziel_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>          <span class="c1"># Widget wieder aktivieren</span>
+    <span class="n">readonly_entry</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">)</span>       <span class="c1"># readonly Entry wieder bearbeitbar</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Alles aktiv&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">deaktivieren</span><span class="p">():</span>
+    <span class="n">ziel_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;disabled&#39;</span><span class="p">)</span>        <span class="c1"># Button ausgegraut, kein Klick moeglich</span>
+    <span class="n">readonly_entry</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">state</span><span class="o">=</span><span class="s1">&#39;readonly&#39;</span><span class="p">)</span>     <span class="c1"># Entry anzeigen aber nicht bearbeitbar</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Button deaktiviert, Entry nur lesbar&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ziel_aktion</span><span class="p">():</span>
+    <span class="n">status</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ziel-Button wurde geklickt!&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Widget-Zustaende&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;340x230&#39;</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dieser Button kann aktiviert/deaktiviert werden:&#39;</span><span class="p">,</span>
+         <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Der Ziel-Button der veraendert wird</span>
+<span class="n">ziel_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ich bin der Ziel-Button&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">ziel_aktion</span><span class="p">)</span>
+<span class="n">ziel_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Dieses Entry-Feld kann readonly geschaltet werden:&#39;</span><span class="p">,</span>
+         <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Entry mit state=&#39;readonly&#39;: Nutzer kann lesen aber nicht tippen</span>
+<span class="c1"># Der Inhalt kann aber programmatisch gesetzt werden</span>
+<span class="n">readonly_entry</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">readonly_entry</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Diesen Text sieht man, kann ihn aber nicht aendern&#39;</span><span class="p">)</span>
+<span class="n">readonly_entry</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Steuerbuttons</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Aktivieren&#39;</span><span class="p">,</span>   <span class="n">command</span><span class="o">=</span><span class="n">aktivieren</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span>  <span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Deaktivieren&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">deaktivieren</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="n">status</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">status</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Beim Start deaktivieren -- zeigt den Ausgangszustand</span>
+<span class="n">deaktivieren</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+8. bind() -- auf Tastatur und Maus reagieren
+</span>
+</div><p><code class="docutils literal notranslate"><span class="pre">command=</span></code> funktioniert nur bei Buttons – und nur für einfache Mausklicks. Für alles andere gibt es <code class="docutils literal notranslate"><span class="pre">bind()</span></code>. Damit kann man auf jedes Ereignis reagieren: Tastaturdrücke, Mausklicks auf beliebige Widgets, Mausbewegungen, Fensterereignisse.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">widget</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Ereignisname&gt;&#39;</span><span class="p">,</span> <span class="n">callback_funktion</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Der Ereignisname steht in spitzen Klammern und folgt einem festen Schema. Hier die wichtigsten:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Ereignis</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Return&gt;'</span></code></p></td>
+<td><p>Enter-Taste gedrückt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Escape&gt;'</span></code></p></td>
+<td><p>Escape-Taste gedrückt</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;space&gt;'</span></code></p></td>
+<td><p>Leertaste gedrückt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;KeyPress&gt;'</span></code></p></td>
+<td><p>Irgendeine Taste gedrückt</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;KeyRelease&gt;'</span></code></p></td>
+<td><p>Taste losgelassen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Button-1&gt;'</span></code></p></td>
+<td><p>Linke Maustaste geklickt</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Button-3&gt;'</span></code></p></td>
+<td><p>Rechte Maustaste geklickt</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Double-Button-1&gt;'</span></code></p></td>
+<td><p>Doppelklick mit linker Taste</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Motion&gt;'</span></code></p></td>
+<td><p>Maus bewegt sich über Widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Enter&gt;'</span></code></p></td>
+<td><p>Maus fährt über Widget (nicht Enter-Taste!)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;Leave&gt;'</span></code></p></td>
+<td><p>Maus verlässt Widget</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;FocusIn&gt;'</span></code></p></td>
+<td><p>Widget bekommt Tastaturfokus</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">'&lt;FocusOut&gt;'</span></code></p></td>
+<td><p>Widget verliert Tastaturfokus</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Achtung bei <code class="docutils literal notranslate"><span class="pre">&lt;Enter&gt;</span></code> und <code class="docutils literal notranslate"><span class="pre">&lt;Return&gt;</span></code>:</strong> <code class="docutils literal notranslate"><span class="pre">&lt;Return&gt;</span></code> ist die Enter-Taste. <code class="docutils literal notranslate"><span class="pre">&lt;Enter&gt;</span></code> ist das Ereignis wenn die Maus ein Widget betritt (hover). Das ist verwirrend – gut einprägen.</p>
+<p><strong>Das Event-Objekt:</strong> Callbacks die mit <code class="docutils literal notranslate"><span class="pre">bind()</span></code> registriert werden, bekommen automatisch ein <strong>Event-Objekt</strong> als erstes Argument übergeben. Das ist kein optionaler Parameter – tkinter ruft den Callback immer mit diesem Argument auf. Wenn man es in der Signatur weglässt, wirft Python beim Klick einen <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>.</p>
+<p>Das Event-Objekt enthält Informationen über das Ereignis:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bei_taste</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">keysym</span><span class="p">)</span>    <span class="c1"># Name der Taste: &#39;Return&#39;, &#39;a&#39;, &#39;space&#39;, ...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">char</span><span class="p">)</span>      <span class="c1"># Das Zeichen falls es eines ist: &#39;a&#39;, &#39;3&#39;, ...</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>         <span class="c1"># Mausposition X relativ zum Widget</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>         <span class="c1"># Mausposition Y relativ zum Widget</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">widget</span><span class="p">)</span>    <span class="c1"># Das Widget auf dem das Ereignis auftrat</span>
+</pre></div>
+</div>
+<p>Wenn man das Event-Objekt nicht braucht, benennt man den Parameter trotzdem – per Konvention <code class="docutils literal notranslate"><span class="pre">event</span></code> oder kurz <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># fenster_17_bind.py -- bind() mit verschiedenen Ereignissen</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_enter_taste</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># event wird hier nicht benoetigt -- muss aber in der Signatur stehen</span>
+    <span class="c1"># tkinter uebergibt es immer, Python wuerde TypeError werfen wenn es fehlt</span>
+    <span class="n">berechne</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_escape</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="n">eingabe</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>           <span class="c1"># Feld leeren</span>
+    <span class="n">ergebnis</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_tastendruck</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># event.keysym: Name der Taste als String</span>
+    <span class="c1"># event.char: das Zeichen falls es druckbar ist</span>
+    <span class="n">info</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Taste: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">keysym</span><span class="si">!r}</span><span class="s1">  |  Zeichen: </span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">char</span><span class="si">!r}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_maus_ein</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># &lt;Enter&gt;: Maus faehrt UEBER das Widget -- nicht die Enter-Taste!</span>
+    <span class="n">berechne_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bei_maus_aus</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="c1"># &lt;Leave&gt;: Maus verlasst das Widget</span>
+    <span class="n">berechne_button</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="s1">&#39;SystemButtonFace&#39;</span><span class="p">)</span>  <span class="c1"># Standard-Buttonfarbe</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">zahl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">eingabe</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+        <span class="n">ergebnis</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">zahl</span><span class="si">}</span><span class="s1"> ^ 2 = </span><span class="si">{</span><span class="n">zahl</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="mi">2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">ergebnis</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Keine gueltige Zahl!&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;bind() -- verschiedene Ereignisse&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;360x210&#39;</span><span class="p">)</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Zahl eingeben:&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">eingabe</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">22</span><span class="p">)</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># bind() auf dem Entry-Feld:</span>
+<span class="c1"># &lt;Return&gt;: Enter-Taste loest Berechnung aus</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Return&gt;&#39;</span><span class="p">,</span> <span class="n">bei_enter_taste</span><span class="p">)</span>
+<span class="c1"># &lt;Escape&gt;: Feld leeren</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Escape&gt;&#39;</span><span class="p">,</span> <span class="n">bei_escape</span><span class="p">)</span>
+<span class="c1"># &lt;KeyPress&gt;: Bei JEDER Taste info aktualisieren -- zeigt event.keysym</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;KeyPress&gt;&#39;</span><span class="p">,</span> <span class="n">bei_tastendruck</span><span class="p">)</span>
+
+<span class="n">berechne_button</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Quadrat berechnen (oder Enter)&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">berechne</span><span class="p">)</span>
+<span class="n">berechne_button</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># bind() auf dem Button:</span>
+<span class="c1"># &lt;Enter&gt;: Maus faehrt ueber den Button -&gt; Farbe aendern (Hover-Effekt)</span>
+<span class="n">berechne_button</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Enter&gt;&#39;</span><span class="p">,</span> <span class="n">bei_maus_ein</span><span class="p">)</span>
+<span class="n">berechne_button</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Leave&gt;&#39;</span><span class="p">,</span> <span class="n">bei_maus_aus</span><span class="p">)</span>
+
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span>
+<span class="n">ergebnis</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Zeigt welche Taste gerade gedrueckt wurde</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Courier&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="n">info</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+
+<span class="c1"># Fokus direkt ins Eingabefeld -- Nutzer kann sofort tippen</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Fokusmanagement -- wo landet der erste Tastendruck?</span>
+</div><p>Wenn ein Fenster öffnet, hat zunächst kein Widget den Tastaturfokus. Der Nutzer müsste erst ins Eingabefeld klicken bevor er tippen kann – das ist schlechte Bedienbarkeit.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">widget.focus()</span></code></strong> – setzt den Tastaturfokus sofort auf dieses Widget. Man ruft es einmal auf nachdem alle Widgets erstellt wurden, kurz vor <code class="docutils literal notranslate"><span class="pre">root.mainloop()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eingabe</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>   <span class="c1"># Fokus direkt ins Eingabefeld -- Nutzer kann sofort tippen</span>
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Tabulator-Reihenfolge:</strong> Der Nutzer kann mit der Tab-Taste von Widget zu Widget springen. Die Reihenfolge richtet sich nach der Reihenfolge in der die Widgets erstellt wurden. Man kann die Reihenfolge mit <code class="docutils literal notranslate"><span class="pre">widget.lift()</span></code> und <code class="docutils literal notranslate"><span class="pre">widget.lower()</span></code> beeinflussen – aber meistens ist die natürliche Reihenfolge die richtige.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">FocusIn</span></code> und <code class="docutils literal notranslate"><span class="pre">FocusOut</span></code>:</strong> Mit <code class="docutils literal notranslate"><span class="pre">bind('&lt;FocusIn&gt;',</span> <span class="pre">...)</span></code> kann man reagieren wenn ein Widget den Fokus bekommt – zum Beispiel um Platzhaltentexte zu löschen wenn der Nutzer in ein Eingabefeld klickt.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">def funktion(event=None) -- ein Callback für beides</span>
+</div><p>Oft soll dieselbe Funktion sowohl als <code class="docutils literal notranslate"><span class="pre">command=</span></code> beim Button als auch als <code class="docutils literal notranslate"><span class="pre">bind()</span></code>-Callback funktionieren. Das Problem: <code class="docutils literal notranslate"><span class="pre">command=</span></code> ruft den Callback ohne Argumente auf, <code class="docutils literal notranslate"><span class="pre">bind()</span></code> übergibt immer ein Event-Objekt.</p>
+<p>Die Lösung: <strong><code class="docutils literal notranslate"><span class="pre">event=None</span></code> als Default-Parameter</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">umrechnen</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># Logik hier</span>
+    <span class="k">pass</span>
+
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">umrechnen</span><span class="p">)</span>         <span class="c1"># ruft umrechnen() auf -- event bekommt None</span>
+<span class="n">eingabe</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Return&gt;&#39;</span><span class="p">,</span> <span class="n">umrechnen</span><span class="p">)</span>        <span class="c1"># ruft umrechnen(event) auf -- event ist das Event-Objekt</span>
+</pre></div>
+</div>
+<p>Mit <code class="docutils literal notranslate"><span class="pre">event=None</span></code> als Default-Wert kann die Funktion auf beide Arten aufgerufen werden:</p>
+<ul class="simple">
+<li><p>Als Button-Callback: <code class="docutils literal notranslate"><span class="pre">umrechnen()</span></code> – <code class="docutils literal notranslate"><span class="pre">event</span></code> bekommt den Wert <code class="docutils literal notranslate"><span class="pre">None</span></code></p></li>
+<li><p>Als bind-Callback: <code class="docutils literal notranslate"><span class="pre">umrechnen(event_objekt)</span></code> – <code class="docutils literal notranslate"><span class="pre">event</span></code> bekommt das Event-Objekt</p></li>
+</ul>
+<p>Da man das Event-Objekt in der Funktion meistens sowieso nicht braucht, stört es nicht dass es manchmal <code class="docutils literal notranslate"><span class="pre">None</span></code> ist.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;">
+<span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">
+<span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>
+9. Abschlussbeispiel -- der Celsius-Umrechner komplett
+</span>
+</div><p>Alle Konzepte aus diesem Notebook in einem vollständigen Beispiel: Callback, <code class="docutils literal notranslate"><span class="pre">entry.get()</span></code>, Fehlerbehandlung, Label dynamisch aktualisieren, Enter-Taste via <code class="docutils literal notranslate"><span class="pre">bind()</span></code>, <code class="docutils literal notranslate"><span class="pre">event=None</span></code>-Trick, Fokusmanagement, <code class="docutils literal notranslate"><span class="pre">state=</span></code> für den Button und zwei Richtungen der Umrechnung über dieselbe Funktion mit Lambda.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># grad_umrechner_fertig.py -- Abschlussbeispiel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+
+<span class="c1"># event=None: diese Funktion kann sowohl als command= als auch als bind()-Callback benutzt werden.</span>
+<span class="c1"># Als command= ruft tkinter sie ohne Argument auf -&gt; event bekommt None.</span>
+<span class="c1"># Als bind()-Callback uebergibt tkinter das Event-Objekt -&gt; event ist ein Event.</span>
+<span class="c1"># Da wir event nicht brauchen, ist das egal.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">umrechnen</span><span class="p">(</span><span class="n">richtung</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># richtung=&#39;ct&#39; = Celsius -&gt; Fahrenheit</span>
+    <span class="c1"># richtung=&#39;fc&#39; = Fahrenheit -&gt; Celsius</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">richtung</span> <span class="o">==</span> <span class="s1">&#39;cf&#39;</span><span class="p">:</span>
+            <span class="n">wert</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">von_eingabe</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">wert</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+            <span class="n">ergebnis_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+                <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">wert</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> °C  =  </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> °F&#39;</span><span class="p">,</span>
+                <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">wert</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">von_eingabe</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+            <span class="n">ergebnis</span> <span class="o">=</span> <span class="p">(</span><span class="n">wert</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>
+            <span class="n">ergebnis_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span>
+                <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">wert</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> °F  =  </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> °C&#39;</span><span class="p">,</span>
+                <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span>
+            <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="c1"># Fehler im Fenster anzeigen -- nicht auf der Konsole</span>
+        <span class="n">ergebnis_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Bitte eine Zahl eingeben!&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">leeren</span><span class="p">():</span>
+    <span class="n">von_eingabe</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tk</span><span class="o">.</span><span class="n">END</span><span class="p">)</span>         <span class="c1"># Entry-Feld leeren</span>
+    <span class="n">ergebnis_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">fg</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">von_eingabe</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>                   <span class="c1"># Fokus wieder ins Eingabefeld</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">richtung_geaendert</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Wird aufgerufen wenn der Nutzer zwischen C-&gt;F und F-&gt;C wechselt</span>
+    <span class="n">leeren</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">richtung_var</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;cf&#39;</span><span class="p">:</span>
+        <span class="n">eingabe_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Celsius:&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">eingabe_label</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s1">&#39;Fahrenheit:&#39;</span><span class="p">)</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+<span class="n">root</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Grad-Umrechner&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">geometry</span><span class="p">(</span><span class="s1">&#39;340x220&#39;</span><span class="p">)</span>
+<span class="n">root</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>   <span class="c1"># Fenstergrösse fixieren</span>
+
+<span class="c1"># StringVar fuer die Richtung -- trace_add reagiert auf Aenderungen</span>
+<span class="n">richtung_var</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">StringVar</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;cf&#39;</span><span class="p">)</span>
+<span class="n">richtung_var</span><span class="o">.</span><span class="n">trace_add</span><span class="p">(</span><span class="s1">&#39;write&#39;</span><span class="p">,</span> <span class="n">richtung_geaendert</span><span class="p">)</span>
+
+<span class="c1"># --- Richtungsauswahl ---</span>
+<span class="n">radio_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">radio_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">radio_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Celsius -&gt; Fahrenheit&#39;</span><span class="p">,</span>  <span class="n">variable</span><span class="o">=</span><span class="n">richtung_var</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;cf&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Radiobutton</span><span class="p">(</span><span class="n">radio_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Fahrenheit -&gt; Celsius&#39;</span><span class="p">,</span>  <span class="n">variable</span><span class="o">=</span><span class="n">richtung_var</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s1">&#39;fc&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># --- Eingabe ---</span>
+<span class="n">eingabe_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">eingabe_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="c1"># Label wird von richtung_geaendert() aktualisiert</span>
+<span class="n">eingabe_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Celsius:&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">eingabe_label</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sticky</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="n">von_eingabe</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Entry</span><span class="p">(</span><span class="n">eingabe_frame</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">von_eingabe</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># Enter-Taste im Eingabefeld: lambda weil richtung_var.get() uebergeben werden muss</span>
+<span class="c1"># lambda event=...: damit event=None-Trick und Argument gleichzeitig funktionieren</span>
+<span class="n">von_eingabe</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Return&gt;&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">umrechnen</span><span class="p">(</span><span class="n">richtung_var</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span>
+<span class="n">von_eingabe</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s1">&#39;&lt;Escape&gt;&#39;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">e</span><span class="p">:</span> <span class="n">leeren</span><span class="p">())</span>
+
+<span class="c1"># --- Ergebnis ---</span>
+<span class="n">ergebnis_label</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;Arial&#39;</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+<span class="n">ergebnis_label</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="c1"># --- Buttons ---</span>
+<span class="n">button_frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+<span class="n">button_frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># lambda: richtung_var.get() liefert den aktuellen Wert (&#39;cf&#39; oder &#39;fc&#39;)</span>
+<span class="c1"># ohne lambda koennte man richtung_var.get() nicht als Argument uebergeben</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Umrechnen&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+          <span class="n">command</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">umrechnen</span><span class="p">(</span><span class="n">richtung_var</span><span class="o">.</span><span class="n">get</span><span class="p">()))</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">tk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">button_frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Leeren&#39;</span><span class="p">,</span>    <span class="n">width</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+          <span class="n">command</span><span class="o">=</span><span class="n">leeren</span><span class="p">)</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">side</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c1"># Fokus direkt ins Eingabefeld -- Nutzer kann sofort tippen</span>
+<span class="n">von_eingabe</span><span class="o">.</span><span class="n">focus</span><span class="p">()</span>
+
+<span class="n">root</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Zusammenfassung</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Konzept</p></th>
+<th class="head"><p>Erklärung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Callback</p></td>
+<td><p>Funktion die später aufgerufen wird – Referenz übergeben, nicht aufrufen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">command=funktion</span></code></p></td>
+<td><p>Richtig – Referenz auf die Funktion</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">command=funktion()</span></code></p></td>
+<td><p>Falsch – sofortiger Aufruf, gibt <code class="docutils literal notranslate"><span class="pre">None</span></code> zurück</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">entry.get()</span></code></p></td>
+<td><p>Gibt immer einen <strong>String</strong> zurück – auch bei Zahlen</p></td>
+</tr>
+<tr class="row-even"><td><p>Leeres Feld</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">get()</span></code> gibt <code class="docutils literal notranslate"><span class="pre">''</span></code> zurück, nicht <code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.END</span></code></p></td>
+<td><p>tkinter-Konstante für “bis zum Ende”, Wert ist der String <code class="docutils literal notranslate"><span class="pre">'end'</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">entry.delete(0,</span> <span class="pre">tk.END)</span></code></p></td>
+<td><p>Gesamten Inhalt löschen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">entry.insert(0,</span> <span class="pre">text)</span></code></p></td>
+<td><p>Text am Anfang einsetzen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">entry.insert(tk.END,</span> <span class="pre">text)</span></code></p></td>
+<td><p>Text ans Ende anhängen</p></td>
+</tr>
+<tr class="row-odd"><td><p>try/except in Callbacks</p></td>
+<td><p>Pflicht – tkinter schluckt Fehler manchmal stillschweigend</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">widget.config(param=wert)</span></code></p></td>
+<td><p>Parameter nachträglich ändern</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">widget.cget('param')</span></code></p></td>
+<td><p>Aktuellen Wert eines Parameters lesen</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">widget['param']</span> <span class="pre">=</span> <span class="pre">wert</span></code></p></td>
+<td><p>Alternative Schreibweise zu <code class="docutils literal notranslate"><span class="pre">.config()</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.StringVar()</span></code></p></td>
+<td><p>tkinter-Variable für Text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tk.IntVar()</span></code></p></td>
+<td><p>tkinter-Variable für Ganzzahlen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tk.BooleanVar()</span></code></p></td>
+<td><p>tkinter-Variable für True/False</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">textvariable=var</span></code></p></td>
+<td><p>Widget mit Variable verbinden (Entry, Label)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">variable=var</span></code></p></td>
+<td><p>Widget mit Variable verbinden (Checkbutton, Radiobutton)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">var.get()</span></code> / <code class="docutils literal notranslate"><span class="pre">var.set()</span></code></p></td>
+<td><p>Wert lesen und setzen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">var.trace_add('write',</span> <span class="pre">cb)</span></code></p></td>
+<td><p>Callback bei jeder Änderung der Variable aufrufen</p></td>
+</tr>
+<tr class="row-even"><td><p>Trace-Callback-Signatur</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">cb(name,</span> <span class="pre">index,</span> <span class="pre">mode):</span></code> – drei Argumente, meist ignoriert</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Checkbutton</span></code> + <code class="docutils literal notranslate"><span class="pre">BooleanVar</span></code></p></td>
+<td><p>Checkbox – <code class="docutils literal notranslate"><span class="pre">var.get()</span></code> gibt <code class="docutils literal notranslate"><span class="pre">True</span></code>/<code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Radiobutton</span></code> + <code class="docutils literal notranslate"><span class="pre">StringVar</span></code> + <code class="docutils literal notranslate"><span class="pre">value=</span></code></p></td>
+<td><p>Gruppe mit Einzelauswahl – alle teilen dieselbe Variable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">command=lambda:</span> <span class="pre">f(arg)</span></code></p></td>
+<td><p>Argumente an Callbacks übergeben</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">f=val:</span> <span class="pre">...</span></code></p></td>
+<td><p>Wert in Schleife einfrieren – Schleifenfalle vermeiden</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">state='normal'</span></code></p></td>
+<td><p>Widget aktiv</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">state='disabled'</span></code></p></td>
+<td><p>Widget deaktiviert – ausgegraut, keine Eingaben</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">state='readonly'</span></code></p></td>
+<td><p>Nur Entry: anzeigen aber nicht bearbeiten</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">widget.bind('&lt;Return&gt;',</span> <span class="pre">cb)</span></code></p></td>
+<td><p>Auf Enter-Taste reagieren</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">widget.bind('&lt;Escape&gt;',</span> <span class="pre">cb)</span></code></p></td>
+<td><p>Auf Escape-Taste reagieren</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">widget.bind('&lt;Button-1&gt;',</span> <span class="pre">cb)</span></code></p></td>
+<td><p>Auf Mausklick reagieren</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">widget.bind('&lt;Enter&gt;',</span> <span class="pre">cb)</span></code></p></td>
+<td><p>Maus fährt über Widget – nicht die Enter-Taste!</p></td>
+</tr>
+<tr class="row-even"><td><p>Event-Objekt</p></td>
+<td><p>bind()-Callbacks bekommen immer ein <code class="docutils literal notranslate"><span class="pre">event</span></code>-Argument</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">event.keysym</span></code></p></td>
+<td><p>Name der gedrückten Taste</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">event.char</span></code></p></td>
+<td><p>Das gedrückte Zeichen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">event.x</span></code>, <code class="docutils literal notranslate"><span class="pre">event.y</span></code></p></td>
+<td><p>Mausposition relativ zum Widget</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(event=None)</span></code></p></td>
+<td><p>Funktion die sowohl als <code class="docutils literal notranslate"><span class="pre">command=</span></code> als auch als <code class="docutils literal notranslate"><span class="pre">bind()</span></code>-Callback funktioniert</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">widget.focus()</span></code></p></td>
+<td><p>Tastaturfokus auf dieses Widget setzen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<p><strong>Weiter:</strong> In Notebook <strong>11c – Listen und Tabellen</strong> lernen wir <code class="docutils literal notranslate"><span class="pre">Listbox</span></code> und <code class="docutils literal notranslate"><span class="pre">Treeview</span></code> – die Widgets die wir für die MP3-Verwaltung brauchen.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_11"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11a_tkinter_grundlagen.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tkinter grundlagen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="11c_tkinter_listen_tabellen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tkinter listen tabellen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

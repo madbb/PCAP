@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pycharm debugging &#8212; PCAP Python Kurs</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Kapitel_1/01e_pycharm_debugging';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Debugging step by step" href="01f_debugging_step_by_step.html" />
+    <link rel="prev" title="Versionsverwaltung git" href="01d_versionsverwaltung_git.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../Kapitel_0/00_linksammlung.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">PCAP Python Kurs</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../Kapitel_0/00_linksammlung.html">
+                    Linksammlung
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 1 – Laufzeitmodell &amp; Werkzeuge</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01a_laufzeitmodell_python.html">Laufzeitmodell python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01b_namespaces_legb.html">Namespaces legb</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01c_import_system.html">Import system</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01d_versionsverwaltung_git.html">Versionsverwaltung git</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pycharm debugging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01f_debugging_step_by_step.html">Debugging step by step</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 2 – Module &amp; Pakete</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02a_Module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02b_Random_Modul.html">Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02c_Platform_Modul.html">Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02d_Math_Modul.html">Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/02e_Pakete.html">Pakete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/01_Aufgaben_Module.html">Aufgaben: Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/02_Aufgaben_Random_Modul.html">Aufgaben: Random Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/03_Aufgaben_Platform_Modul.html">Aufgaben: Platform Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/04_Aufgaben_Math_Modul.html">Aufgaben: Math Modul</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/05_Aufgaben_genutzte_Module.html">Aufgaben: Genutzte Module</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_2/Aufgaben/06_Abschlussaufgabe_Casino.html">Abschlussaufgabe Casino</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 3 – Funktionale Programmierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03a_funktionen_als_daten.html">Funktionen als daten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b_funktionale_programmierung.html">Funktionale programmierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03b2_flexible_parameter.html">03b2 flexible parameter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03c_closures.html">Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03d_decorators.html">Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03e_lambda.html">Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/03f_map_filter.html">Map filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03a_Aufgaben_Funktionen_als_Objekte.html">Aufgaben: Funktionen als Objekte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03b_Aufgaben_Hoeherwertige_Funktionen.html">Aufgaben: Hoeherwertige Funktionen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03c_Aufgaben_Closures.html">Aufgaben: Closures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03d_Aufgaben_Decorators.html">Aufgaben: Decorators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03e_Aufgaben_Lambda.html">Aufgaben: Lambda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03f_Aufgaben_Map_Filter.html">Aufgaben: Map Filter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_3/Aufgaben/03g_Szenario_PyTunes.html">Szenario PyTunes</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 4 – Objektorientierung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04a_oop_grundlagen.html">Oop grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04b_oop_variablen.html">Oop variablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04c_oop_introspection.html">Oop introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04d_oop_vererbung.html">Oop vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/04e_oop_erweiterung.html">Oop erweiterung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04a_Aufgaben_OOP_Grundlagen.html">Aufgaben: OOP Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04b_Aufgaben_Klassen_Instanzvariablen.html">Aufgaben: Klassen Instanzvariablen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04c_Aufgaben_Introspection.html">Aufgaben: Introspection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04d_Aufgaben_Vererbung.html">Aufgaben: Vererbung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_4/Aufgaben/04e_Aufgaben_Komposition_Dunders_Patterns.html">Aufgaben: Komposition Dunders Patterns</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 5 – Exceptions &amp; Testing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05a_exceptions_grundlagen.html">Exceptions grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05b_exceptions_hierarchie.html">Exceptions hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05c_eigene_exceptions.html">Eigene exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05d_unittests.html">Unittests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/05e_multithreading.html">Multithreading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05a_Aufgaben_Exceptions_Grundlagen.html">Aufgaben: Exceptions Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05b_Aufgaben_Exception_Hierarchie.html">Aufgaben: Exception Hierarchie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_5/Aufgaben/05c_Aufgaben_Eigene_Exceptions.html">Aufgaben: Eigene Exceptions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 6 – Strings &amp; Regex</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06a_strings_encoding.html">Strings encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06b_string_methoden.html">String methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/06c_regex.html">Regex</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06a_Aufgaben_Strings_Encoding.html">Aufgaben: Strings Encoding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06b_Aufgaben_String_Methoden.html">Aufgaben: String Methoden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_6/Aufgaben/06c_Aufgaben_Regex.html">Aufgaben: Regex</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 7 – Dateien &amp; I/O</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07_io_dateien.html">Io dateien</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/07b_dateien_lesen_schreiben.html">Dateien lesen schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07a_Aufgaben_IO_Grundlagen.html">Aufgaben: IO Grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07b_Aufgaben_Dateien_Lesen_Schreiben.html">Aufgaben: Dateien Lesen Schreiben</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07c_Aufgaben_bytearray.html">Aufgaben: Bytearray</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_7/Aufgaben/07_Aufgaben_Mittelbach_Aktuell.html">Aufgaben: Mittelbach Aktuell</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 8 – Comprehensions &amp; Generatoren</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08_list_comprehensions.html">List comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/08b_generators.html">Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08a_Aufgaben_List_Comprehensions.html">Aufgaben: List Comprehensions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_Generators.html">Aufgaben: Generators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_8/Aufgabe/08b_Aufgaben_List_Comprehensions_Kompakt.html">Aufgaben: List Comprehensions Kompakt</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 9 – Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09a_prep_module_exceptions.html">Prep module exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09b_prep_strings.html">Prep strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09c_prep_oop.html">Prep oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_9/09d_prep_misc.html">Prep misc</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 10 – Testing &amp; CI/CD</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10a_testing_einfuehrung.html">Testing einfuehrung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10b_pytest_grundlagen.html">Pytest grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10c_pytest_fixtures_coverage.html">Pytest fixtures coverage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_10/10d_github_actions.html">Github actions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 11 – Tkinter GUI</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11a_tkinter_grundlagen.html">Tkinter grundlagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_tkinter_events.html">Tkinter events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11c_tkinter_listen_tabellen.html">Tkinter listen tabellen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11d_tkinter_layout_dialoge.html">Tkinter layout dialoge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_11/11b_aufgabe_taschenrechner.html">Aufgaben: Taschenrechner</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 12 – Web Services &amp; Scraping</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12a_web_services_rest.html">Web services rest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/12b_web_scraping.html">Web scraping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12a_web_services.html">Aufgaben: Web services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_12/Aufgaben/aufgaben_12b_web_scraping.html">Aufgaben: Web scraping</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 13 – Projekte</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind.html">Projekt mastermind</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mastermind_loesung.html">Projekt mastermind loesung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3.html">Projekt mp3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_13/13_projekt_mp3_loesung.html">Projekt mp3 loesung</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kapitel 14 – PCAP Prüfungsvorbereitung</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/PCAP__100_Fragen.html">PCAP-31-03  Fragenpool – 100 Fragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_40_Fragen.html">PCAP Übungsklausur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur_Loesungen.html">PCAP Übungsklausur – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_40_Fragen.html">PCAP Übungsklausur 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur2_Loesungen.html">PCAP Übungsklausur 2 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_40_Fragen.html">PCAP Übungsklausur 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Uebungsklausur3_Loesungen.html">PCAP Übungsklausur 3 – Lösungsschlüssel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_exceptions.html">Aufgaben: Pcap exceptions</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_introspektion.html">Aufgaben: Pcap introspektion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_io.html">Uebungsaufgaben: I/O Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_list_comprehension.html">Aufgaben: Pcap list comprehension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_module_pakete.html">Aufgaben: Pcap module pakete</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_oop.html">Aufgaben: Pcap oop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_strings.html">Aufgaben: Pcap strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Kapitel_14/Aufgaben_pcap_vererbung.html">Aufgaben: Pcap vererbung</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Kapitel_1/01e_pycharm_debugging.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pycharm debugging</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="pycharm-debugging">
+<h1>Pycharm debugging<a class="headerlink" href="#pycharm-debugging" title="Link to this heading">#</a></h1>
+<div style="display:flex;justify-content:space-between;align-items:center;background:#0d0d0f;border:1px solid #1e1e24;border-left:4px solid #4fc3f7;border-radius:6px;padding:clamp(1rem,2.5vw,1.8rem) clamp(1.2rem,3vw,2.4rem);margin-bottom:2rem;position:relative;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.5);font-family:'Segoe UI',sans-serif;">
+<div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 0% 50%,rgba(79,195,247,0.07) 0%,transparent 60%);pointer-events:none;"></div>
+<div style="display:flex;flex-direction:column;gap:0.3rem;">
+<p style="font-size:clamp(1.3rem,3.5vw,2.4rem);color:#f0f0f5;margin:0;line-height:1.1;font-weight:700;letter-spacing:-0.01em;">PyCharm und Debugging</p>
+<p style="font-size:clamp(0.75rem,1.6vw,1rem);color:#7a7a90;margin:0;letter-spacing:0.04em;font-weight:300;">Development Expert Python / PCAP &nbsp;|&nbsp; Kapitel 1: Fundament &nbsp;|&nbsp; Notebook 03</p>
+</div>
+</div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Lernziele</span></div>
+<p>Nach diesem Notebook kannst du:</p>
+<ul class="simple">
+<li><p>PyCharm fuer ein Python-Projekt einrichten (Interpreter, venv, Projektstruktur)</p></li>
+<li><p>den Debugger starten, Breakpoints setzen und den Programmzustand inspizieren</p></li>
+<li><p>Step Over, Step Into und Step Out gezielt einsetzen</p></li>
+<li><p>den Call Stack lesen und interpretieren</p></li>
+<li><p>haeufige Fehlertypen anhand von Traceback und Fehlermeldung lokalisieren</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">print</span></code>-Debugging von echtem Debugging unterscheiden und wissen, wann welches sinnvoll ist</p></li>
+</ul>
+<p><strong>Voraussetzungen:</strong> 01a, 01b, 01c, 02</p>
+<blockquote>
+<div><p><strong>[Kursinhalt]</strong> Dieses Notebook ist kein PCAP-Pruefungsinhalt.</p>
+</div></blockquote>
+<p><strong>Legende</strong></p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;"><span style="font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:#80cbc4;background:rgba(128,203,196,0.1);border:1px solid rgba(128,203,196,0.25);border-radius:3px;padding:0.15em 0.5em;margin-right:0.65em;vertical-align:middle;white-space:nowrap;">Kursinhalt</span>Praxiswissen fuer den Kurs, nicht pruefungsrelevant</span></div><div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>1. PyCharm einrichten</span></div>
+<p>PyCharm ist eine der meistgenutzten IDEs fuer Python. Sie uebernimmt Aufgaben, die ohne IDE muehsam waeren: Autovervollstaendigung, Refactoring, Fehlerhervorhebung, Debugger, Git-Integration.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Neues Projekt anlegen</span></div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">New</span> <span class="pre">Project</span></code></p></li>
+<li><p>Verzeichnis waehlen</p></li>
+<li><p>Interpreter: <strong>New environment using Virtualenv</strong> – PyCharm legt automatisch eine <code class="docutils literal notranslate"><span class="pre">.venv</span></code> an</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Create</span></code></p></li>
+</ol>
+<p>PyCharm erstellt dann:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mein_projekt</span><span class="o">/</span>
+    <span class="o">.</span><span class="n">venv</span><span class="o">/</span>          <span class="o">&lt;--</span> <span class="n">virtuelle</span> <span class="n">Umgebung</span> <span class="p">(</span><span class="n">nicht</span> <span class="n">ins</span> <span class="n">Git</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">idea</span><span class="o">/</span>          <span class="o">&lt;--</span> <span class="n">PyCharm</span><span class="o">-</span><span class="n">Konfiguration</span> <span class="p">(</span><span class="n">nicht</span> <span class="n">ins</span> <span class="n">Git</span><span class="p">)</span>
+    <span class="n">main</span><span class="o">.</span><span class="n">py</span>         <span class="o">&lt;--</span> <span class="n">Einstiegspunkt</span>
+</pre></div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Interpreter pruefen</span></div>
+<p>Unten rechts in PyCharm steht der aktive Interpreter. Er sollte auf die <code class="docutils literal notranslate"><span class="pre">.venv</span></code> im Projektordner zeigen, nicht auf eine systemweite Python-Installation.</p>
+<p>Aendern: <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">&gt;</span> <span class="pre">Settings</span> <span class="pre">&gt;</span> <span class="pre">Project</span> <span class="pre">&gt;</span> <span class="pre">Python</span> <span class="pre">Interpreter</span></code></p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>2. Wichtige PyCharm-Funktionen im Ueberblick</span></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Funktion</p></th>
+<th class="head"><p>Shortcut (Windows)</p></th>
+<th class="head"><p>Was sie macht</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ausfuehren</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift+F10</span></code></p></td>
+<td><p>Aktuelle Run-Konfiguration starten</p></td>
+</tr>
+<tr class="row-odd"><td><p>Debuggen</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift+F9</span></code></p></td>
+<td><p>Debugger starten</p></td>
+</tr>
+<tr class="row-even"><td><p>Breakpoint setzen</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">F9</span></code> / Klick auf Zeilennummer</p></td>
+<td><p>Haltepunkt ein/aus</p></td>
+</tr>
+<tr class="row-odd"><td><p>Suchen (Datei)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+F</span></code></p></td>
+<td><p>In aktueller Datei suchen</p></td>
+</tr>
+<tr class="row-even"><td><p>Suchen (Projekt)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Shift+F</span></code></p></td>
+<td><p>Im gesamten Projekt suchen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gehe zu Definition</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+B</span></code></p></td>
+<td><p>Zur Definition eines Namens springen</p></td>
+</tr>
+<tr class="row-even"><td><p>Umbenennen</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift+F6</span></code></p></td>
+<td><p>Name ueberall im Projekt umbenennen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Autovervollstaendigung</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Space</span></code></p></td>
+<td><p>Vorschlaege anzeigen</p></td>
+</tr>
+<tr class="row-even"><td><p>Dokumentation</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Q</span></code></p></td>
+<td><p>Docstring anzeigen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code formatieren</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Alt+L</span></code></p></td>
+<td><p>PEP-8-Formatierung anwenden</p></td>
+</tr>
+<tr class="row-even"><td><p>Import optimieren</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+Alt+O</span></code></p></td>
+<td><p>Unbenutzte Imports entfernen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Terminal</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Alt+F12</span></code></p></td>
+<td><p>Integriertes Terminal oeffnen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>3. Was ist Debugging?</span></div>
+<p>Debugging bedeutet, einen Fehler im laufenden Programm zu finden und zu beheben. Es gibt zwei Ansaetze:</p>
+<p><strong>Print-Debugging:</strong> <code class="docutils literal notranslate"><span class="pre">print()</span></code>-Anweisungen einstreuen, um Zwischenwerte sichtbar zu machen.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">berechne</span><span class="p">(</span><span class="n">werte</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DEBUG: werte =&#39;</span><span class="p">,</span> <span class="n">werte</span><span class="p">)</span>  <span class="c1"># &lt;-- manuell eingebaut</span>
+    <span class="n">summe</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DEBUG: summe =&#39;</span><span class="p">,</span> <span class="n">summe</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">summe</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Das funktioniert – ist aber muehsam, unvollstaendig und muss hinterher wieder entfernt werden.</p>
+<p><strong>Debugger:</strong> Das Programm haelt an einem Breakpoint an. Du kannst dann alle Variablen inspizieren, den Call Stack sehen und den Code Schritt fuer Schritt ausfuehren – ohne eine einzige Zeile zu veraendern.</p>
+<p>Sobald ein Problem komplexer als “welchen Wert hat x?” ist, ist der Debugger die bessere Wahl.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>4. Fehlertypen in Python</span></div>
+<p>Bevor wir debuggen, muessen wir Fehler lesen koennen. Python unterscheidet drei Kategorien:</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">4.1 SyntaxError</span></div>
+<p>Tritt auf, bevor das Programm laeuft – beim Parsen. Der Code verletzt die Python-Grammatik.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># SyntaxError -- diesen Code nicht ausfuehren, nur lesen</span>
+<span class="c1"># def greet(name)</span>
+<span class="c1">#     return &#39;Hallo &#39; + name</span>
+<span class="c1">#</span>
+<span class="c1"># Fehler:   File &quot;skript.py&quot;, line 1</span>
+<span class="c1">#             def greet(name)</span>
+<span class="c1">#                            ^</span>
+<span class="c1">#           SyntaxError: expected &#39;:&#39;</span>
+
+<span class="c1"># Python zeigt genau die Stelle an. Hier fehlt der Doppelpunkt.</span>
+<span class="c1"># PyCharm markiert SyntaxErrors bereits beim Tippen rot -- noch vor dem Ausfuehren.</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;SyntaxErrors entstehen vor der Ausfuehrung -- beim Parsen.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;PyCharm zeigt sie sofort an.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">4.2 RuntimeError (Exceptions)</span></div>
+<p>Tritt waehrend der Ausfuehrung auf. Die Syntax ist korrekt, aber etwas geht schief – z.B. Division durch Null, fehlender Schluessel in einem Dictionary, falscher Typ.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Traceback lesen lernen</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne_durchschnitt</span><span class="p">(</span><span class="n">werte</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">verarbeite</span><span class="p">(</span><span class="n">datensatz</span><span class="p">):</span>
+    <span class="n">gefiltert</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">datensatz</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">berechne_durchschnitt</span><span class="p">(</span><span class="n">gefiltert</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">verarbeite</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">])</span>  <span class="c1"># alle negativ -&gt; gefiltert ist leer</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fehler abgefangen:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Was der Traceback ohne try/except zeigen wuerde:&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  Traceback (most recent call last):&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    File &quot;skript.py&quot;, line 10, in &lt;module&gt;&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;      ergebnis = verarbeite([-1, -2, -3])&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    File &quot;skript.py&quot;, line 7, in verarbeite&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;      return berechne_durchschnitt(gefiltert)&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    File &quot;skript.py&quot;, line 3, in berechne_durchschnitt&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;      return sum(werte) / len(werte)&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  ZeroDivisionError: division by zero&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Den Traceback lesen</span></div>
+<p>Der Traceback ist von <strong>unten nach oben</strong> zu lesen:</p>
+<ol class="arabic simple">
+<li><p><strong>Unterste Zeile:</strong> Der eigentliche Fehler (<code class="docutils literal notranslate"><span class="pre">ZeroDivisionError:</span> <span class="pre">division</span> <span class="pre">by</span> <span class="pre">zero</span></code>)</p></li>
+<li><p><strong>Zeile darueber:</strong> Die Stelle im Code, wo der Fehler ausgeloest wurde</p></li>
+<li><p><strong>Weiter hoch:</strong> Der Aufrufpfad – welche Funktion hat welche aufgerufen</p></li>
+<li><p><strong>Oberste Zeile:</strong> Der urspruengliche Einstiegspunkt</p></li>
+</ol>
+<p>Der Fehler passiert unten – die Ursache liegt oft weiter oben im Aufrufpfad.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Die haeufigsten Fehlertypen</span>
+
+<span class="n">fehler</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;NameError&#39;</span><span class="p">,</span>        <span class="k">lambda</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">nicht_definiert</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;TypeError&#39;</span><span class="p">,</span>        <span class="k">lambda</span><span class="p">:</span> <span class="s1">&#39;Text&#39;</span> <span class="o">+</span> <span class="mi">42</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;IndexError&#39;</span><span class="p">,</span>       <span class="k">lambda</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">][</span><span class="mi">10</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;KeyError&#39;</span><span class="p">,</span>         <span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}[</span><span class="s1">&#39;b&#39;</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s1">&#39;AttributeError&#39;</span><span class="p">,</span>   <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()),</span>
+    <span class="p">(</span><span class="s1">&#39;ValueError&#39;</span><span class="p">,</span>       <span class="k">lambda</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;kein_int&#39;</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;ZeroDivisionError&#39;</span><span class="p">,</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fehler</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fn</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s1">22</span><span class="si">}</span><span class="s1"> --&gt; </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">4.3 Logikfehler</span></div>
+<p>Der gefaehrlichste Fehlertyp: Das Programm laeuft ohne Exception – gibt aber falsche Ergebnisse.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Logikfehler: kein Absturz, aber falsches Ergebnis</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">celsius_zu_fahrenheit</span><span class="p">(</span><span class="n">celsius</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">fahrenheit_zu_celsius</span><span class="p">(</span><span class="n">fahrenheit</span><span class="p">):</span>
+    <span class="c1"># Fehler: Klammern vergessen</span>
+    <span class="k">return</span> <span class="n">fahrenheit</span> <span class="o">-</span> <span class="mi">32</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">9</span>   <span class="c1"># falsch: 32 * 5/9 = 17.78 wird subtrahiert</span>
+    <span class="c1"># richtig waere: return (fahrenheit - 32) * 5 / 9</span>
+
+<span class="c1"># Kein Fehler, keine Exception</span>
+<span class="n">grad_c</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">grad_f</span> <span class="o">=</span> <span class="n">celsius_zu_fahrenheit</span><span class="p">(</span><span class="n">grad_c</span><span class="p">)</span>
+<span class="n">zurueck</span> <span class="o">=</span> <span class="n">fahrenheit_zu_celsius</span><span class="p">(</span><span class="n">grad_f</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">grad_c</span><span class="si">}</span><span class="s1"> Celsius -&gt; </span><span class="si">{</span><span class="n">grad_f</span><span class="si">}</span><span class="s1"> Fahrenheit -&gt; </span><span class="si">{</span><span class="n">zurueck</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> Celsius&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Erwartet: </span><span class="si">{</span><span class="n">grad_c</span><span class="si">}</span><span class="s1">, bekommen: </span><span class="si">{</span><span class="n">zurueck</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Differenz: </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">zurueck</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">grad_c</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>5. Der Debugger -- Konzepte</span></div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Breakpoint</span></div>
+<p>Ein Breakpoint markiert eine Zeile, bei der das Programm pausiert. PyCharm: Klick auf die Zeilennummer links, oder <code class="docutils literal notranslate"><span class="pre">F9</span></code> auf der Zeile.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Debugger-Steuerung</span></div>
+<p>Wenn das Programm an einem Breakpoint haelt, stehen folgende Aktionen zur Verfuegung:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aktion</p></th>
+<th class="head"><p>Shortcut</p></th>
+<th class="head"><p>Was passiert</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Step Over</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">F8</span></code></p></td>
+<td><p>Naechste Zeile ausfuehren; Funktionsaufrufe werden nicht betreten</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Step Into</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">F7</span></code></p></td>
+<td><p>In den Funktionsaufruf der naechsten Zeile hineinspringen</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Step Into My Code</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Alt+Shift+F7</span></code></p></td>
+<td><p>Nur in eigenen Code, nicht in Bibliotheken</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Step Out</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Shift+F8</span></code></p></td>
+<td><p>Aktuelle Funktion zu Ende fuehren, in aufrufende Funktion zurueck</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Run to Cursor</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Alt+F9</span></code></p></td>
+<td><p>Bis zur Zeile mit dem Cursor weiterlaufen</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Resume</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">F9</span></code></p></td>
+<td><p>Bis zum naechsten Breakpoint weiterlaufen</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Stop</strong></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Ctrl+F2</span></code></p></td>
+<td><p>Programm abbrechen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Variables-Panel &amp; Evaluate Expression</span></div>
+<p>Wenn das Programm haelt, zeigt PyCharm im <strong>Variables</strong>-Panel alle aktuell sichtbaren Variablen mit ihren Werten. Objekte koennen aufgeklappt werden.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Alt+F8</span></code> oeffnet ein Eingabefeld, in dem beliebiger Python-Code im aktuellen Kontext ausgefuehrt werden kann – ohne den Code zu veraendern.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>6. Der Call Stack</span></div>
+<p>Der Call Stack (Aufrufstapel) zeigt, welche Funktionen gerade aktiv sind – und in welcher Reihenfolge sie aufgerufen wurden.</p>
+<p>Stell dir den Stack als einen Stapel Platten vor: jede Funktion legt eine neue Platte oben drauf. Wenn sie endet, wird die Platte wieder entfernt.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">traceback</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">funktion_c</span><span class="p">():</span>
+    <span class="c1"># Wir geben den aktuellen Call Stack aus, ohne einen Fehler zu werfen</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Aktueller Call Stack (innerste Funktion zuerst):&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">zeile</span> <span class="ow">in</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_stack</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">zeile</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">funktion_b</span><span class="p">():</span>
+    <span class="n">funktion_c</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">funktion_a</span><span class="p">():</span>
+    <span class="n">funktion_b</span><span class="p">()</span>
+
+<span class="n">funktion_a</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Im PyCharm-Debugger zeigt das <strong>Frames</strong>-Panel denselben Stack – aber interaktiv. Du kannst auf jeden Frame klicken und siehst dann die Variablen dieser Funktion zum Zeitpunkt des Breakpoints.</p>
+<p>Das ist besonders nuetzlich, wenn eine Funktion tief verschachtelt ist und du verstehen willst, mit welchen Werten sie aufgerufen wurde.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>7. Debugging-Workflow</span></div>
+<p>Ein systematisches Vorgehen spart Zeit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Beispiel: Diese Funktion hat einen Fehler -- finde ihn</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne_rabatt</span><span class="p">(</span><span class="n">preis</span><span class="p">,</span> <span class="n">prozent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet den Preis nach Abzug des Rabatts.&quot;&quot;&quot;</span>
+    <span class="n">rabatt</span> <span class="o">=</span> <span class="n">preis</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">prozent</span>
+    <span class="k">return</span> <span class="n">preis</span> <span class="o">-</span> <span class="n">rabatt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne_gesamtpreis</span><span class="p">(</span><span class="n">artikel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Berechnet den Gesamtpreis einer Liste von (preis, rabatt_prozent)-Tupeln.&quot;&quot;&quot;</span>
+    <span class="n">gesamt</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">preis</span><span class="p">,</span> <span class="n">rabatt</span> <span class="ow">in</span> <span class="n">artikel</span><span class="p">:</span>
+        <span class="n">endpreis</span> <span class="o">=</span> <span class="n">berechne_rabatt</span><span class="p">(</span><span class="n">preis</span><span class="p">,</span> <span class="n">rabatt</span><span class="p">)</span>
+        <span class="n">gesamt</span> <span class="o">+=</span> <span class="n">endpreis</span>
+    <span class="k">return</span> <span class="n">gesamt</span>
+
+<span class="c1"># Testfall: 100 Euro ohne Rabatt + 200 Euro mit 10% Rabatt = 100 + 180 = 280</span>
+<span class="n">artikel</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span>
+<span class="n">ergebnis</span> <span class="o">=</span> <span class="n">berechne_gesamtpreis</span><span class="p">(</span><span class="n">artikel</span><span class="p">)</span>
+<span class="n">erwartet</span> <span class="o">=</span> <span class="mi">280</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ergebnis:  </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Erwartet:  </span><span class="si">{</span><span class="n">erwartet</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Korrekt:   </span><span class="si">{</span><span class="n">ergebnis</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">erwartet</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Debugging-Schritt 1: Eingrenzen -- wo liegt das Problem?</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== Einzelne Schritte pruefen ===&#39;</span><span class="p">)</span>
+
+<span class="c1"># berechne_rabatt direkt testen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;100 Euro, 0% Rabatt:  &#39;</span><span class="p">,</span> <span class="n">berechne_rabatt</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># erwartet: 100</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;200 Euro, 10% Rabatt: &#39;</span><span class="p">,</span> <span class="n">berechne_rabatt</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>  <span class="c1"># erwartet: 180</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;100 Euro, 100% Rabatt:&#39;</span><span class="p">,</span> <span class="n">berechne_rabatt</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="c1"># erwartet: 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;100 Euro, 50% Rabatt: &#39;</span><span class="p">,</span> <span class="n">berechne_rabatt</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>  <span class="c1"># erwartet: 50</span>
+
+<span class="c1"># Sieht korrekt aus -- also liegt das Problem in berechne_gesamtpreis?</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gesamtpreis fuer [(100,0)]:       &#39;</span><span class="p">,</span> <span class="n">berechne_gesamtpreis</span><span class="p">([(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gesamtpreis fuer [(200,10)]:      &#39;</span><span class="p">,</span> <span class="n">berechne_gesamtpreis</span><span class="p">([(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Gesamtpreis fuer [(100,0),(200,10)]:&#39;</span><span class="p">,</span> <span class="n">berechne_gesamtpreis</span><span class="p">([(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Der systematische Debugging-Prozess</span></div>
+<ol class="arabic simple">
+<li><p><strong>Fehler reproduzieren:</strong> Einen minimalen Testfall finden, der den Fehler zuverlaessig ausloest</p></li>
+<li><p><strong>Hypothese formulieren:</strong> Was koennte falsch sein?</p></li>
+<li><p><strong>Eingrenzen:</strong> Wo genau liegt das Problem? (Binaere Suche: Mitte testen, eine Haelfte ausschliessen)</p></li>
+<li><p><strong>Bestaetigen:</strong> Breakpoint setzen, Variablen pruefen, Hypothese verifizieren</p></li>
+<li><p><strong>Beheben:</strong> Aenderung vornehmen</p></li>
+<li><p><strong>Verifizieren:</strong> Testfall erneut ausfuehren, pruefen ob weitere Tests noch funktionieren</p></li>
+</ol>
+<blockquote>
+<div><p><strong>Haeufiger Fehler:</strong> Direkt Code aendern, ohne den Fehler vollstaendig verstanden zu haben. Das fuehrt oft dazu, dass man das Symptom behebt, nicht die Ursache.</p>
+</div></blockquote>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>8. Erweiterte Debugger-Funktionen</span></div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Konditionaler Breakpoint</span></div>
+<p>Ein Breakpoint haelt nur an, wenn eine Bedingung wahr ist. Nuetzlich bei Schleifen mit vielen Iterationen.</p>
+<p>In PyCharm: Rechtsklick auf den roten Breakpoint-Punkt &gt; <code class="docutils literal notranslate"><span class="pre">Condition</span></code> eingeben, z.B. <code class="docutils literal notranslate"><span class="pre">i</span> <span class="pre">==</span> <span class="pre">42</span></code> oder <code class="docutils literal notranslate"><span class="pre">wert</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>.</p>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Watchpoints / Watches &amp; Exception Breakpoints</span></div>
+<p>Im <strong>Variables</strong>-Panel koennen Ausdruecke als “Watch” hinzugefuegt werden. Sie werden bei jedem Schritt neu ausgewertet und zeigen immer den aktuellen Wert.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Run</span> <span class="pre">&gt;</span> <span class="pre">View</span> <span class="pre">Breakpoints</span> <span class="pre">&gt;</span> <span class="pre">Python</span> <span class="pre">Exception</span> <span class="pre">Breakpoints</span></code>: Haelt automatisch an, wenn eine bestimmte Exception (oder jede Exception) ausgeloest wird – auch wenn sie spaeter abgefangen wird.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Alternative zu print-Debugging: das logging-Modul</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="c1"># Logging konfigurieren</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(levelname)s</span><span class="s1"> | </span><span class="si">%(funcName)s</span><span class="s1"> | </span><span class="si">%(message)s</span><span class="s1">&#39;</span>
+<span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">berechne_mit_logging</span><span class="p">(</span><span class="n">werte</span><span class="p">):</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Eingabe: </span><span class="si">{</span><span class="n">werte</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">werte</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s1">&#39;Leere Liste uebergeben&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">werte</span><span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Ergebnis: </span><span class="si">{</span><span class="n">ergebnis</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ergebnis</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">berechne_mit_logging</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">berechne_mit_logging</span><span class="p">([]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Logging statt print</span></div>
+<p>Das <code class="docutils literal notranslate"><span class="pre">logging</span></code>-Modul ist die professionelle Alternative zu <code class="docutils literal notranslate"><span class="pre">print</span></code>-Debugging:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Level</p></th>
+<th class="head"><p>Wann verwenden</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DEBUG</span></code></p></td>
+<td><p>Detaillierte Diagnoseinformationen</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">INFO</span></code></p></td>
+<td><p>Normaler Programmablauf, wichtige Ereignisse</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">WARNING</span></code></p></td>
+<td><p>Etwas Unerwartetes, Programm laeuft weiter</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ERROR</span></code></p></td>
+<td><p>Ernstes Problem, Funktion kann nicht ausgefuehrt werden</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CRITICAL</span></code></p></td>
+<td><p>Schwerer Fehler, Programm kann nicht weiterlaufen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In der Produktion stellt man das Level auf <code class="docutils literal notranslate"><span class="pre">WARNING</span></code> – dann verschwinden alle <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>- und <code class="docutils literal notranslate"><span class="pre">INFO</span></code>-Meldungen automatisch, ohne eine Zeile Code zu aendern.</p>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;"><span style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#4fc3f7;background:rgba(79,195,247,0.12);border:1px solid rgba(79,195,247,0.3);border-radius:3px;padding:0.2em 0.55em;margin-right:0.75em;vertical-align:middle;font-family:'Segoe UI',sans-serif;white-space:nowrap;">Kursinhalt</span>9. Debugging ohne IDE: pdb</span></div>
+<p>Manchmal hat man keinen Zugriff auf PyCharm – z.B. auf einem Server. Pythons eingebauter Debugger <code class="docutils literal notranslate"><span class="pre">pdb</span></code> funktioniert im Terminal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pdb-Befehle (im Terminal, nicht im Notebook ausfuehren)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Wichtige pdb-Befehle:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">befehle</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s1">&#39;l (list)&#39;</span><span class="p">,</span>    <span class="s1">&#39;Aktuellen Code anzeigen&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;n (next)&#39;</span><span class="p">,</span>    <span class="s1">&#39;Naechste Zeile (Step Over)&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;s (step)&#39;</span><span class="p">,</span>    <span class="s1">&#39;In Funktion hineinspringen (Step Into)&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;r (return)&#39;</span><span class="p">,</span>  <span class="s1">&#39;Bis zum Ende der aktuellen Funktion (Step Out)&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;c (continue)&#39;</span><span class="p">,</span><span class="s1">&#39;Bis zum naechsten Breakpoint weiterlaufen&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;p ausdruck&#39;</span><span class="p">,</span>  <span class="s1">&#39;Ausdruck ausgeben: p x, p len(liste)&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;pp ausdruck&#39;</span><span class="p">,</span> <span class="s1">&#39;Pretty-print (fuer Dicts, Listen)&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;b n&#39;</span><span class="p">,</span>         <span class="s1">&#39;Breakpoint in Zeile n setzen&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;bt&#39;</span><span class="p">,</span>          <span class="s1">&#39;Call Stack anzeigen&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;q (quit)&#39;</span><span class="p">,</span>    <span class="s1">&#39;Debugger beenden&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="k">for</span> <span class="n">befehl</span><span class="p">,</span> <span class="n">beschreibung</span> <span class="ow">in</span> <span class="n">befehle</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">befehl</span><span class="si">:</span><span class="s1">18</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">beschreibung</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Breakpoint im Code setzen:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  import pdb; pdb.set_trace()  # Python 3.6 und aelter&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;  breakpoint()                 # Python 3.7+ (empfohlen)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Zusammenfassung</span></div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Thema</p></th>
+<th class="head"><p>Kernaussage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PyCharm einrichten</p></td>
+<td><p>Immer eine <code class="docutils literal notranslate"><span class="pre">.venv</span></code> pro Projekt, Interpreter pruefen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fehlertypen</p></td>
+<td><p>SyntaxError (vor Ausfuehrung), RuntimeError (waehrend), Logikfehler (kein Absturz)</p></td>
+</tr>
+<tr class="row-even"><td><p>Traceback lesen</p></td>
+<td><p>Von unten nach oben: Fehler unten, Ursache oft weiter oben</p></td>
+</tr>
+<tr class="row-odd"><td><p>Breakpoint</p></td>
+<td><p>Programm pausiert – alle Variablen sichtbar, kein Code noetig</p></td>
+</tr>
+<tr class="row-even"><td><p>Step Over / Into / Out</p></td>
+<td><p>Schrittweise Ausfuehrung; Into betritt Funktionen, Over nicht</p></td>
+</tr>
+<tr class="row-odd"><td><p>Call Stack</p></td>
+<td><p>Zeigt den Aufrufpfad – in welchem Kontext befinde ich mich?</p></td>
+</tr>
+<tr class="row-even"><td><p>Konditionaler Breakpoint</p></td>
+<td><p>Haelt nur wenn Bedingung wahr – nuetzlich in Schleifen</p></td>
+</tr>
+<tr class="row-odd"><td><p>logging statt print</p></td>
+<td><p>Levels steuerbar, kein Code-Aendern fuer Prod/Dev noetig</p></td>
+</tr>
+<tr class="row-even"><td><p>pdb</p></td>
+<td><p>Debugger im Terminal, wenn keine IDE verfuegbar</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Merksatz:</strong> Ein Debugger macht dich nicht zu einem besseren Programmierer – aber er macht dich zu einem schnelleren. Wer ihn nicht benutzt, sucht im Dunkeln.</p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Aufgaben</span></div><div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 1 (Traceback lesen)</span></div>
+<p>Lies den folgenden Traceback und beantworte die Fragen, ohne den Code auszufuehren:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">15</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">ergebnis</span> <span class="o">=</span> <span class="n">verarbeite_daten</span><span class="p">(</span><span class="n">rohdaten</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="n">verarbeite_daten</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">transformiere</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">daten</span><span class="p">]</span>
+  <span class="n">File</span> <span class="s2">&quot;app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">9</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">listcomp</span><span class="o">&gt;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">transformiere</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">daten</span><span class="p">]</span>
+  <span class="n">File</span> <span class="s2">&quot;app.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">4</span><span class="p">,</span> <span class="ow">in</span> <span class="n">transformiere</span>
+    <span class="k">return</span> <span class="n">wert</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;int&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;upper&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>In welcher Funktion ist der Fehler aufgetreten?</p></li>
+<li><p>Was ist der Fehler?</p></li>
+<li><p>Wie kam das Programm zu dieser Stelle?</p></li>
+<li><p>Was muss behoben werden?</p></li>
+</ol>
+<p><em>Deine Antworten hier…</em></p>
+<ol class="arabic simple">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 2 (Fehler finden)</span></div>
+<p>Die folgende Funktion hat einen Logikfehler. Fuehre sie aus, analysiere das Ergebnis und finde den Fehler. Beschreibe ausserdem, wie du den Debugger einsetzen wuerdest, um ihn zu finden.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ist_palindrom</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt True zurueck, wenn text ein Palindrom ist (vorwaerts = rueckwaerts).&quot;&quot;&quot;</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">text</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span><span class="p">]:</span>   <span class="c1"># Fehler hier</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="c1"># Testfaelle</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_palindrom</span><span class="p">(</span><span class="s1">&#39;racecar&#39;</span><span class="p">))</span>   <span class="c1"># erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_palindrom</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">))</span>     <span class="c1"># erwartet: False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_palindrom</span><span class="p">(</span><span class="s1">&#39;Anna&#39;</span><span class="p">))</span>      <span class="c1"># erwartet: True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ist_palindrom</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>         <span class="c1"># erwartet: True</span>
+
+<span class="c1"># Fehleranalyse:</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 3 (Logging einbauen)</span></div>
+<p>Ersetze in der folgenden Funktion alle <code class="docutils literal notranslate"><span class="pre">print</span></code>-Anweisungen durch geeignete <code class="docutils literal notranslate"><span class="pre">logging</span></code>-Aufrufe mit dem richtigen Level. Das Programm soll in der Produktion (<code class="docutils literal notranslate"><span class="pre">level=logging.WARNING</span></code>) keine Ausgaben erzeugen, in der Entwicklung (<code class="docutils literal notranslate"><span class="pre">level=logging.DEBUG</span></code>) alle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lade_konfiguration</span><span class="p">(</span><span class="n">pfad</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Lade Konfiguration aus </span><span class="si">{</span><span class="n">pfad</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>          <span class="c1"># Debug-Info</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pfad</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">inhalt</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Konfiguration geladen: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">inhalt</span><span class="p">)</span><span class="si">}</span><span class="s1"> Zeichen&#39;</span><span class="p">)</span>  <span class="c1"># Debug-Info</span>
+        <span class="k">return</span> <span class="n">inhalt</span>
+    <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Konfigurationsdatei nicht gefunden: </span><span class="si">{</span><span class="n">pfad</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>    <span class="c1"># Warnung</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Verwende Standardkonfiguration&#39;</span><span class="p">)</span>                  <span class="c1"># Info</span>
+        <span class="k">return</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Keine Leseberechtigung fuer </span><span class="si">{</span><span class="n">pfad</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>            <span class="c1"># Fehler</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="c1"># Deine ueberarbeitete Version hier:</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 4 (Debugging-Strategie)</span></div>
+<p>Die folgende Funktion liefert fuer manche Eingaben ein falsches Ergebnis. Ohne sie zu veraendern: Beschreibe Schritt fuer Schritt, wie du mit dem PyCharm-Debugger vorgehst, um den Fehler zu finden. Welchen Breakpoint setzt du zuerst? Was schaust du im Variables-Panel an?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">finde_maximum</span><span class="p">(</span><span class="n">zahlen</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt den groessten Wert in der Liste zurueck.&quot;&quot;&quot;</span>
+    <span class="n">maximum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">zahl</span> <span class="ow">in</span> <span class="n">zahlen</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">zahl</span> <span class="o">&gt;</span> <span class="n">maximum</span><span class="p">:</span>
+            <span class="n">maximum</span> <span class="o">=</span> <span class="n">zahl</span>
+    <span class="k">return</span> <span class="n">maximum</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">finde_maximum</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">]))</span>    <span class="c1"># erwartet: 9</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">finde_maximum</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">]))</span>   <span class="c1"># erwartet: -1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">finde_maximum</span><span class="p">([]))</span>                  <span class="c1"># erwartet: ?</span>
+
+<span class="c1"># Deine Debugging-Strategie:</span>
+<span class="c1"># ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div style="background:#0d1f2d;border-left:3px solid #1e4d6b;border-radius:3px;padding:0.55em 1em;margin:1.5rem 0 0.9rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(0.9rem,1.8vw,1.05rem);font-weight:600;color:#c5cae9;letter-spacing:-0.005em;">Aufgabe 5 (Vertiefung)</span></div>
+<p>Recherchiere: Was ist <code class="docutils literal notranslate"><span class="pre">breakpoint()</span></code> in Python 3.7+ und wie haengt es mit der Umgebungsvariablen <code class="docutils literal notranslate"><span class="pre">PYTHONBREAKPOINT</span></code> zusammen? Was kann man damit machen?</p>
+<p><em>Deine Antwort hier…</em></p>
+<hr class="docutils" />
+<div style="background:#0b1929;border-left:4px solid #4fc3f7;border-radius:4px;padding:0.75em 1.2em;margin:2rem 0 1.2rem 0;font-family:'Segoe UI',sans-serif;"><span style="font-size:clamp(1rem,2.2vw,1.25rem);font-weight:600;color:#e8eaf6;letter-spacing:-0.01em;">Abschluss Kapitel 1 -- Fundament</span></div>
+<p>Damit ist das Fundament vollstaendig:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Notebook</p></th>
+<th class="head"><p>Thema</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>01a</p></td>
+<td><p>Laufzeitmodell Python</p></td>
+</tr>
+<tr class="row-odd"><td><p>01b</p></td>
+<td><p>Namespaces und LEGB</p></td>
+</tr>
+<tr class="row-even"><td><p>01c</p></td>
+<td><p>Das Import-System</p></td>
+</tr>
+<tr class="row-odd"><td><p>02</p></td>
+<td><p>Versionsverwaltung mit Git</p></td>
+</tr>
+<tr class="row-even"><td><p>03</p></td>
+<td><p>PyCharm und Debugging</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Im naechsten Kapitel geht es in die <strong>Funktionale Programmierung</strong> – Funktionen als Daten, Callbacks und die funktionalen Werkzeuge von Python.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Kapitel_1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01d_versionsverwaltung_git.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Versionsverwaltung git</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01f_debugging_step_by_step.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Debugging step by step</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Marcel
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
